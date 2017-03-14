@@ -1,0 +1,76 @@
+{% extends "base/Base.html" %}
+{% block head %}{% endblock %}
+{% block sidebartitle %}{% endblock %}
+{% block name %}{% endblock %}
+
+
+{% block body %}
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="dashboard_graph">
+
+            <div class="row x_title">
+                <div class="col-md-6">
+                    <h3>Sensor Measurements
+                        <small>Ilioupoli</small>
+                    </h3>
+                </div>
+                {#                            <div class="col-md-6">#}
+                {#                                <div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">#}
+                {#                                    <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>#}
+                {#                                    <span>December 30, 2014 - January 28, 2015</span> <b class="caret"></b>#}
+                {#                                </div>#}
+                {#                            </div>#}
+            </div>
+
+            <div class="col-md-9 col-sm-9 col-xs-12">
+                <div id="chart_plot_01" class="demo-placeholder"></div>
+            </div>
+            <div class="col-md-9 col-sm-9 col-xs-12">
+                <div id="chart_plot_02" class="demo-placeholder"></div>
+            </div>
+            <div class="col-md-9 col-sm-9 col-xs-12">
+                <div id="chart_plot_03" class="demo-placeholder"></div>
+            </div>
+            <div class="col-md-9 col-sm-9 col-xs-12">
+                <div id="chart_plot_04" class="demo-placeholder"></div>
+            </div>
+            <div class="col-md-9 col-sm-9 col-xs-12">
+                <div id="chart_plot_05" class="demo-placeholder"></div>
+            </div>
+            <div class="col-md-9 col-sm-9 col-xs-12">
+                <div id="chart_plot_06" class="demo-placeholder"></div>
+            </div>
+            <div class="col-md-9 col-sm-9 col-xs-12">
+                <div id="chart_plot_07" class="demo-placeholder"></div>
+            </div>
+            <div class="col-md-9 col-sm-9 col-xs-12">
+                <div id="chart_plot_08" class="demo-placeholder"></div>
+            </div>
+
+
+            <div class="clearfix"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <!-- Highcharts -->
+    <script src="/static/js/highcharts/highcharts.js"></script>
+    <script src="/static/js/highcharts/highcharts-more.js"></script>
+    <script src="/static/js/highcharts/exporting.js"></script>
+    <script src="/static/js/highcharts/boost.js"></script>
+
+
+
+    <script src="/static/js/create_charts.js"></script>
+    <script>
+        createChart("soil_temp", "chart_plot_01");
+        createChart("soil_hum", "chart_plot_02");
+        createChart("air_temp", "chart_plot_03");
+        createChart("air_hum", "chart_plot_04");
+        createChart("outside_temp", "chart_plot_05");
+        createChart("outside_hum", "chart_plot_06");
+        createChart("outside_light", "chart_plot_07");
+
+    </script>
+{% endblock %}

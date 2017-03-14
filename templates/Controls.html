@@ -1,0 +1,78 @@
+{% extends "base/Base.html" %}
+{% block head %}{% endblock %}
+{% block sidebartitle %}{% endblock %}
+{% block name %}
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-2">
+            {#######################################    CONTROLS   ###################################################}
+            <br>
+            <br>
+            <label for="Motor_F">Motors Forward:</label>
+            <br>
+            <button type="button"
+                    class="btn btn-success"
+                    id="Motor_F">ON</button>
+            <br>
+            <br>
+            <label for="Motor_B">Motors Backward:</label>
+            <br>
+            <button type="button"
+                    class="btn btn-success"
+                    id="Motor_B">ON</button>
+            <br>
+            <br>
+            <label for="Fan">Fan:</label>
+            <br>
+            <button type="button"
+                    class="btn btn-success"
+                    id="Fan">ON</button>
+            <br>
+            <br>
+            <label for="Vent">Ventilation:</label>
+            <br>
+            <button type="button"
+                    class="btn btn-success"
+                    id="Vent">ON</button>
+            <br>
+            <br>
+
+        </div>
+        <div class="col-md-2">
+            <br>
+            <br>
+            <label for="Motor_R">Stir Right:</label>
+            <br>
+            <button type="button"
+                    class="btn btn-success"
+                    id="Motor_R">ON</button>
+            <br>
+            <br>
+            <label for="Motor_L">Stir Left:</label>
+            <br>
+            <button type="button"
+                    class="btn btn-success"
+                    id="Motor_L">ON</button>
+            <br>
+            <br>
+            <label for="Door_1">Door 1:</label>
+            <br>
+            <button type="button"
+                    class="btn btn-success"
+                    id="Door_1" disabled>ON</button>
+            <br>
+            <br>
+            <label for="Emergency_Stop">Emergency Stop:</label>
+            <br>
+            <button type="button"
+                    class="btn btn-success"
+                    id="Emergency_Stop">ON</button>
+
+        </div>
+
+    </div>
+{% endblock %}
+{% block scripts %}
+{% endblock %}
