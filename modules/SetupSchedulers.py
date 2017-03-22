@@ -1,13 +1,13 @@
-import sys
-import os
-from apscheduler.schedulers.background import BackgroundScheduler
-from modules.RoutineFunctions import *
-from Compost import app
-from tzlocal import get_localzone
-import random
-import requests
-import json
 import datetime
+import json
+import os
+import random
+
+import requests
+from apscheduler.schedulers.background import BackgroundScheduler
+
+from Compost import app
+from modules.RoutineFunctions import *
 
 # The "apscheduler." prefix is hard coded
 scheduler = BackgroundScheduler({

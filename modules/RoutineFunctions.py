@@ -1,6 +1,7 @@
 from datetime import time
-from models.models import Settings
+
 from Compost import app
+from models.models import Settings
 
 
 def pushSoilBack():

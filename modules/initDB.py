@@ -1,6 +1,5 @@
-from models.models import Settings
-from flask_mongoengine import ValidationError
 from Compost import app
+from models.models import Settings
 
 
 def initDb():

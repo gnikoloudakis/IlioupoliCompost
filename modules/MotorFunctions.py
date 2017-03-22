@@ -1,8 +1,9 @@
+import Exception as Exception
+import requests
+
+from Compost import app
 from models.models import Devices
 from modules.DatabaseFunctions import addError
-from flask_mongoengine import ValidationError
-from Compost import app
-import requests
 
 
 def Motor_1_Left():
@@ -176,70 +177,85 @@ def StopVent():
 
 
 def StirForward():
-    app.logger.debug("Stir Forward")
-    success1 = Motor_1_Left()
-    if success1:
-        app.logger.debug("Motor 1 Left started in Stir Forward")
-    else:
-        app.logger.error("Motor 1 Left failed to start  in Stir Forward")
-    success2 = Motor_2_Right()
-    if success2:
-        app.logger.debug("Motor 2 Right started in Stir Forward")
-    else:
-        app.logger.error("Motor 2 Right Failed to start in Stir Forward")
+    success = False
+    try:
+        arduino = Devices.objects(name="arduino").first()
+        try:
+            requests.get("http://" + arduino.ip + ":8888/StirForward")
+        except requests.RequestException as e:
+            app.logger.error("Error while StirForward :", e)
+            addError("Cannot start StirForward")
+        else:
+            success = True
+    except Exception as e:
+        app.logger.error("Error while getting device (arduino) :", e)
+        addError("[StirForward] Cannot find Arduino IP")
+    return success
 
 
 def StirBackward():
-    app.logger.debug("Stir Backward")
-    success1 = Motor_1_Right()
-    if success1:
-        app.logger.debug("Motor 1 Right started in Stir Backward")
-    else:
-        app.logger.error("Motor 1 Right failed to start  in Stir Backward")
-    success2 = Motor_2_Left()
-    if success2:
-        app.logger.debug("Motor 2 Left started in Stir Backward")
-    else:
-        app.logger.error("Motor 2 Left Failed to start in Stir Backward")
+    success = False
+    try:
+        arduino = Devices.objects(name="arduino").first()
+        try:
+            requests.get("http://" + arduino.ip + ":8888/StirBackward")
+        except requests.RequestException as e:
+            app.logger.error("Error while StirBackward :", e)
+            addError("Cannot start StirBackward")
+        else:
+            success = True
+    except Exception as e:
+        app.logger.error("Error while getting device (arduino) :", e)
+        addError("[StirBackward] Cannot find Arduino IP")
+    return success
 
 
 def StirRight():
-    app.logger.debug("Stir Right")
-    success1 = Motor_1_Left()
-    if success1:
-        app.logger.debug("Motor 1 Left started in Stir Right")
-    else:
-        app.logger.error("Motor 1 Left failed to start  in Stir Right")
-    success2 = Motor_2_Left()
-    if success2:
-        app.logger.debug("Motor 2 Left started in Stir Right")
-    else:
-        app.logger.error("Motor 2 Left Failed to start in Stir Right")
+    success = False
+    try:
+        arduino = Devices.objects(name="arduino").first()
+        try:
+            requests.get("http://" + arduino.ip + ":8888/StirRight")
+        except requests.RequestException as e:
+            app.logger.error("Error while StirRight :", e)
+            addError("Cannot start StirRight")
+        else:
+            success = True
+    except Exception as e:
+        app.logger.error("Error while getting device (arduino) :", e)
+        addError("[StirRight] Cannot find Arduino IP")
+    return success
 
 
 def StirLeft():
-    app.logger.debug("Stir Left")
-    success1 = Motor_1_Right()
-    if success1:
-        app.logger.debug("Motor 1 Right started in Stir Stir Left")
-    else:
-        app.logger.error("Motor 1 Right failed to start  in Stir Left")
-    success2 = Motor_2_Right()
-    if success2:
-        app.logger.debug("Motor 2 Right started in Stir Left")
-    else:
-        app.logger.error("Motor 2 Right Failed to start in Stir Left")
+    success = False
+    try:
+        arduino = Devices.objects(name="arduino").first()
+        try:
+            requests.get("http://" + arduino.ip + ":8888/StirLeft")
+        except requests.RequestException as e:
+            app.logger.error("Error while StirLeft :", e)
+            addError("Cannot start StirLeft")
+        else:
+            success = True
+    except Exception as e:
+        app.logger.error("Error while getting device (arduino) :", e)
+        addError("[StirLeft] Cannot find Arduino IP")
+    return success
 
 
 def StopMotors():
-    app.logger.debug("Stop All motors")
-    success1 = Motor_1_Stop()
-    if success1:
-        app.logger.debug("Motor 1 stopped in StopAll")
-    else:
-        app.logger.error("Motor 1 failed to Stop  in StopAll")
-    success2 = Motor_2_Stop()
-    if success2:
-        app.logger.debug("Motor 2 stopped in StopAll")
-    else:
-        app.logger.error("Motor 2 failed to Stop  in StopAll")
+    success = False
+    try:
+        arduino = Devices.objects(name="arduino").first()
+        try:
+            requests.get("http://" + arduino.ip + ":8888/StopMotors")
+        except requests.RequestException as e:
+            app.logger.error("Error while StopMotors :", e)
+            addError("Cannot start StopMotors")
+        else:
+            success = True
+    except Exception as e:
+        app.logger.error("Error while getting device (arduino) :", e)
+        addError("[StopMotors] Cannot find Arduino IP")
+    return success
