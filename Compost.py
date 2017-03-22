@@ -1,7 +1,7 @@
+import logging
+
 from flask import Flask, render_template, request, redirect
 from flask_mongoengine import MongoEngine
-import os
-import logging
 
 # from logging.handlers import RotatingFileHandler
 
@@ -166,4 +166,4 @@ if __name__ == '__main__':
     from tools.auto_add_measurements import init_sched
 
     init_sched()
-    app.run()
+    app.run(host='0.0.0.0', port=5000, debug=True)
