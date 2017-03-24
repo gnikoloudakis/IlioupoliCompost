@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="dcecf74e-50cb-4ca5-973c-57bc1f074fc8" name="gnikoloudakis.ddns.net" url="http://gnikoloudakis.ddns.net">
+        <fileTransfer host="gnikoloudakis.ddns.net" port="22" rootFolder="/home/pi" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
