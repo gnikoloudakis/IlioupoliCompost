@@ -11,6 +11,13 @@ db = MongoEngine(app)
 
 logging.basicConfig()
 
+# Globals
+Motor1 = False
+Motor2 = False
+Fan = False
+Vent = False
+Door = False
+
 
 # logHandler = RotatingFileHandler(app.root_path + os.sep + 'info.log', maxBytes=1000, backupCount=1)
 # # set the log handler level
@@ -163,7 +170,7 @@ def get_measurements(m_type):
 
 
 if __name__ == '__main__':
-    from tools.auto_add_measurements import init_sched
+    from modules.SetupSchedulers import init_sched
 
     init_sched()
     app.run(host='0.0.0.0', port=5000, debug=True)
