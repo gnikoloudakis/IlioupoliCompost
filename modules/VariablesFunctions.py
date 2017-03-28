@@ -1,8 +1,7 @@
-import time
-
+# import time
 import serial
-
-from Compost import app
+import demjson
+from Compost import socketio
 
 
 def readVariables():
@@ -11,7 +10,17 @@ def readVariables():
                         timeout=1
                         )
     ser.write('v\r\n'.encode())
-    time.sleep(2)
+    # time.sleep(2)
     x = ser.readline()
-    print x
+    while x == "":
+        ser.write('v\r\n'.encode())
+        # time.sleep(2)
+        x = ser.readline()
+    try:
+        data = demjson.decode(x)
+    except Exception as e:
+        print ("read variables decode error: ", e)
+    else:
+        print (data)
+        socketio.emit("measurements", data)
     ser.close()

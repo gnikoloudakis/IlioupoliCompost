@@ -18,10 +18,10 @@ scheduler = BackgroundScheduler({
     },
     'apscheduler.executors.default': {
         'class': 'apscheduler.executors.pool:ThreadPoolExecutor',
-        'max_workers': '3'
+        'max_workers': '10'
     },
     'apscheduler.job_defaults.coalesce': 'false',
-    'apscheduler.job_defaults.max_instances': '3',
+    'apscheduler.job_defaults.max_instances': '10',
     'apscheduler.timezone': 'Europe/Athens',
 })
 
@@ -48,8 +48,8 @@ def init_sched():
     # scheduler.add_job(pushSoilBack, 'cron', day_of_week='mon-fri', hour=datetime.datetime.strptime(Settings.objects.first().daily_soil_backward_time, '%H:%M%p').hour, jobstore='default', executor='default', replace_existing=True, id='soilBack')
     # scheduler.add_job(soilHomogenization, 'cron', day_of_week='mon-fri', hour=datetime.datetime.strptime(Settings.objects.first().daily_steering_time, '%H:%M%p').hour, jobstore='default', executor='default', replace_existing=True, id='soilHomogenization')
     # scheduler.add_job(hourlyVentilation, 'interval', hours=1, jobstore='default', executor='default', replace_existing=True, id='vent')
-    # scheduler.add_job(readFlags, 'interval', seconds=10, jobstore='default', executor='default', replace_existing=True, id='readFlags')
-    scheduler.add_job(readVariables, 'interval', seconds=10, jobstore='default', executor='default', replace_existing=True, id='readVariables')
+    # scheduler.add_job(readFlags, 'interval', seconds=20, jobstore='default', executor='default', replace_existing=True, id='readFlags')
+    # scheduler.add_job(readVariables, 'interval', minutes=5, jobstore='default', executor='default', replace_existing=True, id='readVariables')
 
     scheduler.start()
     ###########################################################################################################################################

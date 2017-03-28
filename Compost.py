@@ -1,5 +1,5 @@
 import logging
-
+from flask_socketio import SocketIO, emit
 from flask import Flask, render_template, request, redirect
 from flask_mongoengine import MongoEngine
 
@@ -8,6 +8,8 @@ from flask_mongoengine import MongoEngine
 app = Flask(__name__)
 app.config.from_object('config')
 db = MongoEngine(app)
+
+socketio = SocketIO(app)
 
 logging.basicConfig()
 
@@ -169,8 +171,15 @@ def get_measurements(m_type):
         return 'Did NOT get Measurements'
 
 
+@socketio.on('flags')
+def socketTest(data):
+    print (data)
+
+
 if __name__ == '__main__':
     from modules.SetupSchedulers import init_sched
+    from modules.VariablesFunctions import readVariables
 
+    readVariables()
     init_sched()
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    socketio.run(app=app, host='0.0.0.0', port=5000)
