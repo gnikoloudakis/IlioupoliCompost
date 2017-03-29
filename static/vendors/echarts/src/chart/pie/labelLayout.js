@@ -57,9 +57,9 @@ define(function (require) {
                 var length2 = list[i].len2;
                 var deltaX = (deltaY < r + length)
                     ? Math.sqrt(
-                          (r + length + length2) * (r + length + length2)
-                          - deltaY * deltaY
-                      )
+                        (r + length + length2) * (r + length + length2)
+                        - deltaY * deltaY
+                    )
                     : Math.abs(list[i].x - cx);
                 if (isDownList && deltaX >= lastDeltaX) {
                     // 右下，左下
@@ -196,7 +196,7 @@ define(function (require) {
             var labelRotate = labelModel.get('rotate')
                 ? (dx < 0 ? -midAngle + Math.PI : -midAngle) : 0;
             var text = seriesModel.getFormattedLabel(idx, 'normal')
-                        || data.getName(idx);
+                || data.getName(idx);
             var textRect = textContain.getBoundingRect(
                 text, font, textAlign, 'top'
             );

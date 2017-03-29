@@ -2,7 +2,6 @@ import datetime
 import json
 import os
 import random
-
 import requests
 from apscheduler.schedulers.background import BackgroundScheduler
 

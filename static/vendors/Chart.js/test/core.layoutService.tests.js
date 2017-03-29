@@ -1,19 +1,19 @@
 // Tests of the scale service
-describe('Test the layout service', function() {
-	beforeEach(function() {
+describe('Test the layout service', function () {
+	beforeEach(function () {
 		window.addDefaultMatchers(jasmine);
 	});
 
-	afterEach(function() {
+	afterEach(function () {
 		window.releaseAllCharts();
 	});
 
-	it('should fit a simple chart with 2 scales', function() {
+	it('should fit a simple chart with 2 scales', function () {
 		var chart = window.acquireChart({
 			type: 'bar',
 			data: {
 				datasets: [
-					{ data: [10, 5, 0, 25, 78, -10] }
+					{data: [10, 5, 0, 25, 78, -10]}
 				],
 				labels: ['tick1', 'tick2', 'tick3', 'tick4', 'tick5', 'tick6']
 			},
@@ -54,12 +54,12 @@ describe('Test the layout service', function() {
 		expect(chart.scales.yScale.labelRotation).toBeCloseTo(0);
 	});
 
-	it('should fit scales that are in the top and right positions', function() {
+	it('should fit scales that are in the top and right positions', function () {
 		var chart = window.acquireChart({
 			type: 'bar',
 			data: {
 				datasets: [
-					{ data: [10, 5, 0, 25, 78, -10] }
+					{data: [10, 5, 0, 25, 78, -10]}
 				],
 				labels: ['tick1', 'tick2', 'tick3', 'tick4', 'tick5', 'tick6']
 			},
@@ -102,7 +102,7 @@ describe('Test the layout service', function() {
 		expect(chart.scales.yScale.labelRotation).toBeCloseTo(0);
 	});
 
-	it('should fit scales that overlap the chart area', function() {
+	it('should fit scales that overlap the chart area', function () {
 		var chart = window.acquireChart({
 			type: 'radar',
 			data: {
@@ -128,7 +128,7 @@ describe('Test the layout service', function() {
 		expect(chart.scale.height).toBeCloseToPixel(480)
 	});
 
-	it('should fit multiple axes in the same position', function() {
+	it('should fit multiple axes in the same position', function () {
 		var chart = window.acquireChart({
 			type: 'bar',
 			data: {
@@ -187,7 +187,7 @@ describe('Test the layout service', function() {
 		expect(chart.scales.yScale2.labelRotation).toBeCloseTo(0);
 	});
 
-	it ('should fix a full width box correctly', function() {
+	it('should fix a full width box correctly', function () {
 		var chart = window.acquireChart({
 			type: 'bar',
 			data: {

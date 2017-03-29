@@ -1,4 +1,4 @@
-describe('timelineOptions', function() {
+describe('timelineOptions', function () {
 
     var utHelper = window.utHelper;
 
@@ -67,7 +67,6 @@ describe('timelineOptions', function() {
         expect(getData0(chart, 0)).toEqual(111);
         expect(getData0(chart, 1)).toEqual(222);
     });
-
 
 
     testCase.createChart()('timeline_setOptionOnceMore_substitudeTimelineOptions', function () {

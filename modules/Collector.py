@@ -1,6 +1,5 @@
-import time
-
 import serial
+import time
 
 
 # from Compost import app

@@ -1,6 +1,6 @@
 "use strict";
 
-module.exports = function(Chart) {
+module.exports = function (Chart) {
 
 	var helpers = Chart.helpers;
 	var globalDefaults = Chart.defaults.global;
@@ -39,17 +39,17 @@ module.exports = function(Chart) {
 			fontSize: 10,
 
 			//Function - Used to convert point labels
-			callback: function(label) {
+			callback: function (label) {
 				return label;
 			}
 		}
 	};
 
 	var LinearRadialScale = Chart.Scale.extend({
-		getValueCount: function() {
+		getValueCount: function () {
 			return this.chart.data.labels.length;
 		},
-		setDimensions: function() {
+		setDimensions: function () {
 			var options = this.options;
 			// Set the unconstrained dimension before label rotation
 			this.width = this.maxWidth;
@@ -61,14 +61,14 @@ module.exports = function(Chart) {
 			var tickFontSize = helpers.getValueOrDefault(options.ticks.fontSize, globalDefaults.defaultFontSize);
 			this.drawingArea = (options.display) ? (minSize / 2) - (tickFontSize / 2 + options.ticks.backdropPaddingY) : (minSize / 2);
 		},
-		determineDataLimits: function() {
+		determineDataLimits: function () {
 			this.min = null;
 			this.max = null;
 
-			helpers.each(this.chart.data.datasets, function(dataset, datasetIndex) {
+			helpers.each(this.chart.data.datasets, function (dataset, datasetIndex) {
 				if (this.chart.isDatasetVisible(datasetIndex)) {
 					var meta = this.chart.getDatasetMeta(datasetIndex);
-					helpers.each(dataset.data, function(rawValue, index) {
+					helpers.each(dataset.data, function (rawValue, index) {
 						var value = +this.getRightValue(rawValue);
 						if (isNaN(value) || meta.data[index].hidden) {
 							return;
@@ -122,7 +122,7 @@ module.exports = function(Chart) {
 				this.max++;
 			}
 		},
-		buildTicks: function() {
+		buildTicks: function () {
 
 
 			this.ticks = [];
@@ -170,16 +170,16 @@ module.exports = function(Chart) {
 
 			this.zeroLineIndex = this.ticks.indexOf(0);
 		},
-		convertTicksToLabels: function() {
+		convertTicksToLabels: function () {
 			Chart.Scale.prototype.convertTicksToLabels.call(this);
 
 			// Point labels
 			this.pointLabels = this.chart.data.labels.map(this.options.pointLabels.callback, this);
 		},
-		getLabelForIndex: function(index, datasetIndex) {
+		getLabelForIndex: function (index, datasetIndex) {
 			return +this.getRightValue(this.chart.data.datasets[datasetIndex].data[index]);
 		},
-		fit: function() {
+		fit: function () {
 			/*
 			 * Right, this is really confusing and there is a lot of maths going on here
 			 * The gist of the problem is here: https://gist.github.com/nnnick/696cc9c55f4b0beb8fe9
@@ -282,7 +282,7 @@ module.exports = function(Chart) {
 			this.drawingArea = Math.round(largestPossibleRadius - (radiusReductionLeft + radiusReductionRight) / 2);
 			this.setCenterPoint(radiusReductionLeft, radiusReductionRight);
 		},
-		setCenterPoint: function(leftMovement, rightMovement) {
+		setCenterPoint: function (leftMovement, rightMovement) {
 
 			var maxRight = this.width - rightMovement - this.drawingArea,
 				maxLeft = leftMovement + this.drawingArea;
@@ -292,13 +292,13 @@ module.exports = function(Chart) {
 			this.yCenter = Math.round((this.height / 2) + this.top);
 		},
 
-		getIndexAngle: function(index) {
+		getIndexAngle: function (index) {
 			var angleMultiplier = (Math.PI * 2) / this.getValueCount();
 			// Start from the top instead of right, so remove a quarter of the circle
 
 			return index * angleMultiplier - (Math.PI / 2);
 		},
-		getDistanceFromCenterForValue: function(value) {
+		getDistanceFromCenterForValue: function (value) {
 			if (value === null) {
 				return 0; // null always in center
 			}
@@ -311,33 +311,33 @@ module.exports = function(Chart) {
 				return (value - this.min) * scalingFactor;
 			}
 		},
-		getPointPosition: function(index, distanceFromCenter) {
+		getPointPosition: function (index, distanceFromCenter) {
 			var thisAngle = this.getIndexAngle(index);
 			return {
 				x: Math.round(Math.cos(thisAngle) * distanceFromCenter) + this.xCenter,
 				y: Math.round(Math.sin(thisAngle) * distanceFromCenter) + this.yCenter
 			};
 		},
-		getPointPositionForValue: function(index, value) {
+		getPointPositionForValue: function (index, value) {
 			return this.getPointPosition(index, this.getDistanceFromCenterForValue(value));
 		},
 
-		getBasePosition: function() {
+		getBasePosition: function () {
 			var me = this;
 			var min = me.min;
 			var max = me.max;
 
 			return me.getPointPositionForValue(0,
-				me.beginAtZero? 0:
-				min < 0 && max < 0? max :
-				min > 0 && max > 0? min :
-				0);
+				me.beginAtZero ? 0 :
+					min < 0 && max < 0 ? max :
+						min > 0 && max > 0 ? min :
+							0);
 		},
 
-		draw: function() {
+		draw: function () {
 			if (this.options.display) {
 				var ctx = this.ctx;
-				helpers.each(this.ticks, function(label, index) {
+				helpers.each(this.ticks, function (label, index) {
 					// Don't draw a centre value (if it is minimum)
 					if (index > 0 || this.options.reverse) {
 						var yCenterOffset = this.getDistanceFromCenterForValue(this.ticks[index]);

@@ -1,4 +1,4 @@
-define(function(require) {
+define(function (require) {
 
     var VisualMapModel = require('./VisualMapModel');
     var zrUtil = require('zrender/core/util');
@@ -160,8 +160,8 @@ define(function(require) {
             return option.pieces && option.pieces.length > 0
                 ? 'pieces'
                 : this.option.categories
-                ? 'categories'
-                : 'splitNumber';
+                    ? 'categories'
+                    : 'splitNumber';
         },
 
         /**
@@ -181,7 +181,7 @@ define(function(require) {
 
             return index != null
                 ? (this.option.selected[this.getSelectedMapKey(this._pieceList[index])]
-                    ? 'inRange' : 'outOfRange'
+                        ? 'inRange' : 'outOfRange'
                 )
                 : 'outOfRange';
         },
@@ -315,7 +315,7 @@ define(function(require) {
     function normalizeReverse(thisOption, arr) {
         var inverse = thisOption.inverse;
         if (thisOption.orient === 'vertical' ? !inverse : inverse) {
-             arr.reverse();
+            arr.reverse();
         }
     }
 

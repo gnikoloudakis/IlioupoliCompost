@@ -1,6 +1,6 @@
 "use strict";
 
-module.exports = function(Chart) {
+module.exports = function (Chart) {
 
 	var helpers = Chart.helpers;
 
@@ -11,14 +11,14 @@ module.exports = function(Chart) {
 		defaults: {},
 
 		// Register a box to a chartInstance. A box is simply a reference to an object that requires layout. eg. Scales, Legend, Plugins.
-		addBox: function(chartInstance, box) {
+		addBox: function (chartInstance, box) {
 			if (!chartInstance.boxes) {
 				chartInstance.boxes = [];
 			}
 			chartInstance.boxes.push(box);
 		},
 
-		removeBox: function(chartInstance, box) {
+		removeBox: function (chartInstance, box) {
 			if (!chartInstance.boxes) {
 				return;
 			}
@@ -26,7 +26,7 @@ module.exports = function(Chart) {
 		},
 
 		// The most important function
-		update: function(chartInstance, width, height) {
+		update: function (chartInstance, width, height) {
 
 			if (!chartInstance) {
 				return;
@@ -35,29 +35,29 @@ module.exports = function(Chart) {
 			var xPadding = 0;
 			var yPadding = 0;
 
-			var leftBoxes = helpers.where(chartInstance.boxes, function(box) {
+			var leftBoxes = helpers.where(chartInstance.boxes, function (box) {
 				return box.options.position === "left";
 			});
-			var rightBoxes = helpers.where(chartInstance.boxes, function(box) {
+			var rightBoxes = helpers.where(chartInstance.boxes, function (box) {
 				return box.options.position === "right";
 			});
-			var topBoxes = helpers.where(chartInstance.boxes, function(box) {
+			var topBoxes = helpers.where(chartInstance.boxes, function (box) {
 				return box.options.position === "top";
 			});
-			var bottomBoxes = helpers.where(chartInstance.boxes, function(box) {
+			var bottomBoxes = helpers.where(chartInstance.boxes, function (box) {
 				return box.options.position === "bottom";
 			});
 
 			// Boxes that overlay the chartarea such as the radialLinear scale
-			var chartAreaBoxes = helpers.where(chartInstance.boxes, function(box) {
+			var chartAreaBoxes = helpers.where(chartInstance.boxes, function (box) {
 				return box.options.position === "chartArea";
 			});
 
 			// Ensure that full width boxes are at the very top / bottom
-			topBoxes.sort(function(a, b) {
+			topBoxes.sort(function (a, b) {
 				return (b.options.fullWidth ? 1 : 0) - (a.options.fullWidth ? 1 : 0);
 			});
-			bottomBoxes.sort(function(a, b) {
+			bottomBoxes.sort(function (a, b) {
 				return (a.options.fullWidth ? 1 : 0) - (b.options.fullWidth ? 1 : 0);
 			});
 
@@ -148,11 +148,11 @@ module.exports = function(Chart) {
 			// Update, and calculate the left and right margins for the horizontal boxes
 			helpers.each(leftBoxes.concat(rightBoxes), fitBox);
 
-			helpers.each(leftBoxes, function(box) {
+			helpers.each(leftBoxes, function (box) {
 				totalLeftBoxesWidth += box.width;
 			});
 
-			helpers.each(rightBoxes, function(box) {
+			helpers.each(rightBoxes, function (box) {
 				totalRightBoxesWidth += box.width;
 			});
 
@@ -161,7 +161,7 @@ module.exports = function(Chart) {
 
 			// Function to fit a box
 			function fitBox(box) {
-				var minBoxSize = helpers.findNextWhere(minBoxSizes, function(minBoxSize) {
+				var minBoxSize = helpers.findNextWhere(minBoxSizes, function (minBoxSize) {
 					return minBoxSize.box === box;
 				});
 
@@ -184,11 +184,11 @@ module.exports = function(Chart) {
 			}
 
 			// Figure out how much margin is on the top and bottom of the vertical boxes
-			helpers.each(topBoxes, function(box) {
+			helpers.each(topBoxes, function (box) {
 				totalTopBoxesHeight += box.height;
 			});
 
-			helpers.each(bottomBoxes, function(box) {
+			helpers.each(bottomBoxes, function (box) {
 				totalBottomBoxesHeight += box.height;
 			});
 
@@ -196,7 +196,7 @@ module.exports = function(Chart) {
 			helpers.each(leftBoxes.concat(rightBoxes), finalFitVerticalBox);
 
 			function finalFitVerticalBox(box) {
-				var minBoxSize = helpers.findNextWhere(minBoxSizes, function(minBoxSize) {
+				var minBoxSize = helpers.findNextWhere(minBoxSizes, function (minBoxSize) {
 					return minBoxSize.box === box;
 				});
 
@@ -218,18 +218,18 @@ module.exports = function(Chart) {
 			totalTopBoxesHeight = yPadding;
 			totalBottomBoxesHeight = yPadding;
 
-			helpers.each(leftBoxes, function(box) {
+			helpers.each(leftBoxes, function (box) {
 				totalLeftBoxesWidth += box.width;
 			});
 
-			helpers.each(rightBoxes, function(box) {
+			helpers.each(rightBoxes, function (box) {
 				totalRightBoxesWidth += box.width;
 			});
 
-			helpers.each(topBoxes, function(box) {
+			helpers.each(topBoxes, function (box) {
 				totalTopBoxesHeight += box.height;
 			});
-			helpers.each(bottomBoxes, function(box) {
+			helpers.each(bottomBoxes, function (box) {
 				totalBottomBoxesHeight += box.height;
 			});
 
@@ -240,21 +240,21 @@ module.exports = function(Chart) {
 			var newMaxChartAreaWidth = width - totalLeftBoxesWidth - totalRightBoxesWidth;
 
 			if (newMaxChartAreaWidth !== maxChartAreaWidth || newMaxChartAreaHeight !== maxChartAreaHeight) {
-				helpers.each(leftBoxes, function(box) {
+				helpers.each(leftBoxes, function (box) {
 					box.height = newMaxChartAreaHeight;
 				});
 
-				helpers.each(rightBoxes, function(box) {
+				helpers.each(rightBoxes, function (box) {
 					box.height = newMaxChartAreaHeight;
 				});
 
-				helpers.each(topBoxes, function(box) {
+				helpers.each(topBoxes, function (box) {
 					if (!box.options.fullWidth) {
 						box.width = newMaxChartAreaWidth;
 					}
 				});
 
-				helpers.each(bottomBoxes, function(box) {
+				helpers.each(bottomBoxes, function (box) {
 					if (!box.options.fullWidth) {
 						box.width = newMaxChartAreaWidth;
 					}
@@ -310,7 +310,7 @@ module.exports = function(Chart) {
 			};
 
 			// Step 9
-			helpers.each(chartAreaBoxes, function(box) {
+			helpers.each(chartAreaBoxes, function (box) {
 				box.left = chartInstance.chartArea.left;
 				box.top = chartInstance.chartArea.top;
 				box.right = chartInstance.chartArea.right;

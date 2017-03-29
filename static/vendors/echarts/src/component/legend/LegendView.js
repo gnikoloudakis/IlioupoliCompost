@@ -53,7 +53,7 @@ define(function (require) {
 
             if (itemAlign === 'auto') {
                 itemAlign = (legendModel.get('left') === 'right'
-                    && legendModel.get('orient') === 'vertical')
+                && legendModel.get('orient') === 'vertical')
                     ? 'right' : 'left';
             }
 
@@ -131,7 +131,7 @@ define(function (require) {
                             );
 
                             itemGroup.on('click', curry(dispatchSelectAction, name, api))
-                                // FIXME Should not specify the series name
+                            // FIXME Should not specify the series name
                                 .on('mouseover', curry(dispatchHighlightAction, seriesModel, name, api))
                                 .on('mouseout', curry(dispatchDownplayAction, seriesModel, name, api));
 
@@ -147,11 +147,9 @@ define(function (require) {
             listComponentHelper.addBackground(group, legendModel);
         },
 
-        _createItem: function (
-            name, itemModel, legendModel,
-            legendSymbolType, symbolType,
-            itemAlign, color, selectMode
-        ) {
+        _createItem: function (name, itemModel, legendModel,
+                               legendSymbolType, symbolType,
+                               itemAlign, color, selectMode) {
             var itemWidth = legendModel.get('itemWidth');
             var itemHeight = legendModel.get('itemHeight');
 

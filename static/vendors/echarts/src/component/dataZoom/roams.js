@@ -1,7 +1,7 @@
 /**
  * @file Roam controller manager.
  */
-define(function(require) {
+define(function (require) {
 
     // Only create one roam controller for each coordinate system.
     // one roam controller might be refered by two inside data zoom

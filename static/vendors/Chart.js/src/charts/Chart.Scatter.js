@@ -1,6 +1,6 @@
 "use strict";
 
-module.exports = function(Chart) {
+module.exports = function (Chart) {
 
 	var defaultConfig = {
 		hover: {
@@ -22,11 +22,11 @@ module.exports = function(Chart) {
 
 		tooltips: {
 			callbacks: {
-				title: function(tooltipItems, data) {
+				title: function (tooltipItems, data) {
 					// Title doesn't make sense for scatter since we format the data as a point
 					return '';
 				},
-				label: function(tooltipItem, data) {
+				label: function (tooltipItem, data) {
 					return '(' + tooltipItem.xLabel + ', ' + tooltipItem.yLabel + ')';
 				}
 			}
@@ -39,7 +39,7 @@ module.exports = function(Chart) {
 	// Scatter charts use line controllers
 	Chart.controllers.scatter = Chart.controllers.line;
 
-	Chart.Scatter = function(context, config) {
+	Chart.Scatter = function (context, config) {
 		config.type = 'scatter';
 		return new Chart(context, config);
 	};

@@ -23,7 +23,8 @@
         init: function (mainEl, chart, opt) {
             opt = opt || {};
 
-            var chartResize = chart ? $.proxy(chart.resize, chart) : function () {};
+            var chartResize = chart ? $.proxy(chart.resize, chart) : function () {
+                };
             if (opt.throttle) {
                 chartResize = throttle(chartResize, opt.throttle, true, false);
             }
@@ -111,7 +112,6 @@
             $(document).on('mouseup', function () {
                 dragging = false;
             });
-
 
 
             function resize(x, y, isInit) {

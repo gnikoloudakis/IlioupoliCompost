@@ -113,7 +113,7 @@ define(function (require) {
      * @param {string} [axisType] Default retrieve from model.type
      * @return {module:echarts/scale/*}
      */
-    axisHelper.createScaleByModel = function(model, axisType) {
+    axisHelper.createScaleByModel = function (model, axisType) {
         axisType = axisType || model.get('type');
         if (axisType) {
             switch (axisType) {

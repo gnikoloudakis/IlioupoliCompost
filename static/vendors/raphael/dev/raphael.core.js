@@ -6,7 +6,7 @@
 // │ Licensed under the MIT (http://raphaeljs.com/license.html) license.│ \\
 // └────────────────────────────────────────────────────────────────────┘ \\
 
-define(["eve"], function(eve) {
+define(["eve"], function (eve) {
 
     /*\
      * Raphael
@@ -57,7 +57,7 @@ define(["eve"], function(eve) {
      |     y: 40,
      |     text: "Dump"
      | }]);
-    \*/
+     \*/
     function R(first) {
         if (R.is(first, "function")) {
             return loaded ? first() : eve.on("raphael.DOMload", first);
@@ -68,13 +68,14 @@ define(["eve"], function(eve) {
             if (R.is(args[args.length - 1], "function")) {
                 var f = args.pop();
                 return loaded ? f.call(R._engine.create[apply](R, args)) : eve.on("raphael.DOMload", function () {
-                    f.call(R._engine.create[apply](R, args));
-                });
+                        f.call(R._engine.create[apply](R, args));
+                    });
             } else {
                 return R._engine.create[apply](R, arguments);
             }
         }
     }
+
     R.version = "@@VERSION";
     R.eve = eve;
     var loaded,
@@ -97,7 +98,7 @@ define(["eve"], function(eve) {
              [ property (object) ]
              **
              * Shortcut for @Paper.customAttributes
-            \*/
+             \*/
             /*\
              * Paper.customAttributes
              [ property (object) ]
@@ -123,7 +124,7 @@ define(["eve"], function(eve) {
              | };
              | c.attr({hsb: "0.5 .8 1"});
              | c.animate({hsb: [1, 0, 0.5]}, 1e3);
-            \*/
+             \*/
             this.ca = this.customAttributes = {};
         },
         paperproto,
@@ -242,7 +243,8 @@ define(["eve"], function(eve) {
         sortByNumber = function (a, b) {
             return toFloat(a) - toFloat(b);
         },
-        fun = function () {},
+        fun = function () {
+        },
         pipe = function (x) {
             return x;
         },
@@ -282,7 +284,7 @@ define(["eve"], function(eve) {
                 var bbox = el._getBBox();
                 return rectPath(bbox.x, bbox.y, bbox.width, bbox.height);
             },
-            set : function(el) {
+            set: function (el) {
                 var bbox = el._getBBox();
                 return rectPath(bbox.x, bbox.y, bbox.width, bbox.height);
             }
@@ -296,7 +298,7 @@ define(["eve"], function(eve) {
          - path (string) path string
          - matrix (object) see @Matrix
          = (string) transformed path string
-        \*/
+         \*/
         mapPath = R.mapPath = function (path, matrix) {
             if (!matrix) {
                 return path;
@@ -321,7 +323,7 @@ define(["eve"], function(eve) {
      [ property (string) ]
      **
      * Can be “SVG”, “VML” or empty, depending on browser support.
-    \*/
+     \*/
     R.type = (g.win.SVGAngle || g.doc.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#BasicStructure", "1.1") ? "SVG" : "VML");
     if (R.type == "VML") {
         var d = g.doc.createElement("div"),
@@ -339,13 +341,13 @@ define(["eve"], function(eve) {
      [ property (boolean) ]
      **
      * `true` if browser supports SVG.
-    \*/
+     \*/
     /*\
      * Raphael.vml
      [ property (boolean) ]
      **
      * `true` if browser supports VML.
-    \*/
+     \*/
     R.svg = !(R.vml = R.type == "VML");
     R._Paper = Paper;
     /*\
@@ -373,7 +375,7 @@ define(["eve"], function(eve) {
      | paper.arrow(10, 10, 30, 30, 5).attr({fill: "#f00"});
      | paper.mystuff.arrow();
      | paper.mystuff.star();
-    \*/
+     \*/
     R.fn = paperproto = Paper.prototype = R.prototype;
     R._id = 0;
     R._oid = 0;
@@ -386,7 +388,7 @@ define(["eve"], function(eve) {
      - o (…) any object or primitive
      - type (string) name of the type, i.e. “string”, “function”, “number”, etc.
      = (boolean) is given value is of given type
-    \*/
+     \*/
     R.is = function (o, type) {
         type = lowerCase.call(type);
         if (type == "finite") {
@@ -395,11 +397,11 @@ define(["eve"], function(eve) {
         if (type == "array") {
             return o instanceof Array;
         }
-        return  (type == "null" && o === null) ||
-                (type == typeof o && o !== null) ||
-                (type == "object" && o === Object(o)) ||
-                (type == "array" && Array.isArray && Array.isArray(o)) ||
-                objectToString.call(o).slice(8, -1).toLowerCase() == type;
+        return (type == "null" && o === null) ||
+            (type == typeof o && o !== null) ||
+            (type == "object" && o === Object(o)) ||
+            (type == "array" && Array.isArray && Array.isArray(o)) ||
+            objectToString.call(o).slice(8, -1).toLowerCase() == type;
     };
 
     function clone(obj) {
@@ -426,7 +428,7 @@ define(["eve"], function(eve) {
      - x3 (number) #optional x coord of third point
      - y3 (number) #optional y coord of third point
      = (number) angle in degrees.
-    \*/
+     \*/
     R.angle = function (x1, y1, x2, y2, x3, y3) {
         if (x3 == null) {
             var x = x1 - x2,
@@ -447,7 +449,7 @@ define(["eve"], function(eve) {
      > Parameters
      - deg (number) angle in degrees
      = (number) angle in radians.
-    \*/
+     \*/
     R.rad = function (deg) {
         return deg % 360 * PI / 180;
     };
@@ -459,9 +461,9 @@ define(["eve"], function(eve) {
      > Parameters
      - rad (number) angle in radians
      = (number) angle in degrees.
-    \*/
+     \*/
     R.deg = function (rad) {
-        return Math.round ((rad * 180 / PI% 360)* 1000) / 1000;
+        return Math.round((rad * 180 / PI % 360) * 1000) / 1000;
     };
     /*\
      * Raphael.snapTo
@@ -473,7 +475,7 @@ define(["eve"], function(eve) {
      - value (number) value to adjust
      - tolerance (number) #optional tolerance for snapping. Default is `10`.
      = (number) adjusted value.
-    \*/
+     \*/
     R.snapTo = function (values, value, tolerance) {
         tolerance = R.is(tolerance, "finite") ? tolerance : 10;
         if (R.is(values, array)) {
@@ -499,7 +501,7 @@ define(["eve"], function(eve) {
      [ method ]
      **
      * Returns RFC4122, version 4 ID
-    \*/
+     \*/
     var createUUID = R.createUUID = (function (uuidRegEx, uuidReplacer) {
         return function () {
             return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(uuidRegEx, uuidReplacer).toUpperCase();
@@ -517,7 +519,7 @@ define(["eve"], function(eve) {
      * Used when you need to draw in `&lt;iframe>`. Switched window to the iframe one.
      > Parameters
      - newwin (window) new window object
-    \*/
+     \*/
     R.setWindow = function (newwin) {
         eve("raphael.setWindow", R, g.win, newwin);
         g.win = newwin;
@@ -527,84 +529,84 @@ define(["eve"], function(eve) {
         }
     };
     var toHex = function (color) {
-        if (R.vml) {
-            // http://dean.edwards.name/weblog/2009/10/convert-any-colour-value-to-hex-in-msie/
-            var trim = /^\s+|\s+$/g;
-            var bod;
-            try {
-                var docum = new ActiveXObject("htmlfile");
-                docum.write("<body>");
-                docum.close();
-                bod = docum.body;
-            } catch(e) {
-                bod = createPopup().document.body;
-            }
-            var range = bod.createTextRange();
-            toHex = cacher(function (color) {
+            if (R.vml) {
+                // http://dean.edwards.name/weblog/2009/10/convert-any-colour-value-to-hex-in-msie/
+                var trim = /^\s+|\s+$/g;
+                var bod;
                 try {
-                    bod.style.color = Str(color).replace(trim, E);
-                    var value = range.queryCommandValue("ForeColor");
-                    value = ((value & 255) << 16) | (value & 65280) | ((value & 16711680) >>> 16);
-                    return "#" + ("000000" + value.toString(16)).slice(-6);
-                } catch(e) {
-                    return "none";
+                    var docum = new ActiveXObject("htmlfile");
+                    docum.write("<body>");
+                    docum.close();
+                    bod = docum.body;
+                } catch (e) {
+                    bod = createPopup().document.body;
                 }
-            });
-        } else {
-            var i = g.doc.createElement("i");
-            i.title = "Rapha\xebl Colour Picker";
-            i.style.display = "none";
-            g.doc.body.appendChild(i);
-            toHex = cacher(function (color) {
-                i.style.color = color;
-                return g.doc.defaultView.getComputedStyle(i, E).getPropertyValue("color");
-            });
-        }
-        return toHex(color);
-    },
-    hsbtoString = function () {
-        return "hsb(" + [this.h, this.s, this.b] + ")";
-    },
-    hsltoString = function () {
-        return "hsl(" + [this.h, this.s, this.l] + ")";
-    },
-    rgbtoString = function () {
-        return this.hex;
-    },
-    prepareRGB = function (r, g, b) {
-        if (g == null && R.is(r, "object") && "r" in r && "g" in r && "b" in r) {
-            b = r.b;
-            g = r.g;
-            r = r.r;
-        }
-        if (g == null && R.is(r, string)) {
-            var clr = R.getRGB(r);
-            r = clr.r;
-            g = clr.g;
-            b = clr.b;
-        }
-        if (r > 1 || g > 1 || b > 1) {
-            r /= 255;
-            g /= 255;
-            b /= 255;
-        }
+                var range = bod.createTextRange();
+                toHex = cacher(function (color) {
+                    try {
+                        bod.style.color = Str(color).replace(trim, E);
+                        var value = range.queryCommandValue("ForeColor");
+                        value = ((value & 255) << 16) | (value & 65280) | ((value & 16711680) >>> 16);
+                        return "#" + ("000000" + value.toString(16)).slice(-6);
+                    } catch (e) {
+                        return "none";
+                    }
+                });
+            } else {
+                var i = g.doc.createElement("i");
+                i.title = "Rapha\xebl Colour Picker";
+                i.style.display = "none";
+                g.doc.body.appendChild(i);
+                toHex = cacher(function (color) {
+                    i.style.color = color;
+                    return g.doc.defaultView.getComputedStyle(i, E).getPropertyValue("color");
+                });
+            }
+            return toHex(color);
+        },
+        hsbtoString = function () {
+            return "hsb(" + [this.h, this.s, this.b] + ")";
+        },
+        hsltoString = function () {
+            return "hsl(" + [this.h, this.s, this.l] + ")";
+        },
+        rgbtoString = function () {
+            return this.hex;
+        },
+        prepareRGB = function (r, g, b) {
+            if (g == null && R.is(r, "object") && "r" in r && "g" in r && "b" in r) {
+                b = r.b;
+                g = r.g;
+                r = r.r;
+            }
+            if (g == null && R.is(r, string)) {
+                var clr = R.getRGB(r);
+                r = clr.r;
+                g = clr.g;
+                b = clr.b;
+            }
+            if (r > 1 || g > 1 || b > 1) {
+                r /= 255;
+                g /= 255;
+                b /= 255;
+            }
 
-        return [r, g, b];
-    },
-    packageRGB = function (r, g, b, o) {
-        r *= 255;
-        g *= 255;
-        b *= 255;
-        var rgb = {
-            r: r,
-            g: g,
-            b: b,
-            hex: R.rgb(r, g, b),
-            toString: rgbtoString
+            return [r, g, b];
+        },
+        packageRGB = function (r, g, b, o) {
+            r *= 255;
+            g *= 255;
+            b *= 255;
+            var rgb = {
+                r: r,
+                g: g,
+                b: b,
+                hex: R.rgb(r, g, b),
+                toString: rgbtoString
+            };
+            R.is(o, "finite") && (rgb.opacity = o);
+            return rgb;
         };
-        R.is(o, "finite") && (rgb.opacity = o);
-        return rgb;
-    };
 
     /*\
      * Raphael.color
@@ -625,7 +627,7 @@ define(["eve"], function(eve) {
      o     v (number) value (brightness),
      o     l (number) lightness
      o }
-    \*/
+     \*/
     R.color = function (clr) {
         var rgb;
         if (R.is(clr, "object") && "h" in clr && "s" in clr && "b" in clr) {
@@ -675,7 +677,7 @@ define(["eve"], function(eve) {
      o     b (number) blue,
      o     hex (string) color in HTML/CSS format: #••••••
      o }
-    \*/
+     \*/
     R.hsb2rgb = function (h, s, v, o) {
         if (this.is(h, "object") && "h" in h && "s" in h && "b" in h) {
             v = h.b;
@@ -712,7 +714,7 @@ define(["eve"], function(eve) {
      o     b (number) blue,
      o     hex (string) color in HTML/CSS format: #••••••
      o }
-    \*/
+     \*/
     R.hsl2rgb = function (h, s, l, o) {
         if (this.is(h, "object") && "h" in h && "s" in h && "l" in h) {
             l = h.l;
@@ -752,7 +754,7 @@ define(["eve"], function(eve) {
      o     s (number) saturation
      o     b (number) brightness
      o }
-    \*/
+     \*/
     R.rgb2hsb = function (r, g, b) {
         b = prepareRGB(r, g, b);
         r = b[0];
@@ -763,10 +765,10 @@ define(["eve"], function(eve) {
         V = mmax(r, g, b);
         C = V - mmin(r, g, b);
         H = (C == 0 ? null :
-             V == r ? (g - b) / C :
-             V == g ? (b - r) / C + 2 :
-                      (r - g) / C + 4
-            );
+                V == r ? (g - b) / C :
+                    V == g ? (b - r) / C + 2 :
+                        (r - g) / C + 4
+        );
         H = ((H + 360) % 6) * 60 / 360;
         S = C == 0 ? 0 : C / V;
         return {h: H, s: S, b: V, toString: hsbtoString};
@@ -786,7 +788,7 @@ define(["eve"], function(eve) {
      o     s (number) saturation
      o     l (number) luminosity
      o }
-    \*/
+     \*/
     R.rgb2hsl = function (r, g, b) {
         b = prepareRGB(r, g, b);
         r = b[0];
@@ -798,14 +800,14 @@ define(["eve"], function(eve) {
         m = mmin(r, g, b);
         C = M - m;
         H = (C == 0 ? null :
-             M == r ? (g - b) / C :
-             M == g ? (b - r) / C + 2 :
-                      (r - g) / C + 4);
+            M == r ? (g - b) / C :
+                M == g ? (b - r) / C + 2 :
+                    (r - g) / C + 4);
         H = ((H + 360) % 6) * 60 / 360;
         L = (M + m) / 2;
         S = (C == 0 ? 0 :
-             L < .5 ? C / (2 * L) :
-                      C / (2 - 2 * L));
+            L < .5 ? C / (2 * L) :
+                C / (2 - 2 * L));
         return {h: H, s: S, l: L, toString: hsltoString};
     };
     R._path2string = function () {
@@ -816,6 +818,7 @@ define(["eve"], function(eve) {
             return array.push(array.splice(i, 1)[0]);
         }
     }
+
     function cacher(f, scope, postprocessor) {
         function newf() {
             var arg = Array.prototype.slice.call(arguments, 0),
@@ -831,6 +834,7 @@ define(["eve"], function(eve) {
             cache[args] = f[apply](scope, arg);
             return postprocessor ? postprocessor(cache[args]) : cache[args];
         }
+
         return newf;
     }
 
@@ -879,7 +883,7 @@ define(["eve"], function(eve) {
      o     hex (string) color in HTML/CSS format: #••••••,
      o     error (boolean) true if string can’t be parsed
      o }
-    \*/
+     \*/
     R.getRGB = cacher(function (colour) {
         if (!colour || !!((colour = Str(colour)).indexOf("-") + 1)) {
             return {r: -1, g: -1, b: -1, hex: "none", error: 1, toString: clrToString};
@@ -961,7 +965,7 @@ define(["eve"], function(eve) {
      - s (number) saturation
      - b (number) value or brightness
      = (string) hex representation of the colour.
-    \*/
+     \*/
     R.hsb = cacher(function (h, s, b) {
         return R.hsb2rgb(h, s, b).hex;
     });
@@ -975,7 +979,7 @@ define(["eve"], function(eve) {
      - s (number) saturation
      - l (number) luminosity
      = (string) hex representation of the colour.
-    \*/
+     \*/
     R.hsl = cacher(function (h, s, l) {
         return R.hsl2rgb(h, s, l).hex;
     });
@@ -989,9 +993,12 @@ define(["eve"], function(eve) {
      - g (number) green
      - b (number) blue
      = (string) hex representation of the colour.
-    \*/
+     \*/
     R.rgb = cacher(function (r, g, b) {
-        function round(x) { return (x + 0.5) | 0; }
+        function round(x) {
+            return (x + 0.5) | 0;
+        }
+
         return "#" + (16777216 | round(b) | (round(g) << 8) | (round(r) << 16)).toString(16).slice(1);
     });
     /*\
@@ -1002,7 +1009,7 @@ define(["eve"], function(eve) {
      > Parameters
      - value (number) #optional brightness, default is `0.75`
      = (string) hex representation of the colour.
-    \*/
+     \*/
     R.getColor = function (value) {
         var start = this.getColor.start = this.getColor.start || {h: 0, s: 1, b: value || .75},
             rgb = this.hsb2rgb(start.h, start.s, start.b);
@@ -1019,7 +1026,7 @@ define(["eve"], function(eve) {
      [ method ]
      **
      * Resets spectrum position for @Raphael.getColor back to red.
-    \*/
+     \*/
     R.getColor.reset = function () {
         delete this.start;
     };
@@ -1029,11 +1036,11 @@ define(["eve"], function(eve) {
         var d = [];
         for (var i = 0, iLen = crp.length; iLen - 2 * !z > i; i += 2) {
             var p = [
-                        {x: +crp[i - 2], y: +crp[i - 1]},
-                        {x: +crp[i],     y: +crp[i + 1]},
-                        {x: +crp[i + 2], y: +crp[i + 3]},
-                        {x: +crp[i + 4], y: +crp[i + 5]}
-                    ];
+                {x: +crp[i - 2], y: +crp[i - 1]},
+                {x: +crp[i], y: +crp[i + 1]},
+                {x: +crp[i + 2], y: +crp[i + 3]},
+                {x: +crp[i + 4], y: +crp[i + 5]}
+            ];
             if (z) {
                 if (!i) {
                     p[0] = {x: +crp[iLen - 2], y: +crp[iLen - 1]};
@@ -1051,17 +1058,18 @@ define(["eve"], function(eve) {
                 }
             }
             d.push(["C",
-                  (-p[0].x + 6 * p[1].x + p[2].x) / 6,
-                  (-p[0].y + 6 * p[1].y + p[2].y) / 6,
-                  (p[1].x + 6 * p[2].x - p[3].x) / 6,
-                  (p[1].y + 6*p[2].y - p[3].y) / 6,
-                  p[2].x,
-                  p[2].y
+                (-p[0].x + 6 * p[1].x + p[2].x) / 6,
+                (-p[0].y + 6 * p[1].y + p[2].y) / 6,
+                (p[1].x + 6 * p[2].x - p[3].x) / 6,
+                (p[1].y + 6 * p[2].y - p[3].y) / 6,
+                p[2].x,
+                p[2].y
             ]);
         }
 
         return d;
     }
+
     /*\
      * Raphael.parsePathString
      [ method ]
@@ -1072,7 +1080,7 @@ define(["eve"], function(eve) {
      > Parameters
      - pathString (string|array) path string or array of segments (in the last case it will be returned straight away)
      = (array) array of segments.
-    \*/
+     \*/
     R.parsePathString = function (pathString) {
         if (!pathString) {
             return null;
@@ -1123,7 +1131,7 @@ define(["eve"], function(eve) {
      > Parameters
      - TString (string|array) transform string or array of transformations (in the last case it will be returned straight away)
      = (array) array of transformations.
-    \*/
+     \*/
     R.parseTransformString = cacher(function (TString) {
         if (!TString) {
             return null;
@@ -1203,7 +1211,7 @@ define(["eve"], function(eve) {
      o     }
      o     alpha: (number) angle of the curve derivative at the point
      o }
-    \*/
+     \*/
     R.findDotsAtSegment = function (p1x, p1y, c1x, c1y, c2x, c2y, p2x, p2y, t) {
         var t1 = 1 - t,
             t13 = pow(t1, 3),
@@ -1261,7 +1269,7 @@ define(["eve"], function(eve) {
      o         y: (number) y coordinate of the bottom point
      o     }
      o }
-    \*/
+     \*/
     R.bezierBBox = function (p1x, p1y, c1x, c1y, c2x, c2y, p2x, p2y) {
         if (!R.is(p1x, "array")) {
             p1x = [p1x, p1y, c1x, c1y, c2x, c2y, p2x, p2y];
@@ -1288,7 +1296,7 @@ define(["eve"], function(eve) {
      - x (string) x coordinate of the point
      - y (string) y coordinate of the point
      = (boolean) `true` if point inside
-    \*/
+     \*/
     R.isPointInsideBBox = function (bbox, x, y) {
         return x >= bbox.x && x <= bbox.x2 && y >= bbox.y && y <= bbox.y2;
     };
@@ -1303,7 +1311,7 @@ define(["eve"], function(eve) {
      - bbox1 (string) first bounding box
      - bbox2 (string) second bounding box
      = (boolean) `true` if they intersect
-    \*/
+     \*/
     R.isBBoxIntersect = function (bbox1, bbox2) {
         var i = R.isPointInsideBBox;
         return i(bbox2, bbox1.x, bbox1.y)
@@ -1322,6 +1330,7 @@ define(["eve"], function(eve) {
             t2 = t * t1 + 6 * p1 - 12 * p2 + 6 * p3;
         return t * t2 - 3 * p1 + 3 * p2;
     }
+
     function bezlen(x1, y1, x2, y2, x3, y3, x4, y4, z) {
         if (z == null) {
             z = 1;
@@ -1329,8 +1338,8 @@ define(["eve"], function(eve) {
         z = z > 1 ? 1 : z < 0 ? 0 : z;
         var z2 = z / 2,
             n = 12,
-            Tvalues = [-0.1252,0.1252,-0.3678,0.3678,-0.5873,0.5873,-0.7699,0.7699,-0.9041,0.9041,-0.9816,0.9816],
-            Cvalues = [0.2491,0.2491,0.2335,0.2335,0.2032,0.2032,0.1601,0.1601,0.1069,0.1069,0.0472,0.0472],
+            Tvalues = [-0.1252, 0.1252, -0.3678, 0.3678, -0.5873, 0.5873, -0.7699, 0.7699, -0.9041, 0.9041, -0.9816, 0.9816],
+            Cvalues = [0.2491, 0.2491, 0.2335, 0.2335, 0.2032, 0.2032, 0.1601, 0.1601, 0.1069, 0.1069, 0.0472, 0.0472],
             sum = 0;
         for (var i = 0; i < n; i++) {
             var ct = z2 * Tvalues[i] + z2,
@@ -1341,6 +1350,7 @@ define(["eve"], function(eve) {
         }
         return z2 * sum;
     }
+
     function getTatLen(x1, y1, x2, y2, x3, y3, x4, y4, ll) {
         if (ll < 0 || bezlen(x1, y1, x2, y2, x3, y3, x4, y4) < ll) {
             return;
@@ -1358,6 +1368,7 @@ define(["eve"], function(eve) {
         }
         return t2;
     }
+
     function intersect(x1, y1, x2, y2, x3, y3, x4, y4) {
         if (
             mmax(x1, x2) < mmin(x3, x4) ||
@@ -1392,12 +1403,15 @@ define(["eve"], function(eve) {
         }
         return {x: px, y: py};
     }
+
     function inter(bez1, bez2) {
         return interHelper(bez1, bez2);
     }
+
     function interCount(bez1, bez2) {
         return interHelper(bez1, bez2, 1);
     }
+
     function interHelper(bez1, bez2, justCount) {
         var bbox1 = R.bezierBBox(bez1),
             bbox2 = R.bezierBBox(bez2);
@@ -1453,6 +1467,7 @@ define(["eve"], function(eve) {
         }
         return res;
     }
+
     /*\
      * Raphael.pathIntersection
      [ method ]
@@ -1476,7 +1491,7 @@ define(["eve"], function(eve) {
      o         bez2: (array) eight coordinates representing beziér curve for the segment of path2
      o     }
      o ]
-    \*/
+     \*/
     R.pathIntersection = function (path1, path2) {
         return interPathHelper(path1, path2);
     };
@@ -1536,6 +1551,7 @@ define(["eve"], function(eve) {
         }
         return res;
     }
+
     /*\
      * Raphael.isPointInsidePath
      [ method ]
@@ -1548,11 +1564,11 @@ define(["eve"], function(eve) {
      - x (number) x of the point
      - y (number) y of the point
      = (boolean) true, if point is inside the path
-    \*/
+     \*/
     R.isPointInsidePath = function (path, x, y) {
         var bbox = R.pathBBox(path);
         return R.isPointInsideBBox(bbox, x, y) &&
-               interPathHelper(path, [["M", x, y], ["H", bbox.x2 + 10]], 1) % 2 == 1;
+            interPathHelper(path, [["M", x, y], ["H", bbox.x2 + 10]], 1) % 2 == 1;
     };
     R._removedFactory = function (methodname) {
         return function () {
@@ -1579,55 +1595,55 @@ define(["eve"], function(eve) {
      o     cx: (number) x coordinate of the center of the box
      o     cy: (number) y coordinate of the center of the box
      o }
-    \*/
+     \*/
     var pathDimensions = R.pathBBox = function (path) {
-        var pth = paths(path);
-        if (pth.bbox) {
-            return clone(pth.bbox);
-        }
-        if (!path) {
-            return {x: 0, y: 0, width: 0, height: 0, x2: 0, y2: 0};
-        }
-        path = path2curve(path);
-        var x = 0,
-            y = 0,
-            X = [],
-            Y = [],
-            p;
-        for (var i = 0, ii = path.length; i < ii; i++) {
-            p = path[i];
-            if (p[0] == "M") {
-                x = p[1];
-                y = p[2];
-                X.push(x);
-                Y.push(y);
-            } else {
-                var dim = curveDim(x, y, p[1], p[2], p[3], p[4], p[5], p[6]);
-                X = X[concat](dim.min.x, dim.max.x);
-                Y = Y[concat](dim.min.y, dim.max.y);
-                x = p[5];
-                y = p[6];
+            var pth = paths(path);
+            if (pth.bbox) {
+                return clone(pth.bbox);
             }
-        }
-        var xmin = mmin[apply](0, X),
-            ymin = mmin[apply](0, Y),
-            xmax = mmax[apply](0, X),
-            ymax = mmax[apply](0, Y),
-            width = xmax - xmin,
-            height = ymax - ymin,
+            if (!path) {
+                return {x: 0, y: 0, width: 0, height: 0, x2: 0, y2: 0};
+            }
+            path = path2curve(path);
+            var x = 0,
+                y = 0,
+                X = [],
+                Y = [],
+                p;
+            for (var i = 0, ii = path.length; i < ii; i++) {
+                p = path[i];
+                if (p[0] == "M") {
+                    x = p[1];
+                    y = p[2];
+                    X.push(x);
+                    Y.push(y);
+                } else {
+                    var dim = curveDim(x, y, p[1], p[2], p[3], p[4], p[5], p[6]);
+                    X = X[concat](dim.min.x, dim.max.x);
+                    Y = Y[concat](dim.min.y, dim.max.y);
+                    x = p[5];
+                    y = p[6];
+                }
+            }
+            var xmin = mmin[apply](0, X),
+                ymin = mmin[apply](0, Y),
+                xmax = mmax[apply](0, X),
+                ymax = mmax[apply](0, Y),
+                width = xmax - xmin,
+                height = ymax - ymin,
                 bb = {
-                x: xmin,
-                y: ymin,
-                x2: xmax,
-                y2: ymax,
-                width: width,
-                height: height,
-                cx: xmin + width / 2,
-                cy: ymin + height / 2
-            };
-        pth.bbox = clone(bb);
-        return bb;
-    },
+                    x: xmin,
+                    y: ymin,
+                    x2: xmax,
+                    y2: ymax,
+                    width: width,
+                    height: height,
+                    cx: xmin + width / 2,
+                    cy: ymin + height / 2
+                };
+            pth.bbox = clone(bb);
+            return bb;
+        },
         pathClone = function (pathArray) {
             var res = clone(pathArray);
             res.toString = R._path2string;
@@ -1816,13 +1832,13 @@ define(["eve"], function(eve) {
             var _13 = 1 / 3,
                 _23 = 2 / 3;
             return [
-                    _13 * x1 + _23 * ax,
-                    _13 * y1 + _23 * ay,
-                    _13 * x2 + _23 * ax,
-                    _13 * y2 + _23 * ay,
-                    x2,
-                    y2
-                ];
+                _13 * x1 + _23 * ax,
+                _13 * y1 + _23 * ay,
+                _13 * x2 + _23 * ax,
+                _13 * y2 + _23 * ay,
+                x2,
+                y2
+            ];
         },
         a2c = function (x1, y1, rx, ry, angle, large_arc_flag, sweep_flag, x2, y2, recursive) {
             // for more information of where this math came from visit:
@@ -1973,7 +1989,7 @@ define(["eve"], function(eve) {
                 attrs = {x: 0, y: 0, bx: 0, by: 0, X: 0, Y: 0, qx: null, qy: null},
                 attrs2 = {x: 0, y: 0, bx: 0, by: 0, X: 0, Y: 0, qx: null, qy: null},
                 processPath = function (path, d, pcom) {
-                    var nx, ny, tq = {T:1, Q:1};
+                    var nx, ny, tq = {T: 1, Q: 1};
                     if (!path) {
                         return ["C", d.x, d.y, d.x, d.y, d.x, d.y];
                     }
@@ -2033,8 +2049,8 @@ define(["eve"], function(eve) {
                         pp[i].shift();
                         var pi = pp[i];
                         while (pi.length) {
-                            pcoms1[i]="A"; // if created multiple C:s, their original seg is saved
-                            p2 && (pcoms2[i]="A"); // the same as above
+                            pcoms1[i] = "A"; // if created multiple C:s, their original seg is saved
+                            p2 && (pcoms2[i] = "A"); // the same as above
                             pp.splice(i++, 0, ["C"][concat](pi.splice(0, 6)));
                         }
                         pp.splice(i, 1);
@@ -2061,7 +2077,7 @@ define(["eve"], function(eve) {
                 if (pfirst != "C") // C is not saved yet, because it may be result of conversion
                 {
                     pcoms1[i] = pfirst; // Save current path command
-                    i && ( pcom = pcoms1[i-1]); // Get previous path command pcom
+                    i && ( pcom = pcoms1[i - 1]); // Get previous path command pcom
                 }
                 p[i] = processPath(p[i], attrs, pcom); // Previous path command is inputted to processPath
 
@@ -2073,14 +2089,13 @@ define(["eve"], function(eve) {
 
                 if (p2) { // the same procedures is done to p2
                     p2[i] && (pfirst = p2[i][0]);
-                    if (pfirst != "C")
-                    {
+                    if (pfirst != "C") {
                         pcoms2[i] = pfirst;
-                        i && (pcom = pcoms2[i-1]);
+                        i && (pcom = pcoms2[i - 1]);
                     }
                     p2[i] = processPath(p2[i], attrs2, pcom);
 
-                    if (pcoms2[i]!="A" && pfirst=="C") pcoms2[i]="C";
+                    if (pcoms2[i] != "A" && pfirst == "C") pcoms2[i] = "C";
 
                     fixArc(p2, i);
                 }
@@ -2195,7 +2210,7 @@ define(["eve"], function(eve) {
          - path (string) path string
          - transform (string|array) transformation string
          = (object) @Matrix
-        \*/
+         \*/
         toMatrix = R.toMatrix = function (path, transform) {
             var bb = pathDimensions(path),
                 el = {
@@ -2220,7 +2235,7 @@ define(["eve"], function(eve) {
          - path (string) path string
          - transform (string|array) transformation string
          = (string) path
-        \*/
+         \*/
         transformPath = R.transformPath = function (path, transform) {
             return mapPath(path, toMatrix(path, transform));
         },
@@ -2305,7 +2320,7 @@ define(["eve"], function(eve) {
              [ property (object) ]
              **
              * Keeps @Matrix object, which represents element transformation
-            \*/
+             \*/
             el.matrix = m;
 
             _.sx = sx;
@@ -2324,20 +2339,24 @@ define(["eve"], function(eve) {
         getEmpty = function (item) {
             var l = item[0];
             switch (l.toLowerCase()) {
-                case "t": return [l, 0, 0];
-                case "m": return [l, 1, 0, 0, 1, 0, 0];
-                case "r": if (item.length == 4) {
-                    return [l, 0, item[2], item[3]];
-                } else {
-                    return [l, 0];
-                }
-                case "s": if (item.length == 5) {
-                    return [l, 1, 1, item[3], item[4]];
-                } else if (item.length == 3) {
-                    return [l, 1, 1];
-                } else {
-                    return [l, 1];
-                }
+                case "t":
+                    return [l, 0, 0];
+                case "m":
+                    return [l, 1, 0, 0, 1, 0, 0];
+                case "r":
+                    if (item.length == 4) {
+                        return [l, 0, item[2], item[3]];
+                    } else {
+                        return [l, 0];
+                    }
+                case "s":
+                    if (item.length == 5) {
+                        return [l, 1, 1, item[3], item[4]];
+                    } else if (item.length == 3) {
+                        return [l, 1, 1];
+                    } else {
+                        return [l, 1];
+                    }
             }
         },
         equaliseTransform = R._equaliseTransform = function (t1, t2) {
@@ -2355,7 +2374,7 @@ define(["eve"], function(eve) {
                 if ((tt1[0] != tt2[0]) ||
                     (tt1[0].toLowerCase() == "r" && (tt1[2] != tt2[2] || tt1[3] != tt2[3])) ||
                     (tt1[0].toLowerCase() == "s" && (tt1[3] != tt2[3] || tt1[4] != tt2[4]))
-                    ) {
+                ) {
                     return;
                 }
                 from[i] = [];
@@ -2409,7 +2428,7 @@ define(["eve"], function(eve) {
      > Parameters
      - pathString (string|array) path string or array of segments
      = (array) array of segments.
-    \*/
+     \*/
     R.pathToRelative = pathToRelative;
     R._engine = {};
     /*\
@@ -2422,7 +2441,7 @@ define(["eve"], function(eve) {
      > Parameters
      - pathString (string|array) path string or array of segments
      = (array) array of segments.
-    \*/
+     \*/
     R.path2curve = path2curve;
     /*\
      * Raphael.matrix
@@ -2439,7 +2458,7 @@ define(["eve"], function(eve) {
      - e (number)
      - f (number)
      = (object) @Matrix
-    \*/
+     \*/
     R.matrix = function (a, b, c, d, e, f) {
         return new Matrix(a, b, c, d, e, f);
     };
@@ -2460,6 +2479,7 @@ define(["eve"], function(eve) {
             this.f = 0;
         }
     }
+
     (function (matrixproto) {
         /*\
          * Matrix.add
@@ -2475,7 +2495,7 @@ define(["eve"], function(eve) {
          - f (number)
          or
          - matrix (object) @Matrix
-        \*/
+         \*/
         matrixproto.add = function (a, b, c, d, e, f) {
             var out = [[], [], []],
                 m = [[this.a, this.c, this.e], [this.b, this.d, this.f], [0, 0, 1]],
@@ -2508,7 +2528,7 @@ define(["eve"], function(eve) {
          **
          * Returns inverted version of the matrix
          = (object) @Matrix
-        \*/
+         \*/
         matrixproto.invert = function () {
             var me = this,
                 x = me.a * me.d - me.b * me.c;
@@ -2520,7 +2540,7 @@ define(["eve"], function(eve) {
          **
          * Returns copy of the matrix
          = (object) @Matrix
-        \*/
+         \*/
         matrixproto.clone = function () {
             return new Matrix(this.a, this.b, this.c, this.d, this.e, this.f);
         };
@@ -2532,7 +2552,7 @@ define(["eve"], function(eve) {
          > Parameters
          - x (number)
          - y (number)
-        \*/
+         \*/
         matrixproto.translate = function (x, y) {
             this.add(1, 0, 0, 1, x, y);
         };
@@ -2546,7 +2566,7 @@ define(["eve"], function(eve) {
          - y (number) #optional
          - cx (number) #optional
          - cy (number) #optional
-        \*/
+         \*/
         matrixproto.scale = function (x, y, cx, cy) {
             y == null && (y = x);
             (cx || cy) && this.add(1, 0, 0, 1, cx, cy);
@@ -2562,7 +2582,7 @@ define(["eve"], function(eve) {
          - a (number)
          - x (number)
          - y (number)
-        \*/
+         \*/
         matrixproto.rotate = function (a, x, y) {
             a = R.rad(a);
             x = x || 0;
@@ -2581,7 +2601,7 @@ define(["eve"], function(eve) {
          - x (number)
          - y (number)
          = (number) x
-        \*/
+         \*/
         matrixproto.x = function (x, y) {
             return x * this.a + y * this.c + this.e;
         };
@@ -2594,7 +2614,7 @@ define(["eve"], function(eve) {
          - x (number)
          - y (number)
          = (number) y
-        \*/
+         \*/
         matrixproto.y = function (x, y) {
             return x * this.b + y * this.d + this.f;
         };
@@ -2617,11 +2637,13 @@ define(["eve"], function(eve) {
         function norm(a) {
             return a[0] * a[0] + a[1] * a[1];
         }
+
         function normalize(a) {
             var mag = math.sqrt(norm(a));
             a[0] && (a[0] /= mag);
             a[1] && (a[1] /= mag);
         }
+
         /*\
          * Matrix.split
          [ method ]
@@ -2635,7 +2657,7 @@ define(["eve"], function(eve) {
          o shear (number) shear
          o rotate (number) rotation in deg
          o isSimple (boolean) could it be represented via simple transformations
-        \*/
+         \*/
         matrixproto.split = function () {
             var out = {};
             // translation
@@ -2677,16 +2699,16 @@ define(["eve"], function(eve) {
          **
          * Return transform string that represents given matrix
          = (string) transform string
-        \*/
+         \*/
         matrixproto.toTransformString = function (shorter) {
             var s = shorter || this[split]();
             if (s.isSimple) {
                 s.scalex = +s.scalex.toFixed(4);
                 s.scaley = +s.scaley.toFixed(4);
                 s.rotate = +s.rotate.toFixed(4);
-                return  (s.dx || s.dy ? "t" + [s.dx, s.dy] : E) +
-                        (s.scalex != 1 || s.scaley != 1 ? "s" + [s.scalex, s.scaley, 0, 0] : E) +
-                        (s.rotate ? "r" + [s.rotate, 0, 0] : E);
+                return (s.dx || s.dy ? "t" + [s.dx, s.dy] : E) +
+                    (s.scalex != 1 || s.scaley != 1 ? "s" + [s.scalex, s.scaley, 0, 0] : E) +
+                    (s.rotate ? "r" + [s.rotate, 0, 0] : E);
             } else {
                 return "m" + [this.get(0), this.get(1), this.get(2), this.get(3), this.get(4), this.get(5)];
             }
@@ -2694,152 +2716,152 @@ define(["eve"], function(eve) {
     })(Matrix.prototype);
 
     var preventDefault = function () {
-        this.returnValue = false;
-    },
-    preventTouch = function () {
-        return this.originalEvent.preventDefault();
-    },
-    stopPropagation = function () {
-        this.cancelBubble = true;
-    },
-    stopTouch = function () {
-        return this.originalEvent.stopPropagation();
-    },
-    getEventPosition = function (e) {
-        var scrollY = g.doc.documentElement.scrollTop || g.doc.body.scrollTop,
-            scrollX = g.doc.documentElement.scrollLeft || g.doc.body.scrollLeft;
+            this.returnValue = false;
+        },
+        preventTouch = function () {
+            return this.originalEvent.preventDefault();
+        },
+        stopPropagation = function () {
+            this.cancelBubble = true;
+        },
+        stopTouch = function () {
+            return this.originalEvent.stopPropagation();
+        },
+        getEventPosition = function (e) {
+            var scrollY = g.doc.documentElement.scrollTop || g.doc.body.scrollTop,
+                scrollX = g.doc.documentElement.scrollLeft || g.doc.body.scrollLeft;
 
-        return {
-            x: e.clientX + scrollX,
-            y: e.clientY + scrollY
-        };
-    },
-    addEvent = (function () {
-        if (g.doc.addEventListener) {
-            return function (obj, type, fn, element) {
-                var f = function (e) {
-                    var pos = getEventPosition(e);
-                    return fn.call(element, e, pos.x, pos.y);
-                };
-                obj.addEventListener(type, f, false);
-
-                if (supportsTouch && touchMap[type]) {
-                    var _f = function (e) {
-                        var pos = getEventPosition(e),
-                            olde = e;
-
-                        for (var i = 0, ii = e.targetTouches && e.targetTouches.length; i < ii; i++) {
-                            if (e.targetTouches[i].target == obj) {
-                                e = e.targetTouches[i];
-                                e.originalEvent = olde;
-                                e.preventDefault = preventTouch;
-                                e.stopPropagation = stopTouch;
-                                break;
-                            }
-                        }
-
+            return {
+                x: e.clientX + scrollX,
+                y: e.clientY + scrollY
+            };
+        },
+        addEvent = (function () {
+            if (g.doc.addEventListener) {
+                return function (obj, type, fn, element) {
+                    var f = function (e) {
+                        var pos = getEventPosition(e);
                         return fn.call(element, e, pos.x, pos.y);
                     };
-                    obj.addEventListener(touchMap[type], _f, false);
-                }
+                    obj.addEventListener(type, f, false);
 
-                return function () {
-                    obj.removeEventListener(type, f, false);
+                    if (supportsTouch && touchMap[type]) {
+                        var _f = function (e) {
+                            var pos = getEventPosition(e),
+                                olde = e;
 
-                    if (supportsTouch && touchMap[type])
-                        obj.removeEventListener(touchMap[type], _f, false);
+                            for (var i = 0, ii = e.targetTouches && e.targetTouches.length; i < ii; i++) {
+                                if (e.targetTouches[i].target == obj) {
+                                    e = e.targetTouches[i];
+                                    e.originalEvent = olde;
+                                    e.preventDefault = preventTouch;
+                                    e.stopPropagation = stopTouch;
+                                    break;
+                                }
+                            }
 
-                    return true;
-                };
-            };
-        } else if (g.doc.attachEvent) {
-            return function (obj, type, fn, element) {
-                var f = function (e) {
-                    e = e || g.win.event;
-                    var scrollY = g.doc.documentElement.scrollTop || g.doc.body.scrollTop,
-                        scrollX = g.doc.documentElement.scrollLeft || g.doc.body.scrollLeft,
-                        x = e.clientX + scrollX,
-                        y = e.clientY + scrollY;
-                    e.preventDefault = e.preventDefault || preventDefault;
-                    e.stopPropagation = e.stopPropagation || stopPropagation;
-                    return fn.call(element, e, x, y);
-                };
-                obj.attachEvent("on" + type, f);
-                var detacher = function () {
-                    obj.detachEvent("on" + type, f);
-                    return true;
-                };
-                return detacher;
-            };
-        }
-    })(),
-    drag = [],
-    dragMove = function (e) {
-        var x = e.clientX,
-            y = e.clientY,
-            scrollY = g.doc.documentElement.scrollTop || g.doc.body.scrollTop,
-            scrollX = g.doc.documentElement.scrollLeft || g.doc.body.scrollLeft,
-            dragi,
-            j = drag.length;
-        while (j--) {
-            dragi = drag[j];
-            if (supportsTouch && e.touches) {
-                var i = e.touches.length,
-                    touch;
-                while (i--) {
-                    touch = e.touches[i];
-                    if (touch.identifier == dragi.el._drag.id) {
-                        x = touch.clientX;
-                        y = touch.clientY;
-                        (e.originalEvent ? e.originalEvent : e).preventDefault();
-                        break;
+                            return fn.call(element, e, pos.x, pos.y);
+                        };
+                        obj.addEventListener(touchMap[type], _f, false);
                     }
-                }
-            } else {
-                e.preventDefault();
+
+                    return function () {
+                        obj.removeEventListener(type, f, false);
+
+                        if (supportsTouch && touchMap[type])
+                            obj.removeEventListener(touchMap[type], _f, false);
+
+                        return true;
+                    };
+                };
+            } else if (g.doc.attachEvent) {
+                return function (obj, type, fn, element) {
+                    var f = function (e) {
+                        e = e || g.win.event;
+                        var scrollY = g.doc.documentElement.scrollTop || g.doc.body.scrollTop,
+                            scrollX = g.doc.documentElement.scrollLeft || g.doc.body.scrollLeft,
+                            x = e.clientX + scrollX,
+                            y = e.clientY + scrollY;
+                        e.preventDefault = e.preventDefault || preventDefault;
+                        e.stopPropagation = e.stopPropagation || stopPropagation;
+                        return fn.call(element, e, x, y);
+                    };
+                    obj.attachEvent("on" + type, f);
+                    var detacher = function () {
+                        obj.detachEvent("on" + type, f);
+                        return true;
+                    };
+                    return detacher;
+                };
             }
-            var node = dragi.el.node,
-                o,
-                next = node.nextSibling,
-                parent = node.parentNode,
-                display = node.style.display;
-            g.win.opera && parent.removeChild(node);
-            node.style.display = "none";
-            o = dragi.el.paper.getElementByPoint(x, y);
-            node.style.display = display;
-            g.win.opera && (next ? parent.insertBefore(node, next) : parent.appendChild(node));
-            o && eve("raphael.drag.over." + dragi.el.id, dragi.el, o);
-            x += scrollX;
-            y += scrollY;
-            eve("raphael.drag.move." + dragi.el.id, dragi.move_scope || dragi.el, x - dragi.el._drag.x, y - dragi.el._drag.y, x, y, e);
-        }
-    },
-    dragUp = function (e) {
-        R.unmousemove(dragMove).unmouseup(dragUp);
-        var i = drag.length,
-            dragi;
-        while (i--) {
-            dragi = drag[i];
-            dragi.el._drag = {};
-            eve("raphael.drag.end." + dragi.el.id, dragi.end_scope || dragi.start_scope || dragi.move_scope || dragi.el, e);
-        }
-        drag = [];
-    },
-    /*\
-     * Raphael.el
-     [ property (object) ]
-     **
-     * You can add your own method to elements. This is usefull when you want to hack default functionality or
-     * want to wrap some common transformation or attributes in one method. In difference to canvas methods,
-     * you can redefine element method at any time. Expending element methods wouldn’t affect set.
-     > Usage
-     | Raphael.el.red = function () {
-     |     this.attr({fill: "#f00"});
-     | };
-     | // then use it
-     | paper.circle(100, 100, 20).red();
-    \*/
-    elproto = R.el = {};
+        })(),
+        drag = [],
+        dragMove = function (e) {
+            var x = e.clientX,
+                y = e.clientY,
+                scrollY = g.doc.documentElement.scrollTop || g.doc.body.scrollTop,
+                scrollX = g.doc.documentElement.scrollLeft || g.doc.body.scrollLeft,
+                dragi,
+                j = drag.length;
+            while (j--) {
+                dragi = drag[j];
+                if (supportsTouch && e.touches) {
+                    var i = e.touches.length,
+                        touch;
+                    while (i--) {
+                        touch = e.touches[i];
+                        if (touch.identifier == dragi.el._drag.id) {
+                            x = touch.clientX;
+                            y = touch.clientY;
+                            (e.originalEvent ? e.originalEvent : e).preventDefault();
+                            break;
+                        }
+                    }
+                } else {
+                    e.preventDefault();
+                }
+                var node = dragi.el.node,
+                    o,
+                    next = node.nextSibling,
+                    parent = node.parentNode,
+                    display = node.style.display;
+                g.win.opera && parent.removeChild(node);
+                node.style.display = "none";
+                o = dragi.el.paper.getElementByPoint(x, y);
+                node.style.display = display;
+                g.win.opera && (next ? parent.insertBefore(node, next) : parent.appendChild(node));
+                o && eve("raphael.drag.over." + dragi.el.id, dragi.el, o);
+                x += scrollX;
+                y += scrollY;
+                eve("raphael.drag.move." + dragi.el.id, dragi.move_scope || dragi.el, x - dragi.el._drag.x, y - dragi.el._drag.y, x, y, e);
+            }
+        },
+        dragUp = function (e) {
+            R.unmousemove(dragMove).unmouseup(dragUp);
+            var i = drag.length,
+                dragi;
+            while (i--) {
+                dragi = drag[i];
+                dragi.el._drag = {};
+                eve("raphael.drag.end." + dragi.el.id, dragi.end_scope || dragi.start_scope || dragi.move_scope || dragi.el, e);
+            }
+            drag = [];
+        },
+        /*\
+         * Raphael.el
+         [ property (object) ]
+         **
+         * You can add your own method to elements. This is usefull when you want to hack default functionality or
+         * want to wrap some common transformation or attributes in one method. In difference to canvas methods,
+         * you can redefine element method at any time. Expending element methods wouldn’t affect set.
+         > Usage
+         | Raphael.el.red = function () {
+         |     this.attr({fill: "#f00"});
+         | };
+         | // then use it
+         | paper.circle(100, 100, 20).red();
+         \*/
+        elproto = R.el = {};
     /*\
      * Element.click
      [ method ]
@@ -2848,7 +2870,7 @@ define(["eve"], function(eve) {
      > Parameters
      - handler (function) handler for the event
      = (object) @Element
-    \*/
+     \*/
     /*\
      * Element.unclick
      [ method ]
@@ -2857,7 +2879,7 @@ define(["eve"], function(eve) {
      > Parameters
      - handler (function) #optional handler for the event
      = (object) @Element
-    \*/
+     \*/
 
     /*\
      * Element.dblclick
@@ -2867,7 +2889,7 @@ define(["eve"], function(eve) {
      > Parameters
      - handler (function) handler for the event
      = (object) @Element
-    \*/
+     \*/
     /*\
      * Element.undblclick
      [ method ]
@@ -2876,7 +2898,7 @@ define(["eve"], function(eve) {
      > Parameters
      - handler (function) #optional handler for the event
      = (object) @Element
-    \*/
+     \*/
 
     /*\
      * Element.mousedown
@@ -2886,7 +2908,7 @@ define(["eve"], function(eve) {
      > Parameters
      - handler (function) handler for the event
      = (object) @Element
-    \*/
+     \*/
     /*\
      * Element.unmousedown
      [ method ]
@@ -2895,7 +2917,7 @@ define(["eve"], function(eve) {
      > Parameters
      - handler (function) #optional handler for the event
      = (object) @Element
-    \*/
+     \*/
 
     /*\
      * Element.mousemove
@@ -2905,7 +2927,7 @@ define(["eve"], function(eve) {
      > Parameters
      - handler (function) handler for the event
      = (object) @Element
-    \*/
+     \*/
     /*\
      * Element.unmousemove
      [ method ]
@@ -2914,7 +2936,7 @@ define(["eve"], function(eve) {
      > Parameters
      - handler (function) #optional handler for the event
      = (object) @Element
-    \*/
+     \*/
 
     /*\
      * Element.mouseout
@@ -2924,7 +2946,7 @@ define(["eve"], function(eve) {
      > Parameters
      - handler (function) handler for the event
      = (object) @Element
-    \*/
+     \*/
     /*\
      * Element.unmouseout
      [ method ]
@@ -2933,7 +2955,7 @@ define(["eve"], function(eve) {
      > Parameters
      - handler (function) #optional handler for the event
      = (object) @Element
-    \*/
+     \*/
 
     /*\
      * Element.mouseover
@@ -2943,7 +2965,7 @@ define(["eve"], function(eve) {
      > Parameters
      - handler (function) handler for the event
      = (object) @Element
-    \*/
+     \*/
     /*\
      * Element.unmouseover
      [ method ]
@@ -2952,7 +2974,7 @@ define(["eve"], function(eve) {
      > Parameters
      - handler (function) #optional handler for the event
      = (object) @Element
-    \*/
+     \*/
 
     /*\
      * Element.mouseup
@@ -2962,7 +2984,7 @@ define(["eve"], function(eve) {
      > Parameters
      - handler (function) handler for the event
      = (object) @Element
-    \*/
+     \*/
     /*\
      * Element.unmouseup
      [ method ]
@@ -2971,7 +2993,7 @@ define(["eve"], function(eve) {
      > Parameters
      - handler (function) #optional handler for the event
      = (object) @Element
-    \*/
+     \*/
 
     /*\
      * Element.touchstart
@@ -2981,7 +3003,7 @@ define(["eve"], function(eve) {
      > Parameters
      - handler (function) handler for the event
      = (object) @Element
-    \*/
+     \*/
     /*\
      * Element.untouchstart
      [ method ]
@@ -2990,7 +3012,7 @@ define(["eve"], function(eve) {
      > Parameters
      - handler (function) #optional handler for the event
      = (object) @Element
-    \*/
+     \*/
 
     /*\
      * Element.touchmove
@@ -3000,7 +3022,7 @@ define(["eve"], function(eve) {
      > Parameters
      - handler (function) handler for the event
      = (object) @Element
-    \*/
+     \*/
     /*\
      * Element.untouchmove
      [ method ]
@@ -3009,7 +3031,7 @@ define(["eve"], function(eve) {
      > Parameters
      - handler (function) #optional handler for the event
      = (object) @Element
-    \*/
+     \*/
 
     /*\
      * Element.touchend
@@ -3019,7 +3041,7 @@ define(["eve"], function(eve) {
      > Parameters
      - handler (function) handler for the event
      = (object) @Element
-    \*/
+     \*/
     /*\
      * Element.untouchend
      [ method ]
@@ -3028,7 +3050,7 @@ define(["eve"], function(eve) {
      > Parameters
      - handler (function) #optional handler for the event
      = (object) @Element
-    \*/
+     \*/
 
     /*\
      * Element.touchcancel
@@ -3038,7 +3060,7 @@ define(["eve"], function(eve) {
      > Parameters
      - handler (function) handler for the event
      = (object) @Element
-    \*/
+     \*/
     /*\
      * Element.untouchcancel
      [ method ]
@@ -3047,7 +3069,7 @@ define(["eve"], function(eve) {
      > Parameters
      - handler (function) #optional handler for the event
      = (object) @Element
-    \*/
+     \*/
     for (var i = events.length; i--;) {
         (function (eventName) {
             R[eventName] = elproto[eventName] = function (fn, scope) {
@@ -3060,7 +3082,7 @@ define(["eve"], function(eve) {
             R["un" + eventName] = elproto["un" + eventName] = function (fn) {
                 var events = this.events || [],
                     l = events.length;
-                while (l--){
+                while (l--) {
                     if (events[l].name == eventName && (R.is(fn, "undefined") || events[l].f == fn)) {
                         events[l].unbind();
                         events.splice(l, 1);
@@ -3096,7 +3118,7 @@ define(["eve"], function(eve) {
      |             alert(this.data("i"));
      |          });
      | }
-    \*/
+     \*/
     elproto.data = function (key, value) {
         var data = eldata[this.id] = eldata[this.id] || {};
         if (arguments.length == 0) {
@@ -3125,7 +3147,7 @@ define(["eve"], function(eve) {
      > Parameters
      - key (string) #optional key
      = (object) @Element
-    \*/
+     \*/
     elproto.removeData = function (key) {
         if (key == null) {
             eldata[this.id] = {};
@@ -3134,13 +3156,13 @@ define(["eve"], function(eve) {
         }
         return this;
     };
-     /*\
+    /*\
      * Element.getData
      [ method ]
      **
      * Retrieves the element data
      = (object) data
-    \*/
+     \*/
     elproto.getData = function () {
         return clone(eldata[this.id] || {});
     };
@@ -3155,7 +3177,7 @@ define(["eve"], function(eve) {
      - icontext (object) #optional context for hover in handler
      - ocontext (object) #optional context for hover out handler
      = (object) @Element
-    \*/
+     \*/
     elproto.hover = function (f_in, f_out, scope_in, scope_out) {
         return this.mouseover(f_in, scope_in).mouseout(f_out, scope_out || scope_in);
     };
@@ -3168,7 +3190,7 @@ define(["eve"], function(eve) {
      - f_in (function) handler for hover in
      - f_out (function) handler for hover out
      = (object) @Element
-    \*/
+     \*/
     elproto.unhover = function (f_in, f_out) {
         return this.unmouseover(f_in).unmouseout(f_out);
     };
@@ -3202,7 +3224,7 @@ define(["eve"], function(eve) {
      * End event and end handler will be called in specified context or in context of the element with following parameters:
      o event (object) DOM event object
      = (object) @Element
-    \*/
+     \*/
     elproto.drag = function (onmove, onstart, onend, move_scope, start_scope, end_scope) {
         function start(e) {
             (e.originalEvent || e).preventDefault();
@@ -3232,6 +3254,7 @@ define(["eve"], function(eve) {
             onend && eve.on("raphael.drag.end." + this.id, onend);
             eve("raphael.drag.start." + this.id, start_scope || move_scope || this, e.clientX + scrollX, e.clientY + scrollY, e);
         }
+
         this._drag = {};
         draggable.push({el: this, start: start});
         this.mousedown(start);
@@ -3244,7 +3267,7 @@ define(["eve"], function(eve) {
      * Shortcut for assigning event handler for `drag.over.<id>` event, where id is id of the element (see @Element.id).
      > Parameters
      - f (function) handler for event, first argument would be the element you are dragging over
-    \*/
+     \*/
     elproto.onDragOver = function (f) {
         f ? eve.on("raphael.drag.over." + this.id, f) : eve.unbind("raphael.drag.over." + this.id);
     };
@@ -3253,7 +3276,7 @@ define(["eve"], function(eve) {
      [ method ]
      **
      * Removes all drag event handlers from given element.
-    \*/
+     \*/
     elproto.undrag = function () {
         var i = draggable.length;
         while (i--) if (draggable[i].el == this) {
@@ -3279,7 +3302,7 @@ define(["eve"], function(eve) {
      **
      > Usage
      | var c = paper.circle(50, 50, 40);
-    \*/
+     \*/
     paperproto.circle = function (x, y, r) {
         var out = R._engine.circle(this, x || 0, y || 0, r || 0);
         this.__set__ && this.__set__.push(out);
@@ -3305,7 +3328,7 @@ define(["eve"], function(eve) {
      | var c = paper.rect(10, 10, 50, 50);
      | // rectangle with rounded corners
      | var c = paper.rect(40, 40, 50, 50, 10);
-    \*/
+     \*/
     paperproto.rect = function (x, y, w, h, r) {
         var out = R._engine.rect(this, x || 0, y || 0, w || 0, h || 0, r || 0);
         this.__set__ && this.__set__.push(out);
@@ -3327,7 +3350,7 @@ define(["eve"], function(eve) {
      **
      > Usage
      | var c = paper.ellipse(50, 50, 40, 20);
-    \*/
+     \*/
     paperproto.ellipse = function (x, y, rx, ry) {
         var out = R._engine.ellipse(this, x || 0, y || 0, rx || 0, ry || 0);
         this.__set__ && this.__set__.push(out);
@@ -3364,7 +3387,7 @@ define(["eve"], function(eve) {
      | // draw a diagonal line:
      | // move to 10,10, line to 90,90
      * For example of path strings, check out these icons: http://raphaeljs.com/icons/
-    \*/
+     \*/
     paperproto.path = function (pathString) {
         pathString && !R.is(pathString, string) && !R.is(pathString[0], array) && (pathString += E);
         var out = R._engine.path(R.format[apply](R, arguments), this);
@@ -3388,7 +3411,7 @@ define(["eve"], function(eve) {
      **
      > Usage
      | var c = paper.image("apple.png", 10, 10, 80, 80);
-    \*/
+     \*/
     paperproto.image = function (src, x, y, w, h) {
         var out = R._engine.image(this, src || "about:blank", x || 0, y || 0, w || 0, h || 0);
         this.__set__ && this.__set__.push(out);
@@ -3409,7 +3432,7 @@ define(["eve"], function(eve) {
      **
      > Usage
      | var t = paper.text(50, 50, "Raphaël\nkicks\nbutt!");
-    \*/
+     \*/
     paperproto.text = function (x, y, text) {
         var out = R._engine.text(this, x || 0, y || 0, Str(text));
         this.__set__ && this.__set__.push(out);
@@ -3431,7 +3454,7 @@ define(["eve"], function(eve) {
      |     paper.circle(30, 10, 5)
      | );
      | st.attr({fill: "red"}); // changes the fill of both circles
-    \*/
+     \*/
     paperproto.set = function (itemsArray) {
         !R.is(itemsArray, "array") && (itemsArray = Array.prototype.splice.call(arguments, 0, arguments.length));
         var out = new Set(itemsArray);
@@ -3453,7 +3476,7 @@ define(["eve"], function(eve) {
      | paper.circle(30, 10, 5)
      | var st = paper.setFinish();
      | st.attr({fill: "red"}); // changes the fill of both circles
-    \*/
+     \*/
     paperproto.setStart = function (set) {
         this.__set__ = set || this.set();
     };
@@ -3464,7 +3487,7 @@ define(["eve"], function(eve) {
      * See @Paper.setStart. This method finishes catching and returns resulting set.
      **
      = (object) set
-    \*/
+     \*/
     paperproto.setFinish = function (set) {
         var out = this.__set__;
         delete this.__set__;
@@ -3483,8 +3506,8 @@ define(["eve"], function(eve) {
         return {
             width: container.offsetWidth,
             height: container.offsetHeight
-                };
         };
+    };
     /*\
      * Paper.setSize
      [ method ]
@@ -3495,7 +3518,7 @@ define(["eve"], function(eve) {
      **
      - width (number) new width of the canvas
      - height (number) new height of the canvas
-    \*/
+     \*/
     paperproto.setSize = function (width, height) {
         return R._engine.setSize.call(this, width, height);
     };
@@ -3513,7 +3536,7 @@ define(["eve"], function(eve) {
      - w (number) new width of the canvas
      - h (number) new height of the canvas
      - fit (boolean) `true` if you want graphics to fit into new boundary box
-    \*/
+     \*/
     paperproto.setViewBox = function (x, y, w, h, fit) {
         return R._engine.setViewBox.call(this, x, y, w, h, fit);
     };
@@ -3522,20 +3545,20 @@ define(["eve"], function(eve) {
      [ property ]
      **
      * Points to the topmost element on the paper
-    \*/
+     \*/
     /*\
      * Paper.bottom
      [ property ]
      **
      * Points to the bottom element on the paper
-    \*/
+     \*/
     paperproto.top = paperproto.bottom = null;
     /*\
      * Paper.raphael
      [ property ]
      **
      * Points to the @Raphael object/function
-    \*/
+     \*/
     paperproto.raphael = R;
     var getOffset = function (elem) {
         var box = elem.getBoundingClientRect(),
@@ -3543,7 +3566,7 @@ define(["eve"], function(eve) {
             body = doc.body,
             docElem = doc.documentElement,
             clientTop = docElem.clientTop || body.clientTop || 0, clientLeft = docElem.clientLeft || body.clientLeft || 0,
-            top  = box.top  + (g.win.pageYOffset || docElem.scrollTop || body.scrollTop ) - clientTop,
+            top = box.top + (g.win.pageYOffset || docElem.scrollTop || body.scrollTop ) - clientTop,
             left = box.left + (g.win.pageXOffset || docElem.scrollLeft || body.scrollLeft) - clientLeft;
         return {
             y: top,
@@ -3563,7 +3586,7 @@ define(["eve"], function(eve) {
      - y (number) y coordinate from the top left corner of the window
      > Usage
      | paper.getElementByPoint(mouseX, mouseY).attr({stroke: "#f00"});
-    \*/
+     \*/
     paperproto.getElementByPoint = function (x, y) {
         var paper = this,
             svg = paper.canvas,
@@ -3621,7 +3644,7 @@ define(["eve"], function(eve) {
      **
      - id (number) id
      = (object) Raphaël element object
-    \*/
+     \*/
     paperproto.getById = function (id) {
         var bot = this.bottom;
         while (bot) {
@@ -3649,7 +3672,7 @@ define(["eve"], function(eve) {
      | paper.forEach(function (el) {
      |     el.attr({ stroke: "blue" });
      | });
-    \*/
+     \*/
     paperproto.forEach = function (callback, thisArg) {
         var bot = this.bottom;
         while (bot) {
@@ -3671,7 +3694,7 @@ define(["eve"], function(eve) {
      - x (number) x coordinate of the point
      - y (number) y coordinate of the point
      = (object) @Set
-    \*/
+     \*/
     paperproto.getElementsByPoint = function (x, y) {
         var set = this.set();
         this.forEach(function (el) {
@@ -3684,9 +3707,11 @@ define(["eve"], function(eve) {
     function x_y() {
         return this.x + S + this.y;
     }
+
     function x_y_w_h() {
         return this.x + S + this.y + S + this.width + " \xd7 " + this.height;
     }
+
     /*\
      * Element.isPointInside
      [ method ]
@@ -3698,7 +3723,7 @@ define(["eve"], function(eve) {
      - x (number) x coordinate of the point
      - y (number) y coordinate of the point
      = (boolean) `true` if point inside the shape
-    \*/
+     \*/
     elproto.isPointInside = function (x, y) {
         var rp = this.realPath = getPath[this.type](this);
         if (this.attr('transform') && this.attr('transform').length) {
@@ -3724,7 +3749,7 @@ define(["eve"], function(eve) {
      o     width: (number) width
      o     height: (number) height
      o }
-    \*/
+     \*/
     elproto.getBBox = function (isWithoutTransform) {
         if (this.removed) {
             return {};
@@ -3756,7 +3781,7 @@ define(["eve"], function(eve) {
      **
      = (object) clone of a given element
      **
-    \*/
+     \*/
     elproto.clone = function () {
         if (this.removed) {
             return null;
@@ -3785,20 +3810,20 @@ define(["eve"], function(eve) {
      o     color (string) glow colour, default is `black`
      o }
      = (object) @Paper.set of elements that represents glow
-    \*/
+     \*/
     elproto.glow = function (glow) {
         if (this.type == "text") {
             return null;
         }
         glow = glow || {};
         var s = {
-            width: (glow.width || 10) + (+this.attr("stroke-width") || 1),
-            fill: glow.fill || false,
-            opacity: glow.opacity == null ? .5 : glow.opacity,
-            offsetx: glow.offsetx || 0,
-            offsety: glow.offsety || 0,
-            color: glow.color || "#000"
-        },
+                width: (glow.width || 10) + (+this.attr("stroke-width") || 1),
+                fill: glow.fill || false,
+                opacity: glow.opacity == null ? .5 : glow.opacity,
+                offsetx: glow.offsetx || 0,
+                offsety: glow.offsety || 0,
+                color: glow.color || "#000"
+            },
             c = s.width / 2,
             r = this.paper,
             out = r.set(),
@@ -3817,54 +3842,56 @@ define(["eve"], function(eve) {
         return out.insertBefore(this).translate(s.offsetx, s.offsety);
     };
     var curveslengths = {},
-    getPointAtSegmentLength = function (p1x, p1y, c1x, c1y, c2x, c2y, p2x, p2y, length) {
-        if (length == null) {
-            return bezlen(p1x, p1y, c1x, c1y, c2x, c2y, p2x, p2y);
-        } else {
-            return R.findDotsAtSegment(p1x, p1y, c1x, c1y, c2x, c2y, p2x, p2y, getTatLen(p1x, p1y, c1x, c1y, c2x, c2y, p2x, p2y, length));
-        }
-    },
-    getLengthFactory = function (istotal, subpath) {
-        return function (path, length, onlystart) {
-            path = path2curve(path);
-            var x, y, p, l, sp = "", subpaths = {}, point,
-                len = 0;
-            for (var i = 0, ii = path.length; i < ii; i++) {
-                p = path[i];
-                if (p[0] == "M") {
-                    x = +p[1];
-                    y = +p[2];
-                } else {
-                    l = getPointAtSegmentLength(x, y, p[1], p[2], p[3], p[4], p[5], p[6]);
-                    if (len + l > length) {
-                        if (subpath && !subpaths.start) {
-                            point = getPointAtSegmentLength(x, y, p[1], p[2], p[3], p[4], p[5], p[6], length - len);
-                            sp += ["C" + point.start.x, point.start.y, point.m.x, point.m.y, point.x, point.y];
-                            if (onlystart) {return sp;}
-                            subpaths.start = sp;
-                            sp = ["M" + point.x, point.y + "C" + point.n.x, point.n.y, point.end.x, point.end.y, p[5], p[6]].join();
-                            len += l;
-                            x = +p[5];
-                            y = +p[6];
-                            continue;
-                        }
-                        if (!istotal && !subpath) {
-                            point = getPointAtSegmentLength(x, y, p[1], p[2], p[3], p[4], p[5], p[6], length - len);
-                            return {x: point.x, y: point.y, alpha: point.alpha};
-                        }
-                    }
-                    len += l;
-                    x = +p[5];
-                    y = +p[6];
-                }
-                sp += p.shift() + p;
+        getPointAtSegmentLength = function (p1x, p1y, c1x, c1y, c2x, c2y, p2x, p2y, length) {
+            if (length == null) {
+                return bezlen(p1x, p1y, c1x, c1y, c2x, c2y, p2x, p2y);
+            } else {
+                return R.findDotsAtSegment(p1x, p1y, c1x, c1y, c2x, c2y, p2x, p2y, getTatLen(p1x, p1y, c1x, c1y, c2x, c2y, p2x, p2y, length));
             }
-            subpaths.end = sp;
-            point = istotal ? len : subpath ? subpaths : R.findDotsAtSegment(x, y, p[0], p[1], p[2], p[3], p[4], p[5], 1);
-            point.alpha && (point = {x: point.x, y: point.y, alpha: point.alpha});
-            return point;
+        },
+        getLengthFactory = function (istotal, subpath) {
+            return function (path, length, onlystart) {
+                path = path2curve(path);
+                var x, y, p, l, sp = "", subpaths = {}, point,
+                    len = 0;
+                for (var i = 0, ii = path.length; i < ii; i++) {
+                    p = path[i];
+                    if (p[0] == "M") {
+                        x = +p[1];
+                        y = +p[2];
+                    } else {
+                        l = getPointAtSegmentLength(x, y, p[1], p[2], p[3], p[4], p[5], p[6]);
+                        if (len + l > length) {
+                            if (subpath && !subpaths.start) {
+                                point = getPointAtSegmentLength(x, y, p[1], p[2], p[3], p[4], p[5], p[6], length - len);
+                                sp += ["C" + point.start.x, point.start.y, point.m.x, point.m.y, point.x, point.y];
+                                if (onlystart) {
+                                    return sp;
+                                }
+                                subpaths.start = sp;
+                                sp = ["M" + point.x, point.y + "C" + point.n.x, point.n.y, point.end.x, point.end.y, p[5], p[6]].join();
+                                len += l;
+                                x = +p[5];
+                                y = +p[6];
+                                continue;
+                            }
+                            if (!istotal && !subpath) {
+                                point = getPointAtSegmentLength(x, y, p[1], p[2], p[3], p[4], p[5], p[6], length - len);
+                                return {x: point.x, y: point.y, alpha: point.alpha};
+                            }
+                        }
+                        len += l;
+                        x = +p[5];
+                        y = +p[6];
+                    }
+                    sp += p.shift() + p;
+                }
+                subpaths.end = sp;
+                point = istotal ? len : subpath ? subpaths : R.findDotsAtSegment(x, y, p[0], p[1], p[2], p[3], p[4], p[5], 1);
+                point.alpha && (point = {x: point.x, y: point.y, alpha: point.alpha});
+                return point;
+            };
         };
-    };
     var getTotalLength = getLengthFactory(1),
         getPointAtLength = getLengthFactory(),
         getSubpathsAtLength = getLengthFactory(0, 1);
@@ -3879,7 +3906,7 @@ define(["eve"], function(eve) {
      - path (string) SVG path string.
      **
      = (number) length.
-    \*/
+     \*/
     R.getTotalLength = getTotalLength;
     /*\
      * Raphael.getPointAtLength
@@ -3898,7 +3925,7 @@ define(["eve"], function(eve) {
      o     y: (number) y coordinate
      o     alpha: (number) angle of derivative
      o }
-    \*/
+     \*/
     R.getPointAtLength = getPointAtLength;
     /*\
      * Raphael.getSubpath
@@ -3913,7 +3940,7 @@ define(["eve"], function(eve) {
      - to (number) position of the end of the segment
      **
      = (string) pathstring for the segment
-    \*/
+     \*/
     R.getSubpath = function (path, from, to) {
         if (this.getTotalLength(path) - to < 1e-6) {
             return getSubpathsAtLength(path, from).end;
@@ -3927,7 +3954,7 @@ define(["eve"], function(eve) {
      **
      * Returns length of the path in pixels. Only works for element of “path” type.
      = (number) length.
-    \*/
+     \*/
     elproto.getTotalLength = function () {
         var path = this.getPath();
         if (!path) {
@@ -3956,7 +3983,7 @@ define(["eve"], function(eve) {
      o     y: (number) y coordinate
      o     alpha: (number) angle of derivative
      o }
-    \*/
+     \*/
     elproto.getPointAtLength = function (length) {
         var path = this.getPath();
         if (!path) {
@@ -3972,7 +3999,7 @@ define(["eve"], function(eve) {
      * Returns path of the element. Only works for elements of “path” type and simple elements like circle.
      = (object) path
      **
-    \*/
+     \*/
     elproto.getPath = function () {
         var path,
             getPath = R._getPath[this.type];
@@ -3999,7 +4026,7 @@ define(["eve"], function(eve) {
      - to (number) position of the end of the segment
      **
      = (string) pathstring for the segment
-    \*/
+     \*/
     elproto.getSubpath = function (from, to) {
         var path = this.getPath();
         if (!path) {
@@ -4024,7 +4051,7 @@ define(["eve"], function(eve) {
      #     <li>“bounce”</li>
      # </ul>
      # <p>See also <a href="http://raphaeljs.com/easing.html">Easing demo</a>.</p>
-    \*/
+     \*/
     var ef = R.easing_formulas = {
         linear: function (n) {
             return n;
@@ -4090,14 +4117,14 @@ define(["eve"], function(eve) {
     ef["back-out"] = ef.backOut;
 
     var animationElements = [],
-        requestAnimFrame = window.requestAnimationFrame       ||
-                           window.webkitRequestAnimationFrame ||
-                           window.mozRequestAnimationFrame    ||
-                           window.oRequestAnimationFrame      ||
-                           window.msRequestAnimationFrame     ||
-                           function (callback) {
-                               setTimeout(callback, 16);
-                           },
+        requestAnimFrame = window.requestAnimationFrame ||
+            window.webkitRequestAnimationFrame ||
+            window.mozRequestAnimationFrame ||
+            window.oRequestAnimationFrame ||
+            window.msRequestAnimationFrame ||
+            function (callback) {
+                setTimeout(callback, 16);
+            },
         animation = function () {
             var Now = +new Date,
                 l = 0;
@@ -4138,10 +4165,10 @@ define(["eve"], function(eve) {
                                 break;
                             case "colour":
                                 now = "rgb(" + [
-                                    upto255(round(from[attr].r + pos * ms * diff[attr].r)),
-                                    upto255(round(from[attr].g + pos * ms * diff[attr].g)),
-                                    upto255(round(from[attr].b + pos * ms * diff[attr].b))
-                                ].join(",") + ")";
+                                        upto255(round(from[attr].r + pos * ms * diff[attr].r)),
+                                        upto255(round(from[attr].g + pos * ms * diff[attr].g)),
+                                        upto255(round(from[attr].b + pos * ms * diff[attr].b))
+                                    ].join(",") + ")";
                                 break;
                             case "path":
                                 now = [];
@@ -4198,8 +4225,8 @@ define(["eve"], function(eve) {
                         });
                     })(that.id, that, e.anim);
                 } else {
-                    (function(f, el, a) {
-                        setTimeout(function() {
+                    (function (f, el, a) {
+                        setTimeout(function () {
                             eve("raphael.anim.frame." + el.id, el, a);
                             eve("raphael.anim.finish." + el.id, el, a);
                             R.is(f, "function") && f.call(el);
@@ -4244,7 +4271,7 @@ define(["eve"], function(eve) {
      - animation (object) #optional animation object, see @Raphael.animation
      **
      = (object) original element
-    \*/
+     \*/
     elproto.animateWith = function (el, anim, params, ms, easing, callback) {
         var element = this;
         if (element.removed) {
@@ -4274,16 +4301,19 @@ define(["eve"], function(eve) {
             cy = 3 * p1y,
             by = 3 * (p2y - p1y) - cy,
             ay = 1 - cy - by;
+
         function sampleCurveX(t) {
             return ((ax * t + bx) * t + cx) * t;
         }
+
         function solve(x, epsilon) {
             var t = solveCurveX(x, epsilon);
             return ((ay * t + by) * t + cy) * t;
         }
+
         function solveCurveX(x, epsilon) {
             var t0, t1, t2, x2, d2, i;
-            for(t2 = x, i = 0; i < 8; i++) {
+            for (t2 = x, i = 0; i < 8; i++) {
                 x2 = sampleCurveX(t2) - x;
                 if (abs(x2) < epsilon) {
                     return t2;
@@ -4317,8 +4347,10 @@ define(["eve"], function(eve) {
             }
             return t2;
         }
+
         return solve(t, 1 / (200 * duration));
     }
+
     elproto.onAnimation = function (f) {
         f ? eve.on("raphael.anim.frame." + this.id, f) : eve.unbind("raphael.anim.frame." + this.id);
         return this;
@@ -4339,6 +4371,7 @@ define(["eve"], function(eve) {
         this.top = percents[percents.length - 1];
         this.percents = percents;
     }
+
     /*\
      * Animation.delay
      [ method ]
@@ -4353,7 +4386,7 @@ define(["eve"], function(eve) {
      | var anim = Raphael.animation({cx: 10, cy: 20}, 2e3);
      | circle1.animate(anim); // run the given animation immediately
      | circle2.animate(anim.delay(500)); // run the given animation after 500 ms
-    \*/
+     \*/
     Animation.prototype.delay = function (delay) {
         var a = new Animation(this.anim, this.ms);
         a.times = this.times;
@@ -4371,7 +4404,7 @@ define(["eve"], function(eve) {
      - repeat (number) number iterations of animation. For infinite animation pass `Infinity`
      **
      = (object) new altered Animation object
-    \*/
+     \*/
     Animation.prototype.repeat = function (times) {
         var a = new Animation(this.anim, this.ms);
         a.del = this.del;
@@ -4584,6 +4617,7 @@ define(["eve"], function(eve) {
         }
         eve("raphael.anim.start." + element.id, element, anim);
     }
+
     /*\
      * Raphael.animation
      [ method ]
@@ -4599,7 +4633,7 @@ define(["eve"], function(eve) {
      - callback (function) #optional callback function. Will be called at the end of animation.
      **
      = (object) @Animation
-    \*/
+     \*/
     R.animation = function (params, ms, easing, callback) {
         if (params instanceof Animation) {
             return params;
@@ -4619,12 +4653,12 @@ define(["eve"], function(eve) {
         }
         if (!json) {
             // if percent-like syntax is used and end-of-all animation callback used
-            if(callback){
+            if (callback) {
                 // find the last one
                 var lastKey = 0;
-                for(var i in params){
+                for (var i in params) {
                     var percent = toInt(i);
-                    if(params[has](i) && percent > lastKey){
+                    if (params[has](i) && percent > lastKey) {
                         lastKey = percent;
                     }
                 }
@@ -4632,7 +4666,7 @@ define(["eve"], function(eve) {
                 // if already defined callback in the last keyframe, skip
                 !params[lastKey].callback && (params[lastKey].callback = callback);
             }
-          return new Animation(params, ms);
+            return new Animation(params, ms);
         } else {
             easing && (p.easing = easing);
             callback && (p.callback = callback);
@@ -4655,7 +4689,7 @@ define(["eve"], function(eve) {
      - animation (object) animation object, see @Raphael.animation
      **
      = (object) original element
-    \*/
+     \*/
     elproto.animate = function (params, ms, easing, callback) {
         var element = this;
         if (element.removed) {
@@ -4681,7 +4715,7 @@ define(["eve"], function(eve) {
      * Note, that during animation following events are triggered:
      *
      * On each animation frame event `anim.frame.<id>`, on start `anim.start.<id>` and on end `anim.finish.<id>`.
-    \*/
+     \*/
     elproto.setTime = function (anim, value) {
         if (anim && value != null) {
             this.status(anim, mmin(value, anim.ms) / anim.ms);
@@ -4708,7 +4742,7 @@ define(["eve"], function(eve) {
      o }
      * or
      = (object) original element if `value` is specified
-    \*/
+     \*/
     elproto.status = function (anim, value) {
         var out = [],
             i = 0,
@@ -4748,7 +4782,7 @@ define(["eve"], function(eve) {
      - anim (object) #optional animation object
      **
      = (object) original element
-    \*/
+     \*/
     elproto.pause = function (anim) {
         for (var i = 0; i < animationElements.length; i++) if (animationElements[i].el.id == this.id && (!anim || animationElements[i].anim == anim)) {
             if (eve("raphael.anim.pause." + this.id, this, animationElements[i].anim) !== false) {
@@ -4768,7 +4802,7 @@ define(["eve"], function(eve) {
      - anim (object) #optional animation object
      **
      = (object) original element
-    \*/
+     \*/
     elproto.resume = function (anim) {
         for (var i = 0; i < animationElements.length; i++) if (animationElements[i].el.id == this.id && (!anim || animationElements[i].anim == anim)) {
             var e = animationElements[i];
@@ -4790,7 +4824,7 @@ define(["eve"], function(eve) {
      - anim (object) #optional animation object
      **
      = (object) original element
-    \*/
+     \*/
     elproto.stop = function (anim) {
         for (var i = 0; i < animationElements.length; i++) if (animationElements[i].el.id == this.id && (!anim || animationElements[i].anim == anim)) {
             if (eve("raphael.anim.stop." + this.id, this, animationElements[i].anim) !== false) {
@@ -4804,6 +4838,7 @@ define(["eve"], function(eve) {
             animationElements.splice(i--, 1);
         }
     }
+
     eve.on("raphael.remove", stopAnimation);
     eve.on("raphael.clear", stopAnimation);
     elproto.toString = function () {
@@ -4812,26 +4847,26 @@ define(["eve"], function(eve) {
 
     // Set
     var Set = function (items) {
-        this.items = [];
-        this.length = 0;
-        this.type = "set";
-        if (items) {
-            for (var i = 0, ii = items.length; i < ii; i++) {
-                if (items[i] && (items[i].constructor == elproto.constructor || items[i].constructor == Set)) {
-                    this[this.items.length] = this.items[this.items.length] = items[i];
-                    this.length++;
+            this.items = [];
+            this.length = 0;
+            this.type = "set";
+            if (items) {
+                for (var i = 0, ii = items.length; i < ii; i++) {
+                    if (items[i] && (items[i].constructor == elproto.constructor || items[i].constructor == Set)) {
+                        this[this.items.length] = this.items[this.items.length] = items[i];
+                        this.length++;
+                    }
                 }
             }
-        }
-    },
-    setproto = Set.prototype;
+        },
+        setproto = Set.prototype;
     /*\
      * Set.push
      [ method ]
      **
      * Adds each argument to the current set.
      = (object) original element
-    \*/
+     \*/
     setproto.push = function () {
         var item,
             len;
@@ -4851,7 +4886,7 @@ define(["eve"], function(eve) {
      **
      * Removes last element and returns it.
      = (object) element
-    \*/
+     \*/
     setproto.pop = function () {
         this.length && delete this[this.length--];
         return this.items.pop();
@@ -4869,7 +4904,7 @@ define(["eve"], function(eve) {
      - callback (function) function to run
      - thisArg (object) context object for the callback
      = (object) Set object
-    \*/
+     \*/
     setproto.forEach = function (callback, thisArg) {
         for (var i = 0, ii = this.items.length; i < ii; i++) {
             if (callback.call(thisArg, this.items[i], i) === false) {
@@ -4905,7 +4940,7 @@ define(["eve"], function(eve) {
      [ method ]
      **
      * Removes all elements from the set
-    \*/
+     \*/
     setproto.clear = function () {
         while (this.length) {
             this.pop();
@@ -4923,7 +4958,7 @@ define(["eve"], function(eve) {
      - count (number) number of element to remove
      - insertion… (object) #optional elements to insert
      = (object) set elements that were deleted
-    \*/
+     \*/
     setproto.splice = function (index, count, insertion) {
         index = index < 0 ? mmax(this.length + index, 0) : index;
         count = mmax(0, mmin(this.length - index, count));
@@ -4960,7 +4995,7 @@ define(["eve"], function(eve) {
      **
      - element (object) element to remove
      = (boolean) `true` if object was found & removed from the set
-    \*/
+     \*/
     setproto.exclude = function (el) {
         for (var i = 0, ii = this.length; i < ii; i++) if (this[i] == el) {
             this.splice(i, 1);
@@ -5032,12 +5067,12 @@ define(["eve"], function(eve) {
         return "Rapha\xebl\u2018s set";
     };
 
-    setproto.glow = function(glowConfig) {
+    setproto.glow = function (glowConfig) {
         var ret = this.paper.set();
-        this.forEach(function(shape, index){
+        this.forEach(function (shape, index) {
             var g = shape.glow(glowConfig);
-            if(g != null){
-                g.forEach(function(shape2, index2){
+            if (g != null) {
+                g.forEach(function (shape2, index2) {
                     ret.push(shape2);
                 });
             }
@@ -5083,7 +5118,7 @@ define(["eve"], function(eve) {
      = (object) the font you passed in
      > Usage
      | Cufon.registerFont(Raphael.registerFont({…}));
-    \*/
+     \*/
     R.registerFont = function (font) {
         if (!font.face) {
             return font;
@@ -5111,8 +5146,8 @@ define(["eve"], function(eve) {
                     w: path.w,
                     k: {},
                     d: path.d && "M" + path.d.replace(/[mlcxtrv]/g, function (command) {
-                            return {l: "L", c: "C", x: "z", t: "m", r: "l", v: "c"}[command] || "M";
-                        }) + "z"
+                        return {l: "L", c: "C", x: "z", t: "m", r: "l", v: "c"}[command] || "M";
+                    }) + "z"
                 };
                 if (path.k) {
                     for (var k in path.k) if (path[has](k)) {
@@ -5138,7 +5173,7 @@ define(["eve"], function(eve) {
      = (object) the font object
      > Usage
      | paper.print(100, 100, "Test string", paper.getFont("Times", 800), 30);
-    \*/
+     \*/
     paperproto.getFont = function (family, weight, style, stretch) {
         stretch = stretch || "normal";
         style = style || "normal";
@@ -5187,7 +5222,7 @@ define(["eve"], function(eve) {
      = (object) resulting path element, which consist of all letters
      > Usage
      | var txt = r.print(10, 50, "print", r.getFont("Museo"), 30).attr({fill: "#fff"});
-    \*/
+     \*/
     paperproto.print = function (x, y, string, font, size, origin, letter_spacing, line_spacing) {
         origin = origin || "middle"; // baseline|middle
         letter_spacing = mmax(mmin(letter_spacing || 0, 1), -1);
@@ -5255,7 +5290,7 @@ define(["eve"], function(eve) {
      |         fill: "#fc0"
      |     }
      | ]);
-    \*/
+     \*/
     paperproto.add = function (json) {
         if (R.is(json, "array")) {
             var res = this.set(),
@@ -5288,7 +5323,7 @@ define(["eve"], function(eve) {
      |     height = 50;
      | // this will draw a rectangular shape equivalent to "M10,20h40v50h-40z"
      | paper.path(Raphael.format("M{0},{1}h{2}v{3}h{4}z", x, y, width, height, -width));
-    \*/
+     \*/
     R.format = function (token, params) {
         var args = R.is(params, array) ? [0][concat](params) : arguments;
         token && R.is(token, string) && args.length - 1 && (token = token.replace(formatrg, function (str, i) {
@@ -5318,7 +5353,7 @@ define(["eve"], function(eve) {
      |         "negative width": -40
      |     }
      | }));
-    \*/
+     \*/
     R.fullfill = (function () {
         var tokenRegex = /\{([^\}]+)\}/g,
             objNotationRegex = /(?:(?:^|\.)(.+?)(?=\[|\.|$|\()|\[('|")(.+?)\2\])(\(\))?/g, // matches .xxxxx or ["xxxxx"] to run over object properties
@@ -5355,7 +5390,7 @@ define(["eve"], function(eve) {
      |     var paper = local_raphael(10, 10, 320, 200);
      |     …
      | })(Raphael.ninja());
-    \*/
+     \*/
     R.ninja = function () {
         if (oldRaphael.was) {
             g.win.Raphael = oldRaphael.is;
@@ -5364,7 +5399,8 @@ define(["eve"], function(eve) {
             window.Raphael = undefined;
             try {
                 delete window.Raphael;
-            } catch(e) {}
+            } catch (e) {
+            }
         }
         return R;
     };
@@ -5387,7 +5423,7 @@ define(["eve"], function(eve) {
      | };
      | // then use it
      | paper.set(paper.circle(100, 100, 20), paper.circle(110, 100, 20)).red();
-    \*/
+     \*/
     R.st = setproto;
 
     eve.on("raphael.DOMload", function () {
@@ -5396,7 +5432,7 @@ define(["eve"], function(eve) {
 
     // Firefox <3.6 fix: http://webreflection.blogspot.com/2009/11/195-chars-to-help-lazy-loading.html
     (function (doc, loaded, f) {
-        if (doc.readyState == null && doc.addEventListener){
+        if (doc.readyState == null && doc.addEventListener) {
             doc.addEventListener(loaded, f = function () {
                 doc.removeEventListener(loaded, f, false);
                 doc.readyState = "complete";
@@ -5406,6 +5442,7 @@ define(["eve"], function(eve) {
         function isLoaded() {
             (/in/).test(doc.readyState) ? setTimeout(isLoaded, 9) : R.eve("raphael.DOMload");
         }
+
         isLoaded();
     })(document, "DOMContentLoaded");
 

@@ -140,10 +140,8 @@ define(function (require) {
             );
         },
 
-        _renderTicks: function (
-            seriesModel, ecModel, api, getColor, posInfo,
-            startAngle, endAngle, clockwise
-        ) {
+        _renderTicks: function (seriesModel, ecModel, api, getColor, posInfo,
+                                startAngle, endAngle, clockwise) {
             var group = this.group;
             var cx = posInfo.cx;
             var cy = posInfo.cy;
@@ -259,10 +257,8 @@ define(function (require) {
             }
         },
 
-        _renderPointer: function (
-            seriesModel, ecModel, api, getColor, posInfo,
-            startAngle, endAngle, clockwise
-        ) {
+        _renderPointer: function (seriesModel, ecModel, api, getColor, posInfo,
+                                  startAngle, endAngle, clockwise) {
             var valueExtent = [+seriesModel.get('min'), +seriesModel.get('max')];
             var angleExtent = [startAngle, endAngle];
 
@@ -339,9 +335,7 @@ define(function (require) {
             this._data = data;
         },
 
-        _renderTitle: function (
-            seriesModel, ecModel, api, getColor, posInfo
-        ) {
+        _renderTitle: function (seriesModel, ecModel, api, getColor, posInfo) {
             var titleModel = seriesModel.getModel('title');
             if (titleModel.get('show')) {
                 var textStyleModel = titleModel.getModel('textStyle');
@@ -364,9 +358,7 @@ define(function (require) {
             }
         },
 
-        _renderDetail: function (
-            seriesModel, ecModel, api, getColor, posInfo
-        ) {
+        _renderDetail: function (seriesModel, ecModel, api, getColor, posInfo) {
             var detailModel = seriesModel.getModel('detail');
             var minVal = seriesModel.get('min');
             var maxVal = seriesModel.get('max');

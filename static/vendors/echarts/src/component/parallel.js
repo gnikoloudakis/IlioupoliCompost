@@ -1,4 +1,4 @@
-define(function(require) {
+define(function (require) {
 
     require('../coord/parallel/parallelCreator');
     require('../coord/parallel/ParallelModel');

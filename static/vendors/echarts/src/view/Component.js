@@ -22,11 +22,14 @@ define(function (require) {
 
         constructor: Component,
 
-        init: function (ecModel, api) {},
+        init: function (ecModel, api) {
+        },
 
-        render: function (componentModel, ecModel, api, payload) {},
+        render: function (componentModel, ecModel, api, payload) {
+        },
 
-        dispose: function () {}
+        dispose: function () {
+        }
     };
 
     var componentProto = Component.prototype;
@@ -34,8 +37,8 @@ define(function (require) {
         = componentProto.updateLayout
         = componentProto.updateVisual
         = function (seriesModel, ecModel, api, payload) {
-            // Do nothing;
-        };
+        // Do nothing;
+    };
     // Enable Component.extend.
     clazzUtil.enableClassExtend(Component);
 

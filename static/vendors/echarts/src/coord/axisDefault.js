@@ -75,7 +75,7 @@ define(function (require) {
             show: false,
             // 属性areaStyle（详见areaStyle）控制区域样式
             areaStyle: {
-                color: ['rgba(250,250,250,0.3)','rgba(200,200,200,0.3)']
+                color: ['rgba(250,250,250,0.3)', 'rgba(200,200,200,0.3)']
             }
         }
     };

@@ -9,6 +9,7 @@ define(function (require) {
     var quadraticAt = curveTool.quadraticAt;
     var v2DistSquare = vec2.distSquare;
     var mathAbs = Math.abs;
+
     function intersectCurveCircle(curvePoints, center, radius) {
         var p0 = curvePoints[0];
         var p1 = curvePoints[1];
@@ -70,6 +71,7 @@ define(function (require) {
 
         return t;
     }
+
     // Adjust edge to avoid
     return function (graph, scale) {
         var tmp0 = [];

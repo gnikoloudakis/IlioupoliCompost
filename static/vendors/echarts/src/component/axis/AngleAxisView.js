@@ -18,6 +18,7 @@ define(function (require) {
             y2: end[1]
         };
     }
+
     require('../../echarts').extendComponentView({
 
         type: 'angleAxis',
@@ -40,7 +41,7 @@ define(function (require) {
             }
 
             zrUtil.each(elementList, function (name) {
-                if (angleAxisModel.get(name +'.show')) {
+                if (angleAxisModel.get(name + '.show')) {
                     this['_' + name](angleAxisModel, polar, ticksAngles, radiusExtent);
                 }
             }, this);

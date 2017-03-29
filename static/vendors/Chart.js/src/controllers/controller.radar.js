@@ -1,6 +1,6 @@
 "use strict";
 
-module.exports = function(Chart) {
+module.exports = function (Chart) {
 
 	var helpers = Chart.helpers;
 
@@ -23,7 +23,7 @@ module.exports = function(Chart) {
 
 		linkScales: helpers.noop,
 
-		addElementAndReset: function(index) {
+		addElementAndReset: function (index) {
 			Chart.DatasetController.prototype.addElementAndReset.call(this, index);
 
 			// Make sure bezier control points are updated
@@ -73,7 +73,7 @@ module.exports = function(Chart) {
 			meta.dataset.pivot();
 
 			// Update Points
-			helpers.each(points, function(point, index) {
+			helpers.each(points, function (point, index) {
 				this.updateElement(point, index, reset);
 			}, this);
 
@@ -81,7 +81,7 @@ module.exports = function(Chart) {
 			// Update bezier control points
 			this.updateBezierControlPoints();
 		},
-		updateElement: function(point, index, reset) {
+		updateElement: function (point, index, reset) {
 			var custom = point.custom || {};
 			var dataset = this.getDataset();
 			var scale = this.chart.scale;
@@ -114,11 +114,11 @@ module.exports = function(Chart) {
 
 			point._model.skip = custom.skip ? custom.skip : (isNaN(point._model.x) || isNaN(point._model.y));
 		},
-		updateBezierControlPoints: function() {
+		updateBezierControlPoints: function () {
 			var chartArea = this.chart.chartArea;
 			var meta = this.getMeta();
 
-			helpers.each(meta.data, function(point, index) {
+			helpers.each(meta.data, function (point, index) {
 				var model = point._model;
 				var controlPoints = helpers.splineCurve(
 					helpers.previousItem(meta.data, index, true)._model,
@@ -139,12 +139,12 @@ module.exports = function(Chart) {
 			}, this);
 		},
 
-		draw: function(ease) {
+		draw: function (ease) {
 			var meta = this.getMeta();
 			var easingDecimal = ease || 1;
 
 			// Transition Point Locations
-			helpers.each(meta.data, function(point, index) {
+			helpers.each(meta.data, function (point, index) {
 				point.transition(easingDecimal);
 			});
 
@@ -152,12 +152,12 @@ module.exports = function(Chart) {
 			meta.dataset.transition(easingDecimal).draw();
 
 			// Draw the points
-			helpers.each(meta.data, function(point) {
+			helpers.each(meta.data, function (point) {
 				point.draw();
 			});
 		},
 
-		setHoverStyle: function(point) {
+		setHoverStyle: function (point) {
 			// Point
 			var dataset = this.chart.data.datasets[point._datasetIndex];
 			var custom = point.custom || {};
@@ -170,7 +170,7 @@ module.exports = function(Chart) {
 			model.borderWidth = custom.hoverBorderWidth ? custom.hoverBorderWidth : helpers.getValueAtIndexOrDefault(dataset.pointHoverBorderWidth, index, model.borderWidth);
 		},
 
-		removeHoverStyle: function(point) {
+		removeHoverStyle: function (point) {
 			var dataset = this.chart.data.datasets[point._datasetIndex];
 			var custom = point.custom || {};
 			var index = point._index;

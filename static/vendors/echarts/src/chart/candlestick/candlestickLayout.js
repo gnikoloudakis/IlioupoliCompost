@@ -96,8 +96,8 @@ define(function (require) {
         return bandWidth / 2 - 2 > CANDLE_MIN_NICE_WIDTH // "- 2" is minus border width
             ? bandWidth / 2 - 2
             : bandWidth - CANDLE_MIN_NICE_WIDTH > GPA_MIN
-            ? CANDLE_MIN_NICE_WIDTH
-            : Math.max(bandWidth - GPA_MIN, CANDLE_MIN_WIDTH);
+                ? CANDLE_MIN_NICE_WIDTH
+                : Math.max(bandWidth - GPA_MIN, CANDLE_MIN_WIDTH);
     }
 
 });

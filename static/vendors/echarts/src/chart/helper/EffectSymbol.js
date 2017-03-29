@@ -19,6 +19,7 @@ define(function (require) {
         }
         return symbolSize;
     }
+
     /**
      * @constructor
      * @param {module:echarts/data/List} data
@@ -45,9 +46,7 @@ define(function (require) {
         this.childAt(1).removeAll();
     };
 
-    effectSymbolProto.startEffectAnimation = function (
-        period, brushType, rippleScale, effectOffset, z, zlevel
-    ) {
+    effectSymbolProto.startEffectAnimation = function (period, brushType, rippleScale, effectOffset, z, zlevel) {
         var symbolType = this._symbolType;
         var color = this._color;
 
@@ -153,6 +152,7 @@ define(function (require) {
             );
         }
         var symbol = this.childAt(0);
+
         function onEmphasis() {
             symbol.trigger('emphasis');
             if (showEffectOn !== 'render') {
@@ -161,12 +161,14 @@ define(function (require) {
                 );
             }
         }
+
         function onNormal() {
             symbol.trigger('normal');
             if (showEffectOn !== 'render') {
                 this.stopEffectAnimation();
             }
         }
+
         this.on('mouseover', onEmphasis, this)
             .on('mouseout', onNormal, this)
             .on('emphasis', onEmphasis, this)

@@ -1,7 +1,7 @@
 /**
  * Parallel coordinate system creater.
  */
-define(function(require) {
+define(function (require) {
 
     var Parallel = require('./Parallel');
 

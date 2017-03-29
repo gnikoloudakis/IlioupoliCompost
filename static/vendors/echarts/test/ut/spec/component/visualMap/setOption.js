@@ -1,4 +1,4 @@
-describe('vsiaulMap_setOption', function() {
+describe('vsiaulMap_setOption', function () {
 
     var utHelper = window.utHelper;
 

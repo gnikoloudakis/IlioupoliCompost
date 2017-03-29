@@ -149,6 +149,7 @@ define(function (require) {
             }
             return f * exp10;
         }
+
         // Force all the axis fixing the maxSplitNumber.
         zrUtil.each(indicatorAxes, function (indicatorAxis, idx) {
             var rawExtent = axisHelper.getScaleExtent(indicatorAxis, indicatorAxis.model);

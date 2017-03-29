@@ -6,31 +6,31 @@
     <script src="../dist/Chart.bundle.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <style>
-    canvas {
-        -moz-user-select: none;
-        -webkit-user-select: none;
-        -ms-user-select: none;
-    }
+        canvas {
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+        }
     </style>
 </head>
 
 <body>
-    <div style="width:75%">
-        <canvas id="canvas"></canvas>
-    </div>
-    <button id="randomizeData">Randomize Data</button>
-    <button id="addDataset">Add Dataset</button>
-    <button id="removeDataset">Remove Dataset</button>
-    <button id="addData">Add Data</button>
-    <button id="removeData">Remove Data</button>
-    <script>
-    var randomScalingFactor = function() {
+<div style="width:75%">
+    <canvas id="canvas"></canvas>
+</div>
+<button id="randomizeData">Randomize Data</button>
+<button id="addDataset">Add Dataset</button>
+<button id="removeDataset">Remove Dataset</button>
+<button id="addData">Add Data</button>
+<button id="removeData">Remove Data</button>
+<script>
+    var randomScalingFactor = function () {
         return Math.round(Math.random() * 100);
     };
-    var randomColorFactor = function() {
+    var randomColorFactor = function () {
         return Math.round(Math.random() * 255);
     };
-    var randomColor = function(opacity) {
+    var randomColor = function (opacity) {
         return 'rgba(' + randomColorFactor() + ',' + randomColorFactor() + ',' + randomColorFactor() + ',' + (opacity || '.3') + ')';
     };
 
@@ -52,7 +52,7 @@
                 hoverPointBackgroundColor: "#fff",
                 pointHighlightStroke: "rgba(151,187,205,1)",
                 data: [randomScalingFactor(), randomScalingFactor(), NaN, randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()]
-            },{
+            }, {
                 label: "Skip last dataset",
                 borderColor: 'rgb(0, 255, 255)',
                 backgroundColor: "rgba(0, 0, 255, 0.5)",
@@ -63,9 +63,9 @@
             }]
         },
         options: {
-            title:{
-                display:true,
-                text:"Chart.js Radar Chart - Skip Points"
+            title: {
+                display: true,
+                text: "Chart.js Radar Chart - Skip Points"
             },
             elements: {
                 line: {
@@ -79,13 +79,13 @@
         }
     };
 
-    window.onload = function() {
+    window.onload = function () {
         window.myRadar = new Chart(document.getElementById("canvas"), config);
     };
 
-    $('#randomizeData').click(function() {
-        $.each(config.data.datasets, function(i, dataset) {
-            dataset.data = dataset.data.map(function() {
+    $('#randomizeData').click(function () {
+        $.each(config.data.datasets, function (i, dataset) {
+            dataset.data = dataset.data.map(function () {
                 return randomScalingFactor();
             });
 
@@ -94,7 +94,7 @@
         window.myRadar.update();
     });
 
-    $('#addDataset').click(function() {
+    $('#addDataset').click(function () {
         var newDataset = {
             label: 'Dataset ' + config.data.datasets.length,
             borderColor: randomColor(0.4),
@@ -113,7 +113,7 @@
         window.myRadar.update();
     });
 
-    $('#addData').click(function() {
+    $('#addData').click(function () {
         if (config.data.datasets.length > 0) {
             config.data.labels.push('dataset #' + config.data.labels.length);
 
@@ -125,21 +125,21 @@
         }
     });
 
-    $('#removeDataset').click(function() {
+    $('#removeDataset').click(function () {
         config.data.datasets.splice(0, 1);
         window.myRadar.update();
     });
 
-    $('#removeData').click(function() {
+    $('#removeData').click(function () {
         config.data.labels.pop(); // remove the label first
 
-        $.each(config.data.datasets, function(i, dataset) {
+        $.each(config.data.datasets, function (i, dataset) {
             dataset.data.pop();
         });
 
         window.myRadar.update();
     });
-    </script>
+</script>
 </body>
 
 </html>

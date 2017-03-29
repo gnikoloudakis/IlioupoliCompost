@@ -1,14 +1,14 @@
 // Test the polar area controller
-describe('Radar controller tests', function() {
-	beforeEach(function() {
+describe('Radar controller tests', function () {
+	beforeEach(function () {
 		window.addDefaultMatchers(jasmine);
 	});
 
-	afterEach(function() {
+	afterEach(function () {
 		window.releaseAllCharts();
 	});
 
-	it('Should be constructed', function() {
+	it('Should be constructed', function () {
 		var chart = window.acquireChart({
 			type: 'radar',
 			data: {
@@ -29,7 +29,7 @@ describe('Radar controller tests', function() {
 		expect(meta.controller.index).toBe(1);
 	});
 
-	it('Should create arc elements for each data item during initialization', function() {
+	it('Should create arc elements for each data item during initialization', function () {
 		var chart = window.acquireChart({
 			type: 'radar',
 			data: {
@@ -51,7 +51,7 @@ describe('Radar controller tests', function() {
 		expect(meta.data[3] instanceof Chart.elements.Point).toBe(true);
 	});
 
-	it('should draw all elements', function() {
+	it('should draw all elements', function () {
 		var chart = window.acquireChart({
 			type: 'radar',
 			data: {
@@ -79,7 +79,7 @@ describe('Radar controller tests', function() {
 		expect(meta.data[3].draw.calls.count()).toBe(1);
 	});
 
-	it('should update elements', function() {
+	it('should update elements', function () {
 		var chart = window.acquireChart({
 			type: 'radar',
 			data: {
@@ -137,12 +137,12 @@ describe('Radar controller tests', function() {
 			tension: 0.1,
 		}));
 
-		[ 
-			{ x: 256, y: 272, cppx: 256, cppy: 272, cpnx: 256, cpny: 272},
-			{ x: 256, y: 272, cppx: 256, cppy: 272, cpnx: 256, cpny: 272},
-			{ x: 256, y: 272, cppx: 256, cppy: 272, cpnx: 256, cpny: 272},
-			{ x: 256, y: 272, cppx: 256, cppy: 272, cpnx: 256, cpny: 272},
-		].forEach(function(expected, i) {
+		[
+			{x: 256, y: 272, cppx: 256, cppy: 272, cpnx: 256, cpny: 272},
+			{x: 256, y: 272, cppx: 256, cppy: 272, cpnx: 256, cpny: 272},
+			{x: 256, y: 272, cppx: 256, cppy: 272, cpnx: 256, cpny: 272},
+			{x: 256, y: 272, cppx: 256, cppy: 272, cpnx: 256, cpny: 272},
+		].forEach(function (expected, i) {
 			expect(meta.data[i]._model.x).toBeCloseToPixel(expected.x);
 			expect(meta.data[i]._model.y).toBeCloseToPixel(expected.y);
 			expect(meta.data[i]._model.controlPointPreviousX).toBeCloseToPixel(expected.cppx);
@@ -163,13 +163,13 @@ describe('Radar controller tests', function() {
 
 		// Now update controller and ensure proper updates
 		meta.controller.update();
-		
-		[ 
-			{ x: 256, y: 133, cppx: 246, cppy: 133, cpnx: 272, cpny: 133 },
-			{ x: 464, y: 272, cppx: 464, cppy: 264, cpnx: 464, cpny: 278 },
-			{ x: 256, y: 272, cppx: 276.9, cppy: 272, cpnx: 250.4, cpny: 272 },
-			{ x: 200, y: 272, cppx: 200, cppy: 275, cpnx: 200, cpny: 261 },
-		].forEach(function(expected, i) {
+
+		[
+			{x: 256, y: 133, cppx: 246, cppy: 133, cpnx: 272, cpny: 133},
+			{x: 464, y: 272, cppx: 464, cppy: 264, cpnx: 464, cpny: 278},
+			{x: 256, y: 272, cppx: 276.9, cppy: 272, cpnx: 250.4, cpny: 272},
+			{x: 200, y: 272, cppx: 200, cppy: 275, cpnx: 200, cpny: 261},
+		].forEach(function (expected, i) {
 			expect(meta.data[i]._model.x).toBeCloseToPixel(expected.x);
 			expect(meta.data[i]._model.y).toBeCloseToPixel(expected.y);
 			expect(meta.data[i]._model.controlPointPreviousX).toBeCloseToPixel(expected.cppx);
@@ -225,12 +225,12 @@ describe('Radar controller tests', function() {
 		}));
 
 		// Since tension is now 0, we don't care about the control points
-		[ 
-			{ x: 256, y: 133 },
-			{ x: 464, y: 272 },
-			{ x: 256, y: 272 },
-			{ x: 200, y: 272 },
-		].forEach(function(expected, i) {
+		[
+			{x: 256, y: 133},
+			{x: 464, y: 272},
+			{x: 256, y: 272},
+			{x: 200, y: 272},
+		].forEach(function (expected, i) {
 			expect(meta.data[i]._model.x).toBeCloseToPixel(expected.x);
 			expect(meta.data[i]._model.y).toBeCloseToPixel(expected.y);
 			expect(meta.data[i]._model).toEqual(jasmine.objectContaining({
@@ -245,7 +245,7 @@ describe('Radar controller tests', function() {
 			}));
 		});
 
-		
+
 		// Use custom styles for lines & first point
 		meta.dataset.custom = {
 			tension: 0.25,
@@ -305,7 +305,7 @@ describe('Radar controller tests', function() {
 		}));
 	});
 
-	it('should set point hover styles', function() {
+	it('should set point hover styles', function () {
 		var chart = window.acquireChart({
 			type: 'radar',
 			data: {
@@ -382,7 +382,7 @@ describe('Radar controller tests', function() {
 	});
 
 
-	it('should remove hover styles', function() {
+	it('should remove hover styles', function () {
 		var chart = window.acquireChart({
 			type: 'radar',
 			data: {

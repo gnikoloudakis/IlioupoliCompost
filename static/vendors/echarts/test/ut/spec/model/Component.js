@@ -1,4 +1,4 @@
-describe('Component', function() {
+describe('Component', function () {
 
     var utHelper = window.utHelper;
 
@@ -129,7 +129,7 @@ describe('Component', function() {
             ComponentModel.topologicalTravel(['m1', 'a1', 'a2', 'a4'], allList, function (componentType, dependencies) {
                 result.push([componentType, dependencies]);
             });
-            expect(result).toEqual([['a4', []], ['a2',[]], ['a1', ['a2','a3','a4']], ['m1', ['a1', 'a2']]]);
+            expect(result).toEqual([['a4', []], ['a2', []], ['a1', ['a2', 'a3', 'a4']], ['m1', ['a1', 'a2']]]);
         });
     });
 

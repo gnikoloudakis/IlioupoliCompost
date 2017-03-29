@@ -161,7 +161,7 @@ define(function (require) {
             for (var i = 0; i < ticksCoords.length; i++) {
                 // Only ordinal scale support tick interval
                 if (ifIgnoreOnTick(axis, i, tickInterval)) {
-                     continue;
+                    continue;
                 }
 
                 var tickCoord = ticksCoords[i];
@@ -223,7 +223,7 @@ define(function (require) {
             var isSilent = axisModel.get('silent');
             for (var i = 0; i < ticks.length; i++) {
                 if (ifIgnoreOnTick(axis, i, opt.labelInterval)) {
-                     continue;
+                    continue;
                 }
 
                 var itemTextStyleModel = textStyleModel;
@@ -272,6 +272,7 @@ define(function (require) {
                     return firstRect.intersect(nextRect);
                 }
             }
+
             if (axis.type !== 'category') {
                 // If min or max are user set, we need to check
                 // If the tick on min(max) are overlap on their neighbour tick
@@ -321,8 +322,8 @@ define(function (require) {
                 nameLocation === 'start'
                     ? extent[0] - gapSignal * gap
                     : nameLocation === 'end'
-                    ? extent[1] + gapSignal * gap
-                    : (extent[0] + extent[1]) / 2, // 'middle'
+                        ? extent[1] + gapSignal * gap
+                        : (extent[0] + extent[1]) / 2, // 'middle'
                 // Reuse labelOffset.
                 nameLocation === 'middle' ? opt.labelOffset + nameDirection * gap : 0
             ];
@@ -341,7 +342,7 @@ define(function (require) {
                     text: name,
                     textFont: textStyleModel.getFont(),
                     fill: textStyleModel.getTextColor()
-                        || axisModel.get('axisLine.lineStyle.color'),
+                    || axisModel.get('axisLine.lineStyle.color'),
                     textAlign: labelLayout.textAlign,
                     textVerticalAlign: labelLayout.verticalAlign
                 },
@@ -441,7 +442,7 @@ define(function (require) {
                 typeof interval === 'function'
                     ? (
                         rawTick = scale.getTicks()[i],
-                        !interval(rawTick, scale.getLabel(rawTick))
+                            !interval(rawTick, scale.getLabel(rawTick))
                     )
                     : i % (interval + 1)
             );

@@ -1,4 +1,4 @@
- define(function(require) {
+define(function (require) {
 
     var zrUtil = require('zrender/core/util');
     var graphic = require('../../util/graphic');
@@ -641,11 +641,9 @@
      * @inner
      * @return Return undefined means do not travel further.
      */
-    function renderNode(
-        seriesModel, thisStorage, oldStorage, reRoot,
-        lastsForAnimation, willInvisibleEls,
-        thisNode, oldNode, parentGroup, depth
-    ) {
+    function renderNode(seriesModel, thisStorage, oldStorage, reRoot,
+                        lastsForAnimation, willInvisibleEls,
+                        thisNode, oldNode, parentGroup, depth) {
         // Whether under viewRoot.
         if (!thisNode) {
             // Deleting nodes will be performed finally. This method just find

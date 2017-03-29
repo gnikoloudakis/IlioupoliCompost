@@ -1,4 +1,4 @@
-describe('util/model', function() {
+describe('util/model', function () {
 
     var utHelper = window.utHelper;
     var modelUtil;

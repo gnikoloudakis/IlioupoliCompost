@@ -1,7 +1,7 @@
 /**
  * @module echarts/coord/polar/Polar
  */
-define(function(require) {
+define(function (require) {
 
     'use strict';
 

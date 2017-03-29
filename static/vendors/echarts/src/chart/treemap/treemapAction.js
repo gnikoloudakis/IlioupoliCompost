@@ -1,12 +1,13 @@
 /**
  * @file Treemap action
  */
-define(function(require) {
+define(function (require) {
 
     var echarts = require('../../echarts');
     var helper = require('./helper');
 
-    var noop = function () {};
+    var noop = function () {
+    };
 
     var actionTypes = [
         'treemapZoomToNode',

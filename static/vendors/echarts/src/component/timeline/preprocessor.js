@@ -1,7 +1,7 @@
 /**
  * @file Timeline preprocessor
  */
-define(function(require) {
+define(function (require) {
 
     var zrUtil = require('zrender/core/util');
 

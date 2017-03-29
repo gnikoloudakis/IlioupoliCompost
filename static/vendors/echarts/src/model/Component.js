@@ -3,7 +3,7 @@
  *
  * @module echarts/model/Component
  */
-define(function(require) {
+define(function (require) {
 
     var Model = require('./Model');
     var zrUtil = require('zrender/core/util');
@@ -115,7 +115,8 @@ define(function(require) {
         },
 
         // Hooker after init or mergeOption
-        optionUpdated: function (ecModel) {},
+        optionUpdated: function (ecModel) {
+        },
 
         getDefaultOption: function () {
             if (!this.hasOwnProperty('__defaultOption')) {

@@ -7,9 +7,7 @@ define(function (require) {
      * @param {Object} payload
      * @param {Object} [zoomLimit]
      */
-    roamHelper.updateCenterAndZoom = function (
-        view, payload, zoomLimit
-    ) {
+    roamHelper.updateCenterAndZoom = function (view, payload, zoomLimit) {
         var previousZoom = view.getZoom();
         var center = view.getCenter();
         var zoom = payload.zoom;
@@ -28,9 +26,9 @@ define(function (require) {
                 var zoomMin = zoomLimit.min || 0;
                 var zoomMax = zoomLimit.max || Infinity;
                 zoom = Math.max(
-                    Math.min(previousZoom * zoom, zoomMax),
-                    zoomMin
-                ) / previousZoom;
+                        Math.min(previousZoom * zoom, zoomMax),
+                        zoomMin
+                    ) / previousZoom;
             }
 
             // Zoom on given point(originX, originY)

@@ -1,7 +1,7 @@
 /**
  * @file Timeline model
  */
-define(function(require) {
+define(function (require) {
 
     var ComponentModel = require('../../model/Component');
     var List = require('../../data/List');

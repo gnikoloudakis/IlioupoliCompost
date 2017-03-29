@@ -1,4 +1,4 @@
-define(function(require) {
+define(function (require) {
 
     var List = require('../../data/List');
     var zrUtil = require('zrender/core/util');

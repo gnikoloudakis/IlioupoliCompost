@@ -1,7 +1,7 @@
 define(function (require) {
 
     var AxisBuilder = require('./AxisBuilder');
-    var zrUtil =  require('zrender/core/util');
+    var zrUtil = require('zrender/core/util');
     var graphic = require('../../util/graphic');
     var getInterval = AxisBuilder.getInterval;
     var ifIgnoreOnTick = AxisBuilder.ifIgnoreOnTick;
@@ -10,7 +10,7 @@ define(function (require) {
         'axisLine', 'axisLabel', 'axisTick', 'axisName'
     ];
 
-    var selfBuilderAttr = 'splitLine'; 
+    var selfBuilderAttr = 'splitLine';
 
     var AxisView = require('../../echarts').extendComponentView({
 
@@ -22,7 +22,7 @@ define(function (require) {
 
             group.removeAll();
 
-            var layout =  axisLayout(axisModel);
+            var layout = axisLayout(axisModel);
 
             var axisBuilder = new AxisBuilder(axisModel, layout);
 
@@ -35,7 +35,7 @@ define(function (require) {
             }
         },
 
-        _splitLine: function(axisModel, labelInterval) {
+        _splitLine: function (axisModel, labelInterval) {
             var axis = axisModel.axis;
             var splitLineModel = axisModel.getModel('splitLine');
             var lineStyleModel = splitLineModel.getModel('lineStyle');
@@ -121,11 +121,11 @@ define(function (require) {
         };
 
         layout.position = [
-            orient === 'vertical' 
-                ? positionMap.vertical[axisPosition] 
+            orient === 'vertical'
+                ? positionMap.vertical[axisPosition]
                 : rectBound[0],
-            orient === 'horizontal' 
-                ? positionMap.horizontal[axisPosition] 
+            orient === 'horizontal'
+                ? positionMap.horizontal[axisPosition]
                 : rectBound[3]
         ];
 
@@ -134,8 +134,8 @@ define(function (require) {
 
         var directionMap = {top: -1, bottom: 1, right: 1, left: -1};
 
-        layout.labelDirection = layout.tickDirection  
-            = layout.nameDirection 
+        layout.labelDirection = layout.tickDirection
+            = layout.nameDirection
             = directionMap[axisPosition];
 
         if (axisModel.getModel('axisTick').get('inside')) {
@@ -157,5 +157,5 @@ define(function (require) {
     }
 
     return AxisView;
-    
+
 });

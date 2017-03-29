@@ -1,4 +1,4 @@
-describe('modelAndOptionMapping', function() {
+describe('modelAndOptionMapping', function () {
 
     var utHelper = window.utHelper;
 
@@ -69,7 +69,6 @@ describe('modelAndOptionMapping', function() {
             ).toEqual(boolResult);
         }
     }
-
 
 
     describe('idNoNameNo', function () {
@@ -194,9 +193,6 @@ describe('modelAndOptionMapping', function() {
         });
 
     });
-
-
-
 
 
     describe('idSpecified', function () {
@@ -445,14 +441,6 @@ describe('modelAndOptionMapping', function() {
     });
 
 
-
-
-
-
-
-
-
-
     describe('noIdButNameExists', function () {
 
         testCase.createChart()('sameTypeNotMerge', function () {
@@ -651,21 +639,17 @@ describe('modelAndOptionMapping', function() {
     });
 
 
-
-
-
-
     describe('ohters', function () {
 
         testCase.createChart()('aBugCase', function () {
             var option = {
                 series: [
                     {
-                        type:'pie',
+                        type: 'pie',
                         radius: ['20%', '25%'],
-                        center:['20%', '20%'],
+                        center: ['20%', '20%'],
                         avoidLabelOverlap: true,
-                        hoverAnimation :false,
+                        hoverAnimation: false,
                         label: {
                             normal: {
                                 show: true,
@@ -679,9 +663,9 @@ describe('modelAndOptionMapping', function() {
                                 show: true
                             }
                         },
-                        data:[
-                            {value:135, name:'视频广告'},
-                            {value:1548}
+                        data: [
+                            {value: 135, name: '视频广告'},
+                            {value: 1548}
                         ]
                     }
                 ]
@@ -692,7 +676,7 @@ describe('modelAndOptionMapping', function() {
             chart.setOption({
                 series: [
                     {
-                        type:'pie',
+                        type: 'pie',
                         radius: ['20%', '25%'],
                         center: ['20%', '20%'],
                         avoidLabelOverlap: true,
@@ -708,12 +692,12 @@ describe('modelAndOptionMapping', function() {
                             }
                         },
                         data: [
-                            {value:135, name:'视频广告'},
-                            {value:1548}
+                            {value: 135, name: '视频广告'},
+                            {value: 1548}
                         ]
                     },
                     {
-                        type:'pie',
+                        type: 'pie',
                         radius: ['20%', '25%'],
                         center: ['60%', '20%'],
                         avoidLabelOverlap: true,
@@ -729,8 +713,8 @@ describe('modelAndOptionMapping', function() {
                             }
                         },
                         data: [
-                            {value:135, name:'视频广告'},
-                            {value:1548}
+                            {value: 135, name: '视频广告'},
+                            {value: 1548}
                         ]
                     }
                 ]

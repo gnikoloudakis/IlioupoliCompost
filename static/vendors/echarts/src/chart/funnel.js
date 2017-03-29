@@ -7,7 +7,7 @@ define(function (require) {
     require('./funnel/FunnelView');
 
     echarts.registerVisualCoding(
-        'chart',  zrUtil.curry(require('../visual/dataColor'), 'funnel')
+        'chart', zrUtil.curry(require('../visual/dataColor'), 'funnel')
     );
     echarts.registerLayout(require('./funnel/funnelLayout'));
 

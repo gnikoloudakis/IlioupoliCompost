@@ -1,5 +1,5 @@
 // Symbol factory
-define(function(require) {
+define(function (require) {
 
     'use strict';
 

@@ -1,5 +1,5 @@
 define(function () {
-   return function (ecModel) {
+    return function (ecModel) {
         var legendModels = ecModel.findComponents({
             mainType: 'legend'
         });

@@ -35,9 +35,9 @@
 
  */
 
-(function($) {
+(function ($) {
     var options = {
-        series: { stack: null } // or number/string
+        series: {stack: null} // or number/string
     };
 
     function init(plot) {

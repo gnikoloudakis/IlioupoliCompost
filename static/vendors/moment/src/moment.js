@@ -4,7 +4,7 @@
 //! license : MIT
 //! momentjs.com
 
-import { hooks as moment, setHookCallback } from './lib/utils/hooks';
+import {hooks as moment, setHookCallback} from './lib/utils/hooks';
 
 moment.version = '2.13.0';
 
@@ -40,36 +40,36 @@ import {
     getSetRelativeTimeThreshold as relativeTimeThreshold
 } from './lib/duration/duration';
 
-import { normalizeUnits } from './lib/units/units';
+import {normalizeUnits} from './lib/units/units';
 
 import isDate from './lib/utils/is-date';
 
 setHookCallback(local);
 
-moment.fn                    = fn;
-moment.min                   = min;
-moment.max                   = max;
-moment.now                   = now;
-moment.utc                   = utc;
-moment.unix                  = unix;
-moment.months                = months;
-moment.isDate                = isDate;
-moment.locale                = locale;
-moment.invalid               = invalid;
-moment.duration              = duration;
-moment.isMoment              = isMoment;
-moment.weekdays              = weekdays;
-moment.parseZone             = parseZone;
-moment.localeData            = localeData;
-moment.isDuration            = isDuration;
-moment.monthsShort           = monthsShort;
-moment.weekdaysMin           = weekdaysMin;
-moment.defineLocale          = defineLocale;
-moment.updateLocale          = updateLocale;
-moment.locales               = locales;
-moment.weekdaysShort         = weekdaysShort;
-moment.normalizeUnits        = normalizeUnits;
+moment.fn = fn;
+moment.min = min;
+moment.max = max;
+moment.now = now;
+moment.utc = utc;
+moment.unix = unix;
+moment.months = months;
+moment.isDate = isDate;
+moment.locale = locale;
+moment.invalid = invalid;
+moment.duration = duration;
+moment.isMoment = isMoment;
+moment.weekdays = weekdays;
+moment.parseZone = parseZone;
+moment.localeData = localeData;
+moment.isDuration = isDuration;
+moment.monthsShort = monthsShort;
+moment.weekdaysMin = weekdaysMin;
+moment.defineLocale = defineLocale;
+moment.updateLocale = updateLocale;
+moment.locales = locales;
+moment.weekdaysShort = weekdaysShort;
+moment.normalizeUnits = normalizeUnits;
 moment.relativeTimeThreshold = relativeTimeThreshold;
-moment.prototype             = fn;
+moment.prototype = fn;
 
 export default moment;

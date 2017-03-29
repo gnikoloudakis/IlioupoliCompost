@@ -49,7 +49,7 @@ define(function (require) {
             // grouped data by name
             var dataByName = nest()
                 .key(function (dataItem) {
-                    return dataItem[2] ;
+                    return dataItem[2];
                 })
                 .entries(data);
 
@@ -81,7 +81,7 @@ define(function (require) {
                     var timeValue = layData[index].dataList[j][0];
                     var length = layData[k].dataList.length;
                     var keyIndex = -1;
-                    for (var l = 0; l < length; ++l){
+                    for (var l = 0; l < length; ++l) {
                         var value = layData[k].dataList[l][0];
                         if (value === timeValue) {
                             keyIndex = l;
@@ -124,8 +124,8 @@ define(function (require) {
                     type: axisType === 'category'
                         ? 'ordinal'
                         : axisType === 'time'
-                        ? 'time'
-                        : 'float'
+                            ? 'time'
+                            : 'float'
                 },
                 {
                     name: 'value',
@@ -199,7 +199,7 @@ define(function (require) {
                 };
             });
 
-            for(var j = 0; j < layerSeries.length; ++j) {
+            for (var j = 0; j < layerSeries.length; ++j) {
                 layerSeries[j].indices.sort(comparer);
             }
 

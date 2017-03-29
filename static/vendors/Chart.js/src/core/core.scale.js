@@ -1,6 +1,6 @@
 "use strict";
 
-module.exports = function(Chart) {
+module.exports = function (Chart) {
 
 	var helpers = Chart.helpers;
 
@@ -43,7 +43,7 @@ module.exports = function(Chart) {
 			autoSkip: true,
 			autoSkipPadding: 0,
 			labelOffset: 0,
-			callback: function(value) {
+			callback: function (value) {
 				return '' + value;
 			}
 		}
@@ -55,10 +55,10 @@ module.exports = function(Chart) {
 		// Any function defined here is inherited by all scale types.
 		// Any function can be extended by the scale type
 
-		beforeUpdate: function() {
+		beforeUpdate: function () {
 			helpers.callCallback(this.options.beforeUpdate, [this]);
 		},
-		update: function(maxWidth, maxHeight, margins) {
+		update: function (maxWidth, maxHeight, margins) {
 
 			// Update Lifecycle - Probably don't want to ever extend or overwrite this function ;)
 			this.beforeUpdate();
@@ -106,16 +106,16 @@ module.exports = function(Chart) {
 			return this.minSize;
 
 		},
-		afterUpdate: function() {
+		afterUpdate: function () {
 			helpers.callCallback(this.options.afterUpdate, [this]);
 		},
 
 		//
 
-		beforeSetDimensions: function() {
+		beforeSetDimensions: function () {
 			helpers.callCallback(this.options.beforeSetDimensions, [this]);
 		},
-		setDimensions: function() {
+		setDimensions: function () {
 			// Set the unconstrained dimension before label rotation
 			if (this.isHorizontal()) {
 				// Reset position before calculating rotation
@@ -136,34 +136,34 @@ module.exports = function(Chart) {
 			this.paddingRight = 0;
 			this.paddingBottom = 0;
 		},
-		afterSetDimensions: function() {
+		afterSetDimensions: function () {
 			helpers.callCallback(this.options.afterSetDimensions, [this]);
 		},
 
 		// Data limits
-		beforeDataLimits: function() {
+		beforeDataLimits: function () {
 			helpers.callCallback(this.options.beforeDataLimits, [this]);
 		},
 		determineDataLimits: helpers.noop,
-		afterDataLimits: function() {
+		afterDataLimits: function () {
 			helpers.callCallback(this.options.afterDataLimits, [this]);
 		},
 
 		//
-		beforeBuildTicks: function() {
+		beforeBuildTicks: function () {
 			helpers.callCallback(this.options.beforeBuildTicks, [this]);
 		},
 		buildTicks: helpers.noop,
-		afterBuildTicks: function() {
+		afterBuildTicks: function () {
 			helpers.callCallback(this.options.afterBuildTicks, [this]);
 		},
 
-		beforeTickToLabelConversion: function() {
+		beforeTickToLabelConversion: function () {
 			helpers.callCallback(this.options.beforeTickToLabelConversion, [this]);
 		},
-		convertTicksToLabels: function() {
+		convertTicksToLabels: function () {
 			// Convert ticks to strings
-			this.ticks = this.ticks.map(function(numericalTick, index, ticks) {
+			this.ticks = this.ticks.map(function (numericalTick, index, ticks) {
 					if (this.options.ticks.userCallback) {
 						return this.options.ticks.userCallback(numericalTick, index, ticks);
 					}
@@ -171,16 +171,16 @@ module.exports = function(Chart) {
 				},
 				this);
 		},
-		afterTickToLabelConversion: function() {
+		afterTickToLabelConversion: function () {
 			helpers.callCallback(this.options.afterTickToLabelConversion, [this]);
 		},
 
 		//
 
-		beforeCalculateTickRotation: function() {
+		beforeCalculateTickRotation: function () {
 			helpers.callCallback(this.options.beforeCalculateTickRotation, [this]);
 		},
-		calculateTickRotation: function() {
+		calculateTickRotation: function () {
 			var context = this.ctx;
 			var globalDefaults = Chart.defaults.global;
 			var optionTicks = this.options.ticks;
@@ -249,16 +249,16 @@ module.exports = function(Chart) {
 				this.paddingRight = Math.max(this.paddingRight - this.margins.right, 0);
 			}
 		},
-		afterCalculateTickRotation: function() {
+		afterCalculateTickRotation: function () {
 			helpers.callCallback(this.options.afterCalculateTickRotation, [this]);
 		},
 
 		//
 
-		beforeFit: function() {
+		beforeFit: function () {
 			helpers.callCallback(this.options.beforeFit, [this]);
 		},
-		fit: function() {
+		fit: function () {
 			// Reset
 			var minSize = this.minSize = {
 				width: 0,
@@ -372,15 +372,15 @@ module.exports = function(Chart) {
 			this.height = minSize.height;
 
 		},
-		afterFit: function() {
+		afterFit: function () {
 			helpers.callCallback(this.options.afterFit, [this]);
 		},
 
 		// Shared Methods
-		isHorizontal: function() {
+		isHorizontal: function () {
 			return this.options.position === "top" || this.options.position === "bottom";
 		},
-		isFullWidth: function() {
+		isFullWidth: function () {
 			return (this.options.fullWidth);
 		},
 
@@ -418,7 +418,7 @@ module.exports = function(Chart) {
 		getValueForPixel: helpers.noop,
 
 		// Used for tick location, should
-		getPixelForTick: function(index, includeOffset) {
+		getPixelForTick: function (index, includeOffset) {
 			if (this.isHorizontal()) {
 				var innerWidth = this.width - (this.paddingLeft + this.paddingRight);
 				var tickWidth = innerWidth / Math.max((this.ticks.length - ((this.options.gridLines.offsetGridLines) ? 0 : 1)), 1);
@@ -438,7 +438,7 @@ module.exports = function(Chart) {
 		},
 
 		// Utility for getting the pixel location of a percentage of scale
-		getPixelForDecimal: function(decimal /*, includeOffset*/ ) {
+		getPixelForDecimal: function (decimal /*, includeOffset*/) {
 			if (this.isHorizontal()) {
 				var innerWidth = this.width - (this.paddingLeft + this.paddingRight);
 				var valueOffset = (innerWidth * decimal) + this.paddingLeft;
@@ -451,21 +451,21 @@ module.exports = function(Chart) {
 			}
 		},
 
-		getBasePixel: function() {
+		getBasePixel: function () {
 			var me = this;
 			var min = me.min;
 			var max = me.max;
 
 			return me.getPixelForValue(
-				me.beginAtZero? 0:
-				min < 0 && max < 0? max :
-				min > 0 && max > 0? min :
-				0);
+				me.beginAtZero ? 0 :
+					min < 0 && max < 0 ? max :
+						min > 0 && max > 0 ? min :
+							0);
 		},
 
 		// Actualy draw the scale on the canvas
 		// @param {rectangle} chartArea : the area of the chart to draw full grid lines on
-		draw: function(chartArea) {
+		draw: function (chartArea) {
 			var options = this.options;
 			if (!options.display) {
 				return;
@@ -518,11 +518,11 @@ module.exports = function(Chart) {
 				var yTickEnd = options.position === "bottom" ? this.top + tl : this.bottom;
 				skipRatio = false;
 
-                // Only calculate the skip ratio with the half width of longestRotateLabel if we got an actual rotation
-                // See #2584
-                if (isRotated) {
-                    longestRotatedLabel /= 2;
-                }
+				// Only calculate the skip ratio with the half width of longestRotateLabel if we got an actual rotation
+				// See #2584
+				if (isRotated) {
+					longestRotatedLabel /= 2;
+				}
 
 				if ((longestRotatedLabel + optionTicks.autoSkipPadding) * this.ticks.length > (this.width - (this.paddingLeft + this.paddingRight))) {
 					skipRatio = 1 + Math.floor(((longestRotatedLabel + optionTicks.autoSkipPadding) * this.ticks.length) / (this.width - (this.paddingLeft + this.paddingRight)));

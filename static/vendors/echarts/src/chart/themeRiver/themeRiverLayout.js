@@ -4,7 +4,7 @@
 define(function (require) {
 
     var zrUtil = require('zrender/core/util');
-    var numberUtil =  require('../../util/number');
+    var numberUtil = require('../../util/number');
 
 
     return function (ecModel, api) {

@@ -10,6 +10,7 @@ define(function (require) {
         }
         return symbolSize;
     }
+
     return require('../../echarts').extendChartView({
         type: 'radar',
 
@@ -67,6 +68,7 @@ define(function (require) {
                     return [polar.cx, polar.cy];
                 });
             }
+
             data.diff(oldData)
                 .add(function (idx) {
                     var points = data.getItemLayout(idx);
@@ -175,20 +177,20 @@ define(function (require) {
                     graphic.setText(symbolPath.style, labelModel, color);
                     symbolPath.setStyle({
                         text: labelModel.get('show') ? zrUtil.retrieve(
-                            seriesModel.getFormattedLabel(
-                                idx, 'normal', null, symbolPath.__dimIdx
-                            ),
-                            defaultText
-                        ) : ''
+                                seriesModel.getFormattedLabel(
+                                    idx, 'normal', null, symbolPath.__dimIdx
+                                ),
+                                defaultText
+                            ) : ''
                     });
 
                     graphic.setText(symbolPath.hoverStyle, labelHoverModel, color);
                     symbolPath.hoverStyle.text = labelHoverModel.get('show') ? zrUtil.retrieve(
-                        seriesModel.getFormattedLabel(
-                            idx, 'emphasis', null, symbolPath.__dimIdx
-                        ),
-                        defaultText
-                    ) : '';
+                            seriesModel.getFormattedLabel(
+                                idx, 'emphasis', null, symbolPath.__dimIdx
+                            ),
+                            defaultText
+                        ) : '';
                 });
 
                 function onEmphasis() {

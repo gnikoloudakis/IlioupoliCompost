@@ -3,7 +3,7 @@
  *
  * @module echarts/data/Tree
  */
-define(function(require) {
+define(function (require) {
 
     var zrUtil = require('zrender/core/util');
     var Model = require('../model/Model');
@@ -209,7 +209,7 @@ define(function(require) {
          */
         setLayout: function (layout, merge) {
             this.dataIndex >= 0
-                && this.hostTree.data.setItemLayout(this.dataIndex, layout, merge);
+            && this.hostTree.data.setItemLayout(this.dataIndex, layout, merge);
         },
 
         /**
@@ -250,7 +250,7 @@ define(function(require) {
          */
         setVisual: function (key, value) {
             this.dataIndex >= 0
-                && this.hostTree.data.setItemVisual(this.dataIndex, key, value);
+            && this.hostTree.data.setItemVisual(this.dataIndex, key, value);
         },
 
         /**
@@ -343,7 +343,7 @@ define(function(require) {
          * @param {Function} cb
          * @param {Object}   [context]
          */
-        eachNode: function(options, cb, context) {
+        eachNode: function (options, cb, context) {
             this.root.eachNode(options, cb, context);
         },
 

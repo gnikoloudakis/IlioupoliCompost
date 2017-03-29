@@ -30,7 +30,7 @@ define(function (require) {
         /**
          * return {module:echarts/data/List}
          */
-        getEdgeData: function() {
+        getEdgeData: function () {
             return this.getGraph().edgeData;
         },
 
@@ -59,7 +59,7 @@ define(function (require) {
 
             coordinateSystem: 'view',
 
-            layout : null,
+            layout: null,
 
             // the position of the whole view
             left: '5%',

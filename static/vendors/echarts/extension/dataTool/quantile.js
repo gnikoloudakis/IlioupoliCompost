@@ -33,7 +33,7 @@ define(function (require) {
      * @see <http://en.wikipedia.org/wiki/Quantile>
      * @param {Array.<number>} ascArr
      */
-    return function(ascArr, p) {
+    return function (ascArr, p) {
         var H = (ascArr.length - 1) * p + 1,
             h = Math.floor(H),
             v = +ascArr[h - 1],

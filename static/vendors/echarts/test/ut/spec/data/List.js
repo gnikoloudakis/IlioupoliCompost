@@ -55,7 +55,7 @@ describe('List', function () {
                 stackable: true
             }]);
             list1.initData([1, '-', 2, -2]);
-            list2.initData([1, 2,   3, 2]);
+            list2.initData([1, 2, 3, 2]);
 
             list2.stackedOn = list1;
 

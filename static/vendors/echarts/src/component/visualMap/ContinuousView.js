@@ -1,4 +1,4 @@
-define(function(require) {
+define(function (require) {
 
     var VisualMapView = require('./VisualMapView');
     var graphic = require('../../util/graphic');
@@ -456,12 +456,12 @@ define(function(require) {
 
             return new graphic.Group(
                 (orient === 'horizontal' && !inverse)
-                ? {scale: itemAlign === 'bottom' ? [1, 1] : [-1, 1], rotation: Math.PI / 2}
-                : (orient === 'horizontal' && inverse)
-                ? {scale: itemAlign === 'bottom' ? [-1, 1] : [1, 1], rotation: -Math.PI / 2}
-                : (orient === 'vertical' && !inverse)
-                ? {scale: itemAlign === 'left' ? [1, -1] : [-1, -1]}
-                : {scale: itemAlign === 'left' ? [1, 1] : [-1, 1]}
+                    ? {scale: itemAlign === 'bottom' ? [1, 1] : [-1, 1], rotation: Math.PI / 2}
+                    : (orient === 'horizontal' && inverse)
+                        ? {scale: itemAlign === 'bottom' ? [-1, 1] : [1, 1], rotation: -Math.PI / 2}
+                        : (orient === 'vertical' && !inverse)
+                            ? {scale: itemAlign === 'left' ? [1, -1] : [-1, -1]}
+                            : {scale: itemAlign === 'left' ? [1, 1] : [-1, 1]}
             );
         },
 
@@ -666,7 +666,7 @@ define(function(require) {
 
             return graphic[
                 zrUtil.isArray(vertex) ? 'applyTransform' : 'transformDirection'
-            ](vertex, transform, inverse);
+                ](vertex, transform, inverse);
         },
 
         /**

@@ -103,7 +103,7 @@ define(function (require) {
                 width = aspect * height;
             }
             else if (!height) {
-                height = width / aspect ;
+                height = width / aspect;
             }
             var target = new BoundingRect(x, y, width, height);
             var transform = rect.calculateTransform(target);

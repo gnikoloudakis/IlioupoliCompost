@@ -131,7 +131,8 @@ define(function (require) {
             return this.option == null;
         },
 
-        restoreData: function () {},
+        restoreData: function () {
+        },
 
         // Pending
         clone: function () {

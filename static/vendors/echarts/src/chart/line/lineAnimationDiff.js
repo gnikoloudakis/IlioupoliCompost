@@ -22,8 +22,8 @@ define(function (require) {
         var val = data.get(valueDim, idx);
         // Find first stacked value with same sign
         while (stackedOn &&
-            sign(stackedOn.get(valueDim, idx)) === sign(val)
-        ) {
+        sign(stackedOn.get(valueDim, idx)) === sign(val)
+            ) {
             stackedOnSameSign = stackedOn;
             break;
         }
@@ -76,11 +76,9 @@ define(function (require) {
         return diffResult;
     }
 
-    return function (
-        oldData, newData,
-        oldStackedOnPoints, newStackedOnPoints,
-        oldCoordSys, newCoordSys
-    ) {
+    return function (oldData, newData,
+                     oldStackedOnPoints, newStackedOnPoints,
+                     oldCoordSys, newCoordSys) {
         var diff = diffData(oldData, newData);
 
         // var newIdList = newData.mapArray(newData.getId);

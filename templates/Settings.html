@@ -1,6 +1,6 @@
 {% extends "base/Base.html" %}
 {% block head %}
-<link rel="stylesheet" href="/static/vendors/timepicker/jquery.timepicker.css">
+    <link rel="stylesheet" href="/static/vendors/timepicker/jquery.timepicker.css">
 {% endblock %}
 {% block sidebartitle %}{% endblock %}
 {% block name %}
@@ -8,80 +8,80 @@
 {% endblock %}
 
 {% block body %}
-<div class="row">
-    <form role="form" method="post" action="/settings/saveall">
-        <div class="form-group">
-            <div class="col-sm-4">
+    <div class="row">
+        <form role="form" method="post" action="/settings/saveall">
+            <div class="form-group">
+                <div class="col-sm-4">
 
-                {#                    <label for="id">Compost id:</label>#}
-                <label for="time">Daily Stirring Time:</label>
-                <input type="text" class="form-control" id="time" value="{{ context.daily_steering_time }}"
-                       name="time">
-                <br>
-                <label for="duration">Stirring Duration (Seconds):</label>
-                <input type="text" class="form-control" id="duration" value="{{ context.steering_duration }}"
-                       name="duration">
-                <br>
-                <label for="lsht">Lowest Soil Humidity Threshold (%):</label>
-                <input type="text" class="form-control" id="lsht" value="{{ context.lowest_soil_humidity }}"
-                       name="lsht">
-                <br>
-                <label for="hsht">Highest Soil Humidity Threshold (%):</label>
-                <input type="text" class="form-control" id="hsht" value="{{ context.highest_soil_humidity }}"
-                       name="hsht">
-                <br>
-                <label for="lstt">Lowest Soil Temperature Threshold (Celsius):</label>
-                <input type="text" class="form-control" id="lstt" value="{{ context.lowest_soil_temperature }}"
-                       name="lstt">
-                <br>
-                <label for="hahit">Highest Air Humidity Inside Threshold (%):</label>
-                <input type="text" class="form-control" id="hahit" value="{{ context.highest_air_humidity_inside }}"
-                       name="hahit">
-                <br>
-                <label for="usb">USB Port:</label>
-                <input type="text" class="form-control" id="usb" value="{{ context.usb_port }}"
-                       name="usb" readonly>
-                <br>
-                <label for="sleep">Sleep Time for Motors (Seconds):</label>
-                <input type="text" class="form-control" id="sleep" value="{{ context.sleep_time_for_motors }}"
-                       name="sleep">
-                <br>
-                <button class="btn btn-primary" type="submit" id="save_btn">Save All</button>
+                    {#                    <label for="id">Compost id:</label>#}
+                    <label for="time">Daily Stirring Time:</label>
+                    <input type="text" class="form-control" id="time" value="{{ context.daily_steering_time }}"
+                           name="time">
+                    <br>
+                    <label for="duration">Stirring Duration (Seconds):</label>
+                    <input type="text" class="form-control" id="duration" value="{{ context.steering_duration }}"
+                           name="duration">
+                    <br>
+                    <label for="lsht">Lowest Soil Humidity Threshold (%):</label>
+                    <input type="text" class="form-control" id="lsht" value="{{ context.lowest_soil_humidity }}"
+                           name="lsht">
+                    <br>
+                    <label for="hsht">Highest Soil Humidity Threshold (%):</label>
+                    <input type="text" class="form-control" id="hsht" value="{{ context.highest_soil_humidity }}"
+                           name="hsht">
+                    <br>
+                    <label for="lstt">Lowest Soil Temperature Threshold (Celsius):</label>
+                    <input type="text" class="form-control" id="lstt" value="{{ context.lowest_soil_temperature }}"
+                           name="lstt">
+                    <br>
+                    <label for="hahit">Highest Air Humidity Inside Threshold (%):</label>
+                    <input type="text" class="form-control" id="hahit" value="{{ context.highest_air_humidity_inside }}"
+                           name="hahit">
+                    <br>
+                    <label for="usb">USB Port:</label>
+                    <input type="text" class="form-control" id="usb" value="{{ context.usb_port }}"
+                           name="usb" readonly>
+                    <br>
+                    <label for="sleep">Sleep Time for Motors (Seconds):</label>
+                    <input type="text" class="form-control" id="sleep" value="{{ context.sleep_time_for_motors }}"
+                           name="sleep">
+                    <br>
+                    <button class="btn btn-primary" type="submit" id="save_btn">Save All</button>
+                </div>
+                <div class="col-sm-4">
+                    <label for="sb_time">Soil Backwards Time:</label>
+                    <input type="text" class="form-control" id="sb_time" value="{{ context.daily_soil_backward_time }}"
+                           name="sb_time">
+                    <br>
+                    <label for="mf_time">Motor Forward Duration (Seconds):</label>
+                    <input type="text" class="form-control" id="mf_time" value="{{ context.motor_F_duration }}"
+                           name="mf_time">
+                    <br>
+                    <label for="mb_time">Motor Backward Duration (Seconds):</label>
+                    <input type="text" class="form-control" id="mb_time" value="{{ context.motor_B_duration }}"
+                           name="mb_time">
+                    <br>
+                    <label for="mr_time">Motor Right Duration (Seconds):</label>
+                    <input type="text" class="form-control" id="mr_time" value="{{ context.motor_R_duration }}"
+                           name="mr_time">
+                    <br>
+                    <label for="ml_time">Motor Left Duration (Seconds):</label>
+                    <input type="text" class="form-control" id="ml_time" value="{{ context.motor_L_duration }}"
+                           name="ml_time">
+                    <br>
+                    <label for="vent_time">Ventilation Duration (Seconds):</label>
+                    <input type="text" class="form-control" id="vent_time" value="{{ context.vent_duration }}"
+                           name="vent_time">
+                    <br>
+                </div>
             </div>
-            <div class="col-sm-4">
-                <label for="sb_time">Soil Backwards Time:</label>
-                <input type="text" class="form-control" id="sb_time" value="{{ context.daily_soil_backward_time }}"
-                       name="sb_time">
-                <br>
-                <label for="mf_time">Motor Forward Duration (Seconds):</label>
-                <input type="text" class="form-control" id="mf_time" value="{{ context.motor_F_duration }}"
-                       name="mf_time">
-                <br>
-                <label for="mb_time">Motor Backward Duration (Seconds):</label>
-                <input type="text" class="form-control" id="mb_time" value="{{ context.motor_B_duration }}"
-                       name="mb_time">
-                <br>
-                <label for="mr_time">Motor Right Duration (Seconds):</label>
-                <input type="text" class="form-control" id="mr_time" value="{{ context.motor_R_duration }}"
-                       name="mr_time">
-                <br>
-                <label for="ml_time">Motor Left Duration (Seconds):</label>
-                <input type="text" class="form-control" id="ml_time" value="{{ context.motor_L_duration }}"
-                       name="ml_time">
-                <br>
-                <label for="vent_time">Ventilation Duration (Seconds):</label>
-                <input type="text" class="form-control" id="vent_time" value="{{ context.vent_duration }}"
-                       name="vent_time">
-                <br>
-            </div>
-        </div>
-    </form>
-</div>
+        </form>
+    </div>
 
 {% endblock %}
 
 {% block scripts %}
-<!-- Timepicker -->
+    <!-- Timepicker -->
     <script src="/static/vendors/timepicker/jquery.timepicker.min.js"></script>
 
     <script>

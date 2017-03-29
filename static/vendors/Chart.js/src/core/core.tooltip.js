@@ -1,6 +1,6 @@
 "use strict";
 
-module.exports = function(Chart) {
+module.exports = function (Chart) {
 
 	var helpers = Chart.helpers;
 
@@ -24,15 +24,15 @@ module.exports = function(Chart) {
 		footerAlign: "left",
 		yPadding: 6,
 		xPadding: 6,
-		yAlign : 'center',
-		xAlign : 'center',
+		yAlign: 'center',
+		xAlign: 'center',
 		caretSize: 5,
 		cornerRadius: 6,
 		multiKeyBackground: '#fff',
 		callbacks: {
 			// Args are: (tooltipItems, data)
 			beforeTitle: helpers.noop,
-			title: function(tooltipItems, data) {
+			title: function (tooltipItems, data) {
 				// Pick first xLabel for now
 				var title = '';
 
@@ -53,7 +53,7 @@ module.exports = function(Chart) {
 
 			// Args are: (tooltipItem, data)
 			beforeLabel: helpers.noop,
-			label: function(tooltipItem, data) {
+			label: function (tooltipItem, data) {
 				var datasetLabel = data.datasets[tooltipItem.datasetIndex].label || '';
 				return datasetLabel + ': ' + tooltipItem.yLabel;
 			},
@@ -83,7 +83,7 @@ module.exports = function(Chart) {
 	}
 
 	Chart.Tooltip = Chart.Element.extend({
-		initialize: function() {
+		initialize: function () {
 			var globalDefaults = Chart.defaults.global;
 			var options = this._options;
 			var tooltips = options.tooltips;
@@ -93,8 +93,8 @@ module.exports = function(Chart) {
 					// Positioning
 					xPadding: tooltips.xPadding,
 					yPadding: tooltips.yPadding,
-					xAlign : tooltips.yAlign,
-					yAlign : tooltips.xAlign,
+					xAlign: tooltips.yAlign,
+					yAlign: tooltips.xAlign,
 
 					// Body
 					bodyColor: tooltips.bodyColor,
@@ -134,7 +134,7 @@ module.exports = function(Chart) {
 
 		// Get the title
 		// Args are: (tooltipItem, data)
-		getTitle: function() {
+		getTitle: function () {
 			var beforeTitle = this._options.tooltips.callbacks.beforeTitle.apply(this, arguments),
 				title = this._options.tooltips.callbacks.title.apply(this, arguments),
 				afterTitle = this._options.tooltips.callbacks.afterTitle.apply(this, arguments);
@@ -148,16 +148,16 @@ module.exports = function(Chart) {
 		},
 
 		// Args are: (tooltipItem, data)
-		getBeforeBody: function() {
+		getBeforeBody: function () {
 			var lines = this._options.tooltips.callbacks.beforeBody.apply(this, arguments);
 			return helpers.isArray(lines) ? lines : lines !== undefined ? [lines] : [];
 		},
 
 		// Args are: (tooltipItem, data)
-		getBody: function(tooltipItems, data) {
+		getBody: function (tooltipItems, data) {
 			var lines = [];
 
-			helpers.each(tooltipItems, function(bodyItem) {
+			helpers.each(tooltipItems, function (bodyItem) {
 				helpers.pushAllIfDefined(this._options.tooltips.callbacks.beforeLabel.call(this, bodyItem, data), lines);
 				helpers.pushAllIfDefined(this._options.tooltips.callbacks.label.call(this, bodyItem, data), lines);
 				helpers.pushAllIfDefined(this._options.tooltips.callbacks.afterLabel.call(this, bodyItem, data), lines);
@@ -167,14 +167,14 @@ module.exports = function(Chart) {
 		},
 
 		// Args are: (tooltipItem, data)
-		getAfterBody: function() {
+		getAfterBody: function () {
 			var lines = this._options.tooltips.callbacks.afterBody.apply(this, arguments);
 			return helpers.isArray(lines) ? lines : lines !== undefined ? [lines] : [];
 		},
 
 		// Get the footer and beforeFooter and afterFooter lines
 		// Args are: (tooltipItem, data)
-		getFooter: function() {
+		getFooter: function () {
 			var beforeFooter = this._options.tooltips.callbacks.beforeFooter.apply(this, arguments);
 			var footer = this._options.tooltips.callbacks.footer.apply(this, arguments);
 			var afterFooter = this._options.tooltips.callbacks.afterFooter.apply(this, arguments);
@@ -187,7 +187,7 @@ module.exports = function(Chart) {
 			return lines;
 		},
 
-		getAveragePosition: function(elements) {
+		getAveragePosition: function (elements) {
 
 			if (!elements.length) {
 				return false;
@@ -196,8 +196,8 @@ module.exports = function(Chart) {
 			var xPositions = [];
 			var yPositions = [];
 
-			helpers.each(elements, function(el) {
-				if (el && el.hasValue()){
+			helpers.each(elements, function (el) {
+				if (el && el.hasValue()) {
 					var pos = el.tooltipPosition();
 					xPositions.push(pos.x);
 					yPositions.push(pos.y);
@@ -218,7 +218,7 @@ module.exports = function(Chart) {
 
 		},
 
-		update: function(changed) {
+		update: function (changed) {
 			if (this._active.length) {
 				this._model.opacity = 1;
 
@@ -238,7 +238,7 @@ module.exports = function(Chart) {
 					});
 					tooltipPosition = this.getAveragePosition(this._active);
 				} else {
-					helpers.each(this._data.datasets, function(dataset, datasetIndex) {
+					helpers.each(this._data.datasets, function (dataset, datasetIndex) {
 						if (!this._chartInstance.isDatasetVisible(datasetIndex)) {
 							return;
 						}
@@ -257,7 +257,7 @@ module.exports = function(Chart) {
 						}
 					}, this);
 
-					helpers.each(this._active, function(active) {
+					helpers.each(this._active, function (active) {
 						if (active) {
 							labelColors.push({
 								borderColor: active._view.borderColor,
@@ -320,20 +320,20 @@ module.exports = function(Chart) {
 
 			// Width
 			ctx.font = helpers.fontString(vm.titleFontSize, vm._titleFontStyle, vm._titleFontFamily);
-			helpers.each(vm.title, function(line) {
+			helpers.each(vm.title, function (line) {
 				size.width = Math.max(size.width, ctx.measureText(line).width);
 			});
 
 			ctx.font = helpers.fontString(vm.bodyFontSize, vm._bodyFontStyle, vm._bodyFontFamily);
-			helpers.each(vm.beforeBody.concat(vm.afterBody), function(line) {
+			helpers.each(vm.beforeBody.concat(vm.afterBody), function (line) {
 				size.width = Math.max(size.width, ctx.measureText(line).width);
 			});
-			helpers.each(vm.body, function(line) {
+			helpers.each(vm.body, function (line) {
 				size.width = Math.max(size.width, ctx.measureText(line).width + (this._options.tooltips.mode !== 'single' ? (vm.bodyFontSize + 2) : 0));
 			}, this);
 
 			ctx.font = helpers.fontString(vm.footerFontSize, vm._footerFontStyle, vm._footerFontFamily);
-			helpers.each(vm.footer, function(line) {
+			helpers.each(vm.footer, function (line) {
 				size.width = Math.max(size.width, ctx.measureText(line).width);
 			});
 			size.width += 2 * vm.xPadding;
@@ -355,28 +355,28 @@ module.exports = function(Chart) {
 			var midY = (this._chartInstance.chartArea.top + this._chartInstance.chartArea.bottom) / 2;
 
 			if (this._model.yAlign === 'center') {
-				lf = function(x) {
+				lf = function (x) {
 					return x <= midX;
 				};
-				rf = function(x) {
+				rf = function (x) {
 					return x > midX;
 				};
 			} else {
-				lf = function(x) {
+				lf = function (x) {
 					return x <= (size.width / 2);
 				};
-				rf = function(x) {
+				rf = function (x) {
 					return x >= (_this._chart.width - (size.width / 2));
 				};
 			}
 
-			olf = function(x) {
+			olf = function (x) {
 				return x + size.width > _this._chart.width;
 			};
-			orf = function(x) {
+			orf = function (x) {
 				return x - size.width < 0;
 			};
-			yf = function(y) {
+			yf = function (y) {
 				return y <= midY ? 'top' : 'bottom';
 			};
 
@@ -500,7 +500,7 @@ module.exports = function(Chart) {
 				ctx.fillStyle = titleColor.alpha(opacity * titleColor.alpha()).rgbString();
 				ctx.font = helpers.fontString(vm.titleFontSize, vm._titleFontStyle, vm._titleFontFamily);
 
-				helpers.each(vm.title, function(title, i) {
+				helpers.each(vm.title, function (title, i) {
 					ctx.fillText(title, pt.x, pt.y);
 					pt.y += vm.titleFontSize + vm.titleSpacing; // Line Height and spacing
 
@@ -519,12 +519,12 @@ module.exports = function(Chart) {
 			ctx.font = helpers.fontString(vm.bodyFontSize, vm._bodyFontStyle, vm._bodyFontFamily);
 
 			// Before Body
-			helpers.each(vm.beforeBody, function(beforeBody) {
+			helpers.each(vm.beforeBody, function (beforeBody) {
 				ctx.fillText(beforeBody, pt.x, pt.y);
 				pt.y += vm.bodyFontSize + vm.bodySpacing;
 			});
 
-			helpers.each(vm.body, function(body, i) {
+			helpers.each(vm.body, function (body, i) {
 				// Draw Legend-like boxes if needed
 				if (this._options.tooltips.mode !== 'single') {
 					// Fill a white rect so that colours merge nicely if the opacity is < 1
@@ -549,7 +549,7 @@ module.exports = function(Chart) {
 			}, this);
 
 			// After Body
-			helpers.each(vm.afterBody, function(afterBody) {
+			helpers.each(vm.afterBody, function (afterBody) {
 				ctx.fillText(afterBody, pt.x, pt.y);
 				pt.y += vm.bodyFontSize;
 			});
@@ -567,7 +567,7 @@ module.exports = function(Chart) {
 				ctx.fillStyle = footerColor.alpha(opacity * footerColor.alpha()).rgbString();
 				ctx.font = helpers.fontString(vm.footerFontSize, vm._footerFontStyle, vm._footerFontFamily);
 
-				helpers.each(vm.footer, function(footer) {
+				helpers.each(vm.footer, function (footer) {
 					ctx.fillText(footer, pt.x, pt.y);
 					pt.y += vm.footerFontSize + vm.footerSpacing;
 				});

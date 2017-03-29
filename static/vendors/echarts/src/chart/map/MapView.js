@@ -44,7 +44,7 @@ define(function (require) {
             }
 
             mapModel.get('showLegendSymbol') && ecModel.getComponent('legend')
-                && this._renderSymbols(mapModel, ecModel, api);
+            && this._renderSymbols(mapModel, ecModel, api);
         },
 
         remove: function () {

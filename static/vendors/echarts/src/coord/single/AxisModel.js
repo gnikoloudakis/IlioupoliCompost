@@ -2,7 +2,7 @@ define(function (require) {
 
     var ComponentModel = require('../../model/Component');
     var axisModelCreator = require('../axisModelCreator');
-    var zrUtil =  require('zrender/core/util');
+    var zrUtil = require('zrender/core/util');
 
     var AxisModel = ComponentModel.extend({
 

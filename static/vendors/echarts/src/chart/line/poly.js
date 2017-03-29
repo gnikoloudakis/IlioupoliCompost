@@ -19,10 +19,8 @@ define(function (require) {
         return isNaN(p[0]) || isNaN(p[1]);
     }
 
-    function drawSegment(
-        ctx, points, start, segLen, allLen,
-        dir, smoothMin, smoothMax, smooth, smoothMonotone, connectNulls
-    ) {
+    function drawSegment(ctx, points, start, segLen, allLen,
+                         dir, smoothMin, smoothMax, smooth, smoothMonotone, connectNulls) {
         var prevIdx = 0;
         var idx = start;
         for (var k = 0; k < segLen; k++) {
@@ -118,10 +116,18 @@ define(function (require) {
         if (smoothConstraint) {
             for (var i = 0; i < points.length; i++) {
                 var pt = points[i];
-                if (pt[0] < ptMin[0]) { ptMin[0] = pt[0]; }
-                if (pt[1] < ptMin[1]) { ptMin[1] = pt[1]; }
-                if (pt[0] > ptMax[0]) { ptMax[0] = pt[0]; }
-                if (pt[1] > ptMax[1]) { ptMax[1] = pt[1]; }
+                if (pt[0] < ptMin[0]) {
+                    ptMin[0] = pt[0];
+                }
+                if (pt[1] < ptMin[1]) {
+                    ptMin[1] = pt[1];
+                }
+                if (pt[0] > ptMax[0]) {
+                    ptMax[0] = pt[0];
+                }
+                if (pt[1] > ptMax[1]) {
+                    ptMax[1] = pt[1];
+                }
             }
         }
         return {
@@ -177,10 +183,10 @@ define(function (require) {
                 }
                 while (i < len) {
                     i += drawSegment(
-                        ctx, points, i, len, len,
-                        1, result.min, result.max, shape.smooth,
-                        shape.smoothMonotone, shape.connectNulls
-                    ) + 1;
+                            ctx, points, i, len, len,
+                            1, result.min, result.max, shape.smooth,
+                            shape.smoothMonotone, shape.connectNulls
+                        ) + 1;
                 }
             }
         }),

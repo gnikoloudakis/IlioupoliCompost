@@ -1,4 +1,4 @@
-define(function(require) {
+define(function (require) {
 
     var ComponentModel = require('../../model/Component');
     var zrUtil = require('zrender/core/util');

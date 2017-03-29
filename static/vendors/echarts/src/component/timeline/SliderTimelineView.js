@@ -531,9 +531,9 @@ define(function (require) {
             var timelineModel = this.model;
 
             if (trigger || (
-                targetDataIndex !== timelineModel.getCurrentIndex()
-                && timelineModel.get('realtime')
-            )) {
+                    targetDataIndex !== timelineModel.getCurrentIndex()
+                    && timelineModel.get('realtime')
+                )) {
                 this._changeTimeline(targetDataIndex);
             }
         },

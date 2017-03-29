@@ -349,10 +349,10 @@ define(function (require) {
                 var idAttr = mainType + 'Id';
                 var nameAttr = mainType + 'Name';
                 return q && (
-                        q.hasOwnProperty(indexAttr)
-                        || q.hasOwnProperty(idAttr)
-                        || q.hasOwnProperty(nameAttr)
-                    )
+                    q.hasOwnProperty(indexAttr)
+                    || q.hasOwnProperty(idAttr)
+                    || q.hasOwnProperty(nameAttr)
+                )
                     ? {
                         mainType: mainType,
                         // subType will be filtered finally.
@@ -365,8 +365,8 @@ define(function (require) {
 
             function doFilter(res) {
                 return condition.filter
-                     ? filter(res, condition.filter)
-                     : res;
+                    ? filter(res, condition.filter)
+                    : res;
             }
         },
 
@@ -674,8 +674,8 @@ define(function (require) {
             keyInfo.name = opt.name != null
                 ? opt.name + ''
                 : existCpt
-                ? existCpt.name
-                : '\0-';
+                    ? existCpt.name
+                    : '\0-';
 
             if (existCpt) {
                 keyInfo.id = existCpt.id;
@@ -707,9 +707,9 @@ define(function (require) {
         var subType = newCptOption.type
             ? newCptOption.type
             : existComponent
-            ? existComponent.subType
-            // Use determineSubType only when there is no existComponent.
-            : ComponentModel.determineSubType(mainType, newCptOption);
+                ? existComponent.subType
+                // Use determineSubType only when there is no existComponent.
+                : ComponentModel.determineSubType(mainType, newCptOption);
 
         // tooltip, markline, markpoint may always has no subType
         return subType;
@@ -720,8 +720,8 @@ define(function (require) {
      */
     function createSeriesIndices(seriesModels) {
         return map(seriesModels, function (series) {
-            return series.componentIndex;
-        }) || [];
+                return series.componentIndex;
+            }) || [];
     }
 
     /**

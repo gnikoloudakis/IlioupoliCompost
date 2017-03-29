@@ -128,8 +128,8 @@ define(function () {
      */
     lib.debounce = function (fn, delay) {
         return delay != null
-             ? lib.throttle(fn, delay, true, true)
-             : fn;
+            ? lib.throttle(fn, delay, true, true)
+            : fn;
     };
 
 

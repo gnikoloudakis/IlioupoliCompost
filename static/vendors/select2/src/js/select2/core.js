@@ -193,9 +193,9 @@ define([
     }
 
     var observer = window.MutationObserver ||
-      window.WebKitMutationObserver ||
-      window.MozMutationObserver
-    ;
+        window.WebKitMutationObserver ||
+        window.MozMutationObserver
+      ;
 
     if (observer != null) {
       this._observer = new observer(function (mutations) {
@@ -321,7 +321,7 @@ define([
 
       if (self.isOpen()) {
         if (key === KEYS.ESC || key === KEYS.TAB ||
-            (key === KEYS.UP && evt.altKey)) {
+          (key === KEYS.UP && evt.altKey)) {
           self.close();
 
           evt.preventDefault();
@@ -344,7 +344,7 @@ define([
         }
       } else {
         if (key === KEYS.ENTER || key === KEYS.SPACE ||
-            (key === KEYS.DOWN && evt.altKey)) {
+          (key === KEYS.DOWN && evt.altKey)) {
           self.open();
 
           evt.preventDefault();
@@ -510,7 +510,7 @@ define([
 
   Select2.prototype.data = function () {
     if (this.options.get('debug') &&
-        arguments.length > 0 && window.console && console.warn) {
+      arguments.length > 0 && window.console && console.warn) {
       console.warn(
         'Select2: Data can no longer be set using `select2("data")`. You ' +
         'should consider setting the value instead using `$element.val()`.'
@@ -592,8 +592,8 @@ define([
   Select2.prototype.render = function () {
     var $container = $(
       '<span class="select2 select2-container">' +
-        '<span class="selection"></span>' +
-        '<span class="dropdown-wrapper" aria-hidden="true"></span>' +
+      '<span class="selection"></span>' +
+      '<span class="dropdown-wrapper" aria-hidden="true"></span>' +
       '</span>'
     );
 

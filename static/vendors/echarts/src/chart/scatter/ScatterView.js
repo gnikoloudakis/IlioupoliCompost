@@ -27,7 +27,7 @@ define(function (require) {
 
             group.remove(
                 symbolDraw === largeSymbolDraw
-                ? normalSymbolDraw.group : largeSymbolDraw.group
+                    ? normalSymbolDraw.group : largeSymbolDraw.group
             );
         },
 

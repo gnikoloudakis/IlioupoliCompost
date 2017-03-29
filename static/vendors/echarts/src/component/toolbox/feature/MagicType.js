@@ -1,4 +1,4 @@
-define(function(require) {
+define(function (require) {
     'use strict';
 
     var zrUtil = require('zrender/core/util');
@@ -143,8 +143,8 @@ define(function(require) {
             {
                 mainType: 'series',
                 query: seriesIndex == null ? null : {
-                    seriesIndex: seriesIndex
-                }
+                        seriesIndex: seriesIndex
+                    }
             }, generateNewSeriesTypes
         );
         api.dispatchAction({

@@ -1,13 +1,13 @@
 "use strict";
 
-module.exports = function(Chart) {
+module.exports = function (Chart) {
 	var helpers = Chart.helpers;
 
 	// Plugins are stored here
 	Chart.plugins = [];
 	Chart.pluginService = {
 		// Register a new plugin
-		register: function(plugin) {
+		register: function (plugin) {
 			var p = Chart.plugins;
 			if (p.indexOf(plugin) === -1) {
 				p.push(plugin);
@@ -15,7 +15,7 @@ module.exports = function(Chart) {
 		},
 
 		// Remove a registered plugin
-		remove: function(plugin) {
+		remove: function (plugin) {
 			var p = Chart.plugins;
 			var idx = p.indexOf(plugin);
 			if (idx !== -1) {
@@ -24,8 +24,8 @@ module.exports = function(Chart) {
 		},
 
 		// Iterate over all plugins
-		notifyPlugins: function(method, args, scope) {
-			helpers.each(Chart.plugins, function(plugin) {
+		notifyPlugins: function (method, args, scope) {
+			helpers.each(Chart.plugins, function (plugin) {
 				if (plugin[method] && typeof plugin[method] === 'function') {
 					plugin[method].apply(scope, args);
 				}

@@ -8,7 +8,8 @@ define(function (require) {
 
         type: 'lines',
 
-        init: function () {},
+        init: function () {
+        },
 
         render: function (seriesModel, ecModel, api) {
             var data = seriesModel.getData();

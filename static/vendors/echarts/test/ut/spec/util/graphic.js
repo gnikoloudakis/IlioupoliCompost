@@ -1,4 +1,4 @@
-describe('util/graphic', function() {
+describe('util/graphic', function () {
 
     var utHelper = window.utHelper;
     var graphic;
@@ -34,12 +34,14 @@ describe('util/graphic', function() {
             function doSubPixelOptimizeLine(x, y, width, height, lineWidth) {
                 return graphic.subPixelOptimizeLine(makeParam(x, y, width, height, lineWidth));
             }
+
             function makeParam(x1, y1, x2, y2, lineWidth) {
                 return {
                     shape: {x1: x1, y1: y1, x2: x2, y2: y2},
                     style: {lineWidth: lineWidth}
                 };
             }
+
             expect(doSubPixelOptimizeLine(5, 11, 3, 7, 1)).toEqual(makeParam(5, 11, 3, 7, 1));
             expect(doSubPixelOptimizeLine(5, 11, 5, 7, 1)).toEqual(makeParam(5.5, 11, 5.5, 7, 1));
             expect(doSubPixelOptimizeLine(5, 11, 5, 7, 2)).toEqual(makeParam(5, 11, 5, 7, 2));
@@ -56,12 +58,14 @@ describe('util/graphic', function() {
             function doSubPixelOptimizeRect(x, y, width, height, lineWidth) {
                 return graphic.subPixelOptimizeRect(makeParam(x, y, width, height, lineWidth));
             }
+
             function makeParam(x, y, width, height, lineWidth) {
                 return {
                     shape: {x: x, y: y, width: width, height: height},
                     style: {lineWidth: lineWidth}
                 };
             }
+
             expect(doSubPixelOptimizeRect(5, 11, 3, 7, 1)).toEqual(makeParam(5.5, 11.5, 2, 6, 1));
             expect(doSubPixelOptimizeRect(5, 11, 3, 7, 2)).toEqual(makeParam(5, 11, 3, 7, 2));
             expect(doSubPixelOptimizeRect(5, 11, 3, 7, 3)).toEqual(makeParam(5.5, 11.5, 2, 6, 3));

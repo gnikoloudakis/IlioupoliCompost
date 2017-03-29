@@ -188,9 +188,10 @@ define(function (require) {
         var dataType;
         while (dimensions.length && (
             valueDim = dimensions.pop(),
-            dataType = data.getDimensionInfo(valueDim).type,
+                dataType = data.getDimensionInfo(valueDim).type,
             dataType === 'ordinal' || dataType === 'time'
-        )) {} // jshint ignore:line
+        )) {
+        } // jshint ignore:line
 
         if (valueDim != null && labelModel.get('show')) {
             graphic.setText(elStyle, labelModel, color);
@@ -224,7 +225,7 @@ define(function (require) {
         graphic.setHoverStyle(symbolPath, hoverStyle);
 
         if (itemModel.getShallow('hoverAnimation')) {
-            var onEmphasis = function() {
+            var onEmphasis = function () {
                 var ratio = size[1] / size[0];
                 this.animateTo({
                     scale: [
@@ -233,7 +234,7 @@ define(function (require) {
                     ]
                 }, 400, 'elasticOut');
             };
-            var onNormal = function() {
+            var onNormal = function () {
                 this.animateTo({
                     scale: size
                 }, 400, 'elasticOut');

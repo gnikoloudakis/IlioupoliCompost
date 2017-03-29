@@ -43,10 +43,10 @@ define(function (require) {
                 //     }
                 // }
                 // if (!n.p) {
-                    n.p = vec2.create(
-                        width * (Math.random() - 0.5) + center[0],
-                        height * (Math.random() - 0.5) + center[1]
-                    );
+                n.p = vec2.create(
+                    width * (Math.random() - 0.5) + center[0],
+                    height * (Math.random() - 0.5) + center[1]
+                );
                 // }
             }
             n.pp = vec2.clone(n.p);

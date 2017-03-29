@@ -10,7 +10,7 @@ define(function (require) {
     require('./radar/RadarView');
 
     echarts.registerVisualCoding(
-        'chart',  zrUtil.curry(require('../visual/dataColor'), 'radar')
+        'chart', zrUtil.curry(require('../visual/dataColor'), 'radar')
     );
     echarts.registerVisualCoding('chart', zrUtil.curry(
         require('../visual/symbol'), 'radar', 'circle', null

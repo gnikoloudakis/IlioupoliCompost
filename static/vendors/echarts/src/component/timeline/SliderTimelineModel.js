@@ -1,7 +1,7 @@
 /**
  * @file Silder timeline model
  */
-define(function(require) {
+define(function (require) {
 
     var TimelineModel = require('./TimelineModel');
     var zrUtil = require('zrender/core/util');

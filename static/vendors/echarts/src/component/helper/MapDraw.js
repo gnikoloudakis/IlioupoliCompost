@@ -20,27 +20,27 @@ define(function (require) {
     function updateMapSelectHandler(mapOrGeoModel, group, api, fromView) {
         group.off('click');
         mapOrGeoModel.get('selectedMode')
-            && group.on('click', function (e) {
-                var el = e.target;
-                while (!el.__region) {
-                    el = el.parent;
-                }
-                if (!el) {
-                    return;
-                }
+        && group.on('click', function (e) {
+            var el = e.target;
+            while (!el.__region) {
+                el = el.parent;
+            }
+            if (!el) {
+                return;
+            }
 
-                var region = el.__region;
-                var action = {
-                    type: (mapOrGeoModel.mainType === 'geo' ? 'geo' : 'map') + 'ToggleSelect',
-                    name: region.name,
-                    from: fromView.uid
-                };
-                action[mapOrGeoModel.mainType + 'Id'] = mapOrGeoModel.id;
+            var region = el.__region;
+            var action = {
+                type: (mapOrGeoModel.mainType === 'geo' ? 'geo' : 'map') + 'ToggleSelect',
+                name: region.name,
+                from: fromView.uid
+            };
+            action[mapOrGeoModel.mainType + 'Id'] = mapOrGeoModel.id;
 
-                api.dispatchAction(action);
+            api.dispatchAction(action);
 
-                updateMapSelected(mapOrGeoModel, group);
-            });
+            updateMapSelected(mapOrGeoModel, group);
+        });
     }
 
     function updateMapSelected(mapOrGeoModel, group) {
@@ -179,8 +179,8 @@ define(function (require) {
                 // 4. Region has no series legendSymbol, which will be add a showLabel flag in mapSymbolLayout
                 if (
                     (!data || isDataNaN && (showLabel || hoverShowLabel))
-                 || (itemLayout && itemLayout.showLabel)
-                 ) {
+                    || (itemLayout && itemLayout.showLabel)
+                ) {
                     var query = data ? dataIdx : region.name;
                     var formattedStr = mapOrGeoModel.getFormattedLabel(query, 'normal');
                     var hoverFormattedStr = mapOrGeoModel.getFormattedLabel(query, 'emphasis');
@@ -259,6 +259,7 @@ define(function (require) {
                 action[mainType + 'Id'] = mapOrGeoModel.id;
                 return action;
             }
+
             controller.off('pan')
                 .on('pan', function (dx, dy) {
                     api.dispatchAction(zrUtil.extend(makeActionBase(), {

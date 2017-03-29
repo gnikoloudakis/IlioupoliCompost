@@ -1,8 +1,9 @@
 import requests
 import serial
+
 import Compost
 from Compost import app
-from modules.DatabaseFunctions import addError
+from modules.DatabaseFunctions import addError, addLog
 from modules.SetupFlags import readFlags
 
 
@@ -302,7 +303,7 @@ def StirBackward():
         success = True
     else:
         app.logger.error("Could not Stir BACKWARD")
-        addError("[StirForward] Could NOT Stir BACKWARD")
+        addError("[StirBackward] Could NOT Stir BACKWARD")
     return success
 
 
@@ -313,7 +314,7 @@ def StirRight():
         success = True
     else:
         app.logger.error("Could not Stir RIGHT")
-        addError("[StirForward] Could NOT Stir RIGHT")
+        addError("[StirRight] Could NOT Stir RIGHT")
     return success
 
 
@@ -324,7 +325,7 @@ def StirLeft():
         success = True
     else:
         app.logger.error("Could not Stir LEFT")
-        addError("[StirForward] Could NOT Stir LEFT")
+        addError("[StirLeft] Could NOT Stir LEFT")
     return success
 
 
@@ -332,10 +333,11 @@ def StopMotors():
     success = False
     if Motor_1_Stop() and Motor_2_Stop():
         app.logger.debug("ALL motors STOPPED")
+        addLog("[StopMotors] Motors STOPPED")
         success = True
     else:
         app.logger.error("Could NOT Stop motors")
-        addError("[StirForward] Could NOT Stop motors")
+        addError("[StopMotors] Could NOT Stop motors")
     return success
 
 #############################################################################################

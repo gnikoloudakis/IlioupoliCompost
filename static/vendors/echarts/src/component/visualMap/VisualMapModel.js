@@ -1,7 +1,7 @@
 /**
  * @file Data zoom model
  */
-define(function(require) {
+define(function (require) {
 
     var zrUtil = require('zrender/core/util');
     var env = require('zrender/core/env');
@@ -52,8 +52,8 @@ define(function(require) {
             zlevel: 0,
             z: 4,
 
-                                    // set min: 0, max: 200, only for campatible with ec2.
-                                    // In fact min max should not have default value.
+            // set min: 0, max: 200, only for campatible with ec2.
+            // In fact min max should not have default value.
             min: 0,                 // min value, must specified if pieces is not specified.
             max: 200,               // max value, must specified if pieces is not specified.
 
@@ -174,7 +174,7 @@ define(function(require) {
          * @return {string}
          * @protected
          */
-        formatValueText: function(value, isCategory) {
+        formatValueText: function (value, isCategory) {
             var option = this.option;
             var precision = option.precision;
             var dataBound = this.dataBound;
@@ -190,8 +190,8 @@ define(function(require) {
             textValue = isCategory
                 ? value
                 : (isMinMax
-                    ? [toFixed(value[0]), toFixed(value[1])]
-                    : toFixed(value)
+                        ? [toFixed(value[0]), toFixed(value[1])]
+                        : toFixed(value)
                 );
 
             if (zrUtil.isString(formatter)) {
@@ -224,8 +224,8 @@ define(function(require) {
                 return val === dataBound[0]
                     ? 'min'
                     : val === dataBound[1]
-                    ? 'max'
-                    : (+val).toFixed(precision);
+                        ? 'max'
+                        : (+val).toFixed(precision);
             }
         },
 
@@ -296,8 +296,8 @@ define(function(require) {
                 each(this.stateList, function (state) {
 
                     var mappings = visualMappings[state] || (
-                        visualMappings[state] = createMappings()
-                    );
+                            visualMappings[state] = createMappings()
+                        );
                     var visaulOption = this.option[baseAttr][state] || {};
 
                     each(visaulOption, function (visualData, visualType) {
@@ -324,7 +324,8 @@ define(function(require) {
             }
 
             function createMappings() {
-                var Creater = function () {};
+                var Creater = function () {
+                };
                 // Make sure hidden fields will not be visited by
                 // object iteration (with hasOwnProperty checking).
                 Creater.prototype.__hidden = Creater.prototype;

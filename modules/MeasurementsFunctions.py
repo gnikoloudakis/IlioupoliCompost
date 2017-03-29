@@ -30,11 +30,23 @@ def drop():
     return success
 
 
-def get(jsondata):
+def get(m_type):
     success = False
     m = []
     try:
-        m = Measurements.objects(m_type=jsondata).order_by("timestamp")
+        m = Measurements.objects(m_type=m_type).order_by("timestamp")
+    except Exception as e:
+        app.logger.error("error while getting measurements : ", e)
+    else:
+        success = True
+    return success, json.dumps(m)
+
+
+def getLast(m_type):
+    success = False
+    m = []
+    try:
+        m = Measurements.objects(m_type=m_type).order_by("-timestamp").first()
     except Exception as e:
         app.logger.error("error while getting measurements : ", e)
     else:

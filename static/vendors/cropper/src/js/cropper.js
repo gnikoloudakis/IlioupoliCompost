@@ -1,4 +1,4 @@
-  function Cropper(element, options) {
+function Cropper(element, options) {
     this.$element = $(element);
     this.options = $.extend({}, Cropper.DEFAULTS, $.isPlainObject(options) && options);
     this.isLoaded = false;
@@ -15,4 +15,4 @@
     this.canvas = null;
     this.cropBox = null;
     this.init();
-  }
+}

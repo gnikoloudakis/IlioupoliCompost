@@ -1,6 +1,6 @@
 // Tests for the line element
-describe('Line element tests', function() {
-	it('should be constructed', function() {
+describe('Line element tests', function () {
+	it('should be constructed', function () {
 		var line = new Chart.elements.Line({
 			_datasetindex: 2,
 			_points: [1, 2, 3, 4]
@@ -11,7 +11,7 @@ describe('Line element tests', function() {
 		expect(line._points).toEqual([1, 2, 3, 4]);
 	});
 
-	it('should draw with default settings', function() {
+	it('should draw with default settings', function () {
 		var mockContext = window.createMockContext();
 
 		// Create our points
@@ -126,7 +126,7 @@ describe('Line element tests', function() {
 		}]);
 	});
 
-	it('should draw with custom settings', function() {
+	it('should draw with custom settings', function () {
 		var mockContext = window.createMockContext();
 
 		// Create our points
@@ -283,7 +283,7 @@ describe('Line element tests', function() {
 		expect(mockContext.getCalls()).toEqual(expected);
 	});
 
-	it ('should skip points correctly', function() {
+	it('should skip points correctly', function () {
 		var mockContext = window.createMockContext();
 
 		// Create our points
@@ -368,17 +368,17 @@ describe('Line element tests', function() {
 			name: 'bezierCurveTo',
 			args: [0, 10, 5, 0, 5, 0]
 		}, {
- 			name: 'lineTo',
- 			args: [5, 2]
+			name: 'lineTo',
+			args: [5, 2]
 		}, {
 			name: 'moveTo',
 			args: [19, 2]
 		}, {
- 			name: 'lineTo',
- 			args: [19, -5]
+			name: 'lineTo',
+			args: [19, -5]
 		}, {
- 			name: 'lineTo',
- 			args: [19, 2]
+			name: 'lineTo',
+			args: [19, 2]
 		}, {
 			name: 'lineTo',
 			args: [0, 2]
@@ -421,11 +421,11 @@ describe('Line element tests', function() {
 			name: 'bezierCurveTo',
 			args: [0, 10, 5, 0, 5, 0]
 		}, {
- 			name: 'moveTo',
- 			args: [19, -5]
+			name: 'moveTo',
+			args: [19, -5]
 		}, {
- 			name: 'moveTo',
- 			args: [19, -5]
+			name: 'moveTo',
+			args: [19, -5]
 		}, {
 			name: 'stroke',
 			args: [],
@@ -436,7 +436,7 @@ describe('Line element tests', function() {
 		expect(mockContext.getCalls()).toEqual(expected);
 	});
 
-	it('should be able to draw with a loop back to the beginning point', function() {
+	it('should be able to draw with a loop back to the beginning point', function () {
 		var mockContext = window.createMockContext();
 
 		// Create our points
@@ -590,7 +590,7 @@ describe('Line element tests', function() {
 		}]);
 	});
 
-	it('should be able to draw with a loop back to the beginning point when there is a skip in the middle of the dataset', function() {
+	it('should be able to draw with a loop back to the beginning point when there is a skip in the middle of the dataset', function () {
 		var mockContext = window.createMockContext();
 
 		// Create our points
@@ -745,7 +745,7 @@ describe('Line element tests', function() {
 		}]);
 	});
 
-	it('should be able to draw with a loop back to the beginning point when the first point is skipped', function() {
+	it('should be able to draw with a loop back to the beginning point when the first point is skipped', function () {
 		var mockContext = window.createMockContext();
 
 		// Create our points
@@ -894,7 +894,7 @@ describe('Line element tests', function() {
 		}]);
 	});
 
-	it('should be able to draw with a loop back to the beginning point when the last point is skipped', function() {
+	it('should be able to draw with a loop back to the beginning point when the last point is skipped', function () {
 		var mockContext = window.createMockContext();
 
 		// Create our points

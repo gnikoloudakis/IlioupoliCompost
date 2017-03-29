@@ -58,8 +58,8 @@ define(function (require) {
                         seriesModel, targetInfo, viewRoot, containerWidth, containerHeight
                     )
                     : rootRect
-                    ? [rootRect.width, rootRect.height]
-                    : [containerWidth, containerHeight];
+                        ? [rootRect.width, rootRect.height]
+                        : [containerWidth, containerHeight];
 
                 var sort = seriesOption.sort;
                 if (sort && sort !== 'asc' && sort !== 'desc') {
@@ -280,7 +280,7 @@ define(function (require) {
         for (var i = len - 1; i >= 0; i--) {
             var value = orderedChildren[
                 orderBy === 'asc' ? len - i - 1 : i
-            ].getValue();
+                ].getValue();
 
             if (value / sum * totalArea < visibleMin) {
                 deletePoint = i;
@@ -302,7 +302,7 @@ define(function (require) {
         if (orderBy) {
             viewChildren.sort(function (a, b) {
                 return orderBy === 'asc'
-                    ?  a.getValue() - b.getValue() : b.getValue() - a.getValue();
+                    ? a.getValue() - b.getValue() : b.getValue() - a.getValue();
             });
         }
         return viewChildren;

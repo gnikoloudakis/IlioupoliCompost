@@ -6,24 +6,24 @@
     <script src="../dist/Chart.bundle.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <style>
-    canvas {
-        -moz-user-select: none;
-        -webkit-user-select: none;
-        -ms-user-select: none;
-    }
+        canvas {
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+        }
     </style>
 </head>
 
 <body>
-    <div style="width:75%;">
-        <canvas id="canvas"></canvas>
-    </div>
-    <button id="randomizeData">Randomize Data</button>
-    <script>
-    var randomScalingFactor = function() {
+<div style="width:75%;">
+    <canvas id="canvas"></canvas>
+</div>
+<button id="randomizeData">Randomize Data</button>
+<script>
+    var randomScalingFactor = function () {
         return Math.round(Math.random() * 100 * (Math.random() > 0.5 ? -1 : 1));
     };
-    var randomColor = function(opacity) {
+    var randomColor = function (opacity) {
         return 'rgba(' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + (opacity || '.3') + ')';
     };
 
@@ -40,7 +40,7 @@
         }]
     };
 
-    $.each(lineChartData.datasets, function(i, dataset) {
+    $.each(lineChartData.datasets, function (i, dataset) {
         dataset.borderColor = randomColor(0.4);
         dataset.backgroundColor = randomColor(1);
         dataset.pointBorderColor = randomColor(0.7);
@@ -48,7 +48,7 @@
         dataset.pointBorderWidth = 1;
     });
 
-    window.onload = function() {
+    window.onload = function () {
         var ctx = document.getElementById("canvas").getContext("2d");
         window.myLine = Chart.Line(ctx, {
             data: lineChartData,
@@ -56,9 +56,9 @@
                 responsive: true,
                 hoverMode: 'label',
                 stacked: false,
-                title:{
-                    display:true,
-                    text:'Chart.js Line Chart - Multi Axis'
+                title: {
+                    display: true,
+                    text: 'Chart.js Line Chart - Multi Axis'
                 },
                 scales: {
                     xAxes: [{
@@ -88,14 +88,14 @@
         });
     };
 
-    $('#randomizeData').click(function() {
+    $('#randomizeData').click(function () {
         lineChartData.datasets[0].data = [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()];
 
         lineChartData.datasets[1].data = [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()];
 
         window.myLine.update();
     });
-    </script>
+</script>
 </body>
 
 </html>

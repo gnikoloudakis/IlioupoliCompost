@@ -1,15 +1,15 @@
 // Test the bar controller
-describe('Doughnut controller tests', function() {
+describe('Doughnut controller tests', function () {
 
-	beforeEach(function() {
+	beforeEach(function () {
 		window.addDefaultMatchers(jasmine);
 	});
 
-	afterEach(function() {
+	afterEach(function () {
 		window.releaseAllCharts();
 	});
 
-	it('should be constructed', function() {
+	it('should be constructed', function () {
 		var chart = window.acquireChart({
 			type: 'doughnut',
 			data: {
@@ -30,7 +30,7 @@ describe('Doughnut controller tests', function() {
 		expect(meta.controller.index).toBe(1);
 	});
 
-	it('should create arc elements for each data item during initialization', function() {
+	it('should create arc elements for each data item during initialization', function () {
 		var chart = window.acquireChart({
 			type: 'doughnut',
 			data: {
@@ -49,7 +49,7 @@ describe('Doughnut controller tests', function() {
 		expect(meta.data[3] instanceof Chart.elements.Arc).toBe(true);
 	});
 
-	it ('should reset and update elements', function() {
+	it('should reset and update elements', function () {
 		var chart = window.acquireChart({
 			type: 'doughnut',
 			data: {
@@ -88,11 +88,11 @@ describe('Doughnut controller tests', function() {
 
 		expect(meta.data.length).toBe(4);
 
-		[	{ c: 0 },
-			{ c: 0 },
-			{ c: 0,           },
-			{ c: 0 }
-		].forEach(function(expected, i) {
+		[{c: 0},
+			{c: 0},
+			{c: 0,},
+			{c: 0}
+		].forEach(function (expected, i) {
 			expect(meta.data[i]._model.x).toBeCloseToPixel(256);
 			expect(meta.data[i]._model.y).toBeCloseToPixel(272);
 			expect(meta.data[i]._model.outerRadius).toBeCloseToPixel(239);
@@ -111,11 +111,11 @@ describe('Doughnut controller tests', function() {
 
 		chart.update();
 
-		[	{ c: 1.7453292519, s: -1.5707963267, e: 0.1745329251 },
-			{ c: 2.0943951023, s:  0.1745329251, e: 2.2689280275 },
-			{ c: 0,            s:  2.2689280275, e: 2.2689280275 },
-			{ c: 2.4434609527, s:  2.2689280275, e: 4.7123889803 }
-		].forEach(function(expected, i) {
+		[{c: 1.7453292519, s: -1.5707963267, e: 0.1745329251},
+			{c: 2.0943951023, s: 0.1745329251, e: 2.2689280275},
+			{c: 0, s: 2.2689280275, e: 2.2689280275},
+			{c: 2.4434609527, s: 2.2689280275, e: 4.7123889803}
+		].forEach(function (expected, i) {
 			expect(meta.data[i]._model.x).toBeCloseToPixel(256);
 			expect(meta.data[i]._model.y).toBeCloseToPixel(272);
 			expect(meta.data[i]._model.outerRadius).toBeCloseToPixel(239);
@@ -151,7 +151,7 @@ describe('Doughnut controller tests', function() {
 		expect(meta.data[3] instanceof Chart.elements.Arc).toBe(true);
 	});
 
-	it ('should rotate and limit circumference', function() {
+	it('should rotate and limit circumference', function () {
 		var chart = window.acquireChart({
 			type: 'doughnut',
 			data: {
@@ -185,20 +185,20 @@ describe('Doughnut controller tests', function() {
 		expect(meta.data.length).toBe(2);
 
 		// Only startAngle, endAngle and circumference should be different.
-		[	{ c:     Math.PI / 8, s: Math.PI,               e: Math.PI + Math.PI / 8 },
-			{ c: 3 * Math.PI / 8, s: Math.PI + Math.PI / 8, e: Math.PI + Math.PI / 2 }
-		].forEach(function(expected, i) {
+		[{c: Math.PI / 8, s: Math.PI, e: Math.PI + Math.PI / 8},
+			{c: 3 * Math.PI / 8, s: Math.PI + Math.PI / 8, e: Math.PI + Math.PI / 2}
+		].forEach(function (expected, i) {
 			expect(meta.data[i]._model.x).toBeCloseToPixel(495);
 			expect(meta.data[i]._model.y).toBeCloseToPixel(511);
 			expect(meta.data[i]._model.outerRadius).toBeCloseToPixel(478);
 			expect(meta.data[i]._model.innerRadius).toBeCloseToPixel(359);
-			expect(meta.data[i]._model.circumference).toBeCloseTo(expected.c,8);
+			expect(meta.data[i]._model.circumference).toBeCloseTo(expected.c, 8);
 			expect(meta.data[i]._model.startAngle).toBeCloseTo(expected.s, 8);
 			expect(meta.data[i]._model.endAngle).toBeCloseTo(expected.e, 8);
 		})
 	});
 
-	it ('should draw all arcs', function() {
+	it('should draw all arcs', function () {
 		var chart = window.acquireChart({
 			type: 'doughnut',
 			data: {
@@ -224,7 +224,7 @@ describe('Doughnut controller tests', function() {
 		expect(meta.data[3].draw.calls.count()).toBe(1);
 	});
 
-	it ('should set the hover style of an arc', function() {
+	it('should set the hover style of an arc', function () {
 		var chart = window.acquireChart({
 			type: 'doughnut',
 			data: {
@@ -285,7 +285,7 @@ describe('Doughnut controller tests', function() {
 		expect(arc._model.borderWidth).toBe(3.14159);
 	});
 
-	it ('should unset the hover style of an arc', function() {
+	it('should unset the hover style of an arc', function () {
 		var chart = window.acquireChart({
 			type: 'doughnut',
 			data: {

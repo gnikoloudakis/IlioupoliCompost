@@ -21,7 +21,7 @@ define(function (require) {
     }]);
 
     echarts.registerVisualCoding(
-        'chart',  zrUtil.curry(require('../visual/dataColor'), 'pie')
+        'chart', zrUtil.curry(require('../visual/dataColor'), 'pie')
     );
 
     echarts.registerLayout(zrUtil.curry(

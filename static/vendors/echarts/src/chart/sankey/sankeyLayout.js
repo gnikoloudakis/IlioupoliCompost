@@ -109,8 +109,8 @@ define(function (require) {
      */
     function moveSinksRight(nodes, x) {
         zrUtil.each(nodes, function (node) {
-            if(!node.outEdges.length) {
-                node.setLayout({x: x-1}, true);
+            if (!node.outEdges.length) {
+                node.setLayout({x: x - 1}, true);
             }
         });
     }
@@ -121,7 +121,7 @@ define(function (require) {
      * @param {number} kx
      */
     function scaleNodeBreadths(nodes, kx) {
-        zrUtil.each(nodes, function(node) {
+        zrUtil.each(nodes, function (node) {
             var nodeX = node.getLayout().x * kx;
             node.setLayout({x: nodeX}, true);
         });
@@ -174,7 +174,7 @@ define(function (require) {
             zrUtil.each(nodes, function (node) {
                 sum += node.getLayout().value;
             });
-            var ky = (height - (n-1) * nodeGap) / sum;
+            var ky = (height - (n - 1) * nodeGap) / sum;
             kyArray.push(ky);
         });
         kyArray.sort(function (a, b) {
@@ -215,7 +215,7 @@ define(function (require) {
             for (i = 0; i < n; i++) {
                 node = nodes[i];
                 dy = y0 - node.getLayout().y;
-                if(dy > 0) {
+                if (dy > 0) {
                     var nodeY = node.getLayout().y + dy;
                     node.setLayout({y: nodeY}, true);
                 }
@@ -225,7 +225,7 @@ define(function (require) {
             // if the bottommost node goes outside the biunds, push it back up
             dy = y0 - nodeGap - height;
             if (dy > 0) {
-                var nodeY = node.getLayout().y -dy;
+                var nodeY = node.getLayout().y - dy;
                 node.setLayout({y: nodeY}, true);
                 y0 = node.getLayout().y;
                 for (i = n - 2; i >= 0; --i) {
@@ -330,7 +330,7 @@ define(function (require) {
         else {
             while (++i < n) {
                 a = +f.call(array, array[i], i);
-                if(!isNaN(a)) {
+                if (!isNaN(a)) {
                     s += a;
                 }
             }

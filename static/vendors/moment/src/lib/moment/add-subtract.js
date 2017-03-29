@@ -1,8 +1,8 @@
-import { get, set } from './get-set';
-import { setMonth } from '../units/month';
-import { createDuration } from '../duration/create';
-import { deprecateSimple } from '../utils/deprecate';
-import { hooks } from '../utils/hooks';
+import {get, set} from './get-set';
+import {setMonth} from '../units/month';
+import {createDuration} from '../duration/create';
+import {deprecateSimple} from '../utils/deprecate';
+import {hooks} from '../utils/hooks';
 import absRound from '../utils/abs-round';
 
 
@@ -12,8 +12,10 @@ function createAdder(direction, name) {
         var dur, tmp;
         //invert the arguments, but complain about it
         if (period !== null && !isNaN(+period)) {
-            deprecateSimple(name, 'moment().' + name  + '(period, number) is deprecated. Please use moment().' + name + '(number, period).');
-            tmp = val; val = period; period = tmp;
+            deprecateSimple(name, 'moment().' + name + '(period, number) is deprecated. Please use moment().' + name + '(number, period).');
+            tmp = val;
+            val = period;
+            period = tmp;
         }
 
         val = typeof val === 'string' ? +val : val;
@@ -23,7 +25,7 @@ function createAdder(direction, name) {
     };
 }
 
-export function addSubtract (mom, duration, isAdding, updateOffset) {
+export function addSubtract(mom, duration, isAdding, updateOffset) {
     var milliseconds = duration._milliseconds,
         days = absRound(duration._days),
         months = absRound(duration._months);
@@ -49,6 +51,6 @@ export function addSubtract (mom, duration, isAdding, updateOffset) {
     }
 }
 
-export var add      = createAdder(1, 'add');
+export var add = createAdder(1, 'add');
 export var subtract = createAdder(-1, 'subtract');
 

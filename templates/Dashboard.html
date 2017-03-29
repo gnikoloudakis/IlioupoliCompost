@@ -49,51 +49,83 @@
     </div>
 {% endblock %}
 {% block scripts %}
-    <script src="/static/js/socket.io.js"></script>
+    <script>
+        $(document).ready(function () {
+            setInterval(function () {
+                $.getJSON("/api/measurements/get/last/" + 'outside_temp', function (data) {
+                    $("#Temp").html(data.m_value.toFixed(2) + ' °C').toString();
+                });
+                $.getJSON("/api/measurements/get/last/" + 'outside_hum', function (data) {
+                    $("#Hum").html(data.m_value.toFixed(2) + ' %').toString();
+                });
+                $.getJSON("/api/measurements/get/last/" + 'outside_light', function (data) {
+                    $("#sun").html(data.m_value.toFixed(2) + ' %').toString();
+                });
+                $.getJSON("/api/measurements/get/last/" + 'air_temp', function (data) {
+                    $("#temp_in").html(data.m_value.toFixed(2) + ' %').toString();
+                });
+                $.getJSON("/api/measurements/get/last/" + 'air_hum', function (data) {
+                    $("#hum_in").html(data.m_value.toFixed(2) + ' %').toString();
+                });
+                $.getJSON("/api/measurements/get/last/" + 'soil_hum', function (data) {
+                    $("#soil_hum").html(data.m_value.toFixed(2) + ' %').toString();
+                });
+                $.getJSON("/api/measurements/get/last/" + 'soil_temp', function (data) {
+                    $("#soil_temp").html(data.m_value.toFixed(2) + ' %').toString();
+                });
 
-    <script type="text/javascript">
-        var socket = io.connect('http://' + document.domain + ':' + location.port);
-        socket.on('vent', function (data) {
-            $("#Vent").html(function () {
-                if (!!parseInt(data['variables']['Vent'])) {
-                    $("#Vent").css("color", "green");
-                    return "True"
-                }
-                else {
-                    $("#Vent").css("color", "red");
-                    return "False"
-                }
-            });
-            $("#Fan").html(function () {
-                if (!!parseInt(data['variables']['Fan'])) {
-                    $("#Fan").css("color", "green");
-                    return "True"
-                }
-                else {
-                    $("#Fan").css("color", "red");
-                    return "False"
-                }
-            });
-            $("#door").html(function () {
-                if (!!parseInt(data['variables']['Door_1'])) {
-                    $("#door").css("color", "green");
-                    return "True"
-                }
-                else {
-                    $("#door").css("color", "red");
-                    return "False"
-                }
-            });
-            $("#motors").html(function () {
-                if (!!parseInt(data['variables']['Motor_F']) || !!parseInt(data['variables']['Motor_B']) || !!parseInt(data['variables']['Motor_L']) || !!parseInt(data['variables']['Motor_R'])) {
-                    $("#motors").css("color", "green");
-                    return "True"
-                }
-                else {
-                    $("#motors").css("color", "red");
-                    return "False"
-                }
-            });
+                $.getJSON("/api/flags/get", function (data) {
+                    $("#Vent").html(function () {
+                        if (!!parseInt(data.Vent)) {
+                            $("#Vent").css("color", "green");
+                            return "True"
+                        }
+                        else {
+                            $("#Vent").css("color", "red");
+                            return "False"
+                        }
+                    });
+                    $("#Fan").html(function () {
+                        if (!!parseInt(data.Fan)) {
+                            $("#Fan").css("color", "green");
+                            return "True"
+                        }
+                        else {
+                            $("#Fan").css("color", "red");
+                            return "False"
+                        }
+                    });
+                    $("#door").html(function () {
+                        if (!!parseInt(data.Door)) {
+                            $("#door").css("color", "green");
+                            return "True"
+                        }
+                        else {
+                            $("#door").css("color", "red");
+                            return "False"
+                        }
+                    });
+                    $("#motors").html(function () {
+                        if (!!parseInt(data.Motor_1) || !!parseInt(data.Motor_2)) {
+                            $("#motors").css("color", "green");
+                            return "True"
+                        }
+                        else {
+                            $("#motors").css("color", "red");
+                            return "False"
+                        }
+                    });
+                });
+                console.log('refresh values');
+            }, 5000);
         });
     </script>
+    {#    <script type="text/javascript">#}
+    {#        var socket = io.connect('http://' + document.domain + ':' + location.port);#}
+    {#        var socket = io.connect('http://localhost:5000');#}
+    {#        socket.on('meas', function (data) {#}
+    {#            console.log(data);#}
+    {##}
+    {#        });#}
+    {#    </script>#}
 {% endblock %}

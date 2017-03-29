@@ -1,5 +1,5 @@
 // TODO boundaryGap
-define(function(require) {
+define(function (require) {
     'use strict';
 
     require('../coord/cartesian/AxisModel');

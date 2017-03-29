@@ -74,7 +74,7 @@ define(function (require) {
             if (seriesType === 'gauge') {
                 var pointerColor = get(seriesOpt, 'pointer.color');
                 pointerColor != null
-                    && set(seriesOpt, 'itemStyle.normal.color', pointerColor);
+                && set(seriesOpt, 'itemStyle.normal.color', pointerColor);
             }
 
             for (var i = 0; i < COMPATITABLE_SERIES.length; i++) {

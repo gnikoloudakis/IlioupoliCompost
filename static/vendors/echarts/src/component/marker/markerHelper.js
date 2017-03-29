@@ -19,9 +19,7 @@ define(function (require) {
         return precision;
     }
 
-    function markerTypeCalculatorWithExtent(
-        mlType, data, baseDataDim, valueDataDim, baseCoordIndex, valueCoordIndex
-    ) {
+    function markerTypeCalculatorWithExtent(mlType, data, baseDataDim, valueDataDim, baseCoordIndex, valueCoordIndex) {
         var coordArr = [];
         var value = numCalculate(data, valueDataDim, mlType);
 

@@ -122,9 +122,7 @@ define(function (require) {
             && markerHelper.dataFilter(coordSys, item[1]);
     }
 
-    function updateSingleMarkerEndLayout(
-        data, idx, isFrom, mlType, valueIndex, seriesModel, api
-    ) {
+    function updateSingleMarkerEndLayout(data, idx, isFrom, mlType, valueIndex, seriesModel, api) {
         var coordSys = seriesModel.coordinateSystem;
         var itemModel = data.getItemModel(idx);
 
@@ -358,14 +356,14 @@ define(function (require) {
         if (coordSys) {
             coordDimsInfos = zrUtil.map(coordSys && coordSys.dimensions, function (coordDim) {
                 var info = seriesModel.getData().getDimensionInfo(
-                    seriesModel.coordDimToDataDim(coordDim)[0]
-                ) || {}; // In map series data don't have lng and lat dimension. Fallback to same with coordSys
+                        seriesModel.coordDimToDataDim(coordDim)[0]
+                    ) || {}; // In map series data don't have lng and lat dimension. Fallback to same with coordSys
                 info.name = coordDim;
                 return info;
             });
         }
         else {
-            coordDimsInfos =[{
+            coordDimsInfos = [{
                 name: 'value',
                 type: 'float'
             }];
@@ -385,18 +383,24 @@ define(function (require) {
             );
         }
         var dimValueGetter = coordSys ? markerHelper.dimValueGetter : function (item) {
-            return item.value;
-        };
+                return item.value;
+            };
         fromData.initData(
-            zrUtil.map(optData, function (item) { return item[0]; }),
+            zrUtil.map(optData, function (item) {
+                return item[0];
+            }),
             null, dimValueGetter
         );
         toData.initData(
-            zrUtil.map(optData, function (item) { return item[1]; }),
+            zrUtil.map(optData, function (item) {
+                return item[1];
+            }),
             null, dimValueGetter
         );
         lineData.initData(
-            zrUtil.map(optData, function (item) { return item[2]; })
+            zrUtil.map(optData, function (item) {
+                return item[2];
+            })
         );
         return {
             from: fromData,

@@ -1,5 +1,5 @@
 // Layout helpers for each component positioning
-define(function(require) {
+define(function (require) {
     'use strict';
 
     var zrUtil = require('zrender/core/util');
@@ -153,9 +153,7 @@ define(function(require) {
      *
      * @return {module:zrender/core/BoundingRect}
      */
-    layout.getLayoutRect = function (
-        positionInfo, containerRect, margin
-    ) {
+    layout.getLayoutRect = function (positionInfo, containerRect, margin) {
         margin = formatUtil.normalizeCssArray(margin || 0);
 
         var containerWidth = containerRect.width;
@@ -261,9 +259,7 @@ define(function(require) {
      * @param {Object} containerRect
      * @param {string|number} margin
      */
-    layout.positionGroup = function (
-        group, positionInfo, containerRect, margin
-    ) {
+    layout.positionGroup = function (group, positionInfo, containerRect, margin) {
         var groupRect = group.getBoundingRect();
 
         positionInfo = zrUtil.extend(zrUtil.clone(positionInfo), {

@@ -16,6 +16,7 @@ define(function (require) {
         });
         return geoOpt;
     }
+
     return function (option) {
         // Save geoCoord
         var mapSeries = [];

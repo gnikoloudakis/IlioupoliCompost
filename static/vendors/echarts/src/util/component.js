@@ -1,4 +1,4 @@
-define(function(require) {
+define(function (require) {
 
     var zrUtil = require('zrender/core/util');
     var clazz = require('./clazz');

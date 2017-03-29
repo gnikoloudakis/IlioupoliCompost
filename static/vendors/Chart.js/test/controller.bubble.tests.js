@@ -1,15 +1,15 @@
 // Test the bubble controller
-describe('Bubble controller tests', function() {
+describe('Bubble controller tests', function () {
 
-	beforeEach(function() {
+	beforeEach(function () {
 		window.addDefaultMatchers(jasmine);
 	});
 
-	afterEach(function() {
+	afterEach(function () {
 		window.releaseAllCharts();
 	});
 
-	it('should be constructed', function() {
+	it('should be constructed', function () {
 		var chart = window.acquireChart({
 			type: 'bubble',
 			data: {
@@ -29,7 +29,7 @@ describe('Bubble controller tests', function() {
 		expect(meta.controller.index).toBe(1);
 	});
 
-	it('should use the first scale IDs if the dataset does not specify them', function() {
+	it('should use the first scale IDs if the dataset does not specify them', function () {
 		var chart = window.acquireChart({
 			type: 'bubble',
 			data: {
@@ -55,7 +55,7 @@ describe('Bubble controller tests', function() {
 		expect(meta.yAxisID).toBe('firstYScaleID');
 	});
 
-	it('should create point elements for each data item during initialization', function() {
+	it('should create point elements for each data item during initialization', function () {
 		var chart = window.acquireChart({
 			type: 'bubble',
 			data: {
@@ -74,7 +74,7 @@ describe('Bubble controller tests', function() {
 		expect(meta.data[3] instanceof Chart.elements.Point).toBe(true);
 	});
 
-	it('should draw all elements', function() {
+	it('should draw all elements', function () {
 		var chart = window.acquireChart({
 			type: 'bubble',
 			data: {
@@ -103,7 +103,7 @@ describe('Bubble controller tests', function() {
 		expect(meta.data[3].draw.calls.count()).toBe(1);
 	});
 
-	it('should update elements when modifying style', function() {
+	it('should update elements when modifying style', function () {
 		var chart = window.acquireChart({
 			type: 'bubble',
 			data: {
@@ -142,11 +142,11 @@ describe('Bubble controller tests', function() {
 
 		var meta = chart.getDatasetMeta(0);
 
-		[ 	{ r: 5, x:  38, y:  32 },
-			{ r: 1, x: 189, y: 484 },
-			{ r: 2, x: 341, y: 461 },
-			{ r: 1, x: 492, y:  32 }
-		].forEach(function(expected, i) {
+		[{r: 5, x: 38, y: 32},
+			{r: 1, x: 189, y: 484},
+			{r: 2, x: 341, y: 461},
+			{r: 1, x: 492, y: 32}
+		].forEach(function (expected, i) {
 			expect(meta.data[i]._model.radius).toBe(expected.r);
 			expect(meta.data[i]._model.x).toBeCloseToPixel(expected.x);
 			expect(meta.data[i]._model.y).toBeCloseToPixel(expected.y);
@@ -170,7 +170,7 @@ describe('Bubble controller tests', function() {
 
 		chart.update();
 
-		for (var i=0; i<4; ++i) {
+		for (var i = 0; i < 4; ++i) {
 			expect(meta.data[i]._model).toEqual(jasmine.objectContaining({
 				backgroundColor: 'rgb(98, 98, 98)',
 				borderColor: 'rgb(8, 8, 8)',
@@ -202,7 +202,7 @@ describe('Bubble controller tests', function() {
 		}));
 	});
 
-	it('should handle number of data point changes in update', function() {
+	it('should handle number of data point changes in update', function () {
 		var chart = window.acquireChart({
 			type: 'bubble',
 			data: {
@@ -281,7 +281,7 @@ describe('Bubble controller tests', function() {
 		expect(meta.data[4] instanceof Chart.elements.Point).toBe(true);
 	});
 
-	it('should set hover styles', function() {
+	it('should set hover styles', function () {
 		var chart = window.acquireChart({
 			type: 'bubble',
 			data: {
@@ -357,7 +357,7 @@ describe('Bubble controller tests', function() {
 		expect(point._model.radius).toBe(4.4);
 	});
 
-	it('should remove hover styles', function() {
+	it('should remove hover styles', function () {
 		var chart = window.acquireChart({
 			type: 'bubble',
 			data: {

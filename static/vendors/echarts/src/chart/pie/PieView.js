@@ -84,10 +84,12 @@ define(function (require) {
             polyline.ignore = polyline.hoverIgnore;
             text.ignore = text.hoverIgnore;
         }
+
         function onNormal() {
             polyline.ignore = polyline.normalIgnore;
             text.ignore = text.normalIgnore;
         }
+
         this.on('emphasis', onEmphasis)
             .on('normal', onNormal)
             .on('mouseover', onEmphasis)
@@ -101,7 +103,7 @@ define(function (require) {
         var isLabelInside = labelPosition === 'inside' || labelPosition === 'inner';
         return {
             fill: textStyleModel.getTextColor()
-                || (isLabelInside ? '#fff' : data.getItemVisual(idx, 'color')),
+            || (isLabelInside ? '#fff' : data.getItemVisual(idx, 'color')),
             opacity: data.getItemVisual(idx, 'opacity'),
             textFont: textStyleModel.getFont(),
             text: zrUtil.retrieve(
@@ -167,6 +169,7 @@ define(function (require) {
                 }
             }, 300, 'elasticOut');
         }
+
         function onNormal() {
             sector.stopAnimation(true);
             sector.animateTo({
@@ -175,6 +178,7 @@ define(function (require) {
                 }
             }, 300, 'elasticOut');
         }
+
         sector.off('mouseover').off('mouseout').off('emphasis').off('normal');
         if (itemModel.get('hoverAnimation')) {
             sector
@@ -333,9 +337,7 @@ define(function (require) {
             this._data = data;
         },
 
-        _createClipPath: function (
-            cx, cy, r, startAngle, clockwise, cb, seriesModel
-        ) {
+        _createClipPath: function (cx, cy, r, startAngle, clockwise, cb, seriesModel) {
             var clipPath = new graphic.Sector({
                 shape: {
                     cx: cx,

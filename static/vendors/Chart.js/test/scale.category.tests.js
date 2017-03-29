@@ -1,13 +1,13 @@
 // Test the category scale
 
-describe('Category scale tests', function() {
-	it('Should register the constructor with the scale service', function() {
+describe('Category scale tests', function () {
+	it('Should register the constructor with the scale service', function () {
 		var Constructor = Chart.scaleService.getScaleConstructor('category');
 		expect(Constructor).not.toBe(undefined);
 		expect(typeof Constructor).toBe('function');
 	});
 
-	it('Should have the correct default config', function() {
+	it('Should have the correct default config', function () {
 		var defaultConfig = Chart.scaleService.getScaleDefaults('category');
 		expect(defaultConfig).toEqual({
 			display: true,
@@ -48,7 +48,7 @@ describe('Category scale tests', function() {
 		expect(defaultConfig.ticks.callback).toEqual(jasmine.any(Function));
 	});
 
-	it('Should generate ticks from the data labales', function() {
+	it('Should generate ticks from the data labales', function () {
 		var scaleID = 'myScale';
 
 		var mockData = {
@@ -75,7 +75,7 @@ describe('Category scale tests', function() {
 		expect(scale.ticks).toEqual(mockData.labels);
 	});
 
-	it ('should get the correct label for the index', function() {
+	it('should get the correct label for the index', function () {
 		var scaleID = 'myScale';
 
 		var mockData = {
@@ -103,7 +103,7 @@ describe('Category scale tests', function() {
 		expect(scale.getLabelForIndex(1)).toBe('tick2');
 	});
 
-	it ('Should get the correct pixel for a value when horizontal', function() {
+	it('Should get the correct pixel for a value when horizontal', function () {
 		var scaleID = 'myScale';
 
 		var mockData = {
@@ -168,7 +168,7 @@ describe('Category scale tests', function() {
 		expect(scale.getValueForPixel(557)).toBe(4);
 	});
 
-	it ('Should get the correct pixel for a value when horizontal and zoomed', function() {
+	it('Should get the correct pixel for a value when horizontal and zoomed', function () {
 		var scaleID = 'myScale';
 
 		var mockData = {
@@ -230,7 +230,7 @@ describe('Category scale tests', function() {
 		expect(scale.getPixelForValue(0, 3, 0, true)).toBe(577);
 	});
 
-	it ('should get the correct pixel for a value when vertical', function() {
+	it('should get the correct pixel for a value when vertical', function () {
 		var scaleID = 'myScale';
 
 		var mockData = {
@@ -295,7 +295,7 @@ describe('Category scale tests', function() {
 		expect(scale.getValueForPixel(199)).toBe(4);
 	});
 
-	it ('should get the correct pixel for a value when vertical and zoomed', function() {
+	it('should get the correct pixel for a value when vertical and zoomed', function () {
 		var scaleID = 'myScale';
 
 		var mockData = {

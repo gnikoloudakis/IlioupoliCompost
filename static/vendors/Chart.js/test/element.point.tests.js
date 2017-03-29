@@ -1,7 +1,7 @@
 // Test the point element
 
-describe('Point element tests', function() {
-	it ('Should be constructed', function() {
+describe('Point element tests', function () {
+	it('Should be constructed', function () {
 		var point = new Chart.elements.Point({
 			_datasetIndex: 2,
 			_index: 1
@@ -12,7 +12,7 @@ describe('Point element tests', function() {
 		expect(point._index).toBe(1);
 	});
 
-	it ('Should correctly identify as in range', function() {
+	it('Should correctly identify as in range', function () {
 		var point = new Chart.elements.Point({
 			_datasetIndex: 2,
 			_index: 1
@@ -43,7 +43,7 @@ describe('Point element tests', function() {
 		expect(point.inLabelRange(20)).toBe(false);
 	});
 
-	it ('should get the correct tooltip position', function() {
+	it('should get the correct tooltip position', function () {
 		var point = new Chart.elements.Point({
 			_datasetIndex: 2,
 			_index: 1
@@ -64,7 +64,7 @@ describe('Point element tests', function() {
 		});
 	});
 
-	it ('should draw correctly', function() {
+	it('should draw correctly', function () {
 		var mockContext = window.createMockContext();
 		var point = new Chart.elements.Point({
 			_datasetIndex: 2,
@@ -236,7 +236,7 @@ describe('Point element tests', function() {
 		}, {
 			name: 'lineTo',
 			args: [12, 15],
-		},{
+		}, {
 			name: 'closePath',
 			args: [],
 		}, {
@@ -308,7 +308,7 @@ describe('Point element tests', function() {
 		}, {
 			name: 'lineTo',
 			args: [12, 15],
-		},{
+		}, {
 			name: 'moveTo',
 			args: [10 - Math.cos(Math.PI / 4) * 2, 15 - Math.sin(Math.PI / 4) * 2]
 		}, {
@@ -390,7 +390,7 @@ describe('Point element tests', function() {
 
 	});
 
-	it ('should draw correctly with default settings if necessary', function() {
+	it('should draw correctly with default settings if necessary', function () {
 		var mockContext = window.createMockContext();
 		var point = new Chart.elements.Point({
 			_datasetIndex: 2,
@@ -438,7 +438,7 @@ describe('Point element tests', function() {
 		}]);
 	});
 
-	it ('should not draw if skipped', function() {
+	it('should not draw if skipped', function () {
 		var mockContext = window.createMockContext();
 		var point = new Chart.elements.Point({
 			_datasetIndex: 2,

@@ -17,7 +17,7 @@ define(function (require) {
             var selected = {};
 
             ecModel.eachComponent(
-                { mainType: 'geo', query: payload},
+                {mainType: 'geo', query: payload},
                 function (geoModel) {
                     geoModel[method](payload.name);
                     var geo = geoModel.coordinateSystem;

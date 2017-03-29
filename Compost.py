@@ -1,7 +1,7 @@
 import logging
-from flask_socketio import SocketIO, emit
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, json
 from flask_mongoengine import MongoEngine
+from flask_socketio import SocketIO, emit
 
 # from logging.handlers import RotatingFileHandler
 
@@ -141,8 +141,9 @@ def update_device():
         return 'Did NOT Update device'
 
 
-@app.route('/api/measurements/add', methods=['POST'])
+@app.route('/api/measurements/add', methods=['POST', 'GET'])
 def add_measurements():
+    print ("add meas debug")
     from modules.MeasurementsFunctions import add
     success = add(request.data)
     if success:
@@ -171,15 +172,27 @@ def get_measurements(m_type):
         return 'Did NOT get Measurements'
 
 
-@socketio.on('flags')
-def socketTest(data):
-    print (data)
+@app.route('/api/measurements/get/last/<m_type>', methods=["GET"])
+def get_last_measurement(m_type):
+    from modules.MeasurementsFunctions import getLast
+    success, measurements = getLast(m_type)
+    if success:
+        return measurements
+    else:
+        return 'Did NOT get Measurements'
+
+
+@app.route('/api/flags/get', methods=['GET'])
+def getFlags():
+    f = {'Motor1': Motor1, 'Motor2': Motor2, 'Vent': Vent, 'Fan': Fan, 'Door': Door}
+    return json.dumps(f)
 
 
 if __name__ == '__main__':
     from modules.SetupSchedulers import init_sched
     from modules.VariablesFunctions import readVariables
 
-    readVariables()
-    init_sched()
-    socketio.run(app=app, host='0.0.0.0', port=5000)
+    # readVariables()
+    # init_sched()
+    # socketio.run(app=app, host='0.0.0.0', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=5000)

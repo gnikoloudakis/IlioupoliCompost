@@ -245,15 +245,15 @@ define(function (require) {
 
         // Default dim value getter
         dimValueGetter = dimValueGetter || function (dataItem, dimName, dataIndex, dimIndex) {
-            var value = modelUtil.getDataItemValue(dataItem);
-            return modelUtil.converDataValue(
-                zrUtil.isArray(value)
-                    ? value[dimIndex]
-                    // If value is a single number or something else not array.
-                    : value,
-                dimensionInfoMap[dimName]
-            );
-        };
+                var value = modelUtil.getDataItemValue(dataItem);
+                return modelUtil.converDataValue(
+                    zrUtil.isArray(value)
+                        ? value[dimIndex]
+                        // If value is a single number or something else not array.
+                        : value,
+                    dimensionInfoMap[dimName]
+                );
+            };
 
         for (var idx = 0; idx < data.length; idx++) {
             var dataItem = data[idx];
@@ -380,8 +380,8 @@ define(function (require) {
         for (var i = 0, len = dimensions.length; i < len; i++) {
             if (
                 // Ordinal type can be string or number
-                dimensionInfos[dimensions[i]].type !== 'ordinal'
-                && isNaN(this.get(dimensions[i], idx))
+            dimensionInfos[dimensions[i]].type !== 'ordinal'
+            && isNaN(this.get(dimensions[i], idx))
             ) {
                 return false;
             }

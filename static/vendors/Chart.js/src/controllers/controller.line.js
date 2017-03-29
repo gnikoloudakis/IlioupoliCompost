@@ -1,6 +1,6 @@
 "use strict";
 
-module.exports = function(Chart) {
+module.exports = function (Chart) {
 
 	var helpers = Chart.helpers;
 
@@ -29,7 +29,7 @@ module.exports = function(Chart) {
 
 		dataElementType: Chart.elements.Point,
 
-		addElementAndReset: function(index) {
+		addElementAndReset: function (index) {
 			var me = this;
 			var options = me.chart.options;
 
@@ -88,7 +88,7 @@ module.exports = function(Chart) {
 			}
 
 			// Update Points
-			for (i=0, ilen=points.length; i<ilen; ++i) {
+			for (i = 0, ilen = points.length; i < ilen; ++i) {
 				me.updateElement(points[i], i, reset);
 			}
 
@@ -97,7 +97,7 @@ module.exports = function(Chart) {
 			}
 		},
 
-		getPointBackgroundColor: function(point, index) {
+		getPointBackgroundColor: function (point, index) {
 			var backgroundColor = this.chart.options.elements.point.backgroundColor;
 			var dataset = this.getDataset();
 			var custom = point.custom || {};
@@ -113,7 +113,7 @@ module.exports = function(Chart) {
 			return backgroundColor;
 		},
 
-		getPointBorderColor: function(point, index) {
+		getPointBorderColor: function (point, index) {
 			var borderColor = this.chart.options.elements.point.borderColor;
 			var dataset = this.getDataset();
 			var custom = point.custom || {};
@@ -129,7 +129,7 @@ module.exports = function(Chart) {
 			return borderColor;
 		},
 
-		getPointBorderWidth: function(point, index) {
+		getPointBorderWidth: function (point, index) {
 			var borderWidth = this.chart.options.elements.point.borderWidth;
 			var dataset = this.getDataset();
 			var custom = point.custom || {};
@@ -145,7 +145,7 @@ module.exports = function(Chart) {
 			return borderWidth;
 		},
 
-		updateElement: function(point, index, reset) {
+		updateElement: function (point, index, reset) {
 			var me = this;
 			var meta = me.getMeta();
 			var custom = point.custom || {};
@@ -191,7 +191,7 @@ module.exports = function(Chart) {
 			};
 		},
 
-		calculatePointY: function(value, index, datasetIndex, isCombo) {
+		calculatePointY: function (value, index, datasetIndex, isCombo) {
 			var me = this;
 			var chart = me.chart;
 			var meta = me.getMeta();
@@ -223,13 +223,13 @@ module.exports = function(Chart) {
 			return yScale.getPixelForValue(value);
 		},
 
-		updateBezierControlPoints: function() {
+		updateBezierControlPoints: function () {
 			var meta = this.getMeta();
 			var area = this.chart.chartArea;
 			var points = meta.data || [];
 			var i, ilen, point, model, controlPoints;
 
-			for (i=0, ilen=points.length; i<ilen; ++i) {
+			for (i = 0, ilen = points.length; i < ilen; ++i) {
 				point = points[i];
 				model = point._model;
 				controlPoints = helpers.splineCurve(
@@ -250,14 +250,14 @@ module.exports = function(Chart) {
 			}
 		},
 
-		draw: function(ease) {
+		draw: function (ease) {
 			var meta = this.getMeta();
 			var points = meta.data || [];
 			var easingDecimal = ease || 1;
 			var i, ilen;
 
 			// Transition Point Locations
-			for (i=0, ilen=points.length; i<ilen; ++i) {
+			for (i = 0, ilen = points.length; i < ilen; ++i) {
 				points[i].transition(easingDecimal);
 			}
 
@@ -267,12 +267,12 @@ module.exports = function(Chart) {
 			}
 
 			// Draw the points
-			for (i=0, ilen=points.length; i<ilen; ++i) {
+			for (i = 0, ilen = points.length; i < ilen; ++i) {
 				points[i].draw();
 			}
 		},
 
-		setHoverStyle: function(point) {
+		setHoverStyle: function (point) {
 			// Point
 			var dataset = this.chart.data.datasets[point._datasetIndex];
 			var index = point._index;
@@ -285,7 +285,7 @@ module.exports = function(Chart) {
 			model.borderWidth = custom.hoverBorderWidth || helpers.getValueAtIndexOrDefault(dataset.pointHoverBorderWidth, index, model.borderWidth);
 		},
 
-		removeHoverStyle: function(point) {
+		removeHoverStyle: function (point) {
 			var me = this;
 			var dataset = me.chart.data.datasets[point._datasetIndex];
 			var index = point._index;

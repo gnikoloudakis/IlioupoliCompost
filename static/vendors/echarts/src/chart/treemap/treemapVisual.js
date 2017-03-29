@@ -35,10 +35,8 @@ define(function (require) {
         });
     };
 
-    function travelTree(
-        node, designatedVisual, levelItemStyles, seriesItemStyleModel,
-        viewRootAncestors, seriesModel
-    ) {
+    function travelTree(node, designatedVisual, levelItemStyles, seriesItemStyleModel,
+                        viewRootAncestors, seriesModel) {
         var nodeModel = node.getModel();
         var nodeLayout = node.getLayout();
 
@@ -92,9 +90,7 @@ define(function (require) {
         }
     }
 
-    function buildVisuals(
-        nodeItemStyleModel, designatedVisual, levelItemStyle, seriesItemStyleModel
-    ) {
+    function buildVisuals(nodeItemStyleModel, designatedVisual, levelItemStyle, seriesItemStyleModel) {
         var visuals = zrUtil.extend({}, designatedVisual);
 
         zrUtil.each(['color', 'colorAlpha', 'colorSaturation'], function (visualName) {
@@ -129,8 +125,8 @@ define(function (require) {
 
     function calculateBorderColor(borderColorSaturation, thisNodeColor) {
         return thisNodeColor != null
-             ? zrColor.modifyHSL(thisNodeColor, null, null, borderColorSaturation)
-             : null;
+            ? zrColor.modifyHSL(thisNodeColor, null, null, borderColorSaturation)
+            : null;
     }
 
     function getValueVisualDefine(visuals, name) {
@@ -140,9 +136,7 @@ define(function (require) {
         }
     }
 
-    function buildVisualMapping(
-        node, nodeModel, nodeLayout, nodeItemStyleModel, visuals, viewChildren
-    ) {
+    function buildVisualMapping(node, nodeModel, nodeLayout, nodeItemStyleModel, visuals, viewChildren) {
         if (!viewChildren || !viewChildren.length) {
             return;
         }
@@ -206,10 +200,10 @@ define(function (require) {
             var colorMappingBy = mappingType === 'color' && mapping.__drColorMappingBy;
             var value =
                 colorMappingBy === 'index'
-                ? index
-                : colorMappingBy === 'id'
-                ? seriesModel.mapIdToIndex(child.getId())
-                : child.getValue(nodeModel.get('visualDimension'));
+                    ? index
+                    : colorMappingBy === 'id'
+                        ? seriesModel.mapIdToIndex(child.getId())
+                        : child.getValue(nodeModel.get('visualDimension'));
 
             childVisuals[mappingType] = mapping.mapValueToVisual(value);
         }

@@ -1,7 +1,7 @@
 /**
  * @file History manager.
  */
-define(function(require) {
+define(function (require) {
 
     var zrUtil = require('zrender/core/util');
     var each = zrUtil.each;

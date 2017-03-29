@@ -1,4 +1,3 @@
-
 define(function (require) {
 
     var SymbolDraw = require('../helper/SymbolDraw');
@@ -84,7 +83,7 @@ define(function (require) {
                         if (forceLayout) {
                             forceLayout.warmUp();
                             !this._layouting
-                                && this._startForceLayoutIteration(forceLayout, layoutAnimation);
+                            && this._startForceLayoutIteration(forceLayout, layoutAnimation);
                             forceLayout.setFixed(idx);
                             // Write position back to layout
                             data.setItemLayout(idx, el.position);
@@ -150,7 +149,7 @@ define(function (require) {
                     api.dispatchAction({
                         seriesId: seriesModel.id,
                         type: 'graphRoam',
-                        zoom:  zoom,
+                        zoom: zoom,
                         originX: mouseX,
                         originY: mouseY
                     });

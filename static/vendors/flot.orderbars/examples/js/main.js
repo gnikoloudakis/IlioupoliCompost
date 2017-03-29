@@ -18,7 +18,7 @@ function getData() {
 var orig_data = getData();
 
 // Add order: 0 to the existing bars
-for(var i = 0; i<orig_data.length; i++) {
+for (var i = 0; i < orig_data.length; i++) {
     orig_data[i].bars = {
         order: 0
     };
@@ -51,7 +51,7 @@ $.plot($('#stacked-ordered-chart'), orig_data, {
 
 // STACKED CHART
 var d = getData();
-for(var i = 0; i<d.length; i++) {
+for (var i = 0; i < d.length; i++) {
     d[i].stack = true;
 }
 
@@ -62,11 +62,9 @@ $.plot($('#stacked-chart'), d, {
 });
 
 
-
-
 // ORDERED CHART
 var d = getData();
-for(var i = 0; i<d.length; i++) {
+for (var i = 0; i < d.length; i++) {
     d[i].bars = {
         order: i
     }

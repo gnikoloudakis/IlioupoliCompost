@@ -1,7 +1,7 @@
 /**
  * @file Data range action
  */
-define(function(require) {
+define(function (require) {
 
     var echarts = require('../../echarts');
 

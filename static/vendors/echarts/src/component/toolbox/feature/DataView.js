@@ -10,6 +10,7 @@ define(function (require) {
 
     var BLOCK_SPLITER = new Array(60).join('-');
     var ITEM_SPLITER = '\t';
+
     /**
      * Group series into two types
      *  1. on category axis, like line, bar
@@ -91,7 +92,7 @@ define(function (require) {
             }
             tables.push(lines.join('\n'));
         });
-        return tables.join('\n\n' +  BLOCK_SPLITER + '\n\n');
+        return tables.join('\n\n' + BLOCK_SPLITER + '\n\n');
     }
 
     /**
@@ -129,11 +130,11 @@ define(function (require) {
 
         return {
             value: zrUtil.filter([
-                    assembleSeriesWithCategoryAxis(result.seriesGroupByCategoryAxis),
-                    assembleOtherSeries(result.other)
-                ], function (str) {
-                    return str.replace(/[\n\t\s]/g, '');
-                }).join('\n\n' + BLOCK_SPLITER + '\n\n'),
+                assembleSeriesWithCategoryAxis(result.seriesGroupByCategoryAxis),
+                assembleOtherSeries(result.other)
+            ], function (str) {
+                return str.replace(/[\n\t\s]/g, '');
+            }).join('\n\n' + BLOCK_SPLITER + '\n\n'),
 
             meta: result.meta
         };
@@ -143,6 +144,7 @@ define(function (require) {
     function trim(str) {
         return str.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
     }
+
     /**
      * If a block is tsv format
      */
@@ -155,6 +157,7 @@ define(function (require) {
     }
 
     var itemSplitRegex = new RegExp('[' + ITEM_SPLITER + ']+', 'g');
+
     /**
      * @param {string} tsv
      * @return {Array.<Object>}
@@ -350,6 +353,7 @@ define(function (require) {
             container.removeChild(root);
             self._dom = null;
         }
+
         eventTool.addEventListener(closeButton, 'click', close);
 
         eventTool.addEventListener(refreshButton, 'click', function () {

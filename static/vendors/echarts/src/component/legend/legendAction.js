@@ -1,7 +1,7 @@
 /**
  * @file Legend action
  */
-define(function(require) {
+define(function (require) {
 
     var echarts = require('../../echarts');
     var zrUtil = require('zrender/core/util');
@@ -46,6 +46,7 @@ define(function(require) {
             selected: selectedMap
         };
     }
+
     /**
      * @event legendToggleSelect
      * @type {Object}

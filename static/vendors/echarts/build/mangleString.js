@@ -34,9 +34,9 @@ function base54Digits() {
     return 'etnrisouaflchpdvmgybwESxTNCkLAOM_DPHBjFIqRUzWXV$JKQGYZ0516372984';
 }
 
-var base54 = (function(){
+var base54 = (function () {
     var DIGITS = base54Digits();
-    return function(num) {
+    return function (num) {
         var ret = '';
         var base = 54;
         do {

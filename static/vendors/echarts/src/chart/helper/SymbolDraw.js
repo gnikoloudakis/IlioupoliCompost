@@ -22,8 +22,9 @@ define(function (require) {
     function symbolNeedsDraw(data, idx, isIgnore) {
         var point = data.getItemLayout(idx);
         return point && !isNaN(point[0]) && !isNaN(point[1]) && !(isIgnore && isIgnore(idx))
-                    && data.getItemVisual(idx, 'symbol') !== 'none';
+            && data.getItemVisual(idx, 'symbol') !== 'none';
     }
+
     /**
      * Update symbols draw by new data
      * @param {module:echarts/data/List} data

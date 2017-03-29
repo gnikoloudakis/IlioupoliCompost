@@ -12,8 +12,8 @@ define(function (require) {
             return '-';
         }
         x = (x + '').split('.');
-        return x[0].replace(/(\d{1,3})(?=(?:\d{3})+(?!\d))/g,'$1,')
-               + (x.length > 1 ? ('.' + x[1]) : '');
+        return x[0].replace(/(\d{1,3})(?=(?:\d{3})+(?!\d))/g, '$1,')
+            + (x.length > 1 ? ('.' + x[1]) : '');
     }
 
     /**
@@ -21,7 +21,7 @@ define(function (require) {
      * @return {string} str
      */
     function toCamelCase(str) {
-        return str.toLowerCase().replace(/-(.)/g, function(match, group1) {
+        return str.toLowerCase().replace(/-(.)/g, function (match, group1) {
             return group1.toUpperCase();
         });
     }
@@ -64,6 +64,7 @@ define(function (require) {
     function wrapVar(varName, seriesIdx) {
         return '{' + varName + (seriesIdx == null ? '' : seriesIdx) + '}';
     }
+
     /**
      * Template formatter
      * @param  {string} tpl
@@ -82,7 +83,7 @@ define(function (require) {
         var $vars = paramsList[0].$vars;
         for (var i = 0; i < $vars.length; i++) {
             var alias = TPL_VAR_ALIAS[i];
-            tpl = tpl.replace(wrapVar(alias),  wrapVar(alias, 0));
+            tpl = tpl.replace(wrapVar(alias), wrapVar(alias, 0));
         }
         for (var seriesIdx = 0; seriesIdx < seriesLen; seriesIdx++) {
             for (var k = 0; k < $vars.length; k++) {

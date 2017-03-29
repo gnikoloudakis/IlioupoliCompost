@@ -1,6 +1,6 @@
 "use strict";
 
-module.exports = function(Chart) {
+module.exports = function (Chart) {
 
 	var helpers = Chart.helpers;
 
@@ -24,11 +24,11 @@ module.exports = function(Chart) {
 
 		tooltips: {
 			callbacks: {
-				title: function(tooltipItems, data) {
+				title: function (tooltipItems, data) {
 					// Title doesn't make sense for scatter since we format the data as a point
 					return '';
 				},
-				label: function(tooltipItem, data) {
+				label: function (tooltipItem, data) {
 					var datasetLabel = data.datasets[tooltipItem.datasetIndex].label || '';
 					var dataPoint = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
 					return datasetLabel + ': (' + dataPoint.x + ', ' + dataPoint.y + ', ' + dataPoint.r + ')';
@@ -46,12 +46,12 @@ module.exports = function(Chart) {
 			var points = meta.data;
 
 			// Update Points
-			helpers.each(points, function(point, index) {
+			helpers.each(points, function (point, index) {
 				this.updateElement(point, index, reset);
 			}, this);
 		},
 
-		updateElement: function(point, index, reset) {
+		updateElement: function (point, index, reset) {
 			var meta = this.getMeta();
 			var xScale = this.getScaleForId(meta.xAxisID);
 			var yScale = this.getScaleForId(meta.yAxisID);
@@ -89,11 +89,11 @@ module.exports = function(Chart) {
 			point.pivot();
 		},
 
-		getRadius: function(value) {
+		getRadius: function (value) {
 			return value.r || this.chart.options.elements.point.radius;
 		},
 
-		setHoverStyle: function(point) {
+		setHoverStyle: function (point) {
 			// Point
 			var dataset = this.chart.data.datasets[point._datasetIndex];
 			var index = point._index;
@@ -106,7 +106,7 @@ module.exports = function(Chart) {
 			model.borderWidth = custom.hoverBorderWidth ? custom.hoverBorderWidth : helpers.getValueAtIndexOrDefault(dataset.hoverBorderWidth, index, model.borderWidth);
 		},
 
-		removeHoverStyle: function(point) {
+		removeHoverStyle: function (point) {
 			var dataset = this.chart.data.datasets[point._datasetIndex];
 			var index = point._index;
 			var custom = point.custom || {};

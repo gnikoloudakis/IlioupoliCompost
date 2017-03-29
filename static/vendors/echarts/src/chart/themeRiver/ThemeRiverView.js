@@ -34,6 +34,7 @@ define(function (require) {
             function keyGetter(item) {
                 return item.name;
             }
+
             var dataDiffer = new DataDiffer(
                 this._layersSeries || [], layerSeries,
                 keyGetter, keyGetter
@@ -132,7 +133,7 @@ define(function (require) {
                 text.setStyle({
                     text: labelModel.get('show')
                         ? seriesModel.getFormattedLabel(indices[j - 1], 'normal')
-                            || data.getName(indices[j - 1])
+                        || data.getName(indices[j - 1])
                         : '',
                     textFont: textStyleModel.getFont(),
                     textAlign: labelModel.get('textAlign'),

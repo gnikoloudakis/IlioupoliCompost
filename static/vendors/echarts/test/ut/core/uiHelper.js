@@ -18,7 +18,7 @@
      * @param  {function} doTest test body
      * @param  {function} done   done callback provided by jasmine
      */
-    helper.expectEqualCanvasContent = function(title, doTest, done) {
+    helper.expectEqualCanvasContent = function (title, doTest, done) {
         var that = this;
         window.require(['oldEcharts', 'newEcharts'], function (oldE, newE) {
             var oldImg = doTest(oldE).toDataURL();
@@ -38,7 +38,7 @@
      * @param  {function} doTest test body
      * @param  {function} done   done callback provided by jasmine
      */
-    helper.expectEqualCanvasStack = function(title, doTest, done) {
+    helper.expectEqualCanvasStack = function (title, doTest, done) {
         window.require(['oldEcharts', 'newEcharts'], function (oldE, newE) {
             var oldCanvas = doTest(oldE);
             var newCanvas = doTest(newE);
@@ -63,7 +63,7 @@
      * @param  {function} doTest test body
      * @param  {function} done   done callback provided by jasmine
      */
-    helper.expectEqualCanvas = function(title, doTest, done) {
+    helper.expectEqualCanvas = function (title, doTest, done) {
         if (STRATEGY === 'content') {
             helper.expectEqualCanvasContent(title, doTest, done);
         } else if (STRATEGY === 'stack') {
@@ -73,17 +73,17 @@
         }
     };
 
-    var optionCompareHelper = function(isExpectEqual,
-                                       title,
-                                       option1,
-                                       option2) {
+    var optionCompareHelper = function (isExpectEqual,
+                                        title,
+                                        option1,
+                                        option2) {
 
-        it(title, function(done) {
+        it(title, function (done) {
             window.require(['newEcharts'], function (ec) {
-                var canvas1 = helper.getRenderedCanvas(ec, function(myChart) {
+                var canvas1 = helper.getRenderedCanvas(ec, function (myChart) {
                     myChart.setOption(helper.preprocessOption(option1));
                 });
-                var canvas2 = helper.getRenderedCanvas(ec, function(myChart) {
+                var canvas2 = helper.getRenderedCanvas(ec, function (myChart) {
                     myChart.setOption(helper.preprocessOption(option2));
                 });
                 var ctx1 = canvas1.getContext('2d');
@@ -127,7 +127,7 @@
      * @param  {object}   option2 the other echarts option
      * @param  {function} done    callback for jasmine
      */
-    helper.expectEqualOption = function(title, option1, option2) {
+    helper.expectEqualOption = function (title, option1, option2) {
         optionCompareHelper(true, title, option1, option2);
     };
 
@@ -138,7 +138,7 @@
      * @param  {object}   option2 the other echarts option
      * @param  {function} done    callback for jasmine
      */
-    helper.expectNotEqualOption = function(title, option1, option2) {
+    helper.expectNotEqualOption = function (title, option1, option2) {
         optionCompareHelper(false, title, option1, option2);
     };
 
@@ -148,7 +148,7 @@
      * @param  {function} operations operations with echarts
      * @return {Canvas}              canvas rendered by echarts
      */
-    helper.getRenderedCanvas = function(echarts, operations) {
+    helper.getRenderedCanvas = function (echarts, operations) {
         // init canvas with echarts
         var canvas = document.createElement('canvas');
         canvas.width = 400;
@@ -166,14 +166,14 @@
      * @param  {string} name      name of the test
      * @param  {object} option    echarts option
      */
-    helper.testOption = function(name, option) {
-        var doTest = function(ec) {
-            var canvas = helper.getRenderedCanvas(ec, function(myChart) {
+    helper.testOption = function (name, option) {
+        var doTest = function (ec) {
+            var canvas = helper.getRenderedCanvas(ec, function (myChart) {
                 myChart.setOption(helper.preprocessOption(option));
             });
             return canvas;
         };
-        it(name, function(done) {
+        it(name, function (done) {
             if (STRATEGY === 'content') {
                 helper.expectEqualCanvasContent(name, doTest, done);
             } else if (STRATEGY === 'stack') {
@@ -189,7 +189,7 @@
      * @param  {object} option echarts option
      * @return {object}        processed option
      */
-    helper.preprocessOption = function(option) {
+    helper.preprocessOption = function (option) {
         if (typeof option.animation === 'undefined') {
             option.animation = false;
         }
@@ -201,10 +201,10 @@
      * @param  {string}   specName spec name
      * @param  {object[]} suites    arrary of suites
      */
-    helper.testOptionSpec = function(specName, suites) {
+    helper.testOptionSpec = function (specName, suites) {
         for (var sid = 0, slen = suites.length; sid < slen; ++sid) {
-            (function(suiteName, cases) {
-                describe(suiteName, function() {
+            (function (suiteName, cases) {
+                describe(suiteName, function () {
                     for (var cid = 0, clen = cases.length; cid < clen; ++cid) {
                         var name = specName + ' - ' + suiteName + ': '
                             + cases[cid].name;
@@ -229,7 +229,7 @@
      * @param {string} newImgSrc new canvas.toDataURL value
      * add a failed case in dom
      */
-    helper.addFailedCases = function(name, oldImgSrc, newImgSrc) {
+    helper.addFailedCases = function (name, oldImgSrc, newImgSrc) {
         // group of this case
         var group = document.createElement('div');
         var title = document.createElement('h6');

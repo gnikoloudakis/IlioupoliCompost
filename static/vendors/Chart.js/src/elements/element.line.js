@@ -1,6 +1,6 @@
 "use strict";
 
-module.exports = function(Chart) {
+module.exports = function (Chart) {
 
 	var helpers = Chart.helpers;
 	var globalDefaults = Chart.defaults.global;
@@ -18,7 +18,7 @@ module.exports = function(Chart) {
 	};
 
 	Chart.elements.Line = Chart.Element.extend({
-		lineToNextPoint: function(previousPoint, point, nextPoint, skipHandler, previousSkipHandler) {
+		lineToNextPoint: function (previousPoint, point, nextPoint, skipHandler, previousSkipHandler) {
 			var ctx = this._chart.ctx;
 
 			if (point._view.skip) {
@@ -40,7 +40,7 @@ module.exports = function(Chart) {
 			}
 		},
 
-		draw: function() {
+		draw: function () {
 			var _this = this;
 
 			var vm = this._view;
@@ -72,7 +72,7 @@ module.exports = function(Chart) {
 				// Draw the background first (so the border is always on top)
 				ctx.beginPath();
 
-				helpers.each(this._children, function(point, index) {
+				helpers.each(this._children, function (point, index) {
 					var previous = helpers.previousItem(this._children, index);
 					var next = helpers.nextItem(this._children, index);
 
@@ -92,7 +92,7 @@ module.exports = function(Chart) {
 							ctx.lineTo(point._view.x, point._view.y);
 						}
 					} else {
-						this.lineToNextPoint(previous, point, next, function(previousPoint, point, nextPoint) {
+						this.lineToNextPoint(previous, point, next, function (previousPoint, point, nextPoint) {
 							if (this._loop) {
 								// Go to center
 								ctx.lineTo(this._view.scaleZero.x, this._view.scaleZero.y);
@@ -100,7 +100,7 @@ module.exports = function(Chart) {
 								ctx.lineTo(previousPoint._view.x, this._view.scaleZero);
 								ctx.moveTo(nextPoint._view.x, this._view.scaleZero);
 							}
-						}, function(previousPoint, point) {
+						}, function (previousPoint, point) {
 							// If we skipped the last point, draw a line to ourselves so that the fill is nice
 							ctx.lineTo(point._view.x, point._view.y);
 						});
@@ -136,16 +136,16 @@ module.exports = function(Chart) {
 			ctx.strokeStyle = vm.borderColor || globalDefaults.defaultColor;
 			ctx.beginPath();
 
-			helpers.each(this._children, function(point, index) {
+			helpers.each(this._children, function (point, index) {
 				var previous = helpers.previousItem(this._children, index);
 				var next = helpers.nextItem(this._children, index);
 
 				if (index === 0) {
 					ctx.moveTo(point._view.x, point._view.y);
 				} else {
-					this.lineToNextPoint(previous, point, next, function(previousPoint, point, nextPoint) {
+					this.lineToNextPoint(previous, point, next, function (previousPoint, point, nextPoint) {
 						ctx.moveTo(nextPoint._view.x, nextPoint._view.y);
-					}, function(previousPoint, point) {
+					}, function (previousPoint, point) {
 						// If we skipped the last point, move up to our point preventing a line from being drawn
 						ctx.moveTo(point._view.x, point._view.y);
 					});

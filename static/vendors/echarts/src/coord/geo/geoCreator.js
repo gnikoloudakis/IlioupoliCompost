@@ -12,7 +12,7 @@ define(function (require) {
      * @param {module:echarts/coord/geo/GeoModel|module:echarts/chart/map/MapModel} geoModel
      * @param {module:echarts/ExtensionAPI} api
      */
-    function resizeGeo (geoModel, api) {
+    function resizeGeo(geoModel, api) {
         var rect = this.getBoundingRect();
 
         var boxLayoutOption = geoModel.getBoxLayoutParams();
@@ -209,7 +209,8 @@ define(function (require) {
     echarts.getMap = geoCreator.getMap;
 
     // TODO
-    echarts.loadMap = function () {};
+    echarts.loadMap = function () {
+    };
 
     echarts.registerCoordinateSystem('geo', geoCreator);
 

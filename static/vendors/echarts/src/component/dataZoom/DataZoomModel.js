@@ -1,7 +1,7 @@
 /**
  * @file Data zoom model
  */
-define(function(require) {
+define(function (require) {
 
     var zrUtil = require('zrender/core/util');
     var env = require('zrender/core/env');
@@ -127,11 +127,11 @@ define(function(require) {
 
                 // If exists, share axisProxy with other dataZoomModels.
                 var axisProxy = axisModel.__dzAxisProxy || (
-                    // Use the first dataZoomModel as the main model of axisProxy.
-                    axisModel.__dzAxisProxy = new AxisProxy(
-                        dimNames.name, axisIndex, this, ecModel
-                    )
-                );
+                        // Use the first dataZoomModel as the main model of axisProxy.
+                        axisModel.__dzAxisProxy = new AxisProxy(
+                            dimNames.name, axisIndex, this, ecModel
+                        )
+                    );
                 // FIXME
                 // dispose __dzAxisProxy
 

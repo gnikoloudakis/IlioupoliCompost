@@ -8,20 +8,20 @@
 </head>
 
 <body>
-    <div id="canvas-holder" style="width:50%">
-        <canvas id="chart-area" width="300" height="300" />
-    </div>
-    <button id="randomizeData">Randomize Data</button>
-    <button id="addDataset">Add Dataset</button>
-    <button id="removeDataset">Remove Dataset</button>
-    <script>
-    var randomScalingFactor = function() {
+<div id="canvas-holder" style="width:50%">
+    <canvas id="chart-area" width="300" height="300"/>
+</div>
+<button id="randomizeData">Randomize Data</button>
+<button id="addDataset">Add Dataset</button>
+<button id="removeDataset">Remove Dataset</button>
+<script>
+    var randomScalingFactor = function () {
         return Math.round(Math.random() * 100);
     };
-    var randomColorFactor = function() {
+    var randomColorFactor = function () {
         return Math.round(Math.random() * 255);
     };
-    var randomColor = function(opacity) {
+    var randomColor = function (opacity) {
         return 'rgba(' + randomColorFactor() + ',' + randomColorFactor() + ',' + randomColorFactor() + ',' + (opacity || '.3') + ')';
     };
 
@@ -87,14 +87,14 @@
         }
     };
 
-    window.onload = function() {
+    window.onload = function () {
         var ctx = document.getElementById("chart-area").getContext("2d");
         window.myPie = new Chart(ctx, config);
     };
 
-    $('#randomizeData').click(function() {
-        $.each(config.data.datasets, function(i, piece) {
-            $.each(piece.data, function(j, value) {
+    $('#randomizeData').click(function () {
+        $.each(config.data.datasets, function (i, piece) {
+            $.each(piece.data, function (j, value) {
                 config.data.datasets[i].data[j] = randomScalingFactor();
                 config.data.datasets[i].backgroundColor[j] = randomColor(0.7);
             });
@@ -102,7 +102,7 @@
         window.myPie.update();
     });
 
-    $('#addDataset').click(function() {
+    $('#addDataset').click(function () {
         var newDataset = {
             backgroundColor: [randomColor(0.7), randomColor(0.7), randomColor(0.7), randomColor(0.7), randomColor(0.7)],
             data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()]
@@ -112,11 +112,11 @@
         window.myPie.update();
     });
 
-    $('#removeDataset').click(function() {
+    $('#removeDataset').click(function () {
         config.data.datasets.splice(0, 1);
         window.myPie.update();
     });
-    </script>
+</script>
 </body>
 
 </html>

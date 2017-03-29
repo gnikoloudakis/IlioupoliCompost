@@ -1,21 +1,21 @@
 // Test the bar controller
-describe('Bar controller tests', function() {
+describe('Bar controller tests', function () {
 
-	beforeEach(function() {
+	beforeEach(function () {
 		window.addDefaultMatchers(jasmine);
 	});
 
-	afterEach(function() {
+	afterEach(function () {
 		window.releaseAllCharts();
 	});
 
-	it('should be constructed', function() {
+	it('should be constructed', function () {
 		var chart = window.acquireChart({
 			type: 'bar',
 			data: {
 				datasets: [
-					{ data: [] },
-					{ data: [] }
+					{data: []},
+					{data: []}
 				],
 				labels: []
 			}
@@ -34,13 +34,13 @@ describe('Bar controller tests', function() {
 		expect(meta.controller.index).toBe(0);
 	});
 
-	it('should use the first scale IDs if the dataset does not specify them', function() {
+	it('should use the first scale IDs if the dataset does not specify them', function () {
 		var chart = window.acquireChart({
 			type: 'bar',
 			data: {
 				datasets: [
-					{ data: [] },
-					{ data: [] }
+					{data: []},
+					{data: []}
 				],
 				labels: []
 			},
@@ -61,15 +61,15 @@ describe('Bar controller tests', function() {
 		expect(meta.yAxisID).toBe('firstYScaleID');
 	});
 
-	it('should correctly count the number of bar datasets', function() {
+	it('should correctly count the number of bar datasets', function () {
 		var chart = window.acquireChart({
 			type: 'bar',
 			data: {
 				datasets: [
-					{ data: [], type: 'line' },
-					{ data: [], hidden: true },
-					{ data: [] },
-					{ data: [] }
+					{data: [], type: 'line'},
+					{data: [], hidden: true},
+					{data: []},
+					{data: []}
 				],
 				labels: []
 			}
@@ -79,15 +79,15 @@ describe('Bar controller tests', function() {
 		expect(meta.controller.getBarCount()).toBe(2);
 	});
 
-	it('should correctly get the bar index accounting for hidden datasets', function() {
+	it('should correctly get the bar index accounting for hidden datasets', function () {
 		var chart = window.acquireChart({
 			type: 'bar',
 			data: {
 				datasets: [
-					{ data: [] },
-					{ data: [], hidden: true },
-					{ data: [], type: 'line' },
-					{ data: [] }
+					{data: []},
+					{data: [], hidden: true},
+					{data: [], type: 'line'},
+					{data: []}
 				],
 				labels: []
 			}
@@ -98,13 +98,13 @@ describe('Bar controller tests', function() {
 		expect(meta.controller.getBarIndex(3)).toBe(1);
 	});
 
-	it('should create rectangle elements for each data item during initialization', function() {
+	it('should create rectangle elements for each data item during initialization', function () {
 		var chart = window.acquireChart({
 			type: 'bar',
 			data: {
 				datasets: [
-					{ data: [] },
-					{ data: [10, 15, 0, -4] }
+					{data: []},
+					{data: [10, 15, 0, -4]}
 				],
 				labels: []
 			}
@@ -118,7 +118,7 @@ describe('Bar controller tests', function() {
 		expect(meta.data[3] instanceof Chart.elements.Rectangle).toBe(true);
 	});
 
-	it('should update elements when modifying data', function() {
+	it('should update elements when modifying data', function () {
 		var chart = window.acquireChart({
 			type: 'bar',
 			data: {
@@ -163,9 +163,9 @@ describe('Bar controller tests', function() {
 
 		expect(meta.data.length).toBe(2);
 
-		[	{ x: 122, y: 484 },
-			{ x: 234, y:  32 }
-		].forEach(function(expected, i) {
+		[{x: 122, y: 484},
+			{x: 234, y: 32}
+		].forEach(function (expected, i) {
 			expect(meta.data[i]._datasetIndex).toBe(1);
 			expect(meta.data[i]._index).toBe(i);
 			expect(meta.data[i]._xScale).toBe(chart.scales.firstXScaleID);
@@ -190,7 +190,7 @@ describe('Bar controller tests', function() {
 		expect(meta.data.length).toBe(3); // should add a new meta data item
 	});
 
-	it('should get the correct bar points when datasets of different types exist', function() {
+	it('should get the correct bar points when datasets of different types exist', function () {
 		var chart = window.acquireChart({
 			type: 'bar',
 			data: {
@@ -231,7 +231,7 @@ describe('Bar controller tests', function() {
 		expect(bar2._model.y).toBeCloseToPixel(32);
 	});
 
-	it('should update elements when the scales are stacked', function() {
+	it('should update elements when the scales are stacked', function () {
 		var chart = window.acquireChart({
 			type: 'bar',
 			data: {
@@ -260,11 +260,11 @@ describe('Bar controller tests', function() {
 
 		var meta0 = chart.getDatasetMeta(0);
 
-		[	{ b: 290, w: 91, x:  95, y: 161 },
-			{ b: 290, w: 91, x: 209, y: 419 },
-			{ b: 290, w: 91, x: 322, y: 161 },
-			{ b: 290, w: 91, x: 436, y: 419 }
-		].forEach(function(values, i) {
+		[{b: 290, w: 91, x: 95, y: 161},
+			{b: 290, w: 91, x: 209, y: 419},
+			{b: 290, w: 91, x: 322, y: 161},
+			{b: 290, w: 91, x: 436, y: 419}
+		].forEach(function (values, i) {
 			expect(meta0.data[i]._model.base).toBeCloseToPixel(values.b);
 			expect(meta0.data[i]._model.width).toBeCloseToPixel(values.w);
 			expect(meta0.data[i]._model.x).toBeCloseToPixel(values.x);
@@ -273,11 +273,11 @@ describe('Bar controller tests', function() {
 
 		var meta1 = chart.getDatasetMeta(1);
 
-		[	{ b: 161, w: 91, x:  95, y:  32 },
-			{ b: 290, w: 91, x: 209, y:  97 },
-			{ b: 161, w: 91, x: 322, y: 161 },
-			{ b: 419, w: 91, x: 436, y: 471 }
-		].forEach(function(values, i) {
+		[{b: 161, w: 91, x: 95, y: 32},
+			{b: 290, w: 91, x: 209, y: 97},
+			{b: 161, w: 91, x: 322, y: 161},
+			{b: 419, w: 91, x: 436, y: 471}
+		].forEach(function (values, i) {
 			expect(meta1.data[i]._model.base).toBeCloseToPixel(values.b);
 			expect(meta1.data[i]._model.width).toBeCloseToPixel(values.w);
 			expect(meta1.data[i]._model.x).toBeCloseToPixel(values.x);
@@ -285,7 +285,7 @@ describe('Bar controller tests', function() {
 		});
 	});
 
-	it('should draw all bars', function() {
+	it('should draw all bars', function () {
 		var chart = window.acquireChart({
 			type: 'bar',
 			data: {
@@ -314,7 +314,7 @@ describe('Bar controller tests', function() {
 		expect(meta.data[3].draw.calls.count()).toBe(1);
 	});
 
-	it('should set hover styles on rectangles', function() {
+	it('should set hover styles on rectangles', function () {
 		var chart = window.acquireChart({
 			type: 'bar',
 			data: {
@@ -378,7 +378,7 @@ describe('Bar controller tests', function() {
 		expect(bar._model.borderWidth).toBe(1.5);
 	});
 
-	it('should remove a hover style from a bar', function() {
+	it('should remove a hover style from a bar', function () {
 		var chart = window.acquireChart({
 			type: 'bar',
 			data: {

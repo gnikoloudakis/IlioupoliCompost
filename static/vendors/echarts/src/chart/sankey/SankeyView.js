@@ -41,7 +41,7 @@ define(function (require) {
          */
         _model: null,
 
-        render: function(seriesModel, ecModel, api) {
+        render: function (seriesModel, ecModel, api) {
             var graph = seriesModel.getGraph();
             var group = this.group;
             var layoutInfo = seriesModel.layoutInfo;
@@ -127,7 +127,7 @@ define(function (require) {
                 var x1 = n1Layout.x + n1Layout.dx;
                 var y1 = n1Layout.y + edgeLayout.sy + edgeLayout.dy / 2;
                 var x2 = n2Layout.x;
-                var y2 = n2Layout.y + edgeLayout.ty + edgeLayout.dy /2;
+                var y2 = n2Layout.y + edgeLayout.ty + edgeLayout.dy / 2;
                 var cpx1 = x1 * (1 - curvature) + x2 * curvature;
                 var cpy1 = y1;
                 var cpx2 = x1 * curvature + x2 * (1 - curvature);

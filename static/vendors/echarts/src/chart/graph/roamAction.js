@@ -26,10 +26,10 @@ define(function (require) {
             var res = roamHelper.updateCenterAndZoom(coordSys, payload);
 
             seriesModel.setCenter
-                && seriesModel.setCenter(res.center);
+            && seriesModel.setCenter(res.center);
 
             seriesModel.setZoom
-                && seriesModel.setZoom(res.zoom);
+            && seriesModel.setZoom(res.zoom);
         });
     });
 });

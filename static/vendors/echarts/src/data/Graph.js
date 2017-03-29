@@ -4,7 +4,7 @@
  * @module echarts/data/Graph
  * @author Yi Shen(https://www.github.com/pissang)
  */
-define(function(require) {
+define(function (require) {
 
     'use strict';
 
@@ -15,7 +15,7 @@ define(function(require) {
      * @constructor
      * @param {boolean} directed
      */
-    var Graph = function(directed) {
+    var Graph = function (directed) {
         /**
          * 是否是有向图
          * @type {boolean}
@@ -240,9 +240,7 @@ define(function(require) {
      * @param {string} [direction='none'] 'none'|'in'|'out'
      * @param {*} [context]
      */
-    graphProto.breadthFirstTraverse = function (
-        cb, startNode, direction, context
-    ) {
+    graphProto.breadthFirstTraverse = function (cb, startNode, direction, context) {
         if (!(startNode instanceof Node)) {
             startNode = this._nodesMap[startNode];
         }
@@ -340,21 +338,21 @@ define(function(require) {
      */
     function Node(id, dataIndex) {
         /**
-        * @type {string}
-        */
+         * @type {string}
+         */
         this.id = id == null ? '' : id;
 
         /**
-        * @type {Array.<module:echarts/data/Graph.Edge>}
-        */
+         * @type {Array.<module:echarts/data/Graph.Edge>}
+         */
         this.inEdges = [];
         /**
-        * @type {Array.<module:echarts/data/Graph.Edge>}
-        */
+         * @type {Array.<module:echarts/data/Graph.Edge>}
+         */
         this.outEdges = [];
         /**
-        * @type {Array.<module:echarts/data/Graph.Edge>}
-        */
+         * @type {Array.<module:echarts/data/Graph.Edge>}
+         */
         this.edges = [];
         /**
          * @type {module:echarts/data/Graph}
@@ -386,8 +384,8 @@ define(function(require) {
         },
 
         /**
-        * @return {number}
-        */
+         * @return {number}
+         */
         outDegree: function () {
             return this.outEdges.length;
         },
@@ -435,7 +433,7 @@ define(function(require) {
      * @param {string} [path]
      * @return {module:echarts/model/Model}
      */
-     Edge.prototype.getModel = function (path) {
+    Edge.prototype.getModel = function (path) {
         if (this.dataIndex < 0) {
             return;
         }
@@ -462,7 +460,7 @@ define(function(require) {
              */
             setVisual: function (key, value) {
                 this.dataIndex >= 0
-                    && this[hostName][dataName].setItemVisual(this.dataIndex, key, value);
+                && this[hostName][dataName].setItemVisual(this.dataIndex, key, value);
             },
 
             /**
@@ -479,7 +477,7 @@ define(function(require) {
              */
             setLayout: function (layout, merge) {
                 this.dataIndex >= 0
-                    && this[hostName][dataName].setItemLayout(this.dataIndex, layout, merge);
+                && this[hostName][dataName].setItemLayout(this.dataIndex, layout, merge);
             },
 
             /**

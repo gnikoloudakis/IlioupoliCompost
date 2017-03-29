@@ -1,6 +1,8 @@
 import RPi.GPIO as gpio
+
 import Compost
 from Compost import socketio
+
 
 def readFlags():
     print "read flags"
@@ -35,6 +37,6 @@ def readFlags():
     else:
         Compost.Door = False
     gpio.cleanup()
-    socketio.emit("flags", {'Motor1': Compost.Motor1, 'Motor2': Compost.Motor2, 'Vent': Compost.Vent, 'Fan': Compost.Fan, 'Door': Compost.Door})
+    # socketio.emit("flags", {'Motor1': Compost.Motor1, 'Motor2': Compost.Motor2, 'Vent': Compost.Vent, 'Fan': Compost.Fan, 'Door': Compost.Door})
     # gpio.add_event_detect(26, gpio.FALLING, callback=ff2, bouncetime=300)
     # return Motor1, Motor2, Vent, Fan, Door

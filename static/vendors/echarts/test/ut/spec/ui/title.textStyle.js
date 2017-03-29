@@ -1,4 +1,4 @@
-describe('title.textStyle', function() {
+describe('title.textStyle', function () {
 
     var uiHelper = window.uiHelper;
 

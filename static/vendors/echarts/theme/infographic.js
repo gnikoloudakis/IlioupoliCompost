@@ -1,4 +1,5 @@
-(function (root, factory) {if (typeof define === 'function' && define.amd) {
+(function (root, factory) {
+    if (typeof define === 'function' && define.amd) {
         // AMD. Register as an anonymous module.
         define(['exports', 'echarts'], factory);
     } else if (typeof exports === 'object' && typeof exports.nodeName !== 'string') {
@@ -20,9 +21,9 @@
     }
 
     var colorPalette = [
-        '#C1232B','#27727B','#FCCE10','#E87C25','#B5C334',
-        '#FE8463','#9BCA63','#FAD860','#F3A43B','#60C0DD',
-        '#D7504B','#C6E579','#F4E001','#F0805A','#26C0C0'
+        '#C1232B', '#27727B', '#FCCE10', '#E87C25', '#B5C334',
+        '#FE8463', '#9BCA63', '#FAD860', '#F3A43B', '#60C0DD',
+        '#D7504B', '#C6E579', '#F4E001', '#F0805A', '#26C0C0'
     ];
 
     var theme = {
@@ -37,7 +38,7 @@
         },
 
         visualMap: {
-            color:['#C1232B','#FCCE10']
+            color: ['#C1232B', '#FCCE10']
         },
 
         toolbox: {
@@ -50,16 +51,16 @@
 
         tooltip: {
             backgroundColor: 'rgba(50,50,50,0.5)',
-            axisPointer : {
-                type : 'line',
-                lineStyle : {
+            axisPointer: {
+                type: 'line',
+                lineStyle: {
                     color: '#27727B',
                     type: 'dashed'
                 },
                 crossStyle: {
                     color: '#27727B'
                 },
-                shadowStyle : {
+                shadowStyle: {
                     color: 'rgba(200,200,200,0.3)'
                 }
             }
@@ -86,7 +87,7 @@
             axisLine: {
                 show: false
             },
-            splitArea : {
+            splitArea: {
                 show: false
             },
             splitLine: {
@@ -114,14 +115,14 @@
         line: {
             itemStyle: {
                 normal: {
-                    borderWidth:2,
-                    borderColor:'#fff',
+                    borderWidth: 2,
+                    borderColor: '#fff',
                     lineStyle: {
                         width: 3
                     }
                 },
                 emphasis: {
-                    borderWidth:0
+                    borderWidth: 0
                 }
             },
             symbol: 'circle',
@@ -173,7 +174,7 @@
         gauge: {
             axisLine: {
                 lineStyle: {
-                    color: [[0.2, '#B5C334'],[0.8, '#27727B'],[1, '#C1232B']]
+                    color: [[0.2, '#B5C334'], [0.8, '#27727B'], [1, '#C1232B']]
                 }
             },
             axisTick: {
@@ -194,7 +195,7 @@
                     color: '#fff'
                 }
             },
-            title : {
+            title: {
                 offsetCenter: [0, -20]
             }
         }

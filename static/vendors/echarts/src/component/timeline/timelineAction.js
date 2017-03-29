@@ -1,12 +1,11 @@
 /**
  * @file Timeilne action
  */
-define(function(require) {
+define(function (require) {
 
     var echarts = require('../../echarts');
 
     echarts.registerAction(
-
         {type: 'timelineChange', event: 'timelineChanged', update: 'prepareAndUpdate'},
 
         function (payload, ecModel) {
@@ -25,7 +24,6 @@ define(function(require) {
     );
 
     echarts.registerAction(
-
         {type: 'timelinePlayChange', event: 'timelinePlayChanged', update: 'update'},
 
         function (payload, ecModel) {

@@ -126,8 +126,8 @@ define(function (require) {
             var categories = zrUtil.map(this.option.categories || [], function (category) {
                 // Data must has value
                 return category.value != null ? category : zrUtil.extend({
-                    value: 0
-                }, category);
+                        value: 0
+                    }, category);
             });
             var categoriesData = new List(['value'], this);
             categoriesData.initData(categories);
@@ -152,7 +152,7 @@ define(function (require) {
             z: 2,
 
             color: ['#61a0a8', '#d14a61', '#fd9c35', '#675bba', '#fec42c',
-                    '#dd4444', '#fd9c35', '#cd4870'],
+                '#dd4444', '#fd9c35', '#cd4870'],
 
             coordinateSystem: 'view',
 

@@ -1,4 +1,4 @@
-define(function(require) {
+define(function (require) {
     'use strict';
 
     var graphic = require('../util/graphic');
@@ -17,7 +17,7 @@ define(function(require) {
             this.group.removeAll();
             if (gridModel.get('show')) {
                 this.group.add(new graphic.Rect({
-                    shape:gridModel.coordinateSystem.getRect(),
+                    shape: gridModel.coordinateSystem.getRect(),
                     style: zrUtil.defaults({
                         fill: gridModel.get('backgroundColor')
                     }, gridModel.getItemStyle()),

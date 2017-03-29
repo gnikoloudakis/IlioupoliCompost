@@ -1,4 +1,4 @@
-describe('title', function() {
+describe('title', function () {
 
     var uiHelper = window.uiHelper;
 
@@ -38,8 +38,8 @@ describe('title', function() {
                 series: [],
                 title: {
                     text: 'here is a very long long long long long long long '
-                        + 'long long long long long long long long long long '
-                        + 'long long long long long long long long long title'
+                    + 'long long long long long long long long long long '
+                    + 'long long long long long long long long long title'
                 }
             }
         }, {

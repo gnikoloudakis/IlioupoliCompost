@@ -1,4 +1,4 @@
- define(function(require) {
+define(function (require) {
 
     var graphic = require('../../util/graphic');
     var layout = require('../../util/layout');
@@ -88,9 +88,7 @@
         /**
          * @private
          */
-        _renderContent: function (
-            model, targetNode, layoutParam, normalStyleModel, textStyleModel
-        ) {
+        _renderContent: function (model, targetNode, layoutParam, normalStyleModel, textStyleModel) {
             // Start rendering.
             var lastX = 0;
             var emptyItemWidth = layoutParam.emptyItemWidth;

@@ -3,13 +3,13 @@ module.exports = {
         left: '2%',
         right: '2%',
         data: [
-            '2002-01-01','2003-01-01','2004-01-01',
+            '2002-01-01', '2003-01-01', '2004-01-01',
             {
                 value: '2005-01-01',
                 symbol: 'diamond',
                 symbolSize: 16
             },
-            '2006-01-01', '2007-01-01','2008-01-01','2009-01-01','2010-01-01',
+            '2006-01-01', '2007-01-01', '2008-01-01', '2009-01-01', '2010-01-01',
             {
                 value: '2011-01-01',
                 symbol: 'diamond',
@@ -17,7 +17,7 @@ module.exports = {
             }
         ],
         label: {
-            formatter : function(s) {
+            formatter: function (s) {
                 return (new Date(s)).getFullYear();
             }
         }
@@ -29,23 +29,23 @@ module.exports = {
             bottom: '20%'
         },
         xAxis: {
-            type : 'value',
-            scale:true,
-            axisLabel : {
+            type: 'value',
+            scale: true,
+            axisLabel: {
                 formatter: '{value} cm'
             }
         },
         yAxis: {
-            type : 'value',
-            scale:true,
-            axisLabel : {
+            type: 'value',
+            scale: true,
+            axisLabel: {
                 formatter: '{value} kg'
             }
         },
-        series : [
+        series: [
             {
-                name:'女性',
-                type:'scatter',
+                name: '女性',
+                type: 'scatter',
                 data: [[161.2, 51.6], [167.5, 59.0], [159.5, 49.2], [157.0, 63.0], [155.8, 53.6],
                     [170.0, 59.0], [159.1, 47.6], [166.0, 69.8], [176.2, 66.8], [160.2, 75.2],
                     [172.5, 55.2], [170.9, 54.2], [172.9, 62.5], [153.4, 42.0], [160.0, 50.0],
@@ -99,21 +99,21 @@ module.exports = {
                     [169.5, 67.3], [160.0, 75.5], [172.7, 68.2], [162.6, 61.4], [157.5, 76.8],
                     [176.5, 71.8], [164.4, 55.5], [160.7, 48.6], [174.0, 66.4], [163.8, 67.3]
                 ],
-                markPoint : {
-                    data : [
-                        {type : 'max', name: '最大值'},
-                        {type : 'min', name: '最小值'}
+                markPoint: {
+                    data: [
+                        {type: 'max', name: '最大值'},
+                        {type: 'min', name: '最小值'}
                     ]
                 },
-                markLine : {
-                    data : [
-                        {type : 'average', name: '平均值'}
+                markLine: {
+                    data: [
+                        {type: 'average', name: '平均值'}
                     ]
                 }
             },
             {
-                name:'男性',
-                type:'scatter',
+                name: '男性',
+                type: 'scatter',
                 data: [[174.0, 65.6], [175.3, 71.8], [193.5, 80.7], [186.5, 72.6], [187.2, 78.8],
                     [181.5, 74.8], [184.0, 86.4], [184.5, 78.4], [175.0, 62.0], [184.0, 81.6],
                     [180.0, 76.6], [177.8, 83.6], [192.0, 90.0], [176.0, 74.6], [174.0, 71.0],
@@ -165,15 +165,15 @@ module.exports = {
                     [170.2, 62.3], [177.8, 82.7], [179.1, 79.1], [190.5, 98.2], [177.8, 84.1],
                     [180.3, 83.2], [180.3, 83.2]
                 ],
-                markPoint : {
-                    data : [
-                        {type : 'max', name: '最大值'},
-                        {type : 'min', name: '最小值'}
+                markPoint: {
+                    data: [
+                        {type: 'max', name: '最大值'},
+                        {type: 'min', name: '最小值'}
                     ]
                 },
-                markLine : {
-                    data : [
-                        {type : 'average', name: '平均值'}
+                markLine: {
+                    data: [
+                        {type: 'average', name: '平均值'}
                     ]
                 }
             }

@@ -1,4 +1,4 @@
-define(function(require) {
+define(function (require) {
 
     var VisualMapView = require('./VisualMapView');
     var zrUtil = require('zrender/core/util');

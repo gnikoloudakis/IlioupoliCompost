@@ -12,9 +12,11 @@ define(function (require) {
     var numberUtil = require('../../util/number');
 
     var SYMBOL_CATEGORIES = ['fromSymbol', 'toSymbol'];
+
     function makeSymbolTypeKey(symbolCategory) {
         return '_' + symbolCategory + 'Type';
     }
+
     /**
      * @inner
      */
@@ -63,7 +65,7 @@ define(function (require) {
         }
     }
 
-    function updateSymbolAndLabelBeforeLineUpdate () {
+    function updateSymbolAndLabelBeforeLineUpdate() {
         var lineGroup = this;
         var symbolFrom = lineGroup.childOfName('fromSymbol');
         var symbolTo = lineGroup.childOfName('toSymbol');
@@ -100,16 +102,16 @@ define(function (require) {
             symbolFrom.attr('position', fromPos);
             var tangent = line.tangentAt(0);
             symbolFrom.attr('rotation', Math.PI / 2 - Math.atan2(
-                tangent[1], tangent[0]
-            ));
+                    tangent[1], tangent[0]
+                ));
             symbolFrom.attr('scale', [invScale * percent, invScale * percent]);
         }
         if (symbolTo) {
             symbolTo.attr('position', toPos);
             var tangent = line.tangentAt(1);
             symbolTo.attr('rotation', -Math.PI / 2 - Math.atan2(
-                tangent[1], tangent[0]
-            ));
+                    tangent[1], tangent[0]
+                ));
             symbolTo.attr('scale', [invScale * percent, invScale * percent]);
         }
 

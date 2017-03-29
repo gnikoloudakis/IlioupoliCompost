@@ -69,7 +69,8 @@ define(function (require) {
         /**
          * @override
          */
-        Overlay.prototype.draw = function () {};
+        Overlay.prototype.draw = function () {
+        };
 
         return Overlay;
     }

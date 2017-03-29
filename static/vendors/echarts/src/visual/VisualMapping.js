@@ -127,18 +127,18 @@ define(function (require) {
 
                 return zrUtil.bind(
                     isCategory(this)
-                    ? function (value, isNormalized) {
-                        !isNormalized && (value = this._normalizeData(value));
-                        return getVisualForCategory(this, visual, value);
-                    }
-                    : function (value, isNormalized, out) {
-                        // If output rgb array
-                        // which will be much faster and useful in pixel manipulation
-                        var returnRGBArray = !!out;
-                        !isNormalized && (value = this._normalizeData(value));
-                        out = zrColor.fastMapToColor(value, visual, out);
-                        return returnRGBArray ? out : zrUtil.stringify(out, 'rgba');
-                    }, this);
+                        ? function (value, isNormalized) {
+                            !isNormalized && (value = this._normalizeData(value));
+                            return getVisualForCategory(this, visual, value);
+                        }
+                        : function (value, isNormalized, out) {
+                            // If output rgb array
+                            // which will be much faster and useful in pixel manipulation
+                            var returnRGBArray = !!out;
+                            !isNormalized && (value = this._normalizeData(value));
+                            out = zrColor.fastMapToColor(value, visual, out);
+                            return returnRGBArray ? out : zrUtil.stringify(out, 'rgba');
+                        }, this);
             },
 
             mapValueToVisual: function (value) {
@@ -345,7 +345,7 @@ define(function (require) {
     function arrayGetByNormalizedValue(arr, normalized) {
         return arr[
             Math.round(linearMap(normalized, [0, 1], [0, arr.length - 1], true))
-        ];
+            ];
     }
 
     function defaultApplyColor(value, getter, setter) {
@@ -357,7 +357,7 @@ define(function (require) {
             (me.option.loop && normalized !== CATEGORY_DEFAULT_VISUAL_INDEX)
                 ? normalized % visual.length
                 : normalized
-        ];
+            ];
     }
 
     function isCategory(me) {
@@ -447,8 +447,8 @@ define(function (require) {
         var newVisual = zrUtil.isArray(visual)
             ? []
             : zrUtil.isObject(visual)
-            ? {}
-            : (isPrimary = true, null);
+                ? {}
+                : (isPrimary = true, null);
 
         VisualMapping.eachVisual(visual, function (v, key) {
             var newVal = callback.call(context, v, key);

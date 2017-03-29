@@ -2,10 +2,12 @@
 
 function init_daterangepicker() {
 
-    if( typeof ($.fn.daterangepicker) === 'undefined'){ return; }
+    if (typeof ($.fn.daterangepicker) === 'undefined') {
+        return;
+    }
     console.log('init_daterangepicker');
 
-    var cb = function(start, end, label) {
+    var cb = function (start, end, label) {
         console.log(start.toISOString(), end.toISOString(), label);
         $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
     };
@@ -51,25 +53,25 @@ function init_daterangepicker() {
 
     $('#reportrange span').html(moment().subtract(29, 'days').format('MMMM D, YYYY') + ' - ' + moment().format('MMMM D, YYYY'));
     $('#reportrange').daterangepicker(optionSet1, cb);
-    $('#reportrange').on('show.daterangepicker', function() {
+    $('#reportrange').on('show.daterangepicker', function () {
         console.log("show event fired");
     });
-    $('#reportrange').on('hide.daterangepicker', function() {
+    $('#reportrange').on('hide.daterangepicker', function () {
         console.log("hide event fired");
     });
-    $('#reportrange').on('apply.daterangepicker', function(ev, picker) {
+    $('#reportrange').on('apply.daterangepicker', function (ev, picker) {
         console.log("apply event fired, start/end dates are " + picker.startDate.format('MMMM D, YYYY') + " to " + picker.endDate.format('MMMM D, YYYY'));
     });
-    $('#reportrange').on('cancel.daterangepicker', function(ev, picker) {
+    $('#reportrange').on('cancel.daterangepicker', function (ev, picker) {
         console.log("cancel event fired");
     });
-    $('#options1').click(function() {
+    $('#options1').click(function () {
         $('#reportrange').data('daterangepicker').setOptions(optionSet1, cb);
     });
-    $('#options2').click(function() {
+    $('#options2').click(function () {
         $('#reportrange').data('daterangepicker').setOptions(optionSet2, cb);
     });
-    $('#destroy').click(function() {
+    $('#destroy').click(function () {
         $('#reportrange').data('daterangepicker').remove();
     });
 
@@ -77,10 +79,12 @@ function init_daterangepicker() {
 
 function init_daterangepicker_right() {
 
-    if( typeof ($.fn.daterangepicker) === 'undefined'){ return; }
+    if (typeof ($.fn.daterangepicker) === 'undefined') {
+        return;
+    }
     console.log('init_daterangepicker_right');
 
-    var cb = function(start, end, label) {
+    var cb = function (start, end, label) {
         console.log(start.toISOString(), end.toISOString(), label);
         $('#reportrange_right span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
     };
@@ -128,28 +132,28 @@ function init_daterangepicker_right() {
 
     $('#reportrange_right').daterangepicker(optionSet1, cb);
 
-    $('#reportrange_right').on('show.daterangepicker', function() {
+    $('#reportrange_right').on('show.daterangepicker', function () {
         console.log("show event fired");
     });
-    $('#reportrange_right').on('hide.daterangepicker', function() {
+    $('#reportrange_right').on('hide.daterangepicker', function () {
         console.log("hide event fired");
     });
-    $('#reportrange_right').on('apply.daterangepicker', function(ev, picker) {
+    $('#reportrange_right').on('apply.daterangepicker', function (ev, picker) {
         console.log("apply event fired, start/end dates are " + picker.startDate.format('MMMM D, YYYY') + " to " + picker.endDate.format('MMMM D, YYYY'));
     });
-    $('#reportrange_right').on('cancel.daterangepicker', function(ev, picker) {
+    $('#reportrange_right').on('cancel.daterangepicker', function (ev, picker) {
         console.log("cancel event fired");
     });
 
-    $('#options1').click(function() {
+    $('#options1').click(function () {
         $('#reportrange_right').data('daterangepicker').setOptions(optionSet1, cb);
     });
 
-    $('#options2').click(function() {
+    $('#options2').click(function () {
         $('#reportrange_right').data('daterangepicker').setOptions(optionSet2, cb);
     });
 
-    $('#destroy').click(function() {
+    $('#destroy').click(function () {
         $('#reportrange_right').data('daterangepicker').remove();
     });
 
@@ -157,31 +161,33 @@ function init_daterangepicker_right() {
 
 function init_daterangepicker_single_call() {
 
-    if( typeof ($.fn.daterangepicker) === 'undefined'){ return; }
+    if (typeof ($.fn.daterangepicker) === 'undefined') {
+        return;
+    }
     console.log('init_daterangepicker_single_call');
 
     $('#single_cal1').daterangepicker({
         singleDatePicker: true,
         singleClasses: "picker_1"
-    }, function(start, end, label) {
+    }, function (start, end, label) {
         console.log(start.toISOString(), end.toISOString(), label);
     });
     $('#single_cal2').daterangepicker({
         singleDatePicker: true,
         singleClasses: "picker_2"
-    }, function(start, end, label) {
+    }, function (start, end, label) {
         console.log(start.toISOString(), end.toISOString(), label);
     });
     $('#single_cal3').daterangepicker({
         singleDatePicker: true,
         singleClasses: "picker_3"
-    }, function(start, end, label) {
+    }, function (start, end, label) {
         console.log(start.toISOString(), end.toISOString(), label);
     });
     $('#single_cal4').daterangepicker({
         singleDatePicker: true,
         singleClasses: "picker_4"
-    }, function(start, end, label) {
+    }, function (start, end, label) {
         console.log(start.toISOString(), end.toISOString(), label);
     });
 
@@ -191,10 +197,12 @@ function init_daterangepicker_single_call() {
 
 function init_daterangepicker_reservation() {
 
-    if( typeof ($.fn.daterangepicker) === 'undefined'){ return; }
+    if (typeof ($.fn.daterangepicker) === 'undefined') {
+        return;
+    }
     console.log('init_daterangepicker_reservation');
 
-    $('#reservation').daterangepicker(null, function(start, end, label) {
+    $('#reservation').daterangepicker(null, function (start, end, label) {
         console.log(start.toISOString(), end.toISOString(), label);
     });
 
@@ -206,6 +214,7 @@ function init_daterangepicker_reservation() {
         }
     });
 
-}/**
+}
+/**
  * Created by yannis on 3/9/2017.
  */

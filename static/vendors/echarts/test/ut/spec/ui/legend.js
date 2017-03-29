@@ -1,4 +1,4 @@
-describe('legend', function() {
+describe('legend', function () {
 
     var uiHelper = window.uiHelper;
 
@@ -12,12 +12,12 @@ describe('legend', function() {
                     type: 'line',
                     data: [1, 2, 4]
                 }],
-                xAxis : [{
-                    type : 'category',
-                    data : ['x','y','z']
+                xAxis: [{
+                    type: 'category',
+                    data: ['x', 'y', 'z']
                 }],
-                yAxis : [{
-                    type : 'value'
+                yAxis: [{
+                    type: 'value'
                 }],
                 legend: {
                     data: ['a']
@@ -31,12 +31,12 @@ describe('legend', function() {
                     type: 'line',
                     data: [1, 2, 4]
                 }],
-                xAxis : [{
-                    type : 'category',
-                    data : ['x','y','z']
+                xAxis: [{
+                    type: 'category',
+                    data: ['x', 'y', 'z']
                 }],
-                yAxis : [{
-                    type : 'value'
+                yAxis: [{
+                    type: 'value'
                 }],
                 legend: {
                     data: ['a'],
@@ -54,12 +54,12 @@ describe('legend', function() {
                     type: 'line',
                     data: [1, 2, 4]
                 }],
-                xAxis : [{
-                    type : 'category',
-                    data : ['x','y','z']
+                xAxis: [{
+                    type: 'category',
+                    data: ['x', 'y', 'z']
                 }],
-                yAxis : [{
-                    type : 'value'
+                yAxis: [{
+                    type: 'value'
                 }],
                 legend: {
                     data: ['a'],
@@ -74,12 +74,12 @@ describe('legend', function() {
                     type: 'line',
                     data: [1, 2, 4]
                 }],
-                xAxis : [{
-                    type : 'category',
-                    data : ['x','y','z']
+                xAxis: [{
+                    type: 'category',
+                    data: ['x', 'y', 'z']
                 }],
-                yAxis : [{
-                    type : 'value'
+                yAxis: [{
+                    type: 'value'
                 }],
                 legend: {
                     data: ['a'],
@@ -94,12 +94,12 @@ describe('legend', function() {
                     type: 'line',
                     data: [1, 2, 4]
                 }],
-                xAxis : [{
-                    type : 'category',
-                    data : ['x','y','z']
+                xAxis: [{
+                    type: 'category',
+                    data: ['x', 'y', 'z']
                 }],
-                yAxis : [{
-                    type : 'value'
+                yAxis: [{
+                    type: 'value'
                 }],
                 legend: {
                     data: ['a'],
@@ -114,12 +114,12 @@ describe('legend', function() {
                     type: 'line',
                     data: [1, 2, 4]
                 }],
-                xAxis : [{
-                    type : 'category',
-                    data : ['x','y','z']
+                xAxis: [{
+                    type: 'category',
+                    data: ['x', 'y', 'z']
                 }],
-                yAxis : [{
-                    type : 'value'
+                yAxis: [{
+                    type: 'value'
                 }],
                 legend: {
                     data: ['a'],
@@ -137,12 +137,12 @@ describe('legend', function() {
                     type: 'line',
                     data: [1, 2, 4]
                 }],
-                xAxis : [{
-                    type : 'category',
-                    data : ['x','y','z']
+                xAxis: [{
+                    type: 'category',
+                    data: ['x', 'y', 'z']
                 }],
-                yAxis : [{
-                    type : 'value'
+                yAxis: [{
+                    type: 'value'
                 }],
                 legend: {
                     data: ['a'],
@@ -157,12 +157,12 @@ describe('legend', function() {
                     type: 'line',
                     data: [1, 2, 4]
                 }],
-                xAxis : [{
-                    type : 'category',
-                    data : ['x','y','z']
+                xAxis: [{
+                    type: 'category',
+                    data: ['x', 'y', 'z']
                 }],
-                yAxis : [{
-                    type : 'value'
+                yAxis: [{
+                    type: 'value'
                 }],
                 legend: {
                     data: ['a'],
@@ -177,12 +177,12 @@ describe('legend', function() {
                     type: 'line',
                     data: [1, 2, 4]
                 }],
-                xAxis : [{
-                    type : 'category',
-                    data : ['x','y','z']
+                xAxis: [{
+                    type: 'category',
+                    data: ['x', 'y', 'z']
                 }],
-                yAxis : [{
-                    type : 'value'
+                yAxis: [{
+                    type: 'value'
                 }],
                 legend: {
                     data: ['a'],
@@ -197,12 +197,12 @@ describe('legend', function() {
                     type: 'line',
                     data: [1, 2, 4]
                 }],
-                xAxis : [{
-                    type : 'category',
-                    data : ['x','y','z']
+                xAxis: [{
+                    type: 'category',
+                    data: ['x', 'y', 'z']
                 }],
-                yAxis : [{
-                    type : 'value'
+                yAxis: [{
+                    type: 'value'
                 }],
                 legend: {
                     data: ['a'],
@@ -220,12 +220,12 @@ describe('legend', function() {
                     type: 'line',
                     data: [1, 2, 4]
                 }],
-                xAxis : [{
-                    type : 'category',
-                    data : ['x','y','z']
+                xAxis: [{
+                    type: 'category',
+                    data: ['x', 'y', 'z']
                 }],
-                yAxis : [{
-                    type : 'value'
+                yAxis: [{
+                    type: 'value'
                 }],
                 legend: {
                     data: ['a'],
@@ -243,12 +243,12 @@ describe('legend', function() {
                     type: 'line',
                     data: [1, 2, 4]
                 }],
-                xAxis : [{
-                    type : 'category',
-                    data : ['x','y','z']
+                xAxis: [{
+                    type: 'category',
+                    data: ['x', 'y', 'z']
                 }],
-                yAxis : [{
-                    type : 'value'
+                yAxis: [{
+                    type: 'value'
                 }],
                 legend: {
                     data: ['a'],
@@ -267,12 +267,12 @@ describe('legend', function() {
                     type: 'line',
                     data: [1, 2, 4]
                 }],
-                xAxis : [{
-                    type : 'category',
-                    data : ['x','y','z']
+                xAxis: [{
+                    type: 'category',
+                    data: ['x', 'y', 'z']
                 }],
-                yAxis : [{
-                    type : 'value'
+                yAxis: [{
+                    type: 'value'
                 }],
                 legend: {
                     data: ['a'],
@@ -286,12 +286,12 @@ describe('legend', function() {
                     type: 'line',
                     data: [1, 2, 4]
                 }],
-                xAxis : [{
-                    type : 'category',
-                    data : ['x','y','z']
+                xAxis: [{
+                    type: 'category',
+                    data: ['x', 'y', 'z']
                 }],
-                yAxis : [{
-                    type : 'value'
+                yAxis: [{
+                    type: 'value'
                 }],
                 legend: {
                     data: ['a'],
@@ -310,12 +310,12 @@ describe('legend', function() {
                     type: 'line',
                     data: [1, 2, 4]
                 }],
-                xAxis : [{
-                    type : 'category',
-                    data : ['x','y','z']
+                xAxis: [{
+                    type: 'category',
+                    data: ['x', 'y', 'z']
                 }],
-                yAxis : [{
-                    type : 'value'
+                yAxis: [{
+                    type: 'value'
                 }],
                 legend: {
                     data: ['a'],
@@ -329,12 +329,12 @@ describe('legend', function() {
                     type: 'line',
                     data: [1, 2, 4]
                 }],
-                xAxis : [{
-                    type : 'category',
-                    data : ['x','y','z']
+                xAxis: [{
+                    type: 'category',
+                    data: ['x', 'y', 'z']
                 }],
-                yAxis : [{
-                    type : 'value'
+                yAxis: [{
+                    type: 'value'
                 }],
                 legend: {
                     data: ['a'],
@@ -361,12 +361,12 @@ describe('legend', function() {
                     type: 'line',
                     data: []
                 }],
-                xAxis : [{
-                    type : 'category',
-                    data : ['x','y','z']
+                xAxis: [{
+                    type: 'category',
+                    data: ['x', 'y', 'z']
                 }],
-                yAxis : [{
-                    type : 'value'
+                yAxis: [{
+                    type: 'value'
                 }],
                 legend: {
                     data: ['this is a', 'this is b',
@@ -388,12 +388,12 @@ describe('legend', function() {
                     type: 'line',
                     data: []
                 }],
-                xAxis : [{
-                    type : 'category',
-                    data : ['x','y','z']
+                xAxis: [{
+                    type: 'category',
+                    data: ['x', 'y', 'z']
                 }],
-                yAxis : [{
-                    type : 'value'
+                yAxis: [{
+                    type: 'value'
                 }],
                 legend: {
                     data: ['this is a', 'this is b',
@@ -420,12 +420,12 @@ describe('legend', function() {
                     type: 'line',
                     data: []
                 }],
-                xAxis : [{
-                    type : 'category',
-                    data : ['x','y','z']
+                xAxis: [{
+                    type: 'category',
+                    data: ['x', 'y', 'z']
                 }],
-                yAxis : [{
-                    type : 'value'
+                yAxis: [{
+                    type: 'value'
                 }],
                 legend: {
                     data: ['this is a', 'this is b',
@@ -448,12 +448,12 @@ describe('legend', function() {
                     type: 'line',
                     data: []
                 }],
-                xAxis : [{
-                    type : 'category',
-                    data : ['x','y','z']
+                xAxis: [{
+                    type: 'category',
+                    data: ['x', 'y', 'z']
                 }],
-                yAxis : [{
-                    type : 'value'
+                yAxis: [{
+                    type: 'value'
                 }],
                 legend: {
                     data: ['this is a', 'this is b',
@@ -480,12 +480,12 @@ describe('legend', function() {
                     type: 'line',
                     data: []
                 }],
-                xAxis : [{
-                    type : 'category',
-                    data : ['x','y','z']
+                xAxis: [{
+                    type: 'category',
+                    data: ['x', 'y', 'z']
                 }],
-                yAxis : [{
-                    type : 'value'
+                yAxis: [{
+                    type: 'value'
                 }],
                 legend: {
                     data: ['this is a', 'this is b',
@@ -509,12 +509,12 @@ describe('legend', function() {
                     type: 'line',
                     data: []
                 }],
-                xAxis : [{
-                    type : 'category',
-                    data : ['x','y','z']
+                xAxis: [{
+                    type: 'category',
+                    data: ['x', 'y', 'z']
                 }],
-                yAxis : [{
-                    type : 'value'
+                yAxis: [{
+                    type: 'value'
                 }],
                 legend: {
                     data: ['this is a', 'this is b',
@@ -539,12 +539,12 @@ describe('legend', function() {
                     type: 'line',
                     data: []
                 }],
-                xAxis : [{
-                    type : 'category',
-                    data : ['x','y','z']
+                xAxis: [{
+                    type: 'category',
+                    data: ['x', 'y', 'z']
                 }],
-                yAxis : [{
-                    type : 'value'
+                yAxis: [{
+                    type: 'value'
                 }],
                 legend: {
                     data: ['this is a', 'this is b',
@@ -566,12 +566,12 @@ describe('legend', function() {
                     type: 'line',
                     data: []
                 }],
-                xAxis : [{
-                    type : 'category',
-                    data : ['x','y','z']
+                xAxis: [{
+                    type: 'category',
+                    data: ['x', 'y', 'z']
                 }],
-                yAxis : [{
-                    type : 'value'
+                yAxis: [{
+                    type: 'value'
                 }],
                 legend: {
                     data: ['this is a', 'this is b',

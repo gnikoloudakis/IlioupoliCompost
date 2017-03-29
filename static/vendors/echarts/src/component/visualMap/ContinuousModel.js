@@ -1,7 +1,7 @@
 /**
  * @file Data zoom model
  */
-define(function(require) {
+define(function (require) {
 
     var VisualMapModel = require('./VisualMapModel');
     var zrUtil = require('zrender/core/util');

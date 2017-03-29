@@ -3,7 +3,7 @@ define(function (require) {
     var zrUtil = require('zrender/core/util');
 
     var coordsOffsetMap = {
-        '南海诸岛' : [32, 80],
+        '南海诸岛': [32, 80],
         // 全国
         '广东': [0, -10],
         '香港': [10, 5],

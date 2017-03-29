@@ -135,7 +135,7 @@ define(function (require) {
                     var path = icon.indexOf('image://') === 0
                         ? (
                             style.image = icon.slice(8),
-                            new graphic.Image({style: style})
+                                new graphic.Image({style: style})
                         )
                         : graphic.makePath(
                             icon.replace('path://', ''),
@@ -153,13 +153,13 @@ define(function (require) {
                     if (toolboxModel.get('showTitle')) {
                         path.__title = titles[iconName];
                         path.on('mouseover', function () {
-                                path.setStyle({
-                                    text: titles[iconName],
-                                    textPosition: hoverStyle.textPosition || 'bottom',
-                                    textFill: hoverStyle.fill || hoverStyle.stroke || '#000',
-                                    textAlign: hoverStyle.textAlign || 'center'
-                                });
-                            })
+                            path.setStyle({
+                                text: titles[iconName],
+                                textPosition: hoverStyle.textPosition || 'bottom',
+                                textFill: hoverStyle.fill || hoverStyle.stroke || '#000',
+                                textAlign: hoverStyle.textAlign || 'center'
+                            });
+                        })
                             .on('mouseout', function () {
                                 path.setStyle({
                                     textFill: null
@@ -200,7 +200,7 @@ define(function (require) {
                         needPutOnTop = true;
                     }
                     var topOffset = needPutOnTop ? (-5 - rect.height) : (itemSize + 8);
-                    if (offsetX + rect.width /  2 > api.getWidth()) {
+                    if (offsetX + rect.width / 2 > api.getWidth()) {
                         hoverStyle.textPosition = ['100%', topOffset];
                         hoverStyle.textAlign = 'right';
                     }

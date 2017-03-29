@@ -1,20 +1,20 @@
 // Test the rectangle element
-describe('Legend block tests', function() {
+describe('Legend block tests', function () {
 
-	beforeEach(function() {
+	beforeEach(function () {
 		window.addDefaultMatchers(jasmine);
 	});
 
-	afterEach(function() {
+	afterEach(function () {
 		window.releaseAllCharts();
 	});
 
-	it('Should be constructed', function() {
+	it('Should be constructed', function () {
 		var legend = new Chart.Legend({});
 		expect(legend).not.toBe(undefined);
 	});
 
-	it('should have the correct default config', function() {
+	it('should have the correct default config', function () {
 		expect(Chart.defaults.global.legend).toEqual({
 			display: true,
 			position: 'top',
@@ -32,7 +32,7 @@ describe('Legend block tests', function() {
 		});
 	});
 
-	it('should update correctly', function() {
+	it('should update correctly', function () {
 		var chart = window.acquireChart({
 			type: 'bar',
 			data: {
@@ -94,7 +94,7 @@ describe('Legend block tests', function() {
 		}]);
 	});
 
-	it('should draw correctly', function() {
+	it('should draw correctly', function () {
 		var chart = window.acquireChart({
 			type: 'bar',
 			data: {
@@ -122,10 +122,10 @@ describe('Legend block tests', function() {
 
 		expect(chart.legend.legendHitBoxes.length).toBe(3);
 
-		[	{ h: 12, l: 101, t: 10, w: 93 },
-			{ h: 12, l: 205, t: 10, w: 93 },
-			{ h: 12, l: 308, t: 10, w: 93 }
-		].forEach(function(expected, i) {
+		[{h: 12, l: 101, t: 10, w: 93},
+			{h: 12, l: 205, t: 10, w: 93},
+			{h: 12, l: 308, t: 10, w: 93}
+		].forEach(function (expected, i) {
 			expect(chart.legend.legendHitBoxes[i].height).toBeCloseToPixel(expected.h);
 			expect(chart.legend.legendHitBoxes[i].left).toBeCloseToPixel(expected.l);
 			expect(chart.legend.legendHitBoxes[i].top).toBeCloseToPixel(expected.t);
@@ -136,173 +136,173 @@ describe('Legend block tests', function() {
 		// For now, as discussed with Evert Timberg, simply comment out.
 		// See http://humblesoftware.github.io/js-imagediff/test.html
 		/*chart.legend.ctx = window.createMockContext();
-		chart.update();
+		 chart.update();
 
-		expect(chart.legend.ctx .getCalls()).toEqual([{
-			"name": "measureText",
-			"args": ["dataset1"]
-		}, {
-			"name": "measureText",
-			"args": ["dataset2"]
-		}, {
-			"name": "measureText",
-			"args": ["dataset3"]
-		}, {
-			"name": "measureText",
-			"args": ["dataset1"]
-		}, {
-			"name": "measureText",
-			"args": ["dataset2"]
-		}, {
-			"name": "measureText",
-			"args": ["dataset3"]
-		}, {
-			"name": "setLineWidth",
-			"args": [0.5]
-		}, {
-			"name": "setStrokeStyle",
-			"args": ["#666"]
-		}, {
-			"name": "setFillStyle",
-			"args": ["#666"]
-		}, {
-			"name": "measureText",
-			"args": ["dataset1"]
-		}, {
-			"name": "save",
-			"args": []
-		}, {
-			"name": "setFillStyle",
-			"args": ["#f31"]
-		}, {
-			"name": "setLineCap",
-			"args": ["butt"]
-		}, {
-			"name": "setLineDashOffset",
-			"args": [5.5]
-		}, {
-			"name": "setLineJoin",
-			"args": ["miter"]
-		}, {
-			"name": "setLineWidth",
-			"args": [3]
-		}, {
-			"name": "setStrokeStyle",
-			"args": ["rgba(0,0,0,0.1)"]
-		}, {
-			"name": "setLineDash",
-			"args": [
-				[2, 2]
-			]
-		}, {
-			"name": "strokeRect",
-			"args": [114, 110, 40, 12]
-		}, {
-			"name": "fillRect",
-			"args": [114, 110, 40, 12]
-		}, {
-			"name": "restore",
-			"args": []
-		}, {
-			"name": "fillText",
-			"args": ["dataset1", 160, 110]
-		}, {
-			"name": "measureText",
-			"args": ["dataset2"]
-		}, {
-			"name": "save",
-			"args": []
-		}, {
-			"name": "setFillStyle",
-			"args": ["rgba(0,0,0,0.1)"]
-		}, {
-			"name": "setLineCap",
-			"args": ["butt"]
-		}, {
-			"name": "setLineDashOffset",
-			"args": [0]
-		}, {
-			"name": "setLineJoin",
-			"args": ["miter"]
-		}, {
-			"name": "setLineWidth",
-			"args": [3]
-		}, {
-			"name": "setStrokeStyle",
-			"args": ["rgba(0,0,0,0.1)"]
-		}, {
-			"name": "setLineDash",
-			"args": [
-				[]
-			]
-		}, {
-			"name": "strokeRect",
-			"args": [250, 110, 40, 12]
-		}, {
-			"name": "fillRect",
-			"args": [250, 110, 40, 12]
-		}, {
-			"name": "restore",
-			"args": []
-		}, {
-			"name": "fillText",
-			"args": ["dataset2", 296, 110]
-		}, {
-			"name": "beginPath",
-			"args": []
-		}, {
-			"name": "setLineWidth",
-			"args": [2]
-		}, {
-			"name": "moveTo",
-			"args": [296, 116]
-		}, {
-			"name": "lineTo",
-			"args": [376, 116]
-		}, {
-			"name": "stroke",
-			"args": []
-		}, {
-			"name": "measureText",
-			"args": ["dataset3"]
-		}, {
-			"name": "save",
-			"args": []
-		}, {
-			"name": "setFillStyle",
-			"args": ["rgba(0,0,0,0.1)"]
-		}, {
-			"name": "setLineCap",
-			"args": ["butt"]
-		}, {
-			"name": "setLineDashOffset",
-			"args": [0]
-		}, {
-			"name": "setLineJoin",
-			"args": ["miter"]
-		}, {
-			"name": "setLineWidth",
-			"args": [10]
-		}, {
-			"name": "setStrokeStyle",
-			"args": ["green"]
-		}, {
-			"name": "setLineDash",
-			"args": [
-				[]
-			]
-		}, {
-			"name": "strokeRect",
-			"args": [182, 132, 40, 12]
-		}, {
-			"name": "fillRect",
-			"args": [182, 132, 40, 12]
-		}, {
-			"name": "restore",
-			"args": []
-		}, {
-			"name": "fillText",
-			"args": ["dataset3", 228, 132]
-		}]);*/
+		 expect(chart.legend.ctx .getCalls()).toEqual([{
+		 "name": "measureText",
+		 "args": ["dataset1"]
+		 }, {
+		 "name": "measureText",
+		 "args": ["dataset2"]
+		 }, {
+		 "name": "measureText",
+		 "args": ["dataset3"]
+		 }, {
+		 "name": "measureText",
+		 "args": ["dataset1"]
+		 }, {
+		 "name": "measureText",
+		 "args": ["dataset2"]
+		 }, {
+		 "name": "measureText",
+		 "args": ["dataset3"]
+		 }, {
+		 "name": "setLineWidth",
+		 "args": [0.5]
+		 }, {
+		 "name": "setStrokeStyle",
+		 "args": ["#666"]
+		 }, {
+		 "name": "setFillStyle",
+		 "args": ["#666"]
+		 }, {
+		 "name": "measureText",
+		 "args": ["dataset1"]
+		 }, {
+		 "name": "save",
+		 "args": []
+		 }, {
+		 "name": "setFillStyle",
+		 "args": ["#f31"]
+		 }, {
+		 "name": "setLineCap",
+		 "args": ["butt"]
+		 }, {
+		 "name": "setLineDashOffset",
+		 "args": [5.5]
+		 }, {
+		 "name": "setLineJoin",
+		 "args": ["miter"]
+		 }, {
+		 "name": "setLineWidth",
+		 "args": [3]
+		 }, {
+		 "name": "setStrokeStyle",
+		 "args": ["rgba(0,0,0,0.1)"]
+		 }, {
+		 "name": "setLineDash",
+		 "args": [
+		 [2, 2]
+		 ]
+		 }, {
+		 "name": "strokeRect",
+		 "args": [114, 110, 40, 12]
+		 }, {
+		 "name": "fillRect",
+		 "args": [114, 110, 40, 12]
+		 }, {
+		 "name": "restore",
+		 "args": []
+		 }, {
+		 "name": "fillText",
+		 "args": ["dataset1", 160, 110]
+		 }, {
+		 "name": "measureText",
+		 "args": ["dataset2"]
+		 }, {
+		 "name": "save",
+		 "args": []
+		 }, {
+		 "name": "setFillStyle",
+		 "args": ["rgba(0,0,0,0.1)"]
+		 }, {
+		 "name": "setLineCap",
+		 "args": ["butt"]
+		 }, {
+		 "name": "setLineDashOffset",
+		 "args": [0]
+		 }, {
+		 "name": "setLineJoin",
+		 "args": ["miter"]
+		 }, {
+		 "name": "setLineWidth",
+		 "args": [3]
+		 }, {
+		 "name": "setStrokeStyle",
+		 "args": ["rgba(0,0,0,0.1)"]
+		 }, {
+		 "name": "setLineDash",
+		 "args": [
+		 []
+		 ]
+		 }, {
+		 "name": "strokeRect",
+		 "args": [250, 110, 40, 12]
+		 }, {
+		 "name": "fillRect",
+		 "args": [250, 110, 40, 12]
+		 }, {
+		 "name": "restore",
+		 "args": []
+		 }, {
+		 "name": "fillText",
+		 "args": ["dataset2", 296, 110]
+		 }, {
+		 "name": "beginPath",
+		 "args": []
+		 }, {
+		 "name": "setLineWidth",
+		 "args": [2]
+		 }, {
+		 "name": "moveTo",
+		 "args": [296, 116]
+		 }, {
+		 "name": "lineTo",
+		 "args": [376, 116]
+		 }, {
+		 "name": "stroke",
+		 "args": []
+		 }, {
+		 "name": "measureText",
+		 "args": ["dataset3"]
+		 }, {
+		 "name": "save",
+		 "args": []
+		 }, {
+		 "name": "setFillStyle",
+		 "args": ["rgba(0,0,0,0.1)"]
+		 }, {
+		 "name": "setLineCap",
+		 "args": ["butt"]
+		 }, {
+		 "name": "setLineDashOffset",
+		 "args": [0]
+		 }, {
+		 "name": "setLineJoin",
+		 "args": ["miter"]
+		 }, {
+		 "name": "setLineWidth",
+		 "args": [10]
+		 }, {
+		 "name": "setStrokeStyle",
+		 "args": ["green"]
+		 }, {
+		 "name": "setLineDash",
+		 "args": [
+		 []
+		 ]
+		 }, {
+		 "name": "strokeRect",
+		 "args": [182, 132, 40, 12]
+		 }, {
+		 "name": "fillRect",
+		 "args": [182, 132, 40, 12]
+		 }, {
+		 "name": "restore",
+		 "args": []
+		 }, {
+		 "name": "fillText",
+		 "args": ["dataset3", 228, 132]
+		 }]);*/
 	});
 });

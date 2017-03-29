@@ -8,7 +8,7 @@ define(function (require) {
     echarts.registerLayout(require('./chord/chordCircularLayout'));
 
     echarts.registerVisualCoding(
-        'chart',  zrUtil.curry(require('../visual/dataColor'), 'chord')
+        'chart', zrUtil.curry(require('../visual/dataColor'), 'chord')
     );
 
     echarts.registerProcessor(

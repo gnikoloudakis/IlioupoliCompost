@@ -1,12 +1,12 @@
 "use strict";
 
-module.exports = function(Chart) {
+module.exports = function (Chart) {
 
 	var helpers = Chart.helpers;
 	var noop = helpers.noop;
 
 	// Base class for all dataset controllers (line, bar, etc)
-	Chart.DatasetController = function(chart, datasetIndex) {
+	Chart.DatasetController = function (chart, datasetIndex) {
 		this.initialize.call(this, chart, datasetIndex);
 	};
 
@@ -24,18 +24,18 @@ module.exports = function(Chart) {
 		 */
 		dataElementType: null,
 
-		initialize: function(chart, datasetIndex) {
+		initialize: function (chart, datasetIndex) {
 			this.chart = chart;
 			this.index = datasetIndex;
 			this.linkScales();
 			this.addElements();
 		},
 
-		updateIndex: function(datasetIndex) {
+		updateIndex: function (datasetIndex) {
 			this.index = datasetIndex;
 		},
 
-		linkScales: function() {
+		linkScales: function () {
 			var meta = this.getMeta();
 			var dataset = this.getDataset();
 
@@ -47,56 +47,56 @@ module.exports = function(Chart) {
 			}
 		},
 
-		getDataset: function() {
+		getDataset: function () {
 			return this.chart.data.datasets[this.index];
 		},
 
-		getMeta: function() {
+		getMeta: function () {
 			return this.chart.getDatasetMeta(this.index);
 		},
 
-		getScaleForId: function(scaleID) {
+		getScaleForId: function (scaleID) {
 			return this.chart.scales[scaleID];
 		},
 
-		reset: function() {
+		reset: function () {
 			this.update(true);
 		},
 
-		createMetaDataset: function() {
+		createMetaDataset: function () {
 			var me = this;
 			var type = me.datasetElementType;
 			return type && new type({
-				_chart: me.chart.chart,
-				_datasetIndex: me.index
-			});
+					_chart: me.chart.chart,
+					_datasetIndex: me.index
+				});
 		},
 
-		createMetaData: function(index) {
+		createMetaData: function (index) {
 			var me = this;
 			var type = me.dataElementType;
 			return type && new type({
-				_chart: me.chart.chart,
-				_datasetIndex: me.index,
-				_index: index
-			});
+					_chart: me.chart.chart,
+					_datasetIndex: me.index,
+					_index: index
+				});
 		},
 
-		addElements: function() {
+		addElements: function () {
 			var me = this;
 			var meta = me.getMeta();
 			var data = me.getDataset().data || [];
 			var metaData = meta.data;
 			var i, ilen;
 
-			for (i=0, ilen=data.length; i<ilen; ++i) {
+			for (i = 0, ilen = data.length; i < ilen; ++i) {
 				metaData[i] = metaData[i] || me.createMetaData(meta, i);
 			}
 
 			meta.dataset = meta.dataset || me.createMetaDataset();
 		},
 
-		addElementAndReset: function(index) {
+		addElementAndReset: function (index) {
 			var me = this;
 			var element = me.createMetaData(index);
 			me.getMeta().data.splice(index, 0, element);
@@ -124,14 +124,14 @@ module.exports = function(Chart) {
 
 		update: noop,
 
-		draw: function(ease) {
+		draw: function (ease) {
 			var easingDecimal = ease || 1;
-			helpers.each(this.getMeta().data, function(element, index) {
+			helpers.each(this.getMeta().data, function (element, index) {
 				element.transition(easingDecimal).draw();
 			});
 		},
 
-		removeHoverStyle: function(element, elementOpts) {
+		removeHoverStyle: function (element, elementOpts) {
 			var dataset = this.chart.data.datasets[element._datasetIndex],
 				index = element._index,
 				custom = element.custom || {},
@@ -144,7 +144,7 @@ module.exports = function(Chart) {
 			model.borderWidth = custom.borderWidth ? custom.borderWidth : valueOrDefault(dataset.borderWidth, index, elementOpts.borderWidth);
 		},
 
-		setHoverStyle: function(element) {
+		setHoverStyle: function (element) {
 			var dataset = this.chart.data.datasets[element._datasetIndex],
 				index = element._index,
 				custom = element.custom || {},

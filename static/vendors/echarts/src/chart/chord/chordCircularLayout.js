@@ -6,6 +6,7 @@
 define(function (require) {
     var zrUtil = require('zrender/core/util');
     var numberUtil = require('../../util/number');
+
     /**
      * @param {module:echarts/data/Graph} graph
      */
@@ -76,11 +77,11 @@ define(function (require) {
                 var startAngle = angle;
                 var endAngle = angle + sign * subGroup.size * unitAngle;
                 var layout = subGroup.edge.getLayout() || {
-                    cx: opts.cx,
-                    cy: opts.cy,
-                    r: opts.r0,
-                    clockwise: opts.clockwise
-                };
+                        cx: opts.cx,
+                        cy: opts.cy,
+                        r: opts.r0,
+                        clockwise: opts.clockwise
+                    };
                 layout.startAngle = -startAngle;
                 layout.endAngle = -endAngle;
                 subGroup.edge.setLayout(layout);

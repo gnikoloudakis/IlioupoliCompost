@@ -1,4 +1,4 @@
-define(function(require) {
+define(function (require) {
 
     'use strict';
 
@@ -20,13 +20,13 @@ define(function(require) {
             var baseAxis = cartesian.getBaseAxis();
 
             var columnsOnAxis = columnsMap[baseAxis.index] || {
-                remainedWidth: baseAxis.getBandWidth(),
-                autoWidthCount: 0,
-                categoryGap: '20%',
-                gap: '30%',
-                axis: baseAxis,
-                stacks: {}
-            };
+                    remainedWidth: baseAxis.getBandWidth(),
+                    autoWidthCount: 0,
+                    categoryGap: '20%',
+                    gap: '30%',
+                    axis: baseAxis,
+                    stacks: {}
+                };
             var stacks = columnsOnAxis.stacks;
             columnsMap[baseAxis.index] = columnsOnAxis;
 
@@ -36,16 +36,16 @@ define(function(require) {
                 columnsOnAxis.autoWidthCount++;
             }
             stacks[stackId] = stacks[stackId] || {
-                width: 0,
-                maxWidth: 0
-            };
+                    width: 0,
+                    maxWidth: 0
+                };
 
             var barWidth = seriesModel.get('barWidth');
             var barMaxWidth = seriesModel.get('barMaxWidth');
             var barGap = seriesModel.get('barGap');
             var barCategoryGap = seriesModel.get('barCategoryGap');
             // TODO
-            if (barWidth && ! stacks[stackId].width) {
+            if (barWidth && !stacks[stackId].width) {
                 barWidth = Math.min(columnsOnAxis.remainedWidth, barWidth);
                 stacks[stackId].width = barWidth;
                 columnsOnAxis.remainedWidth -= barWidth;
@@ -106,9 +106,9 @@ define(function(require) {
             var offset = -widthSum / 2;
             zrUtil.each(stacks, function (column, stackId) {
                 result[coordSysName][stackId] = result[coordSysName][stackId] || {
-                    offset: offset,
-                    width: column.width
-                };
+                        offset: offset,
+                        width: column.width
+                    };
 
                 offset += column.width * (1 + barGapPercent);
             });

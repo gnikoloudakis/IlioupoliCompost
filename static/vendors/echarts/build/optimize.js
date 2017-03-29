@@ -29,7 +29,7 @@ var ast = UglifyJS.parse(sourceCode);
 /* jshint camelcase: false */
 // compressor needs figure_out_scope too
 ast.figure_out_scope();
-ast = ast.transform(UglifyJS.Compressor( {} ));
+ast = ast.transform(UglifyJS.Compressor({}));
 
 // need to figure out scope again so mangler works optimally
 ast.figure_out_scope();

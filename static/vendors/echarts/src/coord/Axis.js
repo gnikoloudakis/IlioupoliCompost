@@ -192,7 +192,7 @@ define(function (require) {
          *
          * @return {Array}
          */
-         // FIXME Situation when labels is on ticks
+        // FIXME Situation when labels is on ticks
         getBands: function () {
             var extent = this.getExtent();
             var bands = [];

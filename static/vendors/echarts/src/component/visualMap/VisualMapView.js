@@ -116,8 +116,8 @@ define(function (require) {
             }
 
             var mappings = visualMapModel.controllerVisuals[
-                forceState || visualMapModel.getValueState(targetValue)
-            ];
+            forceState || visualMapModel.getValueState(targetValue)
+                ];
             var visualTypes = VisualMapping.prepareVisualTypes(mappings);
 
             zrUtil.each(visualTypes, function (type) {

@@ -7,7 +7,7 @@ define(function (require) {
         // Normalize
         for (var i = 0; i < properties.length; i++) {
             if (!properties[i][1]) {
-               properties[i][1] = properties[i][0];
+                properties[i][1] = properties[i][0];
             }
         }
         return function (excludes) {

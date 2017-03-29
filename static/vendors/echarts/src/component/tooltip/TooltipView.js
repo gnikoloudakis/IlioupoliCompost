@@ -16,6 +16,7 @@ define(function (require) {
         return round(a[0]) === round(b[0])
             && round(a[1]) === round(b[1]);
     }
+
     /**
      * @inner
      */
@@ -156,8 +157,8 @@ define(function (require) {
         var trigger = seriesModel.get('tooltip.trigger', true);
         // Ignore series use item tooltip trigger and series coordinate system is not cartesian or
         return !(!coordSys
-            || (coordSys.type !== 'cartesian2d' && coordSys.type !== 'polar' && coordSys.type !== 'single')
-            || trigger === 'item');
+        || (coordSys.type !== 'cartesian2d' && coordSys.type !== 'polar' && coordSys.type !== 'single')
+        || trigger === 'item');
     }
 
     require('../../echarts').extendComponentView({
@@ -397,9 +398,9 @@ define(function (require) {
                     }
 
                     seriesGroupByAxis[key] = seriesGroupByAxis[key] || {
-                        coordSys: [],
-                        series: []
-                    };
+                            coordSys: [],
+                            series: []
+                        };
                     seriesGroupByAxis[key].coordSys.push(coordSys);
                     seriesGroupByAxis[key].series.push(seriesModel);
                 }
@@ -625,7 +626,7 @@ define(function (require) {
                     ? graphic.updateProps(pointerEl, {
                         shape: targetShape
                     }, axisPointerModel)
-                    :  pointerEl.attr({
+                    : pointerEl.attr({
                         shape: targetShape
                     });
             }
@@ -648,7 +649,7 @@ define(function (require) {
                     ? graphic.updateProps(pointerEl, {
                         shape: targetShape
                     }, axisPointerModel)
-                    :  pointerEl.attr({
+                    : pointerEl.attr({
                         shape: targetShape
                     });
             }
@@ -681,7 +682,7 @@ define(function (require) {
                     ? graphic.updateProps(pointerEl, {
                         shape: targetShape
                     }, axisPointerModel)
-                    :  pointerEl.attr({
+                    : pointerEl.attr({
                         shape: targetShape
                     });
             }
@@ -748,7 +749,7 @@ define(function (require) {
                     ? graphic.updateProps(pointerEl, {
                         shape: targetShape
                     }, axisPointerModel)
-                    :  pointerEl.attr({
+                    : pointerEl.attr({
                         shape: targetShape
                     });
             }
@@ -791,7 +792,7 @@ define(function (require) {
                     ? graphic.updateProps(pointerEl, {
                         shape: targetShape
                     }, axisPointerModel)
-                    :  pointerEl.attr({
+                    : pointerEl.attr({
                         shape: targetShape
                     });
             }
@@ -884,9 +885,7 @@ define(function (require) {
          * @param {boolean} contentNotChange
          * @param {Object} e
          */
-        _dispatchAndShowSeriesTooltipContent: function (
-            coordSys, seriesList, point, value, contentNotChange
-        ) {
+        _dispatchAndShowSeriesTooltipContent: function (coordSys, seriesList, point, value, contentNotChange) {
 
             var rootTooltipModel = this._tooltipModel;
             var tooltipContent = this._tooltipContent;

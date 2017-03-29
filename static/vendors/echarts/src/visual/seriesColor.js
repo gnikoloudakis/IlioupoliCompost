@@ -30,6 +30,7 @@ define(function (require) {
                 });
             }
         }
+
         seriesType ? ecModel.eachSeriesByType(seriesType, encodeColor)
             : ecModel.eachSeries(encodeColor);
     };

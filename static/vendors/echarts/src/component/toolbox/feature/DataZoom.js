@@ -1,4 +1,4 @@
-define(function(require) {
+define(function (require) {
     'use strict';
 
     var zrUtil = require('zrender/core/util');
@@ -116,9 +116,7 @@ define(function(require) {
     /**
      * @private
      */
-    proto._createController = function (
-        controllerGroup, featureModel, ecModel, api
-    ) {
+    proto._createController = function (controllerGroup, featureModel, ecModel, api) {
         var controller = this._controller = new SelectController(
             'rect',
             api.getZr(),

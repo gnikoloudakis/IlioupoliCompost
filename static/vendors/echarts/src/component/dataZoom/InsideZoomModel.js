@@ -1,7 +1,7 @@
 /**
  * @file Data zoom model
  */
-define(function(require) {
+define(function (require) {
 
     return require('./DataZoomModel').extend({
 

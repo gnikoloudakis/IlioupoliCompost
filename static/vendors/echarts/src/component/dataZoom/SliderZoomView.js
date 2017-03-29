@@ -219,13 +219,13 @@ define(function (require) {
             // Transform barGroup.
             barGroup.attr(
                 (orient === HORIZONTAL && !inverse)
-                ? {scale: otherAxisInverse ? [1, 1] : [1, -1]}
-                : (orient === HORIZONTAL && inverse)
-                ? {scale: otherAxisInverse ? [-1, 1] : [-1, -1]}
-                : (orient === VERTICAL && !inverse)
-                ? {scale: otherAxisInverse ? [1, -1] : [1, 1], rotation: Math.PI / 2}
-                // Dont use Math.PI, considering shadow direction.
-                : {scale: otherAxisInverse ? [-1, -1] : [-1, 1], rotation: Math.PI / 2}
+                    ? {scale: otherAxisInverse ? [1, 1] : [1, -1]}
+                    : (orient === HORIZONTAL && inverse)
+                        ? {scale: otherAxisInverse ? [-1, 1] : [-1, -1]}
+                        : (orient === VERTICAL && !inverse)
+                            ? {scale: otherAxisInverse ? [1, -1] : [1, 1], rotation: Math.PI / 2}
+                            // Dont use Math.PI, considering shadow direction.
+                            : {scale: otherAxisInverse ? [-1, -1] : [-1, 1], rotation: Math.PI / 2}
             );
 
             // Position barGroup
@@ -246,7 +246,7 @@ define(function (require) {
             return extent;
         },
 
-        _renderBackground : function () {
+        _renderBackground: function () {
             var dataZoomModel = this.dataZoomModel;
             var size = this._size;
 
@@ -381,7 +381,7 @@ define(function (require) {
                 style: {
                     fill: this.dataZoomModel.get('fillerColor'),
                     // text: ':::',
-                    textPosition : 'inside'
+                    textPosition: 'inside'
                 }
             }));
 
@@ -419,16 +419,16 @@ define(function (require) {
 
                 this.group.add(
                     handleLabels[handleIndex] = new graphic.Text({
-                    silent: true,
-                    invisible: true,
-                    style: {
-                        x: 0, y: 0, text: '',
-                        textVerticalAlign: 'middle',
-                        textAlign: 'center',
-                        fill: textStyleModel.getTextColor(),
-                        textFont: textStyleModel.getFont()
-                    }
-                }));
+                        silent: true,
+                        invisible: true,
+                        style: {
+                            x: 0, y: 0, text: '',
+                            textVerticalAlign: 'middle',
+                            textAlign: 'center',
+                            fill: textStyleModel.getTextColor(),
+                            textFont: textStyleModel.getFont()
+                        }
+                    }));
 
             }, this);
         },

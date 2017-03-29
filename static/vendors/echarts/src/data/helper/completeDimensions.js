@@ -57,7 +57,7 @@ define(function (require) {
     }
 
     function retrieveValue(o) {
-        return zrUtil.isArray(o) ? o : zrUtil.isObject(o) ? o.value: o;
+        return zrUtil.isArray(o) ? o : zrUtil.isObject(o) ? o.value : o;
     }
 
     return completeDimensions;

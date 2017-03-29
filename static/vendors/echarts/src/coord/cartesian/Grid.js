@@ -3,7 +3,7 @@
  *
  * TODO Default cartesian
  */
-define(function(require, factory) {
+define(function (require, factory) {
 
     var layout = require('../../util/layout');
     var axisHelper = require('../../coord/axisHelper');
@@ -160,7 +160,7 @@ define(function(require, factory) {
                         if (axis.position === 'top') {
                             gridRect.y += labelUnionRect.height + margin;
                         }
-                        else if (axis.position === 'left')  {
+                        else if (axis.position === 'left') {
                             gridRect.x += labelUnionRect.width + margin;
                         }
                     }
@@ -332,7 +332,7 @@ define(function(require, factory) {
 
                 if (!isAxisUsedInTheGrid(xAxisModel, gridModel, ecModel)
                     || !isAxisUsedInTheGrid(yAxisModel, gridModel, ecModel)
-                 ) {
+                ) {
                     return;
                 }
 

@@ -1,4 +1,4 @@
-define(function(require) {
+define(function (require) {
 
     'use strict';
 
@@ -100,22 +100,22 @@ define(function(require) {
 
     graphic.mergePath = pathTool.mergePath,
 
-    /**
-     * Resize a path to fit the rect
-     * @param {module:zrender/graphic/Path} path
-     * @param {Object} rect
-     */
-    graphic.resizePath = function (path, rect) {
-        if (!path.applyTransform) {
-            return;
-        }
+        /**
+         * Resize a path to fit the rect
+         * @param {module:zrender/graphic/Path} path
+         * @param {Object} rect
+         */
+        graphic.resizePath = function (path, rect) {
+            if (!path.applyTransform) {
+                return;
+            }
 
-        var pathRect = path.getBoundingRect();
+            var pathRect = path.getBoundingRect();
 
-        var m = pathRect.calculateTransform(rect);
+            var m = pathRect.calculateTransform(rect);
 
-        path.applyTransform(m);
-    };
+            path.applyTransform(m);
+        };
 
     /**
      * Sub pixel optimize line for canvas
@@ -346,11 +346,11 @@ define(function(require) {
             : setElementHoverStl(el, hoverStyle);
         // Remove previous bound handlers
         el.on('mouseover', onElementMouseOver)
-          .on('mouseout', onElementMouseOut);
+            .on('mouseout', onElementMouseOut);
 
         // Emphasis, normal can be triggered manually
         el.on('emphasis', enterEmphasis)
-          .on('normal', leaveEmphasis);
+            .on('normal', leaveEmphasis);
     };
 
     /**
@@ -392,6 +392,7 @@ define(function(require) {
             ? el.animateTo(props, duration, animationDelay || 0, animationEasing, cb)
             : (el.attr(props), cb && cb());
     }
+
     /**
      * Update graphic element properties with or without animation according to the configuration in series
      * @param {module:zrender/Element} el

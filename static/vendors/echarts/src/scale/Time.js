@@ -28,7 +28,7 @@ define(function (require) {
                 lo = mid + 1;
             }
             else {
-                hi  = mid;
+                hi = mid;
             }
         }
         return lo;
@@ -128,26 +128,26 @@ define(function (require) {
     // Steps from d3
     var scaleLevels = [
         // Format       step    interval
-        ['hh:mm:ss',    1,      ONE_SECOND],           // 1s
-        ['hh:mm:ss',    5,      ONE_SECOND * 5],       // 5s
-        ['hh:mm:ss',    10,     ONE_SECOND * 10],      // 10s
-        ['hh:mm:ss',    15,     ONE_SECOND * 15],      // 15s
-        ['hh:mm:ss',    30,     ONE_SECOND * 30],      // 30s
-        ['hh:mm\nMM-dd',1,      ONE_MINUTE],          // 1m
-        ['hh:mm\nMM-dd',5,      ONE_MINUTE * 5],      // 5m
-        ['hh:mm\nMM-dd',10,     ONE_MINUTE * 10],     // 10m
-        ['hh:mm\nMM-dd',15,     ONE_MINUTE * 15],     // 15m
-        ['hh:mm\nMM-dd',30,     ONE_MINUTE * 30],     // 30m
-        ['hh:mm\nMM-dd',1,      ONE_HOUR],        // 1h
-        ['hh:mm\nMM-dd',2,      ONE_HOUR * 2],    // 2h
-        ['hh:mm\nMM-dd',6,      ONE_HOUR * 6],    // 6h
-        ['hh:mm\nMM-dd',12,     ONE_HOUR * 12],   // 12h
-        ['MM-dd\nyyyy', 1,      ONE_DAY],   // 1d
-        ['week',        7,      ONE_DAY * 7],        // 7d
-        ['month',       1,      ONE_DAY * 31],       // 1M
-        ['quarter',     3,      ONE_DAY * 380 / 4],  // 3M
-        ['half-year',   6,      ONE_DAY * 380 / 2],  // 6M
-        ['year',        1,      ONE_DAY * 380]       // 1Y
+        ['hh:mm:ss', 1, ONE_SECOND],           // 1s
+        ['hh:mm:ss', 5, ONE_SECOND * 5],       // 5s
+        ['hh:mm:ss', 10, ONE_SECOND * 10],      // 10s
+        ['hh:mm:ss', 15, ONE_SECOND * 15],      // 15s
+        ['hh:mm:ss', 30, ONE_SECOND * 30],      // 30s
+        ['hh:mm\nMM-dd', 1, ONE_MINUTE],          // 1m
+        ['hh:mm\nMM-dd', 5, ONE_MINUTE * 5],      // 5m
+        ['hh:mm\nMM-dd', 10, ONE_MINUTE * 10],     // 10m
+        ['hh:mm\nMM-dd', 15, ONE_MINUTE * 15],     // 15m
+        ['hh:mm\nMM-dd', 30, ONE_MINUTE * 30],     // 30m
+        ['hh:mm\nMM-dd', 1, ONE_HOUR],        // 1h
+        ['hh:mm\nMM-dd', 2, ONE_HOUR * 2],    // 2h
+        ['hh:mm\nMM-dd', 6, ONE_HOUR * 6],    // 6h
+        ['hh:mm\nMM-dd', 12, ONE_HOUR * 12],   // 12h
+        ['MM-dd\nyyyy', 1, ONE_DAY],   // 1d
+        ['week', 7, ONE_DAY * 7],        // 7d
+        ['month', 1, ONE_DAY * 31],       // 1M
+        ['quarter', 3, ONE_DAY * 380 / 4],  // 3M
+        ['half-year', 6, ONE_DAY * 380 / 2],  // 6M
+        ['year', 1, ONE_DAY * 380]       // 1Y
     ];
 
     /**

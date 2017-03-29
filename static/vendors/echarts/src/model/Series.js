@@ -1,4 +1,4 @@
-define(function(require) {
+define(function (require) {
 
     'use strict';
 
@@ -107,7 +107,8 @@ define(function(require) {
          * Init a data structure from data related option in series
          * Must be overwritten
          */
-        getInitialData: function () {},
+        getInitialData: function () {
+        },
 
         /**
          * @param {string} [dataType]
@@ -198,7 +199,7 @@ define(function(require) {
                     + (name
                         ? encodeHTML(name) + ' : ' + formattedValue
                         : formattedValue)
-                  )
+                )
                 : (colorEl + encodeHTML(this.name) + ' : ' + formattedValue);
         },
 

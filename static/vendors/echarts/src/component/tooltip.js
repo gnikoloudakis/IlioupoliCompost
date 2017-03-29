@@ -21,7 +21,8 @@ define(function (require) {
             update: 'none'
         },
         // noop
-        function () {}
+        function () {
+        }
     );
     // Hide tip action
     require('../echarts').registerAction(
@@ -31,6 +32,7 @@ define(function (require) {
             update: 'none'
         },
         // noop
-        function () {}
+        function () {
+        }
     );
 });

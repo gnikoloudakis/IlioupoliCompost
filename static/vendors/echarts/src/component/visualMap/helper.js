@@ -1,4 +1,4 @@
-define(function(require) {
+define(function (require) {
 
     var layout = require('../../util/layout');
     var zrUtil = require('zrender/core/util');
@@ -42,8 +42,8 @@ define(function(require) {
 
             return reals[
                 (rect.margin[rParam[2]] || 0) + rect[rParam[0]] + rect[rParam[1]] * 0.5
-                    < ecSize[rParam[1]] * 0.5 ? 0 : 1
-            ];
+                < ecSize[rParam[1]] * 0.5 ? 0 : 1
+                ];
         },
 
         convertDataIndicesToBatch: function (dataIndicesBySeries) {

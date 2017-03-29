@@ -10,9 +10,11 @@ define(function (require) {
     function isPointNaN(pt) {
         return isNaN(pt[0]) || isNaN(pt[1]);
     }
+
     function lineNeedsDraw(pts) {
         return !isPointNaN(pts[0]) && !isPointNaN(pts[1]);
     }
+
     /**
      * @alias module:echarts/component/marker/LineDraw
      * @constructor

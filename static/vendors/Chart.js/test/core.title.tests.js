@@ -1,12 +1,12 @@
 // Test the rectangle element
 
-describe('Title block tests', function() {
-	it('Should be constructed', function() {
+describe('Title block tests', function () {
+	it('Should be constructed', function () {
 		var title = new Chart.Title({});
 		expect(title).not.toBe(undefined);
 	});
 
-	it('Should have the correct default config', function() {
+	it('Should have the correct default config', function () {
 		expect(Chart.defaults.global.title).toEqual({
 			display: false,
 			position: 'top',
@@ -17,7 +17,7 @@ describe('Title block tests', function() {
 		})
 	});
 
-	it('should update correctly', function() {
+	it('should update correctly', function () {
 		var chart = {};
 
 		var options = Chart.helpers.clone(Chart.defaults.global.title);
@@ -46,7 +46,7 @@ describe('Title block tests', function() {
 		});
 	});
 
-	it('should update correctly when vertical', function() {
+	it('should update correctly when vertical', function () {
 		var chart = {};
 
 		var options = Chart.helpers.clone(Chart.defaults.global.title);
@@ -76,7 +76,7 @@ describe('Title block tests', function() {
 		});
 	});
 
-	it('should draw correctly horizontally', function() {
+	it('should draw correctly horizontally', function () {
 		var chart = {};
 		var context = window.createMockContext();
 
@@ -125,7 +125,7 @@ describe('Title block tests', function() {
 		}]);
 	});
 
-	it ('should draw correctly vertically', function() {
+	it('should draw correctly vertically', function () {
 		var chart = {};
 		var context = window.createMockContext();
 

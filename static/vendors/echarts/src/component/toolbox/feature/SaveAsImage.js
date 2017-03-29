@@ -2,7 +2,7 @@ define(function (require) {
 
     var env = require('zrender/core/env');
 
-    function SaveAsImage (model) {
+    function SaveAsImage(model) {
         this.model = model;
     }
 
@@ -33,7 +33,7 @@ define(function (require) {
         var url = api.getConnectedDataURL({
             type: type,
             backgroundColor: model.get('backgroundColor', true)
-                || ecModel.get('backgroundColor') || '#fff',
+            || ecModel.get('backgroundColor') || '#fff',
             excludeComponents: model.get('excludeComponents'),
             pixelRatio: model.get('pixelRatio')
         });

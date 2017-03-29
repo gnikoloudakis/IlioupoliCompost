@@ -22,7 +22,7 @@ define(function (require) {
         var componentType = payload.componentType || 'series';
 
         ecModel.eachComponent(
-            { mainType: componentType, query: payload },
+            {mainType: componentType, query: payload},
             function (componentModel) {
                 var geo = componentModel.coordinateSystem;
                 if (geo.type !== 'geo') {
@@ -34,10 +34,10 @@ define(function (require) {
                 );
 
                 componentModel.setCenter
-                    && componentModel.setCenter(res.center);
+                && componentModel.setCenter(res.center);
 
                 componentModel.setZoom
-                    && componentModel.setZoom(res.zoom);
+                && componentModel.setZoom(res.zoom);
 
                 // All map series with same `map` use the same geo coordinate system
                 // So the center and zoom must be in sync. Include the series not selected by legend

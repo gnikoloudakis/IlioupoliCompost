@@ -1,6 +1,6 @@
-(function() {
+(function () {
 	// Code from http://stackoverflow.com/questions/4406864/html-canvas-unit-testing
-	var Context = function() {
+	var Context = function () {
 		this._calls = []; // names/args of recorded calls
 		this._initMethods();
 
@@ -14,43 +14,55 @@
 		// Define properties here so that we can record each time they are set
 		Object.defineProperties(this, {
 			"fillStyle": {
-				'get': function() { return this._fillStyle; },
-				'set': function(style) {
+				'get': function () {
+					return this._fillStyle;
+				},
+				'set': function (style) {
 					this._fillStyle = style;
 					this.record('setFillStyle', [style]);
 				}
 			},
 			'lineCap': {
-				'get': function() { return this._lineCap; },
-				'set': function(cap) {
+				'get': function () {
+					return this._lineCap;
+				},
+				'set': function (cap) {
 					this._lineCap = cap;
 					this.record('setLineCap', [cap]);
 				}
 			},
 			'lineDashOffset': {
-				'get': function() { return this._lineDashOffset; },
-				'set': function(offset) {
+				'get': function () {
+					return this._lineDashOffset;
+				},
+				'set': function (offset) {
 					this._lineDashOffset = offset;
 					this.record('setLineDashOffset', [offset]);
 				}
 			},
 			'lineJoin': {
-				'get': function() { return this._lineJoin; },
-				'set': function(join) {
+				'get': function () {
+					return this._lineJoin;
+				},
+				'set': function (join) {
 					this._lineJoin = join;
 					this.record('setLineJoin', [join]);
 				}
 			},
 			'lineWidth': {
-				'get': function() { return this._lineWidth; },
+				'get': function () {
+					return this._lineWidth;
+				},
 				'set': function (width) {
 					this._lineWidth = width;
 					this.record('setLineWidth', [width]);
 				}
 			},
 			'strokeStyle': {
-				'get': function() { return this._strokeStyle; },
-				'set': function(style) {
+				'get': function () {
+					return this._strokeStyle;
+				},
+				'set': function (style) {
 					this._strokeStyle = style;
 					this.record('setStrokeStyle', [style]);
 				}
@@ -58,39 +70,58 @@
 		});
 	};
 
-	Context.prototype._initMethods = function() {
+	Context.prototype._initMethods = function () {
 		// define methods to test here
 		// no way to introspect so we have to do some extra work :(
 		var methods = {
-			arc: function() {},
-			beginPath: function() {},
-			bezierCurveTo: function() {},
-			clearRect: function() {},
-			closePath: function() {},
-			fill: function() {},
-			fillRect: function() {},
-			fillText: function() {},
-			lineTo: function(x, y) {},
-			measureText: function(text) {
-				// return the number of characters * fixed size
-				return text ? { width: text.length * 10 } : {width: 0};
+			arc: function () {
 			},
-			moveTo: function(x, y) {},
-			quadraticCurveTo: function() {},
-			restore: function() {},
-			rotate: function() {},
-			save: function() {},
-			setLineDash: function() {},
-			stroke: function() {},
-			strokeRect: function(x, y, w, h) {},
-			setTransform: function(a, b, c, d, e, f) {},
-			translate: function(x, y) {},
+			beginPath: function () {
+			},
+			bezierCurveTo: function () {
+			},
+			clearRect: function () {
+			},
+			closePath: function () {
+			},
+			fill: function () {
+			},
+			fillRect: function () {
+			},
+			fillText: function () {
+			},
+			lineTo: function (x, y) {
+			},
+			measureText: function (text) {
+				// return the number of characters * fixed size
+				return text ? {width: text.length * 10} : {width: 0};
+			},
+			moveTo: function (x, y) {
+			},
+			quadraticCurveTo: function () {
+			},
+			restore: function () {
+			},
+			rotate: function () {
+			},
+			save: function () {
+			},
+			setLineDash: function () {
+			},
+			stroke: function () {
+			},
+			strokeRect: function (x, y, w, h) {
+			},
+			setTransform: function (a, b, c, d, e, f) {
+			},
+			translate: function (x, y) {
+			},
 		};
 
 		// attach methods to the class itself
 		var scope = this;
-		var addMethod = function(name, method) {
-			scope[methodName] = function() {
+		var addMethod = function (name, method) {
+			scope[methodName] = function () {
 				scope.record(name, arguments);
 				return method.apply(scope, arguments);
 			};
@@ -103,29 +134,29 @@
 		}
 	};
 
-	Context.prototype.record = function(methodName, args) {
+	Context.prototype.record = function (methodName, args) {
 		this._calls.push({
 			name: methodName,
 			args: Array.prototype.slice.call(args)
 		});
 	},
 
-	Context.prototype.getCalls = function() {
-		return this._calls;
-	}
+		Context.prototype.getCalls = function () {
+			return this._calls;
+		}
 
-	Context.prototype.resetCalls = function() {
+	Context.prototype.resetCalls = function () {
 		this._calls = [];
 	};
 
-	window.createMockContext = function() {
+	window.createMockContext = function () {
 		return new Context();
 	};
 
 	// Custom matcher
 	function toBeCloseToPixel() {
 		return {
-			compare: function(actual, expected) {
+			compare: function (actual, expected) {
 				var result = false;
 
 				if (!isNaN(actual) && !isNaN(expected)) {
@@ -136,14 +167,14 @@
 					result = (diff <= (A > B ? A : B) * percentDiff) || diff < 2; // 2 pixels is fine
 				}
 
-				return { pass: result };
+				return {pass: result};
 			}
 		}
 	};
 
 	function toEqualOneOf() {
 		return {
-			compare: function(actual, expecteds) {
+			compare: function (actual, expecteds) {
 				var result = false;
 				for (var i = 0, l = expecteds.length; i < l; i++) {
 					if (actual === expecteds[i]) {
@@ -158,7 +189,7 @@
 		};
 	}
 
-	window.addDefaultMatchers = function(jasmine) {
+	window.addDefaultMatchers = function (jasmine) {
 		jasmine.addMatchers({
 			toBeCloseToPixel: toBeCloseToPixel,
 			toEqualOneOf: toEqualOneOf
@@ -173,7 +204,7 @@
 		var canvas = document.createElement("canvas");
 		wrapper.className = 'chartjs-wrapper';
 
-		style = style || { height: '512px', width: '512px' };
+		style = style || {height: '512px', width: '512px'};
 		for (var k in style) {
 			wrapper.style[k] = style[k];
 			canvas.style[k] = style[k];
@@ -184,8 +215,8 @@
 
 		// by default, remove chart animation and auto resize
 		var options = config.options = config.options || {};
-		options.animation = options.animation === undefined? false : options.animation;
-		options.responsive = options.responsive === undefined? false : options.responsive;
+		options.animation = options.animation === undefined ? false : options.animation;
+		options.responsive = options.responsive === undefined ? false : options.responsive;
 		options.defaultFontFamily = options.defaultFontFamily || 'Arial';
 
 		wrapper.appendChild(canvas);
@@ -228,11 +259,11 @@
 	// some style initialization to limit differences between browsers across different plateforms.
 	injectCSS(
 		'.chartjs-wrapper, .chartjs-wrapper canvas {' +
-			'border: 0;' +
-			'margin: 0;' +
-			'padding: 0;' +
+		'border: 0;' +
+		'margin: 0;' +
+		'padding: 0;' +
 		'}' +
 		'.chartjs-wrapper {' +
-			'position: absolute' +
+		'position: absolute' +
 		'}');
 })();

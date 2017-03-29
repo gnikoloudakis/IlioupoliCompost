@@ -1,20 +1,20 @@
-describe('Logarithmic Scale tests', function() {
+describe('Logarithmic Scale tests', function () {
 
-	beforeEach(function() {
+	beforeEach(function () {
 		window.addDefaultMatchers(jasmine);
 	});
 
-	afterEach(function() {
+	afterEach(function () {
 		window.releaseAllCharts();
 	});
 
-	it('should register the constructor with the scale service', function() {
+	it('should register the constructor with the scale service', function () {
 		var Constructor = Chart.scaleService.getScaleConstructor('logarithmic');
 		expect(Constructor).not.toBe(undefined);
 		expect(typeof Constructor).toBe('function');
 	});
 
-	it('should have the correct default config', function() {
+	it('should have the correct default config', function () {
 		var defaultConfig = Chart.scaleService.getScaleDefaults('logarithmic');
 		expect(defaultConfig).toEqual({
 			display: true,
@@ -54,7 +54,7 @@ describe('Logarithmic Scale tests', function() {
 		expect(defaultConfig.ticks.callback).toEqual(jasmine.any(Function));
 	});
 
-	it('should correctly determine the max & min data values', function() {
+	it('should correctly determine the max & min data values', function () {
 		var chart = window.acquireChart({
 			type: 'bar',
 			data: {
@@ -92,7 +92,7 @@ describe('Logarithmic Scale tests', function() {
 		expect(chart.scales.yScale1.max).toBe(5000);
 	});
 
-	it('should correctly determine the max & min of string data values', function() {
+	it('should correctly determine the max & min of string data values', function () {
 		var chart = window.acquireChart({
 			type: 'line',
 			data: {
@@ -130,7 +130,7 @@ describe('Logarithmic Scale tests', function() {
 		expect(chart.scales.yScale1.max).toBe(5000);
 	});
 
-	it('should correctly determine the max & min data values when there are hidden datasets', function() {
+	it('should correctly determine the max & min data values when there are hidden datasets', function () {
 		var chart = window.acquireChart({
 			type: 'line',
 			data: {
@@ -165,7 +165,7 @@ describe('Logarithmic Scale tests', function() {
 		expect(chart.scales.yScale1.max).toBe(5000);
 	});
 
-	it('should correctly determine the max & min data values when there is NaN data', function() {
+	it('should correctly determine the max & min data values when there is NaN data', function () {
 		var chart = window.acquireChart({
 			type: 'bar',
 			data: {
@@ -174,7 +174,7 @@ describe('Logarithmic Scale tests', function() {
 				}, {
 					data: [undefined, 28, null, 1000, 500, NaN, 50, 42]
 				}],
-				labels: ['a', 'b', 'c', 'd', 'e', 'f' ,'g']
+				labels: ['a', 'b', 'c', 'd', 'e', 'f', 'g']
 			},
 			options: {
 				scales: {
@@ -198,16 +198,16 @@ describe('Logarithmic Scale tests', function() {
 		expect(chart.scales.yScale.max).toBe(6000);
 	});
 
-	it('should correctly determine the max & min for scatter data', function() {
+	it('should correctly determine the max & min for scatter data', function () {
 		var chart = window.acquireChart({
 			type: 'line',
 			data: {
 				datasets: [{
 					data: [
-						{ x: 10, y: 100 },
-						{ x:  2, y:   6 },
-						{ x: 65, y: 121 },
-						{ x: 99, y:   7 }
+						{x: 10, y: 100},
+						{x: 2, y: 6},
+						{x: 65, y: 121},
+						{x: 99, y: 7}
 					]
 				}]
 			},
@@ -233,7 +233,7 @@ describe('Logarithmic Scale tests', function() {
 		expect(chart.scales.yScale.max).toBe(200);
 	});
 
-	it('should correctly determine the min and max data values when stacked mode is turned on', function() {
+	it('should correctly determine the min and max data values when stacked mode is turned on', function () {
 		var chart = window.acquireChart({
 			type: 'bar',
 			data: {
@@ -273,7 +273,7 @@ describe('Logarithmic Scale tests', function() {
 		expect(chart.scales.yScale0.max).toBe(200);
 	});
 
-	it('should correctly determine the min and max data values when stacked mode is turned on ignoring hidden datasets', function() {
+	it('should correctly determine the min and max data values when stacked mode is turned on ignoring hidden datasets', function () {
 		var chart = window.acquireChart({
 			type: 'bar',
 			data: {
@@ -315,7 +315,7 @@ describe('Logarithmic Scale tests', function() {
 		expect(chart.scales.yScale0.max).toBe(200);
 	});
 
-	it('should ensure that the scale has a max and min that are not equal', function() {
+	it('should ensure that the scale has a max and min that are not equal', function () {
 		var chart = window.acquireChart({
 			type: 'bar',
 			data: {
@@ -344,7 +344,7 @@ describe('Logarithmic Scale tests', function() {
 		expect(chart.scales.yScale.max).toBe(1);
 	});
 
-	it('should use the min and max options', function() {
+	it('should use the min and max options', function () {
 		var chart = window.acquireChart({
 			type: 'bar',
 			data: {
@@ -361,7 +361,7 @@ describe('Logarithmic Scale tests', function() {
 						ticks: {
 							min: 10,
 							max: 1010,
-							callback: function(value) {
+							callback: function (value) {
 								return value;
 							}
 						}
@@ -378,7 +378,7 @@ describe('Logarithmic Scale tests', function() {
 		expect(yScale.ticks[tickCount - 1]).toBe(10);
 	});
 
-	it('should generate tick marks', function() {
+	it('should generate tick marks', function () {
 		var chart = window.acquireChart({
 			type: 'bar',
 			data: {
@@ -393,7 +393,7 @@ describe('Logarithmic Scale tests', function() {
 						id: 'yScale',
 						type: 'logarithmic',
 						ticks: {
-							callback: function(value) {
+							callback: function (value) {
 								return value;
 							}
 						}
@@ -410,7 +410,7 @@ describe('Logarithmic Scale tests', function() {
 		}));
 	});
 
-	it('should generate tick marks in the correct order in reversed mode', function() {
+	it('should generate tick marks in the correct order in reversed mode', function () {
 		var chart = window.acquireChart({
 			type: 'line',
 			data: {
@@ -426,7 +426,7 @@ describe('Logarithmic Scale tests', function() {
 						type: 'logarithmic',
 						ticks: {
 							reverse: true,
-							callback: function(value) {
+							callback: function (value) {
 								return value;
 							}
 						}
@@ -443,7 +443,7 @@ describe('Logarithmic Scale tests', function() {
 		}));
 	});
 
-	it('should build labels using the default template', function() {
+	it('should build labels using the default template', function () {
 		var chart = window.acquireChart({
 			type: 'line',
 			data: {
@@ -465,7 +465,7 @@ describe('Logarithmic Scale tests', function() {
 		expect(chart.scales.yScale.ticks).toEqual(['8e+1', '', '', '5e+1', '', '', '2e+1', '1e+1', '', '', '', '', '5e+0', '', '', '2e+0', '1e+0']);
 	});
 
-	it('should build labels using the user supplied callback', function() {
+	it('should build labels using the user supplied callback', function () {
 		var chart = window.acquireChart({
 			type: 'bar',
 			data: {
@@ -480,7 +480,7 @@ describe('Logarithmic Scale tests', function() {
 						id: 'yScale',
 						type: 'logarithmic',
 						ticks: {
-							callback: function(value, index) {
+							callback: function (value, index) {
 								return index.toString();
 							}
 						}
@@ -493,7 +493,7 @@ describe('Logarithmic Scale tests', function() {
 		expect(chart.scales.yScale.ticks).toEqual(['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16']);
 	});
 
-	it('should correctly get the correct label for a data item', function() {
+	it('should correctly get the correct label for a data item', function () {
 		var chart = window.acquireChart({
 			type: 'bar',
 			data: {
@@ -525,7 +525,7 @@ describe('Logarithmic Scale tests', function() {
 		expect(chart.scales.yScale1.getLabelForIndex(0, 2)).toBe(150);
 	});
 
-	it('should get the correct pixel value for a point', function() {
+	it('should get the correct pixel value for a point', function () {
 		var chart = window.acquireChart({
 			type: 'bar',
 			data: {
@@ -552,9 +552,9 @@ describe('Logarithmic Scale tests', function() {
 
 		var xScale = chart.scales.xScale;
 		expect(xScale.getPixelForValue(80, 0, 0)).toBeCloseToPixel(495);  // right - paddingRight
-		expect(xScale.getPixelForValue( 1, 0, 0)).toBeCloseToPixel(48);   // left + paddingLeft
+		expect(xScale.getPixelForValue(1, 0, 0)).toBeCloseToPixel(48);   // left + paddingLeft
 		expect(xScale.getPixelForValue(10, 0, 0)).toBeCloseToPixel(283);  // halfway
-		expect(xScale.getPixelForValue( 0, 0, 0)).toBeCloseToPixel(48);   // 0 is invalid, put it on the left.
+		expect(xScale.getPixelForValue(0, 0, 0)).toBeCloseToPixel(48);   // 0 is invalid, put it on the left.
 
 		expect(xScale.getValueForPixel(495)).toBeCloseTo(80, 1e-4);
 		expect(xScale.getValueForPixel(48)).toBeCloseTo(1, 1e-4);
@@ -562,9 +562,9 @@ describe('Logarithmic Scale tests', function() {
 
 		var yScale = chart.scales.yScale;
 		expect(yScale.getPixelForValue(80, 0, 0)).toBeCloseToPixel(32);   // top + paddingTop
-		expect(yScale.getPixelForValue( 1, 0, 0)).toBeCloseToPixel(456);  // bottom - paddingBottom
+		expect(yScale.getPixelForValue(1, 0, 0)).toBeCloseToPixel(456);  // bottom - paddingBottom
 		expect(yScale.getPixelForValue(10, 0, 0)).toBeCloseToPixel(234);  // halfway
-		expect(yScale.getPixelForValue( 0, 0, 0)).toBeCloseToPixel(32);   // 0 is invalid. force it on top
+		expect(yScale.getPixelForValue(0, 0, 0)).toBeCloseToPixel(32);   // 0 is invalid. force it on top
 
 		expect(yScale.getValueForPixel(32)).toBeCloseTo(80, 1e-4);
 		expect(yScale.getValueForPixel(456)).toBeCloseTo(1, 1e-4);

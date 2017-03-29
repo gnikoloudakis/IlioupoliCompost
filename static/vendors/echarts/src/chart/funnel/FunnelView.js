@@ -26,10 +26,12 @@ define(function (require) {
             labelLine.ignore = labelLine.hoverIgnore;
             text.ignore = text.hoverIgnore;
         }
+
         function onNormal() {
             labelLine.ignore = labelLine.normalIgnore;
             text.ignore = text.normalIgnore;
         }
+
         this.on('emphasis', onEmphasis)
             .on('normal', onNormal)
             .on('mouseover', onEmphasis)
@@ -44,7 +46,7 @@ define(function (require) {
         var isLabelInside = position === 'inside' || position === 'inner' || position === 'center';
         return {
             fill: textStyleModel.getTextColor()
-                || (isLabelInside ? '#fff' : data.getItemVisual(idx, 'color')),
+            || (isLabelInside ? '#fff' : data.getItemVisual(idx, 'color')),
             textFont: textStyleModel.getFont(),
             text: zrUtil.retrieve(
                 data.hostModel.getFormattedLabel(idx, state),
@@ -71,7 +73,7 @@ define(function (require) {
             polygon.setShape({
                 points: layout.points
             });
-            polygon.setStyle({ opacity : 0 });
+            polygon.setStyle({opacity: 0});
             graphic.initProps(polygon, {
                 style: {
                     opacity: opacity

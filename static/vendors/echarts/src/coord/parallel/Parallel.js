@@ -2,7 +2,7 @@
  * Parallel Coordinates
  * <https://en.wikipedia.org/wiki/Parallel_coordinates>
  */
-define(function(require) {
+define(function (require) {
 
     var layout = require('../../util/layout');
     var axisHelper = require('../../coord/axisHelper');
