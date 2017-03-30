@@ -64,13 +64,13 @@ def my_listener(event):
 def init_sched():
     # scheduler.remove_all_jobs()
     # blockingScheduler.remove_all_jobs()
-    # scheduler.add_job(pushSoilBack, 'cron', day_of_week='mon-fri', hour=datetime.datetime.strptime(Settings.objects.first().daily_soil_backward_time, '%H:%M%p').hour, jobstore='default', executor='default', replace_existing=True, id='soilBack')
-    # scheduler.add_job(soilHomogenization, 'cron', day_of_week='mon-fri', hour=datetime.datetime.strptime(Settings.objects.first().daily_steering_time, '%H:%M%p').hour, jobstore='default', executor='default', replace_existing=True, id='soilHomogenization')
-    #
+    scheduler.add_job(pushSoilBack, 'cron', day_of_week='mon-fri', hour=datetime.datetime.strptime(Settings.objects.first().daily_soil_backward_time, '%H:%M%p').hour, jobstore='default', executor='default', replace_existing=True, id='soilBack')
+    scheduler.add_job(soilHomogenization, 'cron', day_of_week='mon-fri', hour=datetime.datetime.strptime(Settings.objects.first().daily_steering_time, '%H:%M%p').hour, jobstore='default', executor='default', replace_existing=True, id='soilHomogenization')
+
     # scheduler2.add_job(add_measurements, 'interval', minutes=1)#, jobstore='default', executor='default', replace_existing=True, id='add_meas')
-    # scheduler2.add_job(hourlyVentilation, 'interval', hours=1)#, jobstore='default', executor='default', replace_existing=True, id='vent')
-    scheduler2.add_job(readFlags, 'interval', seconds=20, jobstore='default', executor='default', replace_existing=True, id='readFlags')
-    scheduler2.add_job(readVariables, 'interval', seconds=10)  # , jobstore='default', executor='processpool', replace_existing=True, id='readVariables')#, misfire_grace_time=10)
+    scheduler2.add_job(hourlyVentilation, 'interval', hours=1)#, jobstore='default', executor='default', replace_existing=True, id='vent')
+    scheduler2.add_job(readFlags, 'interval', seconds=20)#, jobstore='default', executor='default', replace_existing=True, id='readFlags')
+    scheduler2.add_job(readVariables, 'interval', minutes=5)  # , jobstore='default', executor='processpool', replace_existing=True, id='readVariables')#, misfire_grace_time=10)
 
     scheduler.start()
     scheduler2.start()

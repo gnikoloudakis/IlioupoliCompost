@@ -1,8 +1,8 @@
 import requests
 import serial
 
-import Compost
 from Compost import app
+from ext import myFlags
 from modules.DatabaseFunctions import addError, addLog
 from modules.SetupFlags import readFlags
 
@@ -10,7 +10,7 @@ from modules.SetupFlags import readFlags
 def Motor_1_Left():
     success = False
     readFlags()  # diavazei ta flags
-    if not Compost.Door:
+    if not myFlags.Door:
         try:
             # arduino = Devices.objects(name="arduino").first()
             ser = serial.Serial(port='/dev/ttyACM0', baudrate=9600, timeout=1)
@@ -22,6 +22,7 @@ def Motor_1_Left():
                 addError("Cannot start Motor 1 Left")
             else:
                 success = True
+                addLog("Started Motor 2 LEFT")
                 readFlags()  # diavazei ta flags
                 ser.close()
         except Exception as e:
@@ -40,7 +41,7 @@ def Motor_1_Left():
 def Motor_1_Right():
     success = False
     readFlags()  # diavazei ta flags
-    if not Compost.Door:
+    if not myFlags.Door:
         try:
             # arduino = Devices.objects(name="arduino").first()
             ser = serial.Serial(port='/dev/ttyACM0', baudrate=9600, timeout=1)
@@ -52,6 +53,7 @@ def Motor_1_Right():
                 addError("Cannot start Motor 1 Right")
             else:
                 success = True
+                addLog("Started Motor 1 RIGHT")
                 readFlags()  # diavazei ta flags
                 ser.close()
         except Exception as e:
@@ -70,7 +72,7 @@ def Motor_1_Right():
 def Motor_2_Left():
     success = False
     readFlags()  # diavazei ta flags
-    if not Compost.Door:
+    if not myFlags.Door:
         try:
             # arduino = Devices.objects(name="arduino").first()
             ser = serial.Serial(port='/dev/ttyACM0', baudrate=9600, timeout=1)
@@ -82,6 +84,7 @@ def Motor_2_Left():
                 addError("Cannot start Motor 2 Left")
             else:
                 success = True
+                addLog("Started Motor 2 LEFT")
                 readFlags()  # diavazei ta flags
                 ser.close()
         except Exception as e:
@@ -100,7 +103,7 @@ def Motor_2_Left():
 def Motor_2_Right():
     success = False
     readFlags()  # diavazei ta flags
-    if not Compost.Door:
+    if not myFlags.Door:
         try:
             # arduino = Devices.objects(name="arduino").first()
             ser = serial.Serial(port='/dev/ttyACM0', baudrate=9600, timeout=1)
@@ -112,6 +115,7 @@ def Motor_2_Right():
                 addError("Cannot start Motor 2 Right")
             else:
                 success = True
+                addLog("Started Motor 2 RIGHT")
                 readFlags()  # diavazei ta flags
                 ser.close()
         except Exception as e:
@@ -141,6 +145,7 @@ def Motor_1_Stop():
             addError("Cannot stop Motor 1")
         else:
             success = True
+            addLog("Stopped Motor 1")
             readFlags()  # diavazei ta flags
             ser.close()
     except Exception as e:
@@ -165,6 +170,7 @@ def Motor_2_Stop():
             addError("Cannot stop Motor 2")
         else:
             success = True
+            addLog("Stopped Motor 2")
             readFlags()  # diavazei ta flags
             ser.close()
     except Exception as e:
@@ -178,7 +184,7 @@ def Motor_2_Stop():
 def StartFan():
     success = False
     readFlags()  # diavazei ta flags
-    if not Compost.Vent:
+    if not myFlags.Vent:
         try:
             # arduino = Devices.objects(name="arduino").first()
             ser = serial.Serial(port='/dev/ttyACM0', baudrate=9600, timeout=1)
@@ -190,6 +196,7 @@ def StartFan():
                 addError("Cannot start Fan")
             else:
                 success = True
+                addLog("Started FAN")
                 readFlags()  # diavazei ta flags
                 ser.close()
         except Exception as e:
@@ -219,6 +226,7 @@ def StopFan():
             addError("Cannot stop Fan")
         else:
             success = True
+            addLog("Stopped FAN")
             readFlags()  # diavazei ta flags
             ser.close()
     except Exception as e:
@@ -232,7 +240,7 @@ def StopFan():
 def StartVent():
     success = False
     readFlags()  # diavazei ta flags
-    if not Compost.Fan:
+    if not myFlags.Fan:
         try:
             # arduino = Devices.objects(name="arduino").first()
             ser = serial.Serial(port='/dev/ttyACM0', baudrate=9600, timeout=1)
@@ -244,6 +252,7 @@ def StartVent():
                 addError("Cannot start Vent")
             else:
                 success = True
+                addLog("Started VENT")
                 readFlags()  # diavazei ta flags
                 ser.close()
         except Exception as e:
@@ -273,6 +282,7 @@ def StopVent():
             addError("Cannot stop Vent")
         else:
             success = True
+            addLog("StOPPED VENT")
             readFlags()  # diavazei ta flags
             ser.close()
     except Exception as e:
@@ -289,6 +299,7 @@ def StirForward():
     success = False
     if Motor_1_Left() and Motor_2_Right():
         app.logger.debug("Started stirring FORWARD")
+        addLog("Started stirring FORWARD")
         success = True
     else:
         app.logger.error("Could not Stir FORWARD")
@@ -300,6 +311,7 @@ def StirBackward():
     success = False
     if Motor_1_Right() and Motor_2_Left():
         app.logger.debug("Started stirring BACKWARD")
+        addLog("Started stirring BACKWARD")
         success = True
     else:
         app.logger.error("Could not Stir BACKWARD")
@@ -311,6 +323,7 @@ def StirRight():
     success = False
     if Motor_1_Left() and Motor_2_Left():
         app.logger.debug("Started stirring RIGHT")
+        addLog("Started stirring RIGHT")
         success = True
     else:
         app.logger.error("Could not Stir RIGHT")
@@ -322,6 +335,7 @@ def StirLeft():
     success = False
     if Motor_1_Right() and Motor_2_Right():
         app.logger.debug("Started stirring LEFT")
+        addLog("Started stirring LEFT")
         success = True
     else:
         app.logger.error("Could not Stir LEFT")

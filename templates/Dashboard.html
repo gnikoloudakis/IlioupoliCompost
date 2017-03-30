@@ -76,7 +76,8 @@
 
                 $.getJSON("/api/flags/get", function (data) {
                     $("#Vent").html(function () {
-                        if (!!parseInt(data.Vent)) {
+                        {#                        if (!!parseInt(data.Vent)) {#}
+                        if (data.Vent) {
                             $("#Vent").css("color", "green");
                             return "True"
                         }
@@ -86,7 +87,8 @@
                         }
                     });
                     $("#Fan").html(function () {
-                        if (!!parseInt(data.Fan)) {
+                        {#                        if (!!parseInt(data.Fan)) {#}
+                        if (data.Fan) {
                             $("#Fan").css("color", "green");
                             return "True"
                         }
@@ -96,7 +98,8 @@
                         }
                     });
                     $("#door").html(function () {
-                        if (!!parseInt(data.Door)) {
+                        {#                        if (!!parseInt(data.Door)) {#}
+                        if (data.Door) {
                             $("#door").css("color", "green");
                             return "True"
                         }
@@ -106,7 +109,8 @@
                         }
                     });
                     $("#motors").html(function () {
-                        if (!!parseInt(data.Motor_1) || !!parseInt(data.Motor_2)) {
+                        {#                        if (!!parseInt(data.Motor1) || !!parseInt(data.Motor2)) {#}
+                        if (data.Motor1 || data.Motor2) {
                             $("#motors").css("color", "green");
                             return "True"
                         }

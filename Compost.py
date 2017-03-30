@@ -1,7 +1,9 @@
 import logging
+
 from flask import Flask, render_template, request, redirect, json
 from flask_mongoengine import MongoEngine
-from flask_socketio import SocketIO, emit
+
+from ext import myFlags
 
 # from logging.handlers import RotatingFileHandler
 
@@ -9,16 +11,7 @@ app = Flask(__name__)
 app.config.from_object('config')
 db = MongoEngine(app)
 
-socketio = SocketIO(app)
-
 logging.basicConfig()
-
-# Globals
-Motor1 = False
-Motor2 = False
-Fan = False
-Vent = False
-Door = False
 
 
 # logHandler = RotatingFileHandler(app.root_path + os.sep + 'info.log', maxBytes=1000, backupCount=1)
@@ -184,15 +177,15 @@ def get_last_measurement(m_type):
 
 @app.route('/api/flags/get', methods=['GET'])
 def getFlags():
-    f = {'Motor1': Motor1, 'Motor2': Motor2, 'Vent': Vent, 'Fan': Fan, 'Door': Door}
+    f = {'Motor1': myFlags.Motor1, 'Motor2': myFlags.Motor2, 'Vent': myFlags.Vent, 'Fan': myFlags.Fan, 'Door': myFlags.Door}
+    print (f)
     return json.dumps(f)
 
 
 if __name__ == '__main__':
     from modules.SetupSchedulers import init_sched
-    from modules.VariablesFunctions import readVariables
 
     # readVariables()
-    # init_sched()
+    init_sched()
     # socketio.run(app=app, host='0.0.0.0', port=5000, debug=True)
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=5000, debug=True)
