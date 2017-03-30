@@ -10,26 +10,26 @@
             {#######################################    CONTROLS   ###################################################}
             <br>
             <br>
-            <label for="Motor_F">Motors Forward:</label>
+            <label for="Motor_1_R">Motor #1 Right:</label>
             <br>
             <button type="button"
-                    class="btn btn-success"
-                    id="Motor_F">ON
+                    class="btn btn-danger"
+                    id="Motor_1_R">ON
             </button>
             <br>
             <br>
-            <label for="Motor_B">Motors Backward:</label>
+            <label for="Motor_1_L">Motor #1 Left:</label>
             <br>
             <button type="button"
-                    class="btn btn-success"
-                    id="Motor_B">ON
+                    class="btn btn-danger"
+                    id="Motor_1_L">ON
             </button>
             <br>
             <br>
             <label for="Fan">Fan:</label>
             <br>
             <button type="button"
-                    class="btn btn-success"
+                    class="btn btn-danger"
                     id="Fan">ON
             </button>
             <br>
@@ -37,50 +37,196 @@
             <label for="Vent">Ventilation:</label>
             <br>
             <button type="button"
-                    class="btn btn-success"
+                    class="btn btn-danger"
                     id="Vent">ON
             </button>
             <br>
             <br>
-
         </div>
         <div class="col-md-2">
             <br>
             <br>
-            <label for="Motor_R">Stir Right:</label>
+            <label for="Motor_2_R">Motor #2 Right:</label>
             <br>
             <button type="button"
-                    class="btn btn-success"
-                    id="Motor_R">ON
+                    class="btn btn-danger"
+                    id="Motor_2_R">ON
             </button>
             <br>
             <br>
-            <label for="Motor_L">Stir Left:</label>
+            <label for="Motor_2_L">Motor #2 Left:</label>
             <br>
             <button type="button"
-                    class="btn btn-success"
-                    id="Motor_L">ON
+                    class="btn btn-danger"
+                    id="Motor_2_L">ON
             </button>
             <br>
             <br>
-            <label for="Door_1">Door 1:</label>
+            <label for="Door">Door:</label>
             <br>
             <button type="button"
-                    class="btn btn-success"
-                    id="Door_1" disabled>ON
+                    class="btn btn-danger"
+                    id="Door" disabled>ON
             </button>
             <br>
             <br>
-            <label for="Emergency_Stop">Emergency Stop:</label>
-            <br>
-            <button type="button"
-                    class="btn btn-success"
-                    id="Emergency_Stop">ON
-            </button>
 
         </div>
 
     </div>
 {% endblock %}
 {% block scripts %}
+    <script>
+        $(document).ready(function () {
+            $("#Motor_1_L").on('click', function () {
+                if ($("#Motor_1_L").hasClass('btn-danger')) {
+                    $.getJSON('/api/motors/m1l', function (data) {
+                        console.log(data);
+                    });
+                }else {
+                    $.getJSON('/api/motors/m1stop', function (data) {
+                        console.log(data);
+                    });
+                }
+            });
+            $("#Motor_1_R").on('click', function () {
+                if ($("#Motor_1_R").hasClass('btn-danger')) {
+                    $.getJSON('/api/motors/m1r', function (data) {
+                        console.log(data);
+                    });
+                }else {
+                    $.getJSON('/api/motors/m1stop', function (data) {
+                        console.log(data);
+                    });
+                }
+            });
+            $("#Motor_2_L").on('click', function () {
+                if ($("#Motor_2_L").hasClass('btn-danger')) {
+                    $.getJSON('/api/motors/m2l', function (data) {
+                        console.log(data);
+                    });
+                }else {
+                    $.getJSON('/api/motors/m2stop', function (data) {
+                        console.log(data);
+                    });
+                }
+            });
+            $("#Motor_2_R").on('click', function () {
+                if ($("#Motor_2_R").hasClass('btn-danger')) {
+                    $.getJSON('/api/motors/m2r', function (data) {
+                        console.log(data);
+                    });
+                }else {
+                    $.getJSON('/api/motors/m2stop', function (data) {
+                        console.log(data);
+                    });
+                }
+            });
+
+            $("#Fan").on('click', function () {
+                if ($("#Fan").hasClass('btn-danger')) {
+                    $.getJSON('/api/motors/fan', function (data) {
+                        console.log(data);
+                    });
+                }else {
+                    $.getJSON('/api/motors/stopfan', function (data) {
+                        console.log(data);
+                    });
+                }
+            });
+            $("#Vent").on('click', function () {
+                if ($("#Vent").hasClass('btn-danger')) {
+                    $.getJSON('/api/motors/vent', function (data) {
+                        console.log(data);
+                    });
+                }else {
+                    $.getJSON('/api/motors/stopvent', function (data) {
+                        console.log(data);
+                    });
+                }
+            });
+
+
+
+            setInterval(function () {
+                $.getJSON("/api/flags/get", function (data) {
+{#                    console.log(data);#}
+                    if (data.Motor2) {
+                        if ($("#Motor_2_L").hasClass('btn-danger')) {
+                            $("#Motor_2_L").removeClass('btn-danger');
+                            $("#Motor_2_L").addClass('btn-success');
+                        }
+                        if ($("#Motor_2_R").hasClass('btn-danger')) {
+                            $("#Motor_2_R").removeClass('btn-danger');
+                            $("#Motor_2_R").addClass('btn-success');
+                        }
+                    } else {
+                        if ($("#Motor_2_L").hasClass('btn-success')) {
+                            $("#Motor_2_L").removeClass('btn-success');
+                            $("#Motor_2_L").addClass('btn-danger');
+                        }
+                        if ($("#Motor_2_R").hasClass('btn-success')) {
+                            $("#Motor_2_R").removeClass('btn-success');
+                            $("#Motor_2_R").addClass('btn-danger');
+                        }
+                    }
+                    if (data.Motor1) {
+                        if ($("#Motor_1_L").hasClass('btn-danger')) {
+                            $("#Motor_1_L").removeClass('btn-danger');
+                            $("#Motor_1_L").addClass('btn-success');
+                        }
+                        if ($("#Motor_1_R").hasClass('btn-danger')) {
+                            $("#Motor_1_R").removeClass('btn-danger');
+                            $("#Motor_1_R").addClass('btn-success');
+                        }
+                    } else {
+                        if ($("#Motor_1_L").hasClass('btn-success')) {
+                            $("#Motor_1_L").removeClass('btn-success');
+                            $("#Motor_1_L").addClass('btn-danger');
+                        }
+                        if ($("#Motor_1_R").hasClass('btn-success')) {
+                            $("#Motor_1_R").removeClass('btn-success');
+                            $("#Motor_1_R").addClass('btn-danger');
+                        }
+                    }
+                    if (data.Fan) {
+                        if ($("#Fan").hasClass('btn-danger')) {
+                            $("#Fan").removeClass('btn-danger');
+                            $("#Fan").addClass('btn-success');
+                        }
+                    } else {
+                        if ($("#Fan").hasClass('btn-success')) {
+                            $("#Fan").removeClass('btn-success');
+                            $("#Fan").addClass('btn-danger');
+                        }
+                    }
+                    if (data.Vent) {
+                        if ($("#Vent").hasClass('btn-danger')) {
+                            $("#Vent").removeClass('btn-danger');
+                            $("#Vent").addClass('btn-success');
+                        }
+                    } else {
+                        if ($("#Vent").hasClass('btn-success')) {
+                            $("#Vent").removeClass('btn-success');
+                            $("#Vent").addClass('btn-danger');
+                        }
+                    }
+                    if (data.Door) {
+                        if ($("#Door").hasClass('btn-danger')) {
+                            $("#Door").removeClass('btn-danger');
+                            $("#Door").addClass('btn-success');
+                        }
+                    } else {
+                        if ($("#Door").hasClass('btn-success')) {
+                            $("#Door").removeClass('btn-success');
+                            $("#Door").addClass('btn-danger');
+                        }
+                    }
+                });
+            }, 2000);
+
+        });
+    </script>
+
+
 {% endblock %}

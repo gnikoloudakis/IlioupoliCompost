@@ -1,5 +1,3 @@
-import time
-
 import RPi.GPIO as gpio
 
 from ext import myFlags

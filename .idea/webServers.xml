@@ -2,8 +2,8 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="ad7dcbb9-6a00-4a76-b3a3-d44640df9bc5" name="gnikoloudakis.ddns.net" url="http://gnikoloudakis.ddns.net">
-        <fileTransfer host="gnikoloudakis.ddns.net" port="22" rootFolder="/home/pi" accessType="SFTP">
+      <webServer id="c33d6199-3311-48d4-8ac7-14092dd2ff3a" name="raspi" url="http://192.168.1.200">
+        <fileTransfer host="192.168.1.200" port="22" rootFolder="/home/pi" accessType="SFTP">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" />
           </advancedOptions>

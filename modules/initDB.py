@@ -17,7 +17,7 @@ def initDb():
                  highest_soil_humidity='65',
                  highest_air_humidity_inside='85',
                  lowest_soil_temperature='50',
-                 usb_port='/dev/cu.usbmodem1411',
+                 usb_port='/dev/ttyACM0',
                  sleep_time_for_motors='3').save()
         app.logger.debug("Initialized Settings")
     except Exception as e:

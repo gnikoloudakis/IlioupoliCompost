@@ -1,9 +1,10 @@
 import datetime
-
+from flask_security import UserMixin, RoleMixin
 from Compost import db
 
 
 # ##################    MODELS     ###################################
+
 class Devices(db.Document):
     name = db.StringField(unique=True, max_length=50)
     ip = db.StringField(unique=True, max_length=50)
@@ -48,18 +49,6 @@ class Measurements(db.Document):
     # device = db.ReferenceField(Devices, required=True)
     timestamp = db.DateTimeField(default=datetime.datetime.now(), format='%d-%m-%Y')
     meta = {'max_documents': 5000}
-    #
-    # def __str__(self):
-    #     return self.m_type
-
-    # "soil_temp"
-    # "soil_hum"
-    # "air_temp"
-    # "air_hum"
-    # "outside_temp"
-    # "outside_hum"
-    # "outside_light"
-    # "soil_hum"
 
 
 class Log(db.Document):
