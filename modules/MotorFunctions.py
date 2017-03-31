@@ -1,5 +1,4 @@
-import requests
-import serial
+import time
 
 from Compost import app
 from ext import myFlags
@@ -7,31 +6,32 @@ from modules.DatabaseFunctions import addError, addLog
 from modules.SetupFlags import readFlags
 
 
+def standardMotorFunction(serialcommand, func):
+    x = ""
+    success = True
+    try:
+        myFlags.ser.close()
+        myFlags.ser.open()
+    except Exception as e:
+        app.logger.error("[" + func + "] Cannot Initialize Serial :", e)
+        addError("[" + func + "] Cannot Initialize Serial")
+    else:
+        while x == "":
+            myFlags.ser.write(serialcommand + '\r\n'.encode())
+            time.sleep(1)
+            x = myFlags.ser.readlines()
+            print x
+            addLog(func + "Started")
+            success = True
+        myFlags.ser.close()
+    return success
+
+
 def Motor_1_Left():
     success = False
     readFlags()  # diavazei ta flags
     if not myFlags.Door:
-        try:
-            # arduino = Devices.objects(name="arduino").first()
-            ser = serial.Serial(port='/dev/ttyACM0', baudrate=9600, timeout=1)
-            try:
-                # requests.get("http://" + arduino.ip + ":8888/Motor_1_Left")
-                ser.write('m1l\r\n'.encode())
-            except requests.RequestException as e:
-                app.logger.error("Error while Motor_1_Left :", e)
-                addError("Cannot start Motor 1 Left")
-            else:
-                success = True
-                addLog("Started Motor 2 LEFT")
-                readFlags()  # diavazei ta flags
-                ser.close()
-        except Exception as e:
-            # app.logger.error("Error while getting device (arduino) :", e)
-            # addError("[Motor_1_Left] Cannot find Arduino IP")
-            app.logger.error("Error while setting up Serial :", e)
-            addError("[Motor_1_Left] Cannot setup Serial")
-        else:
-            pass
+        success = standardMotorFunction('12', 'Motor_1_Left')
     else:
         app.logger.error("[Motor_1_Left] Door OPEN :")
         addError("[Motor_1_Left] Door OPEN")
@@ -42,27 +42,7 @@ def Motor_1_Right():
     success = False
     readFlags()  # diavazei ta flags
     if not myFlags.Door:
-        try:
-            # arduino = Devices.objects(name="arduino").first()
-            ser = serial.Serial(port='/dev/ttyACM0', baudrate=9600, timeout=1)
-            try:
-                # requests.get("http://" + arduino.ip + ":8888/Motor_1_Right")
-                ser.write('m1r\r\n'.encode())
-            except requests.RequestException as e:
-                app.logger.error("Error while Motor_1_Right :", e)
-                addError("Cannot start Motor 1 Right")
-            else:
-                success = True
-                addLog("Started Motor 1 RIGHT")
-                readFlags()  # diavazei ta flags
-                ser.close()
-        except Exception as e:
-            # app.logger.error("Error while getting device (arduino) :", e)
-            # addError("[Motor_1_Right] Cannot find Arduino IP")
-            app.logger.error("Error while setting up Serial :", e)
-            addError("[Motor_1_Right] Cannot setup Serial")
-        else:
-            pass
+        success = standardMotorFunction('11', 'Motor_1_Right')
     else:
         app.logger.error("[Motor_1_Right] Door OPEN :")
         addError("[Motor_1_Right] Door OPEN")
@@ -73,27 +53,7 @@ def Motor_2_Left():
     success = False
     readFlags()  # diavazei ta flags
     if not myFlags.Door:
-        try:
-            # arduino = Devices.objects(name="arduino").first()
-            ser = serial.Serial(port='/dev/ttyACM0', baudrate=9600, timeout=1)
-            try:
-                # requests.get("http://" + arduino.ip + ":8888/Motor_2_Left")
-                ser.write('m2l\r\n'.encode())
-            except requests.RequestException as e:
-                app.logger.error("Error while Motor_2_Left :", e)
-                addError("Cannot start Motor 2 Left")
-            else:
-                success = True
-                addLog("Started Motor 2 LEFT")
-                readFlags()  # diavazei ta flags
-                ser.close()
-        except Exception as e:
-            # app.logger.error("Error while getting device (arduino) :", e)
-            # addError("[Motor_2_Left] Cannot find Arduino IP")
-            app.logger.error("Error while setting up Serial :", e)
-            addError("[Motor_2_Left] Cannot setup Serial")
-        else:
-            pass
+        success = standardMotorFunction('22', 'Motor_2_Left')
     else:
         app.logger.error("[Motor_2_Left] Door OPEN :")
         addError("[Motor_2_Left] Door OPEN")
@@ -104,27 +64,7 @@ def Motor_2_Right():
     success = False
     readFlags()  # diavazei ta flags
     if not myFlags.Door:
-        try:
-            # arduino = Devices.objects(name="arduino").first()
-            ser = serial.Serial(port='/dev/ttyACM0', baudrate=9600, timeout=1)
-            try:
-                # requests.get("http://" + arduino.ip + ":8888/Motor_2_Right")
-                ser.write('m2r\r\n'.encode())
-            except requests.RequestException as e:
-                app.logger.error("Error while Motor_2_Right :", e)
-                addError("Cannot start Motor 2 Right")
-            else:
-                success = True
-                addLog("Started Motor 2 RIGHT")
-                readFlags()  # diavazei ta flags
-                ser.close()
-        except Exception as e:
-            # app.logger.error("Error while getting device (arduino) :", e)
-            # addError("[Motor_2_Right] Cannot find Arduino IP")
-            app.logger.error("Error while setting up Serial :", e)
-            addError("[Motor_2_Right] Cannot setup Serial")
-        else:
-            pass
+        success = standardMotorFunction('21', 'Motor_2_Right')
     else:
         app.logger.error("[Motor_2_Right] Door OPEN :")
         addError("[Motor_2_Right] Door OPEN")
@@ -134,166 +74,70 @@ def Motor_2_Right():
 def Motor_1_Stop():
     success = False
     readFlags()  # diavazei ta flags
-    try:
-        # arduino = Devices.objects(name="arduino").first()
-        ser = serial.Serial(port='/dev/ttyACM0', baudrate=9600, timeout=1)
-        try:
-            # requests.get("http://" + arduino.ip + ":8888/Motor_1_Stop")
-            ser.write('m1stop\r\n'.encode())
-        except requests.RequestException as e:
-            app.logger.error("Error while Motor_1_Stop :", e)
-            addError("Cannot stop Motor 1")
-        else:
-            success = True
-            addLog("Stopped Motor 1")
-            readFlags()  # diavazei ta flags
-            ser.close()
-    except Exception as e:
-        # app.logger.error("Error while getting device (arduino) :", e)
-        # addError("[Motor_1_Stop] Cannot find Arduino IP")
-        app.logger.error("Error while setting up Serial :", e)
-        addError("[Motor_1_Stop] Cannot setup Serial")
+    if not myFlags.Door:
+        success = standardMotorFunction('10', 'Motor_1_Stop')
+    else:
+        app.logger.error("[Motor_1_Stop] Door OPEN :")
+        addError("[Motor_1_Stop] Door OPEN")
     return success
 
 
 def Motor_2_Stop():
     success = False
     readFlags()  # diavazei ta flags
-    try:
-        # arduino = Devices.objects(name="arduino").first()
-        ser = serial.Serial(port='/dev/ttyACM0', baudrate=9600, timeout=1)
-        try:
-            # requests.get("http://" + arduino.ip + ":8888/Motor_2_Stop")
-            ser.write('m2stop\r\n'.encode())
-        except requests.RequestException as e:
-            app.logger.error("Error while Motor_2_Stop :", e)
-            addError("Cannot stop Motor 2")
-        else:
-            success = True
-            addLog("Stopped Motor 2")
-            readFlags()  # diavazei ta flags
-            ser.close()
-    except Exception as e:
-        # app.logger.error("Error while getting device (arduino) :", e)
-        # addError("[Motor_2_Stop] Cannot find Arduino IP")
-        app.logger.error("Error while setting up Serial :", e)
-        addError("[Motor_2_Stop] Cannot setup Serial")
+    if not myFlags.Door:
+        success = standardMotorFunction('20', 'Motor_2_Stop')
+    else:
+        app.logger.error("[Motor_2_Stop] Door OPEN :")
+        addError("[Motor_2_Stop] Door OPEN")
     return success
 
 
 def StartFan():
     success = False
     readFlags()  # diavazei ta flags
-    if not myFlags.Vent:
-        try:
-            # arduino = Devices.objects(name="arduino").first()
-            ser = serial.Serial(port='/dev/ttyACM0', baudrate=9600, timeout=1)
-            try:
-                # requests.get("http://" + arduino.ip + ":8888/StartFan")
-                ser.write('startf\r\n'.encode())
-            except requests.RequestException as e:
-                app.logger.error("Error while startFan() :", e)
-                addError("Cannot start Fan")
-            else:
-                success = True
-                addLog("Started FAN")
-                readFlags()  # diavazei ta flags
-                ser.close()
-        except Exception as e:
-            # app.logger.debug("Error while getting device (arduino) :", e)
-            # addError("[StartFan] Cannot find Arduino IP")
-            app.logger.error("Error while setting up Serial :", e)
-            addError("[Start Fan] Cannot setup Serial")
-        else:
-            pass
+    if not myFlags.Door:
+        success = standardMotorFunction('31', 'StartFan')
     else:
-        app.logger.error("[Start Fan] Vent ON :")
-        addError("[Start Fan] Vent ON")
+        app.logger.error("[StartFan] Door OPEN :")
+        addError("[StartFan] Door OPEN")
     return success
 
 
 def StopFan():
     success = False
     readFlags()  # diavazei ta flags
-    try:
-        # arduino = Devices.objects(name="arduino").first()
-        ser = serial.Serial(port='/dev/ttyACM0', baudrate=9600, timeout=1)
-        try:
-            # requests.get("http://" + arduino.ip + ":8888/StopFan")
-            ser.write('stopf\r\n'.encode())
-        except requests.RequestException as e:
-            app.logger.error("Error while stopFan() :", e)
-            addError("Cannot stop Fan")
-        else:
-            success = True
-            addLog("Stopped FAN")
-            readFlags()  # diavazei ta flags
-            ser.close()
-    except Exception as e:
-        # app.logger.debug("Error while getting device (arduino) :", e)
-        # addError("[StopFan] Cannot find Arduino IP")
-        app.logger.error("Error while setting up Serial :", e)
-        addError("[Stop Fan] Cannot setup Serial")
+    if not myFlags.Door:
+        success = standardMotorFunction('30', 'StopFan')
+    else:
+        app.logger.error("[StopFan] Door OPEN :")
+        addError("[StopFan] Door OPEN")
     return success
 
 
 def StartVent():
     success = False
     readFlags()  # diavazei ta flags
-    if not myFlags.Fan:
-        try:
-            # arduino = Devices.objects(name="arduino").first()
-            ser = serial.Serial(port='/dev/ttyACM0', baudrate=9600, timeout=1)
-            try:
-                # requests.get("http://" + arduino.ip + ":8888/StartVent")
-                ser.write('startv\r\n'.encode())
-            except requests.RequestException as e:
-                app.logger.error("Error while startVent() :", e)
-                addError("Cannot start Vent")
-            else:
-                success = True
-                addLog("Started VENT")
-                readFlags()  # diavazei ta flags
-                ser.close()
-        except Exception as e:
-            # app.logger.debug("Error while getting device (arduino) :", e)
-            # addError("[StartVent] Cannot find Arduino IP")
-            app.logger.error("Error while setting up Serial :", e)
-            addError("[Start Vent] Cannot setup Serial")
-        else:
-            pass
+    if not myFlags.Door:
+        success = standardMotorFunction('41', 'StartVent')
     else:
-        app.logger.error("[Start Vent] Fan ON :")
-        addError("[Start Vent] Fan ON")
+        app.logger.error("[StartVent] Door OPEN :")
+        addError("[StartVent] Door OPEN")
     return success
 
 
 def StopVent():
     success = False
     readFlags()  # diavazei ta flags
-    try:
-        # arduino = Devices.objects(name="arduino").first()
-        ser = serial.Serial(port='/dev/ttyACM0', baudrate=9600, timeout=1)
-        try:
-            # requests.get("http://" + arduino.ip + ":8888/StopVent")
-            ser.write('stopv\r\n'.encode())
-        except requests.RequestException as e:
-            app.logger.error("Error while stopVent() :", e)
-            addError("Cannot stop Vent")
-        else:
-            success = True
-            addLog("StOPPED VENT")
-            readFlags()  # diavazei ta flags
-            ser.close()
-    except Exception as e:
-        # app.logger.debug("Error while getting device (arduino) :", e)
-        # addError("[StopVent] Cannot find Arduino IP")
-        app.logger.error("Error while setting up Serial :", e)
-        addError("[Stop Vent] Cannot setup Serial")
+    if not myFlags.Door:
+        success = standardMotorFunction('40', 'StopVent')
+    else:
+        app.logger.error("[StopVent] Door OPEN :")
+        addError("[StopVent] Door OPEN")
     return success
 
 
-########################################################################################################
+# ########################################################################################################
 
 def StirForward():
     success = False
@@ -354,4 +198,4 @@ def StopMotors():
         addError("[StopMotors] Could NOT Stop motors")
     return success
 
-#############################################################################################
+# #############################################################################################

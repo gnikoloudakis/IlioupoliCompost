@@ -1,5 +1,5 @@
 from flask import json
-
+from ext import myFlags
 from Compost import app
 from models.models import Measurements
 
@@ -45,6 +45,10 @@ def get(m_type):
 def getLast(m_type):
     success = False
     m = []
+    # if m_type == 'outside_temp':
+    #     print myFlags.air_temp_out
+    #     m = {"m_type": m_type,
+    #          "m_value": myFlags.air_temp_out}
     try:
         m = Measurements.objects(m_type=m_type).order_by("-timestamp").first()
     except Exception as e:

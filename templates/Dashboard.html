@@ -75,6 +75,7 @@
                 });
 
                 $.getJSON("/api/flags/get", function (data) {
+                    console.log(data);
                     $("#Vent").html(function () {
                         {#                        if (!!parseInt(data.Vent)) {#}
                         if (data.Vent) {
@@ -120,7 +121,6 @@
                         }
                     });
                 });
-                console.log('refresh values');
             }, 5000);
         });
     </script>

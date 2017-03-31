@@ -81,7 +81,7 @@
             $("#Motor_1_L").on('click', function () {
                 if ($("#Motor_1_L").hasClass('btn-danger')) {
                     $.getJSON('/api/motors/m1l', function (data) {
-                        console.log(data);
+                        console.log('data');
                     });
                 }else {
                     $.getJSON('/api/motors/m1stop', function (data) {

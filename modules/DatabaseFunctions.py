@@ -1,6 +1,5 @@
 import datetime
 
-from Compost import app
 from models.models import Settings, Log, Errors
 
 
@@ -9,7 +8,7 @@ def addLog(message):
     try:
         Log(timestamp=datetime.datetime.now(), action=message).save()
     except Exception as e:
-        app.logger.error("error while inserting log action : " + str(e))
+        print("error while inserting log action : " + str(e))
     else:
         success = True
     return success
@@ -20,7 +19,7 @@ def addError(message):
     try:
         Errors(timestamp=datetime.datetime.now(), error=message).save()
     except Exception as e:
-        app.logger.error("error while inserting error : " + str(e))
+        print("error while inserting error : " + str(e))
     else:
         success = True
     return success
@@ -55,7 +54,7 @@ def getSettings():
     try:
         a = Settings.objects.first()
     except Exception as e:
-        app.logger.error("Error while getting settings from database : " + str(e))
+        addError("Error while getting settings from database : " + str(e))
     else:
         success = True
 

@@ -38,10 +38,10 @@ user_datastore = MongoEngineUserDatastore(db, User, Role)
 security = Security(app, user_datastore)
 
 
-# @app.before_request
-# def make_session_permanent():
-#     session.permanent = True
-#     app.permanent_session_lifetime = timedelta(minutes=5)
+@app.before_request
+def make_session_permanent():
+    session.permanent = True
+    app.permanent_session_lifetime = timedelta(minutes=5)
 
 
 @app.route('/')
@@ -50,19 +50,19 @@ def hello_world():
 
 
 @app.route('/dashboard')
-@login_required
+#@login_required
 def dashboard():
     return render_template('Dashboard.html')
 
 
 @app.route('/charts')
-@login_required
+#@login_required
 def charts():
     return render_template('Charts.html')
 
 
 @app.route('/settings')
-@login_required
+#@login_required
 def settings():
     from modules.DatabaseFunctions import getSettings
     context = []
@@ -75,7 +75,7 @@ def settings():
 
 
 @app.route('/settings/saveall', methods=['POST'])
-@login_required
+#@login_required
 def Setttings_saveall():
     from modules.DatabaseFunctions import saveSettings
     success = saveSettings(request.form)
@@ -87,20 +87,20 @@ def Setttings_saveall():
 
 
 @app.route('/controls')
-@login_required
+#@login_required
 def controls():
     return render_template('Controls.html')
 
 
 @app.route('/log')
-@login_required
+#@login_required
 def Logs():
     from models.models import Log
     log = Log.objects
     return render_template('Logs.html', log=log)
 
 
-@login_required
+#@login_required
 @app.route('/log/clear')
 def clearLog():
     from modules.DatabaseFunctions import dropLog
@@ -113,7 +113,7 @@ def clearLog():
 
 
 @app.route('/errors')
-@login_required
+#@login_required
 def Errors():
     from models.models import Errors
     errors = Errors.objects
@@ -205,7 +205,7 @@ def get_last_measurement(m_type):
 @app.route('/api/flags/get', methods=['GET'])
 def getFlags():
     f = {'Motor1': myFlags.Motor1, 'Motor2': myFlags.Motor2, 'Vent': myFlags.Vent, 'Fan': myFlags.Fan, 'Door': myFlags.Door}
-    print (f)
+    # print (f)
     return json.dumps(f)
 
 
@@ -241,8 +241,8 @@ def m1stop():
 
 @app.route('/api/motors/m2l', methods=['GET'])
 def m2l():
-    from modules.MotorFunctions import Motor_1_Left
-    if Motor_1_Left():
+    from modules.MotorFunctions import Motor_2_Left
+    if Motor_2_Left():
         print ("Motor 2 started LEFT")
     else:
         print ("Could NOT start Motor 2 LEFT")
@@ -312,6 +312,7 @@ def stopvent():
 if __name__ == '__main__':
     from modules.SetupSchedulers import init_sched
     from modules.initDB import initDb
+
     # readVariables()
     init_sched()
     # initDB()

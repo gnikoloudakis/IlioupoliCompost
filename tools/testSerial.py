@@ -1,36 +1,34 @@
 import demjson
 import serial
+from flask import json
 import time
+from string import rstrip
 
 
-# from Compost import socketio
-
-
-
-def readVariables2():
+def readVariables():
+    x = ""
     i = 0
-    ser = serial.Serial('/dev/ttyACM0',
-                        baudrate=9600,
-                        timeout=1
-                        )
-    # ser.write('v\r\n'.encode())
-    # time.sleep(2)
-    x = ser.readline()
-    while x == "":
-        i = i + 1
-        ser.write('v\r\n'.encode())
-        # time.sleep(2)
-        x = ser.readline()
-        print i
-
     try:
-        data = demjson.decode(x)
+        ser = serial.Serial('/dev/ttyACM0', baudrate=9600, timeout=1)
+        ser.flushInput()
+        ser.flushOutput()
     except Exception as e:
-        print ("read variables decode error: ", e)
+        print ("exception while readVariables :", e)
     else:
-        print (data)
-        # socketio.emit("measurements", data)
-    ser.close()
+        while x == "":
+            ser.write('v\r\n'.encode())
+            time.sleep(.5)
+            x = ser.readlines()
+            print i
+            print rstrip(x[0], '\n')
+            i += 1
+        try:
+            data = demjson.decode(rstrip(rstrip(x[0], '\n'), '\r'))
+        except Exception as e:
+            print ("read variables decode error: ", e)
+        else:
+            print (data)
+        ser.close()
 
 
-readVariables2()
+readVariables()
