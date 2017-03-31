@@ -10,25 +10,27 @@ def readVariables():
     i = 0
     try:
         ser = serial.Serial('/dev/ttyACM0', baudrate=9600, timeout=1)
-        ser.flushInput()
-        ser.flushOutput()
+        ser.close()
+        ser.open()
     except Exception as e:
         print ("exception while readVariables :", e)
     else:
         while x == "":
             ser.write('v\r\n'.encode())
             time.sleep(.5)
-            x = ser.readlines()
+            x = ser.readline()
             print i
-            print rstrip(x[0], '\n')
+            print (x)
             i += 1
+        ser.close()
         try:
-            data = demjson.decode(rstrip(rstrip(x[0], '\n'), '\r'))
+            data = json.loads(x)
         except Exception as e:
             print ("read variables decode error: ", e)
         else:
-            print (data)
-        ser.close()
+
+            print ('variables ok')
+            print (data['slo'])
 
 
 readVariables()

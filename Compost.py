@@ -194,12 +194,20 @@ def get_measurements(m_type):
 
 @app.route('/api/measurements/get/last/<m_type>', methods=["GET"])
 def get_last_measurement(m_type):
+    m = [{}]
     from modules.MeasurementsFunctions import getLast
     success, measurements = getLast(m_type)
     if success:
-        return measurements
+        m = json.loads(measurements)
     else:
-        return 'Did NOT get Measurements'
+        print ("ould NOT get last measurement")
+    return json.dumps(m)
+    # if success:
+    #     print json.loads(measurements)
+    #     m = json.dumps(measurements)
+    # else:
+    #     return 'Did NOT get Measurements'
+    # return m
 
 
 @app.route('/api/flags/get', methods=['GET'])

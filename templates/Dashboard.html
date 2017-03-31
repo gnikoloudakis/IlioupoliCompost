@@ -53,24 +53,31 @@
         $(document).ready(function () {
             setInterval(function () {
                 $.getJSON("/api/measurements/get/last/" + 'outside_temp', function (data) {
+                    console.log(data);
                     $("#Temp").html(data.m_value.toFixed(2) + ' °C').toString();
                 });
                 $.getJSON("/api/measurements/get/last/" + 'outside_hum', function (data) {
+                    console.log(data);
                     $("#Hum").html(data.m_value.toFixed(2) + ' %').toString();
                 });
                 $.getJSON("/api/measurements/get/last/" + 'outside_light', function (data) {
+                    console.log(data);
                     $("#sun").html(data.m_value.toFixed(2) + ' %').toString();
                 });
                 $.getJSON("/api/measurements/get/last/" + 'air_temp', function (data) {
+                    console.log(data);
                     $("#temp_in").html(data.m_value.toFixed(2) + ' %').toString();
                 });
                 $.getJSON("/api/measurements/get/last/" + 'air_hum', function (data) {
+                    console.log(data);
                     $("#hum_in").html(data.m_value.toFixed(2) + ' %').toString();
                 });
                 $.getJSON("/api/measurements/get/last/" + 'soil_hum', function (data) {
+                    console.log(data);
                     $("#soil_hum").html(data.m_value.toFixed(2) + ' %').toString();
                 });
                 $.getJSON("/api/measurements/get/last/" + 'soil_temp', function (data) {
+                    console.log(data);
                     $("#soil_temp").html(data.m_value.toFixed(2) + ' %').toString();
                 });
 

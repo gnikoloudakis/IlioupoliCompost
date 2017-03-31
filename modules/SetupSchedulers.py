@@ -56,17 +56,20 @@ def my_listener(event):
 
 # scheduler.add_listener(my_listener, EVENT_JOB_EXECUTED | EVENT_JOB_ERROR)
 # blockingScheduler.add_listener(my_listener, EVENT_JOB_EXECUTED | EVENT_JOB_ERROR)
-
-
 ###########################################################################################################################################
+def systemrestart():
+    os.system("sudo reboot")
+
+
 def init_sched():
     scheduler.add_job(pushSoilBack, 'cron', day_of_week='mon-fri', hour=datetime.datetime.strptime(Settings.objects.first().daily_soil_backward_time, '%H:%M%p').hour, jobstore='default', executor='default', replace_existing=True, id='soilBack')
     scheduler.add_job(soilHomogenization, 'cron', day_of_week='mon-fri', hour=datetime.datetime.strptime(Settings.objects.first().daily_steering_time, '%H:%M%p').hour, jobstore='default', executor='default', replace_existing=True, id='soilHomogenization')
+    scheduler.add_job(systemrestart, 'cron', day_of_week='mon-fri', hour=24, jobstore='default', executor='default', replace_existing=True, id='sysRestart')
 
     # scheduler2.add_job(add_measurements, 'interval', minutes=1)#, jobstore='default', executor='default', replace_existing=True, id='add_meas')
     scheduler2.add_job(hourlyVentilation, 'interval', hours=1)  # , jobstore='default', executor='default', replace_existing=True, id='vent')
     scheduler2.add_job(readFlags, 'interval', seconds=5)  # , jobstore='default', executor='default', replace_existing=True, id='readFlags')
-    scheduler.add_job(readVariables, 'interval', minutes=5, jobstore='default', executor='default', replace_existing=True, id='readVariables')  # , misfire_grace_time=10)
+    scheduler.add_job(readVariables, 'interval', minutes=3, jobstore='default', executor='default', replace_existing=True, id='readVariables')  # , misfire_grace_time=10)
 
     scheduler.start()
     scheduler2.start()

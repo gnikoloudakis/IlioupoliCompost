@@ -18,8 +18,8 @@ def standardMotorFunction(serialcommand, func):
     else:
         while x == "":
             myFlags.ser.write(serialcommand + '\r\n'.encode())
-            time.sleep(1)
-            x = myFlags.ser.readlines()
+            time.sleep(.5)
+            x = myFlags.ser.readline()
             print x
             addLog(func + "Started")
             success = True
