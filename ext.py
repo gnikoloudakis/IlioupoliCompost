@@ -1,4 +1,6 @@
 import serial
+
+
 # from modules.DatabaseFunctions import addError
 
 class myFlags(object):
@@ -20,4 +22,6 @@ class myFlags(object):
     try:
         ser = serial.Serial(port='/dev/ttyACM0', baudrate=9600, timeout=1)
     except Exception as e:
-        print ("could NOt setup SERIAL port")
+        print("could NOt setup SERIAL port")
+    else:
+        print("[ext.py] Initialized SERIAL port")

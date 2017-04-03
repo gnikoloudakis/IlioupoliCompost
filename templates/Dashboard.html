@@ -66,7 +66,7 @@
                 });
                 $.getJSON("/api/measurements/get/last/" + 'air_temp', function (data) {
                     console.log(data);
-                    $("#temp_in").html(data.m_value.toFixed(2) + ' %').toString();
+                    $("#temp_in").html(data.m_value.toFixed(2) + ' °C').toString();
                 });
                 $.getJSON("/api/measurements/get/last/" + 'air_hum', function (data) {
                     console.log(data);
@@ -78,13 +78,14 @@
                 });
                 $.getJSON("/api/measurements/get/last/" + 'soil_temp', function (data) {
                     console.log(data);
-                    $("#soil_temp").html(data.m_value.toFixed(2) + ' %').toString();
+                    $("#soil_temp").html(data.m_value.toFixed(2) + ' °C').toString();
                 });
 
                 $.getJSON("/api/flags/get", function (data) {
                     console.log(data);
                     $("#Vent").html(function () {
                         {#                        if (!!parseInt(data.Vent)) {#}
+                        console.log(data.Vent);
                         if (data.Vent) {
                             $("#Vent").css("color", "green");
                             return "True"
@@ -128,7 +129,7 @@
                         }
                     });
                 });
-            }, 5000);
+            }, 2000);
         });
     </script>
     {#    <script type="text/javascript">#}

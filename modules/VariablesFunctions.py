@@ -16,9 +16,9 @@ def readVariables():
         print ("exception while readVariables :", e)
     else:
         while x == "":
-            myFlags.ser.write('v\r\n'.encode())
-            time.sleep(.5)
             x = myFlags.ser.readline()
+            time.sleep(.5)
+            myFlags.ser.write('v\r\n'.encode())
             # print i
             # print (x)
             # i += 1
@@ -28,7 +28,6 @@ def readVariables():
         except Exception as e:
             print ("read variables decode error: ", e)
         else:
-            myFlags.ser.close()
             print (data)
             saveVariables(json.dumps(data))
 

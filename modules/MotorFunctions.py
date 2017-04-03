@@ -17,12 +17,12 @@ def standardMotorFunction(serialcommand, func):
         addError("[" + func + "] Cannot Initialize Serial")
     else:
         while x == "":
-            myFlags.ser.write(serialcommand + '\r\n'.encode())
-            time.sleep(.5)
             x = myFlags.ser.readline()
+            time.sleep(.5)
+            myFlags.ser.write(serialcommand + '\r\n'.encode())
             print x
-            addLog(func + "Started")
-            success = True
+        addLog(func + "Started")
+        success = True
         myFlags.ser.close()
     return success
 

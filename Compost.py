@@ -3,7 +3,8 @@ from datetime import datetime, timedelta
 
 from flask import Flask, render_template, request, redirect, json, session
 from flask_mongoengine import MongoEngine
-from flask_security import Security, MongoEngineUserDatastore, UserMixin, RoleMixin, login_required, roles_required
+from flask_security import Security, MongoEngineUserDatastore, UserMixin, RoleMixin
+
 from ext import myFlags
 
 # from logging.handlers import RotatingFileHandler
@@ -50,19 +51,19 @@ def hello_world():
 
 
 @app.route('/dashboard')
-#@login_required
+# @login_required
 def dashboard():
     return render_template('Dashboard.html')
 
 
 @app.route('/charts')
-#@login_required
+# @login_required
 def charts():
     return render_template('Charts.html')
 
 
 @app.route('/settings')
-#@login_required
+# @login_required
 def settings():
     from modules.DatabaseFunctions import getSettings
     context = []
@@ -75,7 +76,7 @@ def settings():
 
 
 @app.route('/settings/saveall', methods=['POST'])
-#@login_required
+# @login_required
 def Setttings_saveall():
     from modules.DatabaseFunctions import saveSettings
     success = saveSettings(request.form)
@@ -87,20 +88,20 @@ def Setttings_saveall():
 
 
 @app.route('/controls')
-#@login_required
+# @login_required
 def controls():
     return render_template('Controls.html')
 
 
 @app.route('/log')
-#@login_required
+# @login_required
 def Logs():
     from models.models import Log
     log = Log.objects
     return render_template('Logs.html', log=log)
 
 
-#@login_required
+# @login_required
 @app.route('/log/clear')
 def clearLog():
     from modules.DatabaseFunctions import dropLog
@@ -113,7 +114,7 @@ def clearLog():
 
 
 @app.route('/errors')
-#@login_required
+# @login_required
 def Errors():
     from models.models import Errors
     errors = Errors.objects
@@ -317,12 +318,20 @@ def stopvent():
     return 'Vent STOP'
 
 
+@app.route('/api/variables/read')
+def readVariables():
+    from modules.VariablesFunctions import readVariables
+    readVariables()
+    return 'read variables'
+
+
 if __name__ == '__main__':
     from modules.SetupSchedulers import init_sched
     from modules.initDB import initDb
 
-    # readVariables()
     init_sched()
+    from modules.VariablesFunctions import readVariables
+    readVariables()
     # initDB()
     # socketio.run(app=app, host='0.0.0.0', port=5000, debug=True)
     app.run(host='0.0.0.0', port=5000, debug=True)

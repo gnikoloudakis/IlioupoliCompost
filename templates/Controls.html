@@ -150,7 +150,7 @@
 
             setInterval(function () {
                 $.getJSON("/api/flags/get", function (data) {
-{#                    console.log(data);#}
+                    console.log(data);
                     if (data.Motor2) {
                         if ($("#Motor_2_L").hasClass('btn-danger')) {
                             $("#Motor_2_L").removeClass('btn-danger');

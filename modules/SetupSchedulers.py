@@ -2,6 +2,7 @@ import datetime
 import json
 import os
 import random
+
 import requests
 from apscheduler.schedulers.background import BackgroundScheduler
 
@@ -12,6 +13,7 @@ from modules.VariablesFunctions import readVariables
 # The "apscheduler." prefix is hard coded
 # blockingScheduler = BlockingScheduler()
 scheduler2 = BackgroundScheduler()
+scheduler3 = BackgroundScheduler()
 
 scheduler = BackgroundScheduler({
     'apscheduler.jobstores.default': {
@@ -26,7 +28,8 @@ scheduler = BackgroundScheduler({
         'type': 'processpool',
         'max_workers': '10'
     },
-    'apscheduler.job_defaults.coalesce': 'False',
+    'apscheduler.job_defaults.coalesce': 'True',
+    # 'apscheduler.job_defaults.misfire_grace_time': 5,
     'apscheduler.job_defaults.max_instances': '5',
     'apscheduler.timezone': 'Europe/Athens',
 })
@@ -61,17 +64,24 @@ def systemrestart():
     os.system("sudo reboot")
 
 
+###########################################################################################################################################
+def GetVariables():
+    requests.get('http://localhost:5000/api/variables/read')
+
+
 def init_sched():
     scheduler.add_job(pushSoilBack, 'cron', day_of_week='mon-fri', hour=datetime.datetime.strptime(Settings.objects.first().daily_soil_backward_time, '%H:%M%p').hour, jobstore='default', executor='default', replace_existing=True, id='soilBack')
     scheduler.add_job(soilHomogenization, 'cron', day_of_week='mon-fri', hour=datetime.datetime.strptime(Settings.objects.first().daily_steering_time, '%H:%M%p').hour, jobstore='default', executor='default', replace_existing=True, id='soilHomogenization')
     # scheduler.add_job(systemrestart, 'cron', day_of_week='mon-fri', hour=24, jobstore='default', executor='default', replace_existing=True, id='sysRestart')
 
     # scheduler2.add_job(add_measurements, 'interval', minutes=1)#, jobstore='default', executor='default', replace_existing=True, id='add_meas')
-    scheduler2.add_job(hourlyVentilation, 'interval', hours=1)  # , jobstore='default', executor='default', replace_existing=True, id='vent')
-    scheduler2.add_job(readFlags, 'interval', seconds=5)  # , jobstore='default', executor='default', replace_existing=True, id='readFlags')
-    scheduler.add_job(readVariables, 'interval', minutes=3, jobstore='default', executor='default', replace_existing=True, id='readVariables')  # , misfire_grace_time=10)
+    scheduler.add_job(hourlyVentilation, 'interval', hours=1, jobstore='default', executor='default', replace_existing=True, id='vent', coalesce=True)
+    scheduler2.add_job(readFlags, 'interval', seconds=5, replace_existing=True, id='readFlags', coalesce=True)#, jobstore='default', executor='default'
+    # scheduler3.add_job(readVariables, 'interval', seconds=5, replace_existing=True, id='readVariables', coalesce=True, max_instances=10)
+    scheduler3.add_job(GetVariables, 'interval', minutes=5, replace_existing=True, id='readVariables', coalesce=True, misfire_grace_time=5, max_instances=10)#, jobstore='default', executor='default'
 
     scheduler.start()
     scheduler2.start()
+    scheduler3.start()
 
 ################################################################################################################################################

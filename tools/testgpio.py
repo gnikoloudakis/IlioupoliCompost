@@ -1,28 +1,24 @@
 import time
-import serial
-from string import rstrip
-import demjson
 
-ser = serial.Serial('/dev/ttyACM0', baudrate=9600, timeout=1)
+import RPi.GPIO as gpio
 
 
 def testtt():
-    x = ""
-    i = 0
-    try:
-        ser.close()
-        ser.open()
-    except Exception as e:
-        print ("exception while testgpio :", e)
-    else:
-        while x is not 'Motor_1_Stop\r\n':
-            ser.write('10\r\n'.encode())
-            time.sleep(2)
-            x = str(ser.readlines())
-            print i
-            print x
-            i += 1
-        ser.close()
+    gpio.setmode(gpio.BCM)
+    gpio.setup(5, gpio.IN, pull_up_down=gpio.PUD_DOWN)  # Motor1
+    gpio.setup(6, gpio.IN, pull_up_down=gpio.PUD_DOWN)  # Motor2
+    gpio.setup(13, gpio.IN, pull_up_down=gpio.PUD_DOWN)  # Vent
+    gpio.setup(19, gpio.IN, pull_up_down=gpio.PUD_DOWN)  # Fan
+    gpio.setup(26, gpio.IN, pull_up_down=gpio.PUD_DOWN)  # Door
+    while 1:
+        print ("Motor 1 : ", gpio.input(5))
+        print ("Motor 2 : ", gpio.input(5))
+        print ("Vent : ", gpio.input(5))
+        print ("Fan : ", gpio.input(5))
+        print ("Door : ", gpio.input(5))
+        print ("\n####################################\n")
 
+        time.sleep(.7)
+        # gpio.cleanup()
 
 testtt()

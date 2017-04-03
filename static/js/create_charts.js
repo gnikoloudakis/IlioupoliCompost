@@ -7,7 +7,7 @@
  */
 
 // var wdata;
-function createChart(m_type, container) {
+function createChart(m_type, container, title) {
 
     var chart; // global
 
@@ -44,7 +44,7 @@ function createChart(m_type, container) {
                 zoomType: 'x'
             },
             title: {
-                text: m_type
+                text: title
             },
             xAxis: {
                 type: 'datetime',
@@ -71,7 +71,7 @@ function createChart(m_type, container) {
                 }
             },
             series: [{
-                name: m_type,
+                name: m_type + ' °C',
                 data: []
             }]
         });
