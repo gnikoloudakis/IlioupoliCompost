@@ -13,7 +13,7 @@ from modules.VariablesFunctions import readVariables
 # The "apscheduler." prefix is hard coded
 # blockingScheduler = BlockingScheduler()
 scheduler2 = BackgroundScheduler()
-scheduler3 = BackgroundScheduler()
+# scheduler3 = BackgroundScheduler()
 
 scheduler = BackgroundScheduler({
     'apscheduler.jobstores.default': {
@@ -78,10 +78,10 @@ def init_sched():
     scheduler.add_job(hourlyVentilation, 'interval', hours=1, jobstore='default', executor='default', replace_existing=True, id='vent', coalesce=True)
     scheduler2.add_job(readFlags, 'interval', seconds=5, replace_existing=True, id='readFlags', coalesce=True)#, jobstore='default', executor='default'
     # scheduler3.add_job(readVariables, 'interval', seconds=5, replace_existing=True, id='readVariables', coalesce=True, max_instances=10)
-    scheduler3.add_job(GetVariables, 'interval', minutes=5, replace_existing=True, id='readVariables', coalesce=True, misfire_grace_time=5, max_instances=10)#, jobstore='default', executor='default'
+    scheduler2.add_job(GetVariables, 'interval', minutes=5, replace_existing=True, id='readVariables', coalesce=True, misfire_grace_time=5, max_instances=10)#, jobstore='default', executor='default'
 
     scheduler.start()
     scheduler2.start()
-    scheduler3.start()
+    # scheduler3.start()
 
 ################################################################################################################################################
