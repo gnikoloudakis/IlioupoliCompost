@@ -58,13 +58,13 @@ def dashboard():
 
 
 @app.route('/charts')
-#@login_required
+@login_required
 def charts():
     return render_template('Charts.html')
 
 
 @app.route('/settings')
-#@login_required
+@login_required
 def settings():
     from modules.DatabaseFunctions import getSettings
     context = []
@@ -77,7 +77,7 @@ def settings():
 
 
 @app.route('/settings/saveall', methods=['POST'])
-#@login_required
+@login_required
 def Setttings_saveall():
     from modules.DatabaseFunctions import saveSettings
     success = saveSettings(request.form)
@@ -89,13 +89,13 @@ def Setttings_saveall():
 
 
 @app.route('/controls')
-#@login_required
+@login_required
 def controls():
     return render_template('Controls.html')
 
 
 @app.route('/log')
-#@login_required
+@login_required
 def Logs():
     from models.models import Log
     log = Log.objects
@@ -103,7 +103,7 @@ def Logs():
 
 
 @app.route('/log/clear')
-#@login_required
+@login_required
 def clearLog():
     from modules.DatabaseFunctions import dropLog
     success = dropLog()
@@ -115,7 +115,7 @@ def clearLog():
 
 
 @app.route('/errors')
-#@login_required
+@login_required
 def Errors():
     from models.models import Errors
     errors = Errors.objects
@@ -123,7 +123,7 @@ def Errors():
 
 
 @app.route('/errors/clear')
-#@login_required
+@login_required
 def clearErrors():
     from modules.DatabaseFunctions import dropErrors
     success = dropErrors()
