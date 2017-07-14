@@ -4,15 +4,15 @@ from ext import myFlags
 
 pin1 = 11
 pin2 = 13
-pin3 = 15
+pin3 = 16
 pin4 = 35
 pin5 = 37
 gpio.setmode(gpio.BOARD)
-gpio.setup(pin1, gpio.IN, pull_up_down=gpio.PUD_DOWN)  # Motor1
-gpio.setup(pin2, gpio.IN, pull_up_down=gpio.PUD_DOWN)  # Motor2
-gpio.setup(pin3, gpio.IN, pull_up_down=gpio.PUD_DOWN)  # Vent
-gpio.setup(pin4, gpio.IN, pull_up_down=gpio.PUD_DOWN)  # Fan
-gpio.setup(pin5, gpio.IN, pull_up_down=gpio.PUD_DOWN)  # Door
+gpio.setup(pin1, gpio.IN, pull_up_down=gpio.PUD_DOWN)  # Motor1     pin11
+gpio.setup(pin2, gpio.IN, pull_up_down=gpio.PUD_DOWN)  # Motor2     pin13
+gpio.setup(pin3, gpio.IN, pull_up_down=gpio.PUD_DOWN)  # Vent       pin15
+gpio.setup(pin4, gpio.IN, pull_up_down=gpio.PUD_DOWN)  # Fan        pin35
+gpio.setup(pin5, gpio.IN, pull_up_down=gpio.PUD_DOWN)  # Door       pin37
 
 
 def readFlags():

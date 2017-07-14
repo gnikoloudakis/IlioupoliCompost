@@ -52,7 +52,7 @@ def hello_world():
 
 
 @app.route('/dashboard')
-# @login_required
+@login_required
 def dashboard():
     return render_template('Dashboard.html')
 
@@ -203,7 +203,7 @@ def get_last_measurement(m_type):
     if success:
         m = json.loads(measurements)
     else:
-        print ("ould NOT get last measurement")
+        print ("Could NOT get last measurement")
     return json.dumps(m)
     # if success:
     #     print json.loads(measurements)

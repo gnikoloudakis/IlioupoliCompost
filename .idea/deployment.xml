@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="Always" serverName="192.168.1.200">
+  <component name="PublishConfigData" autoUpload="Always" serverName="ilioupolicompost.ddns.net">
     <serverData>
       <paths name="192.168.1.200">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/Ilioupoli" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="ilioupolicompost.ddns.net">
         <serverdata>
           <mappings>
             <mapping deploy="/Ilioupoli" local="$PROJECT_DIR$" web="/" />

@@ -10,6 +10,14 @@
           <option name="port" value="22" />
         </fileTransfer>
       </webServer>
+      <webServer id="6da5833d-2fb2-493c-8be0-a5c9a11a0101" name="ilioupolicompost.ddns.net" url="http://ilioupolicompost.ddns.net">
+        <fileTransfer host="ilioupolicompost.ddns.net" port="22" rootFolder="/home/pi" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
     </option>
   </component>
 </project>
