@@ -11,7 +11,7 @@ Flask-WTF==0.14.2
 funcsigs==1.0.2
 futures==3.0.5
 gi==1.2
-html5lib==0.999
+html5lib==0.999999999
 itsdangerous==0.24
 Jinja2==2.9.5
 legacy==0.1.6
